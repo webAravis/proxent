@@ -23,6 +23,7 @@ import { CeremonyComponent } from './ceremony/ceremony.component';
 import { BackgroundComponent } from './girls/background/background.component';
 import { SelectorComponent } from './girls/selector/selector.component';
 import { StudioRecordsComponent } from './studio/studio-records/studio-records.component';
+import { SaveChooserComponent } from './start/save-chooser/save-chooser.component';
 
 @NgModule({
 	declarations: [
@@ -46,6 +47,7 @@ import { StudioRecordsComponent } from './studio/studio-records/studio-records.c
 		BackgroundComponent,
 		SelectorComponent,
 		StudioRecordsComponent,
+  SaveChooserComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
 	providers: [],

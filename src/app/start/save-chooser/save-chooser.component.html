@@ -1,0 +1,33 @@
+<div class="modal" [class.show]="show">
+	<div class="save-header">Choose your save slot</div>
+
+	<hr />
+
+  <div class="management-btns">
+    <a (click)="deleteSave()">Delete</a>
+    <a (click)="fileUpload.click()">Import</a>
+    <a (click)="exportSave()">Export</a>
+  </div>
+
+	<div class="saves-wrapper">
+    <div [class.selected]="saveIndex === index" (click)="saveIndex === -1 ? (saveIndex = index) : start()" class="save" *ngFor="let save of saves;let index = index">
+      <div class="stats">
+        <div>#{{index}}</div>
+        <div>{{save.girls.length}} Girls</div>
+        <div class="with-icon">{{save.game.golds}}<img src="./assets/golds.png" /></div>
+      </div>
+      <div class="lastsaved">
+        <div class="date">{{ save.lastSaved ? (save.lastSaved|date:'short') : 'unknown date' }}</div>
+        <div class="version">{{ save.version ? save.version : 'unknown version' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" (click)="close()">Cancel</button>
+    <button [disabled]="saveIndex === -1" (click)="start()" class="btn">Start game</button>
+  </div>
+
+</div>
+
+<input type="file" class="file-input" (change)="onFileSelected($event)" accept=".txt" #fileUpload>

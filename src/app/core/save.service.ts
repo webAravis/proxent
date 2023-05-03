@@ -1,4 +1,4 @@
-import { of, Observable } from 'rxjs';
+import { of, Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { GameService } from './game.service';
 import { GirlsService } from './girls/girls.service';
@@ -17,6 +17,12 @@ import { Studio } from './studio.model';
 	providedIn: 'root',
 })
 export class SaveService {
+
+  saveIndex = 0;
+
+  showSaveChooser: Subject<boolean> = new Subject();
+  saves: any[] = [];
+
 	constructor(
 		private _gameService: GameService,
 		private _girlsService: GirlsService,
@@ -30,7 +36,44 @@ export class SaveService {
 		this._gameService.dayChanged.subscribe((day) =>
 			day > 1 ? this.saveGame() : undefined
 		);
+		this._gameService.goldChanged.subscribe((golds) =>
+      golds > 0 ? this.saveGame() : undefined
+		);
+
+    const allSaves = localStorage.getItem('saveGame') ?? btoa('[]');
+    const savesObject = JSON.parse(atob(allSaves));
+    this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
+    this.saveIndex = this.saves.length;
 	}
+
+  export(saveIndex: number): string {
+    return btoa(JSON.stringify(this.saves[saveIndex] ?? '{}'));
+  }
+
+  import(save: string): boolean {
+    if (!this._isJsonString(atob(save))) {
+      return false;
+    }
+
+    const savedGame = JSON.parse(atob(save));
+    if (!(typeof savedGame === 'object') || !Object.keys(savedGame).includes('game')) {
+      return false;
+    }
+
+    this.saves.push(savedGame);
+    this.saveIndex = this.saves.length-1;
+
+    this.loadGame();
+    this.saveGame();
+    return true;
+  }
+
+  delete(saveIndex: number): void {
+    this.saves.splice(saveIndex, 1);
+
+		const saved = btoa(JSON.stringify(this.saves));
+		localStorage.setItem('saveGame', saved);
+  }
 
 	saveGame(): void {
 		if (this._gameService.day <= 1) {
@@ -47,8 +90,8 @@ export class SaveService {
 		const dialogsStarted = this._dialogsService.dialogsStarted;
 
 		const girls = this._girlsService.allGirls.getValue();
-		// prevent save if girlfriend's xp is 0 as it's not correctly saved
-		if (girls[0] !== undefined && girls[0].xp === 0) {
+		// prevent save if girlfriend's fans is 0 as it's not correctly saved
+		if (girls[0] !== undefined && girls[0].fans === 0) {
 			return;
 		}
 
@@ -74,20 +117,41 @@ export class SaveService {
 			inventory: inventory,
 			records: records,
 			otherStudios: otherStudios,
+      lastSaved: new Date(),
+      version: '0.8.0'
 		};
 
-		const saved = btoa(JSON.stringify(toSave));
+		let savedGames = this.saves;
 
+    // sanitizing all non-number keys
+    // const keysToDelete = Object.keys(savedGames).filter(key => isNaN(parseInt(key)));
+    // for (const keyToDelete of keysToDelete) {
+    //   delete savedGames[keyToDelete];
+    // }
+
+    // if (!Array.isArray(savedGames)) {
+    //   console.log('converting to array');
+    //   savedGames = Object.values(savedGames);
+    // }
+
+    savedGames[this.saveIndex] = toSave;
+
+		const saved = btoa(JSON.stringify(savedGames));
 		localStorage.setItem('saveGame', saved);
+
+    this.saves = savedGames;
 	}
 
 	loadGame(): Observable<boolean> {
-		const saved = localStorage.getItem('saveGame');
-		if (saved === null) {
-			return of(true);
-		}
+		if (this.saves === undefined || this.saves.length === 0) {
+      return of(false);
+    }
 
-		const savedGame = JSON.parse(atob(saved));
+    const savedGame = this.saves[this.saveIndex];
+    if (savedGame === undefined) {
+      return of(false);
+    }
+
 		this._gameService.day = savedGame.game.day;
 		this._gameService.month = savedGame.game.month ?? 1;
 		this._gameService.year = savedGame.game.year ?? 1;
@@ -162,4 +226,13 @@ export class SaveService {
 	hasSave(): boolean {
 		return localStorage.getItem('saveGame') !== null;
 	}
+
+  private _isJsonString(str: string): boolean {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+  }
 }

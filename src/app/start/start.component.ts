@@ -20,13 +20,7 @@ export class StartComponent {
 	}
 
 	continue(): void {
-		this._saveService.loadGame().subscribe(() => {
-			setTimeout(() => {
-				this._gameService.startGame(false);
-			}, 100);
-		});
-
-		this._router.navigate(['/girls']);
+    this._saveService.showSaveChooser.next(true);
 	}
 
 	newGame(): void {

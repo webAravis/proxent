@@ -55,7 +55,6 @@ export class CeremonyService {
     ];
 
 		for (const studio of this._otherStudioService.studios.getValue()) {
-      console.log(studio.records);
 			recordsToPrime = [
 				...recordsToPrime,
 				...studio.records.filter(

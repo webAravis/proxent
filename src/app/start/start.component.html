@@ -1,8 +1,10 @@
 <div class="wrapper">
 	<img src="./assets/logo.png" alt="" srcset="" />
 
-	<button [disabled]="!hasSave" (click)="continue()" class="btn">
-		Continue
+	<button (click)="continue()" class="btn">
+		Load Game
 	</button>
 	<a (click)="newGame()" class="btn">New Game</a>
 </div>
+
+<app-save-chooser></app-save-chooser>
