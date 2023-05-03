@@ -1,0 +1,157 @@
+<div class="wrapper">
+	<ng-container *ngIf="state === 'init'">
+		<div class="header">You're about to record {{ girl.name }}</div>
+
+		<div>
+			<img [src]="portrait" />
+		</div>
+
+		<div>
+			<button (click)="startRecord()" [disabled]="price > golds" class="btn">
+				Start Recording
+			</button>
+		</div>
+
+		<div class="price">
+			<div class="with-icon">
+				<div>{{ price }}</div>
+				<div><img src="./assets/golds.png" width="30" alt="" srcset="" /></div>
+			</div>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="state === 'recording'">
+		<div class="overlay" [class.show]="showPositions"></div>
+		<div class="header">Recording {{ girl.name }}, enjoy!</div>
+
+		<div class="stats">
+			<div class="orgasm">
+				<div class="label with-icon">
+					Orgasm<img width="30" src="./assets/items/cum.png" />
+				</div>
+				<div class="bar">
+					<div class="progress" [style.width]="girl.orgasmLevel + '%'"></div>
+				</div>
+			</div>
+			<div class="stamina">
+				<div class="label with-icon">
+					Stamina<img width="30" src="./assets/stamina.png" />
+				</div>
+				<div class="bar">
+					<div
+						class="progress"
+						[style.width]="
+							((girl.stamina - staminaUsed) * 100) / girl.stamina + '%'
+						"
+					></div>
+				</div>
+			</div>
+			<div class="pos">
+				<div class="label">
+					Positions {{ nbScenes - 1 }}/{{ girl.corruption - 1 }}
+				</div>
+				<div class="bar">
+					<div
+						class="progress"
+						[style.width]="((nbScenes - 1) * 100) / (girl.corruption - 1) + '%'"
+					></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="score">
+			<span class="with-icon"
+				>{{ goldsWon }}<img width="30" src="./assets/golds.png" />(x{{
+					goldmultiplier | number : '1.2-2'
+				}})</span
+			>
+			<span class="with-icon"
+				>{{ xpWon }}<img width="30" src="./assets/experience.png" />(x{{
+					xpmultiplier | number : '1.2-2'
+				}})</span
+			>
+			<span class="with-icon"
+				>{{ fansWon }}<img width="30" src="./assets/fans.png" />(x{{
+					fansmultiplier | number : '1.2-2'
+				}})</span
+			>
+			<span class="with-icon"
+				>{{ orgasmCount }}<img width="30" src="./assets/items/cum.png"
+			/></span>
+		</div>
+
+		<video id="video-record" controls muted class="video-background">
+			<source [src]="recordUrl" type="video/mp4" />
+		</video>
+
+		<div class="positions-wrapper" *ngIf="showPositions">
+			<ng-container *ngFor="let position of positions">
+				<button
+					*ngIf="position.name !== 'intro' && isAllowed(position.name)"
+					[disabled]="staminaUsed + position.stamcost > girl.stamina"
+					(click)="startScene(position)"
+					[class.trending]="position.name === trendingPosition"
+					class="btn"
+				>
+					{{ position.name }}
+					<span class="badge-btn">{{
+						positionRepeated(position.name) === 0 ? 'New' : 'Repeat!'
+					}}</span>
+					<div class="tooltip">
+						<div class="tooltip-wrapper">
+							<div class="red with-icon">
+								-{{ position.stamcost }} <img src="./assets/stamina.png" />
+							</div>
+							<div class="green with-icon">
+								+{{ position.xp }} <img src="./assets/experience.png" />
+							</div>
+							<div class="green with-icon">
+								+{{ position.gold }} <img src="./assets/golds.png" />
+							</div>
+							<div class="green with-icon">
+								+{{ position.fans }} <img src="./assets/fans.png" />
+							</div>
+							<div class="green with-icon">
+								+{{ position.orgasm }} <img src="./assets/items/cum.png" />
+							</div>
+						</div>
+					</div>
+				</button>
+			</ng-container>
+		</div>
+
+		<div *ngIf="showSkipButton">
+			<button class="btn" (click)="endScene()">Skip scene</button>
+		</div>
+
+		<div class="combo-message {{ comboText }}" [class.show]="displayComboText">
+			{{ comboText }}!
+		</div>
+
+		<div class="combo-track" *ngIf="comboBtns.length > 0">
+			<div class="combo-hit" (click)="comboHit()"></div>
+			<div
+				class="combo-wrapper"
+				[style.width.px]="sceneDuration"
+				[style.transform]="'translateX(' + comboWrapperTranslateX + 'px)'"
+			>
+				<div *ngFor="let comboBtn of comboBtns" [style.left.px]="comboBtn">
+					Hit
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="state === 'end'">
+		<app-results
+			(finish)="finish()"
+			[name]="record.name"
+			[positions]="scorePositions"
+			[girl]="scoreGirl"
+			[studio]="scoreStudio"
+			[extra]="scoreExtra"
+			[score]="record.score"
+			[grade]="grade"
+		></app-results>
+	</ng-container>
+</div>

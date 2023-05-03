@@ -1,0 +1,114 @@
+<div class="wrapper">
+	<ng-container *ngIf="!corrupting">
+		<div class="header">You're about to corrupt {{ girl.name }}</div>
+
+		<div>
+			<img [src]="portrait" />
+		</div>
+
+		<div>
+			<div *ngIf="!canCorrupt()" class="error">{{ reasonCorruptDisabled }}</div>
+			<button [disabled]="!canCorrupt()" (click)="doCorrupt()" class="btn">
+				Corrupt her
+			</button>
+			<div class="price">
+				<div class="with-icon">
+					<div>{{ price }}</div>
+					<div>
+						<img src="./assets/golds.png" width="30" alt="" srcset="" />
+					</div>
+				</div>
+
+				<div class="with-icon" *ngIf="itemsRequired.quantity > 0">
+					<div>{{ itemsRequired.quantity }}</div>
+					<div>
+						<img
+							width="30"
+							[src]="
+								'./assets/items/' +
+								(itemsRequired.itemName | lowercase) +
+								'.png'
+							"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="corrupting">
+		<div class="header">Corrupting {{ girl.name }}, enjoy!</div>
+
+		<div class="positions">
+			<div class="positions-wrapper">
+				<div
+					*ngFor="let position of newPositions"
+					(click)="selectPosition(position)"
+					[class.selected]="selectedPosition.name === position.name"
+					[class.disabled]="!positionRequirementsMet(position)"
+					class="btn"
+				>
+					{{ position.name }}
+					<span class="badge-btn">{{
+						position.requirements.corruptionLevel
+					}}</span>
+
+					<ng-container *ngIf="positionRequirementsMet(position)">
+						<ng-container
+							*ngTemplateOutlet="
+								tooltip;
+								context: { positiondef: getPositionDef(position.name) }
+							"
+						></ng-container>
+					</ng-container>
+					<ng-container *ngIf="!positionRequirementsMet(position)">
+						<div class="tooltip">Corruption level too low!</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+
+		<video
+			controls
+			autoplay
+			muted
+			loop
+			id="video-position"
+			class="video-background"
+		>
+			<source [src]="corrupt" type="video/mp4" />
+		</video>
+
+		<div>
+			<button
+				(click)="endCorrupt()"
+				class="btn"
+				*ngIf="canEnd && selectedPosition.name !== ''"
+			>
+				Finish corrupting
+			</button>
+		</div>
+	</ng-container>
+</div>
+
+<ng-template #tooltip let-positiondef="positiondef">
+	<div class="tooltip">
+		<div class="tooltip-wrapper">
+			<div class="red with-icon">
+				-{{ positiondef.stamcost }} <img src="./assets/stamina.png" />
+			</div>
+			<div class="green with-icon">
+				+{{ positiondef.xp }} <img src="./assets/experience.png" />
+			</div>
+			<div class="green with-icon">
+				+{{ positiondef.gold }} <img src="./assets/golds.png" />
+			</div>
+			<div class="green with-icon">
+				+{{ positiondef.fans }} <img src="./assets/fans.png" />
+			</div>
+			<div class="green with-icon">
+				+{{ positiondef.orgasm }} <img src="./assets/items/cum.png" />
+			</div>
+		</div>
+	</div>
+</ng-template>

@@ -1,0 +1,7 @@
+<div class="wrapper">
+	<div *ngFor="let item of items" class="item">
+		<span class="tooltip">{{ item[0] }}</span>
+		<img [src]="'./assets/items/' + (item[0] | lowercase) + '.png'" />
+		<span class="quantity">{{ item[1].length }}</span>
+	</div>
+</div>

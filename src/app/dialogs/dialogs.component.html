@@ -1,0 +1,17 @@
+<div *ngIf="shown" (click)="nextStep()" class="overlay">
+	<div *ngIf="dialog[step].character === 'player'" class="character player">
+		<img
+			[src]="'./assets/' + dialog[step].character + '.png'"
+			alt=""
+			class="no-select"
+		/>
+	</div>
+	<div *ngIf="dialog[step].character !== 'player'" class="character">
+		<img
+			[src]="'./assets/' + dialog[step].character + '.png'"
+			alt=""
+			class="no-select"
+		/>
+	</div>
+	<div class="messagebox no-select" [innerHTML]="dialog[step].text"></div>
+</div>

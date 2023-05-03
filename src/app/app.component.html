@@ -1,0 +1,26 @@
+<ng-container *ngIf="ready">
+	<app-dialogs></app-dialogs>
+	<router-outlet></router-outlet>
+
+	<app-status></app-status>
+	<app-navigation></app-navigation>
+	<app-reward></app-reward>
+
+	<app-new-record></app-new-record>
+	<app-ceremony></app-ceremony>
+
+	<div class="version">
+		Proxent - 0.7.1 / Contact me at: proxentgame@gmail.com / Looking for
+		help/contibutors!
+	</div>
+</ng-container>
+
+<ng-container *ngIf="!ready">
+	<div class="wrapper">
+		<img src="./assets/logo.png" alt="" srcset="" />
+		<div>Loading medias, please wait</div>
+		<div class="bar">
+			<div class="progress" [style.width]="loadProgress + '%'"></div>
+		</div>
+	</div>
+</ng-container>

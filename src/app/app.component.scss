@@ -1,0 +1,32 @@
+.version {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	font-size: 12px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	gap: 30px;
+	font-weight: bold;
+}
+
+.bar {
+	height: 20px;
+	background: lightgray;
+	border: 1px solid grey;
+	width: 260px;
+	border-radius: 5px;
+	overflow: hidden;
+
+	.progress {
+		height: 100%;
+		transition: 0.1s;
+		width: 0;
+		background: #e51b22;
+	}
+}

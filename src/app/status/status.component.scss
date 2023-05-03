@@ -1,0 +1,35 @@
+.wrapper {
+	background: #3c3c3c;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: fit-content;
+	border-radius: 45px;
+	padding: 5px 45px;
+	font-size: 20px;
+
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	gap: 15px;
+
+	.with-icon {
+		display: flex;
+		align-items: center;
+	}
+
+	.badge-wrapper {
+		display: flex;
+		align-items: center;
+
+		div:not(.owned) {
+			opacity: 0.2;
+		}
+
+		img {
+			width: 30px;
+		}
+	}
+}

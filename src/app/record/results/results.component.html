@@ -1,0 +1,42 @@
+<div class="wrapper">
+	<video autoplay="true" muted loop class="video-background">
+		<source src="./assets/curtains.mp4" type="video/mp4" />
+	</video>
+
+	<div class="left-panel">
+		<div class="result">Results</div>
+		<div class="record-name">{{ name }}</div>
+
+		<div class="stats-table">
+			<div class="row">
+				<div class="label">Total positions</div>
+				<div class="value">{{ positions }}</div>
+			</div>
+			<div class="row">
+				<div class="label">Bonus Girl</div>
+				<div class="value">{{ girl }}</div>
+			</div>
+			<div class="row">
+				<div class="label">Bonus Studio</div>
+				<div class="value">{{ studio }}</div>
+			</div>
+			<div class="row">
+				<div class="label">Extra bonus</div>
+				<div class="value">{{ extra }}</div>
+			</div>
+		</div>
+
+		<div class="total-score">
+			<div class="label">Total Record Score</div>
+			<div class="value">{{ score }}</div>
+		</div>
+	</div>
+
+	<div class="right-panel">
+		<div class="glow">{{ grade }}</div>
+
+		<div>
+			<button (click)="doFinish()" class="btn">Finish recording</button>
+		</div>
+	</div>
+</div>

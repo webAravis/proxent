@@ -1,0 +1,142 @@
+.scrollview {
+	width: 100%;
+	overflow-x: auto;
+	transform: translateX(-300px);
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	min-width: 200vw;
+	width: fit-content;
+	padding: 0 50vw;
+
+	.girl {
+		width: 100px;
+		height: 200px;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		overflow-y: clip;
+		transition: 0.2s;
+
+		.portrait-wrapper {
+			filter: brightness(50%);
+			transition: 0.2s;
+		}
+
+		&:hover:not(.locked) {
+			.portrait-wrapper {
+				filter: brightness(100%);
+			}
+		}
+
+		&.selected {
+			width: 300px;
+			height: 60vh;
+			margin-right: -1.5vw;
+			margin-left: 1.8vw;
+
+			.portrait-wrapper {
+				filter: brightness(100%);
+			}
+		}
+
+		.girl-wrapper {
+			height: 115%;
+			transform: skew(-10deg, -10deg);
+			position: relative;
+			top: -10%;
+			overflow: hidden;
+			cursor: pointer;
+
+			&.locked {
+				cursor: not-allowed;
+
+				.portrait {
+					filter: grayscale(100%);
+				}
+			}
+
+			&.locked.unlockable {
+				cursor: pointer;
+			}
+
+			.clickagain {
+				position: absolute;
+				z-index: 15;
+				top: 0;
+				left: -20px;
+				right: -20px;
+				bottom: 0;
+				background: rgba(0, 0, 0, 1);
+				color: white;
+				transform: skew(10deg, 10deg);
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				display: flex;
+				padding: 15px 25px;
+				text-align: center;
+			}
+
+			.unlock-price {
+				position: absolute;
+				top: 0;
+				left: -20px;
+				right: -20px;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.8);
+				z-index: -1;
+				opacity: 0;
+				transform: skew(10deg, 10deg);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 5px;
+				transition: 0.2s;
+
+				& > div {
+					display: flex;
+					align-items: center;
+
+					img {
+						width: 30px;
+					}
+				}
+			}
+
+			&:hover {
+				.unlock-price {
+					z-index: 1;
+					opacity: 1;
+				}
+			}
+		}
+
+		.portrait-wrapper {
+			width: 140%;
+			height: 100%;
+			position: absolute;
+			transform: skew(10deg, 10deg);
+			top: 0;
+			left: -20%;
+
+			img {
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
+
+.scrollview {
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+}
+.scrollview::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}

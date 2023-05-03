@@ -1,0 +1,38 @@
+<div id="scroller" (wheel)="onWheel($event)" class="scrollview">
+	<div class="wrapper">
+		<div
+			id="girl-{{ girl.id }}"
+			class="girl"
+			[class.selected]="selectedGirl.id === girl.id"
+			*ngFor="let girl of allGirls"
+		>
+			<div
+				class="girl-wrapper"
+				[class.locked]="isLocked(girl)"
+				[class.unlockable]="canAfford(girl)"
+				(click)="selectGirl(girl)"
+			>
+				<div class="clickagain" *ngIf="clickAgain === girl.id">
+					Click again to unlock {{ girl.name }}
+				</div>
+
+				<div
+					class="unlock-price"
+					*ngIf="isLocked(girl) && girl.unlockPrice.length > 0"
+				>
+					<div
+						class="red with-icon"
+						*ngFor="let unlockPrice of girl.unlockPrice"
+					>
+						- {{ unlockPrice.quantity | number : '1.0-0'
+						}}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
+					</div>
+				</div>
+
+				<div class="portrait-wrapper">
+					<img class="portrait" [src]="getPortrait(girl)" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+[
+	{
+		"character": "player",
+		"text": "Hey, I got a message from a local actress. She wants to collaborate with us."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "Really? That's awesome! Which actress?"
+	},
+	{
+		"character": "player",
+		"text": "Her name is Peta. I don't think I've heard of her before, but she seems to have a decent following."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "Hmm, interesting. What does she want to collaborate on?"
+	},
+	{
+		"character": "player",
+		"text": "She didn't specify, but I assume she wants to do a video or photoshoot together."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "I don't know, I'm a bit nervous about working with someone else. Plus, what if she steals our fans?"
+	},
+	{
+		"character": "player",
+		"text": "I doubt that would happen. And who knows, maybe we could gain some new fans by working with her."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "I don't know, it just seems risky."
+	},
+	{
+		"character": "player",
+		"text": "Come on, let's give it a shot. It could be a great opportunity for us."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "Alright, I trust you. Let's do it."
+	},
+	{
+		"character": "player",
+		"text": "<i>Peta wants to collaborate with us! Unfortunately, we're not ready yet as we need more equipment. It's time to set up our studio!</i>"
+	}
+]

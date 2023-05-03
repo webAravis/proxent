@@ -1,0 +1,72 @@
+<app-background class="background"></app-background>
+
+<div class="header">Character selection</div>
+
+<div class="wrapper">
+	<div class="girl" *ngIf="girl.id !== 0">
+		<div class="name">{{ girl.name }}</div>
+		<div class="corruption-level">
+			<div
+				class="star"
+				[class.grayscale]="corruptLvl > girl.corruption - 1"
+				*ngFor="let corruptLvl of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+			>
+				<img src="./assets/lips.png" />
+			</div>
+		</div>
+
+		<div class="level-wrapper">
+			<div class="level">Level {{ girl.level }}</div>
+			<div class="xp">{{ girl.xp | number : '1.0-0' }}xp</div>
+		</div>
+
+		<hr />
+
+		<div class="stats">
+			<div class="row">
+				<div class="label">Indep</div>
+				<div class="value">{{ girl.freedom * 100 | number : '1.0-2' }}%</div>
+			</div>
+			<div class="row">
+				<div class="label">Fans</div>
+				<div class="value">{{ girl.fans | number : '1.0-0' }}</div>
+			</div>
+			<div class="row">
+				<div class="label">Shootings</div>
+				<div class="value">{{ girl.shootingCount }}</div>
+			</div>
+			<div class="row">
+				<div class="label">Records</div>
+				<div class="value">{{ girl.recordCount }}</div>
+			</div>
+		</div>
+
+		<div class="actions">
+			<a (click)="shooting()" class="btn">Shooting</a>
+			<button [disabled]="girl.corruption < 3" (click)="record()" class="btn">
+				Record
+			</button>
+			<a (click)="corrupt()" class="btn">Corrupt</a>
+			<button
+				(click)="showFreedomReducer()"
+				[disabled]="girl.freedom === 0"
+				class="btn"
+			>
+				Recruit
+			</button>
+		</div>
+	</div>
+</div>
+
+<app-selector
+	*ngIf="allGirls.length > 0"
+	class="selector"
+	[golds]="golds"
+	[allGirls]="allGirls"
+	[girls]="girls"
+	[selectedGirl]="girl"
+	[portraits]="portraits"
+	(selected)="selectGirl($event)"
+	(girlUnlocked)="addGirl($event)"
+></app-selector>
+<app-freedom></app-freedom>

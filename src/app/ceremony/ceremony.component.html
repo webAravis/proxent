@@ -1,0 +1,132 @@
+<div class="modal" [class.show]="show">
+	<ng-container *ngIf="rewards">
+		<div class="reward-header">
+			Proxent {{ ceremonyMode | titlecase }} Award Ceremony
+		</div>
+
+		<div class="presenter">
+			Welcome to Proxent's Award Ceremony! Time to reward the best productions!
+		</div>
+		<div class="remember">
+			As an amateur, remember Yiny won't ever compete for these prizes! Don't forget to record other girls
+		</div>
+
+		<div class="awards">
+			<div class="award">
+				<div class="winner">
+					<div
+						class="studioname"
+						[class.isPlayer]="
+							rewards[0] ? rewards[0].studio === 'player' : false
+						"
+					>
+						{{ rewards[0] ? rewards[0].studio : '...' }}
+					</div>
+					<div>
+						{{ rewards[0] ? (rewards[0].value | number : '1.0-0') : '...' }}
+					</div>
+				</div>
+				<div class="placeholder">
+					<img
+						class="background"
+						src="./assets/awards/record{{ ceremonyMode }}_placeholder.png"
+					/>
+					<img
+						*ngIf="rewards[0] ? rewards[0].studio === 'player' : false"
+						class="badge"
+						src="./assets/awards/record{{ ceremonyMode }}.png"
+					/>
+				</div>
+				<div class="name">Best Record</div>
+			</div>
+
+			<div class="award">
+				<div class="winner">
+					<div
+						class="studioname"
+						[class.isPlayer]="
+							rewards[1] ? rewards[1].studio === 'player' : false
+						"
+					>
+						{{ rewards[1] ? rewards[1].studio : '...' }}
+					</div>
+					<div>
+						{{ rewards[1] ? (rewards[1].value | number : '1.0-0') : '...' }}
+					</div>
+				</div>
+				<div class="placeholder">
+					<img
+						class="background"
+						src="./assets/awards/actress{{ ceremonyMode }}_placeholder.png"
+					/>
+					<img
+						*ngIf="rewards[1] ? rewards[1].studio === 'player' : false"
+						class="badge"
+						src="./assets/awards/actress{{ ceremonyMode }}.png"
+					/>
+				</div>
+				<div class="name">Studio Quality</div>
+			</div>
+
+			<div class="award">
+				<div class="winner">
+					<div
+						class="studioname"
+						[class.isPlayer]="
+							rewards[2] ? rewards[2].studio === 'player' : false
+						"
+					>
+						{{ rewards[2] ? rewards[2].studio : '...' }}
+					</div>
+					<div>
+						{{ rewards[2] ? (rewards[2].value | number : '1.0-0') : '...' }}
+					</div>
+				</div>
+				<div class="placeholder">
+					<img
+						class="background"
+						src="./assets/awards/recordrent_placeholder.png"
+					/>
+					<img
+						*ngIf="rewards[2] ? rewards[2].studio === 'player' : false"
+						class="badge"
+						src="./assets/awards/recordrent.png"
+					/>
+				</div>
+				<div class="name">Money Maker</div>
+			</div>
+
+			<div class="award">
+				<div class="winner">
+					<div
+						class="studioname"
+						[class.isPlayer]="
+							rewards[3] ? rewards[3].studio === 'player' : false
+						"
+					>
+						{{ rewards[3] ? rewards[3].studio : '...' }}
+					</div>
+					<div>
+						{{ rewards[3] ? (rewards[3].value | number : '1.0-0') : '...' }}
+					</div>
+				</div>
+				<div class="placeholder">
+					<img
+						class="background"
+						src="./assets/awards/maxfans_placeholder.png"
+					/>
+					<img
+						*ngIf="rewards[3] ? rewards[3].studio === 'player' : false"
+						class="badge"
+						src="./assets/awards/maxfans.png"
+					/>
+				</div>
+				<div class="name">Fans Choice</div>
+			</div>
+		</div>
+
+		<div class="center">
+			<a (click)="close()" class="btn">Close</a>
+		</div>
+	</ng-container>
+</div>

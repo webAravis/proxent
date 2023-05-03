@@ -1,0 +1,58 @@
+.wrapper {
+	width: 600px;
+	margin: 90px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	flex-wrap: wrap;
+
+	.item {
+		text-align: center;
+		width: 45px;
+		height: 45px;
+		position: relative;
+		border: 2px solid #242424;
+		border-radius: 5px;
+
+		img {
+			width: 100%;
+		}
+
+		&:hover .tooltip {
+			opacity: 1;
+			top: -25px;
+			z-index: 15;
+		}
+
+		.tooltip {
+			position: absolute;
+			background: #242424;
+			color: white;
+			padding: 2px 5px;
+			border-radius: 5px;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0;
+			z-index: -1;
+			transition: 0.2s;
+		}
+
+		.quantity {
+			position: absolute;
+			bottom: -10px;
+			right: -10px;
+			background: white;
+			border: 1px solid #242424;
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

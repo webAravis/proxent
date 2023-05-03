@@ -1,0 +1,65 @@
+<div class="modal" [class.show]="show">
+	<div class="reward-header">Congratulations! You earned a great reward!</div>
+
+	<hr />
+
+	<div class="rewards-wrapper">
+		<span
+			[class.striked]="reward.hardCapCorruption"
+			*ngIf="reward.xp > 0"
+			class="with-icon"
+			><b
+				>+ {{ reward.xp }}
+				<img src="./assets/experience.png" width="30" alt="" srcset="" /></b
+		></span>
+		<span *ngIf="reward.money > 0" class="with-icon"
+			><b
+				>+ {{ reward.money }}
+				<img src="./assets/golds.png" width="30" alt="" srcset="" /></b
+		></span>
+		<span *ngIf="reward.corruption > 0"
+			><b>+ {{ reward.corruption }} corruption</b></span
+		>
+		<span *ngIf="reward.fans > 0" class="with-icon"
+			><b
+				>+ {{ reward.fans }}
+				<img src="./assets/fans.png" width="30" alt="" srcset="" /></b
+		></span>
+	</div>
+
+	<div class="items-wrapper">
+		<div *ngFor="let item of items" class="item">
+			<span class="tooltip">{{ item[0] }}</span>
+			<img [src]="'./assets/items/' + (item[0] | lowercase) + '.png'" />
+			<span class="quantity">{{ item[1].length }}</span>
+		</div>
+	</div>
+
+	<div class="hardcap center" *ngIf="reward.hardCapCorruption">
+		You hit the max level for actual corruption of {{ reward.girl.name }}! You
+		should train her to progress further!
+	</div>
+
+	<div class="levelup-wrapper" *ngIf="reward.levelup">
+		<div class="header">
+			{{ reward.girl.name }} has level up ! She is now lvl
+			{{ reward.girl.level }}
+		</div>
+		<div>
+			<video controls autoplay muted loop>
+				<source
+					[src]="
+						'./assets/' +
+						(reward.girl.name | lowercase) +
+						'/videos/levelup.webm'
+					"
+					type="video/mp4"
+				/>
+			</video>
+		</div>
+	</div>
+
+	<div class="center">
+		<a (click)="close()" class="btn">Close</a>
+	</div>
+</div>

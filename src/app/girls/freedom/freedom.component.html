@@ -1,0 +1,44 @@
+<div class="modal" [class.show]="show">
+	<ng-container *ngIf="girl.name !== ''">
+		<div class="header">Reduce freedom for {{ girl.name }}</div>
+
+		<hr />
+
+		<div>
+			Current independency: {{ girl.freedom * 100 | number : '1.0-2' }}%
+		</div>
+
+		<div>
+			<div *ngIf="!canReduce()" class="error">{{ reasonDisabled }}</div>
+			<button [disabled]="!canReduce()" (click)="doReduce()" class="btn">
+				Reduce by 10%
+			</button>
+			<div class="price">
+				<div class="with-icon">
+					<div>{{ price }}</div>
+					<div>
+						<img src="./assets/golds.png" width="30" alt="" srcset="" />
+					</div>
+				</div>
+
+				<div class="with-icon" *ngIf="itemsRequired.quantity > 0">
+					<div>{{ itemsRequired.quantity }}</div>
+					<div>
+						<img
+							width="30"
+							[src]="
+								'./assets/items/' +
+								(itemsRequired.itemName | lowercase) +
+								'.png'
+							"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="center">
+			<a (click)="close()" class="btn">Close</a>
+		</div>
+	</ng-container>
+</div>

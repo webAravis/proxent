@@ -1,0 +1,6 @@
+<div class="snackbar" [class.show]="show">
+	<ng-container *ngIf="record.name !== ''">
+		Studio {{ record.studioName }} has recorded {{ record.girl.name }} with
+		score {{ record.score }}
+	</ng-container>
+</div>

@@ -1,0 +1,17 @@
+<div class="wrapper">
+	<div class="with-icon">
+		<div>{{ golds | number : '1.0-0' }}</div>
+		<div><img src="./assets/golds.png" width="30" alt="" srcset="" /></div>
+	</div>
+
+	<div>
+		Date {{ day | number : '2.0-0' }} / {{ month | number : '2.0-0' }} /
+		{{ 2022 + year }}
+	</div>
+
+	<div class="badge-wrapper">
+		<div *ngFor="let badge of badges" [class.owned]="hasBadge(badge)">
+			<img [src]="'./assets/items/' + badge + '_badge.png'" />
+		</div>
+	</div>
+</div>

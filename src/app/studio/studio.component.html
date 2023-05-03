@@ -1,0 +1,116 @@
+<app-background></app-background>
+
+<div class="wrapper">
+	<ng-container *ngIf="!opened">
+		<div class="quality">Studio is actually closed!</div>
+
+		<div>
+			<button (click)="open()" [disabled]="price > golds" class="btn with-icon">
+				Open studio for {{ price }}<img src="./assets/golds.png" width="30" /> -
+				Adds Peta!
+			</button>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="opened">
+		<div class="quality">
+			Quality: {{ studioQuality * 100 | number : '1.0-0' }}%
+		</div>
+
+		<div class="modifiers-wrapper">
+			<div class="modifier" *ngFor="let modifier of modifiers">
+				<div class="badge">
+					<div class="placeholder" [class.glow]="hasBadge(modifier)"></div>
+					<img
+						*ngIf="hasBadge(modifier)"
+						[src]="'./assets/items/' + modifier.badge + '_badge.png'"
+					/>
+				</div>
+				<div class="header">
+					{{ modifier.name | titlecase }}
+					<div class="subtitle">
+						<i
+							>+{{
+								modifier.effectQuality(modifier.level) * 100 | number : '1.0-0'
+							}}%</i
+						>
+					</div>
+				</div>
+
+				<div class="lvl">{{ modifier.level }}</div>
+				<div class="actions">
+					<button
+						[disabled]="!canLevelUp(modifier)"
+						(click)="levelup(modifier)"
+						class="btn"
+					>
+						Levelup!
+						<div class="tooltip">
+							<div class="tooltip-wrapper">
+								<div
+									class="red with-icon"
+									*ngIf="modifier.nextLvlCost.type === 'gold'"
+								>
+									-{{ modifier.nextLvlCost.value(modifier.level)
+									}}<img src="./assets/golds.png" />
+								</div>
+								<div
+									class="red with-icon"
+									*ngIf="modifier.nextLvlCost.type !== 'gold'"
+								>
+									-{{ modifier.nextLvlCost.value(modifier.level)
+									}}<img
+										[src]="'./assets/items/' + modifier.badge + '_badge.png'"
+									/>
+								</div>
+								<div class="green">
+									+{{ modifier.effectQuality(2) * 100 | number : '1.0-0' }}%
+								</div>
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="studios-wrapper">
+			<div class="studio-stats">
+				<div class="header">My Studio</div>
+
+				<app-studio-records [studio]="'player'"></app-studio-records>
+			</div>
+
+			<div class="other-studios">
+				<div class="tabs-wrapper">
+					<div class="tabs-header">
+						<div
+							[class.selected]="otherStudio === 'Brazzers'"
+							(click)="changeStudio('Brazzers')"
+						>
+							Brazzers
+						</div>
+						<div
+							[class.selected]="otherStudio === 'Digital Playground'"
+							(click)="changeStudio('Digital Playground')"
+						>
+							Digital Playground
+						</div>
+						<div
+							[class.selected]="otherStudio === 'Pornhub'"
+							(click)="changeStudio('Pornhub')"
+						>
+							Pornhub
+						</div>
+					</div>
+
+					<div class="tab-content">
+						<app-studio-records
+							*ngIf="showOtherStudio"
+							[studio]="otherStudio"
+						></app-studio-records>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+</div>

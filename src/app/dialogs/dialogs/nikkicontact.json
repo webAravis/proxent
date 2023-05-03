@@ -1,0 +1,26 @@
+[
+	{
+		"character": "player",
+		"text": "Hey babe, look at this email we got."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "What is it?"
+	},
+	{
+		"character": "player",
+		"text": "It's from Nikki, the famous producer. She's offering us the chance to compete for the best studio."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "Wow, that's amazing! But what does it mean exactly?"
+	},
+	{
+		"character": "player",
+		"text": "Well, we have to keep producing great content, and then Nikki will pick the best studio based on popularity, quality, and profitability."
+	},
+	{
+		"character": "yiny_normal",
+		"text": "Sounds like a lot of pressure. But also very exciting. Let's do it!"
+	}
+]
