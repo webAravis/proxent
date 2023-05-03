@@ -85,11 +85,12 @@ export class SaveService {
 			month: this._gameService.month,
 			year: this._gameService.year,
 			golds: this._gameService.golds,
+      girlLimit: this._gameService.girlLimit.getValue()
 		};
 
 		const dialogsStarted = this._dialogsService.dialogsStarted;
 
-		const girls = this._girlsService.allGirls.getValue();
+		const girls = this._girlsService.playerGirls.getValue();
 		// prevent save if girlfriend's fans is 0 as it's not correctly saved
 		if (girls[0] !== undefined && girls[0].fans === 0) {
 			return;
@@ -169,8 +170,37 @@ export class SaveService {
 
 			girlsToLoad.push(girl);
 		}
+    console.log(girlsToLoad);
 
-		this._girlsService.allGirls.next(girlsToLoad);
+    // let yiny = new Girl({
+    //   id: 1,
+    //   name: "Yiny",
+    //   fans: 300_000,
+    //   xp: 300_000,
+    //   skill: 20,
+    //   freedom: 0,
+    //   corruption: 20,
+    //   unlockedPostions: [
+    //     "intro", "tease", "rub", "handjob", "masturbate", "boobjob", "blowjob", "missionary", "reversecowgirl", "cowgirl", "doggy", "doggy2", "standing"
+    //   ]
+    // });
+    // girlsToLoad.push(yiny);
+
+    // let peta = new Girl({
+    //   id: 2,
+    //   name: "Peta",
+    //   fans: 300_000,
+    //   xp: 175_000,
+    //   skill: 20,
+    //   corruption: 20,
+    //   unlockedPostions: [
+    //     "intro", "tease", "rub", "handjob", "masturbate", "boobjob", "blowjob", "missionary", "reversecowgirl", "cowgirl", "doggy", "doggy2", "standing"
+    //   ]
+    // });
+    // girlsToLoad.push(peta);
+
+		this._girlsService.playerGirls.next(girlsToLoad);
+    savedGame.game.girlLimit && !Number.isNaN(savedGame.game.girlLimit) ? this._gameService.girlLimit.next(savedGame.game.girlLimit) : undefined;
 
 		savedGame.studio.studioUnlocked === undefined
 			? undefined

@@ -4,8 +4,11 @@ import {
 	Input,
 	Output,
 	AfterViewInit,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
+import { Subject, takeUntil } from 'rxjs';
 import { GameService } from 'src/app/core/game.service';
 import { Girl } from 'src/app/core/girls/girl.model';
 import { InventoryService } from 'src/app/inventory/inventory.service';
@@ -15,7 +18,7 @@ import { InventoryService } from 'src/app/inventory/inventory.service';
 	templateUrl: './selector.component.html',
 	styleUrls: ['./selector.component.scss'],
 })
-export class SelectorComponent implements AfterViewInit {
+export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 	@Input() girls: Girl[] = [];
 	@Input() allGirls: Girl[] = [];
 	@Input() selectedGirl: Girl = new Girl();
@@ -26,13 +29,24 @@ export class SelectorComponent implements AfterViewInit {
 	@Output() girlUnlocked = new EventEmitter<Girl>();
 
 	clickAgain = 0;
+  girlLimitReached = false;
 
 	private _scroller: HTMLElement = document.createElement('div');
+  private _unsubscribeAll: Subject<boolean> = new Subject();
 
 	constructor(
 		private _inventoryService: InventoryService,
 		private _gameService: GameService
 	) {}
+
+  ngOnInit(): void {
+    this._gameService.girlLimit.pipe(takeUntil(this._unsubscribeAll)).subscribe((girlLimit: number) => this.girlLimitReached = this.girls.length-1 >= girlLimit);
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(true);
+    this._unsubscribeAll.complete();
+  }
 
 	ngAfterViewInit(): void {
 		const element = <HTMLElement>document.querySelector('#scroller');
@@ -53,6 +67,10 @@ export class SelectorComponent implements AfterViewInit {
 	}
 
 	selectGirl(girl: Girl): void {
+    if (this.isLocked(girl) && this.girlLimitReached) {
+      return;
+    }
+
 		if (this.clickAgain === girl.id) {
 			this._unlockGirl(girl);
 		}
@@ -108,7 +126,6 @@ export class SelectorComponent implements AfterViewInit {
 	}
 
 	private _unlockGirl(girl: Girl): void {
-		this.girls.push(girl);
 
 		for (const price of girl.unlockPrice) {
 			if (price.type === 'gold') {

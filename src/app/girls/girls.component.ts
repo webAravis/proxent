@@ -19,6 +19,7 @@ export class GirlsComponent implements OnInit, OnDestroy {
 	portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
 
 	golds = 0;
+  girlLimit = 0;
 
 	girl: Girl = new Girl();
 
@@ -39,9 +40,11 @@ export class GirlsComponent implements OnInit, OnDestroy {
 			.subscribe((golds) => (this.golds = golds));
 		this.golds = this._gameService.golds;
 
+    this._gameService.girlLimit.pipe(takeUntil(this._unsubscribeAll)).subscribe((girlLimit) => (this.girlLimit = girlLimit));
+
 		combineLatest([
 			this._girlsService.gameGirls,
-			this._girlsService.allGirls,
+			this._girlsService.playerGirls,
 			this._girlsService.currentGirl,
 		])
 			.pipe(takeUntil(this._unsubscribeAll))
@@ -106,6 +109,17 @@ export class GirlsComponent implements OnInit, OnDestroy {
 	addGirl(girl: Girl): void {
 		this._girlsService.addGirl(girl);
 	}
+
+  girlFreeable(): boolean {
+    return this.girl.id !== 1 && this.girl.unlockPrice.length > 0;
+  }
+
+  cancelContract(): void {
+    if (confirm('Are you sure you want to cancel this contract?')) {
+      this._girlsService.removeGirl(this.girl);
+      this.selectGirl(this.girls[0]);
+    }
+  }
 
 	shooting(): void {
 		this._router.navigate(['shooting']);

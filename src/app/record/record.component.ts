@@ -300,14 +300,19 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.vid.load();
 			this.vid.play();
 
-			this.girl.orgasmLevel = 0;
-			this.orgasmCount++;
+      const nbOrgasm = Math.trunc(this.girl.orgasmLevel / 100);
+
+			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
+			this.orgasmCount += nbOrgasm;
 
 			this.staminaUsed -= 250;
 
-			this.itemsWon.push(
-				new Item({ name: 'cum', price: 100, quality: 'normal' })
-			);
+      for (let i = 0; i < nbOrgasm; i++) {
+        this.itemsWon.push(
+          new Item({ name: 'cum', price: 100, quality: 'normal' })
+        );
+      }
+
 		} else {
 			this.vid.pause();
 		}
@@ -347,6 +352,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 			inPerfectRange ? 'perfect' : inGoodRange ? 'good' : 'miss'
 		);
 		const hitMultiplier = inPerfectRange ? 1 : inGoodRange ? 0.5 : 0;
+
+    if (inPerfectRange) {
+      this.girl.orgasmLevel += 10;
+    }
 
 		if (this.currentPosition && this.currentPosition.name !== '') {
 			// multiply by the current position's combo multiplier

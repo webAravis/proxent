@@ -4,6 +4,9 @@
 
 <div class="wrapper">
 	<div class="girl" *ngIf="girl.id !== 0">
+    <div class="contract-cancel" *ngIf="girlFreeable()">
+      <button class="btn" (click)="cancelContract()">Cancel contract</button>
+    </div>
 		<div class="name">{{ girl.name }}</div>
 		<div class="corruption-level">
 			<div
@@ -69,4 +72,7 @@
 	(selected)="selectGirl($event)"
 	(girlUnlocked)="addGirl($event)"
 ></app-selector>
+
+<div class="girl-limit" [class.red]="(girls.length-1) === girlLimit">{{ girls.length-1 }} / {{ girlLimit }} girls</div>
+
 <app-freedom></app-freedom>

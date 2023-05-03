@@ -17,10 +17,12 @@ export class GameService {
 	yearChanged: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
 	dayTicker: NodeJS.Timer | undefined;
-	msDayTicker = 5000;
+	msDayTicker = 3500;
 
 	dialogsStarted: boolean[] = [false, false, false];
 	isPaused = true;
+
+  girlLimit: BehaviorSubject<number> = new BehaviorSubject<number>(2);
 
 	constructor(private _dialogsService: DialogsService) {}
 

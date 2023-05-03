@@ -8,6 +8,7 @@ import dialog4 from './dialogs/peta.json';
 import dialog5 from './dialogs/colabopen.json';
 import dialog6 from './dialogs/nikkicontact.json';
 import dialog7 from './dialogs/competition.json';
+import dialog8 from './dialogs/maxcapacity.json';
 
 @Injectable({
 	providedIn: 'root',
@@ -42,7 +43,8 @@ export class DialogsService {
 			dialog4,
 			dialog5,
 			dialog6,
-			dialog7
+			dialog7,
+      dialog8
 		);
 	}
 

@@ -10,10 +10,10 @@
   </div>
 
 	<div class="saves-wrapper">
-    <div [class.selected]="saveIndex === index" (click)="saveIndex === -1 ? (saveIndex = index) : start()" class="save" *ngFor="let save of saves;let index = index">
+    <div [class.selected]="saveIndex === index" (click)="saveIndex !== index ? (saveIndex = index) : start()" class="save" *ngFor="let save of saves;let index = index">
       <div class="stats">
         <div>#{{index}}</div>
-        <div>{{save.girls.length}} Girls</div>
+        <div>{{save.girls.length-1}} Girls</div>
         <div class="with-icon">{{save.game.golds}}<img src="./assets/golds.png" /></div>
       </div>
       <div class="lastsaved">

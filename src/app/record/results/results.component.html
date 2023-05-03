@@ -10,25 +10,25 @@
 		<div class="stats-table">
 			<div class="row">
 				<div class="label">Total positions</div>
-				<div class="value">{{ positions }}</div>
+				<div class="value">{{ positions | number : '1.0-0' }}</div>
 			</div>
 			<div class="row">
 				<div class="label">Bonus Girl</div>
-				<div class="value">{{ girl }}</div>
+				<div class="value">{{ girl | number : '1.0-0' }}</div>
 			</div>
 			<div class="row">
 				<div class="label">Bonus Studio</div>
-				<div class="value">{{ studio }}</div>
+				<div class="value">{{ studio | number : '1.0-0' }}</div>
 			</div>
 			<div class="row">
 				<div class="label">Extra bonus</div>
-				<div class="value">{{ extra }}</div>
+				<div class="value">{{ extra | number : '1.0-0' }}</div>
 			</div>
 		</div>
 
 		<div class="total-score">
 			<div class="label">Total Record Score</div>
-			<div class="value">{{ score }}</div>
+			<div class="value">{{ score | number : '1.0-0' }}</div>
 		</div>
 	</div>
 

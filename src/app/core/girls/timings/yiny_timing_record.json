@@ -80,9 +80,9 @@
 	},
 	{
 		"name": "boobjob",
-		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 100,
 		"gold": 180,
@@ -112,9 +112,9 @@
 	},
 	{
 		"name": "missionary",
-		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 100,
 		"gold": 220,
@@ -129,8 +129,8 @@
 	{
 		"name": "reversecowgirl",
 		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 100,
 		"gold": 240,
@@ -144,9 +144,9 @@
 	},
 	{
 		"name": "cowgirl",
-		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 100,
 		"gold": 260,
@@ -161,8 +161,8 @@
 	{
 		"name": "doggy",
 		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 100,
 		"gold": 300,
@@ -177,8 +177,8 @@
 	{
 		"name": "doggy2",
 		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
 
 		"xp": 150,
 		"gold": 350,
@@ -193,8 +193,8 @@
 	{
 		"name": "standing",
 		"timing": [1500, 2000, 3000, 3500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
+		"xpmultiplier": 0.6,
+		"goldmultiplier": 0.6,
 
 		"xp": 100,
 		"gold": 350,

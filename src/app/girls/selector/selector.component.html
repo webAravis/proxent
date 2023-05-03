@@ -20,13 +20,18 @@
 					class="unlock-price"
 					*ngIf="isLocked(girl) && girl.unlockPrice.length > 0"
 				>
-					<div
-						class="red with-icon"
-						*ngFor="let unlockPrice of girl.unlockPrice"
-					>
-						- {{ unlockPrice.quantity | number : '1.0-0'
-						}}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
-					</div>
+          <ng-container *ngIf="girlLimitReached">
+            Girl limit reached!
+          </ng-container>
+          <ng-container *ngIf="!girlLimitReached">
+            <div
+              class="red with-icon"
+              *ngFor="let unlockPrice of girl.unlockPrice"
+            >
+              - {{ unlockPrice.quantity | number : '1.0-0'
+              }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
+            </div>
+          </ng-container>
 				</div>
 
 				<div class="portrait-wrapper">

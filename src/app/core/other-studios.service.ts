@@ -65,7 +65,7 @@ export class OtherStudiosService {
 				studioToAdd.records.push(record);
 
 				const girlRecorded = record.girl;
-				const playerGirls = this._girlsService.allGirls
+				const playerGirls = this._girlsService.playerGirls
 					.getValue()
 					.filter((girl: Girl) => girl.name !== 'Yiny');
 
@@ -89,7 +89,7 @@ export class OtherStudiosService {
 		let girls = this._girlsService.gameGirls
 			.getValue()
 			.filter((girl: Girl) => girl.name !== 'Yiny');
-		const playerGirls = this._girlsService.allGirls
+		const playerGirls = this._girlsService.playerGirls
 			.getValue()
 			.filter((girl: Girl) => girl.name !== 'Yiny');
 

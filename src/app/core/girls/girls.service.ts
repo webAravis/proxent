@@ -7,6 +7,7 @@ import yinyTimings from './timings/yiny_timing_record.json';
 import petaTimings from './timings/peta_timing_record.json';
 import avaTimings from './timings/ava_timing_record.json';
 import madisonTimings from './timings/madison_timing_record.json';
+import { DialogsService } from 'src/app/dialogs/dialogs.service';
 
 export interface TimingRecord {
 	name: string;
@@ -29,12 +30,15 @@ export interface TimingRecord {
 })
 export class GirlsService {
 	currentGirl: BehaviorSubject<Girl> = new BehaviorSubject<Girl>(new Girl());
-	allGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
+	playerGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 	gameGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 
   girlTimings: {girlId: number, timings: TimingRecord[]}[] = [];
 
-	constructor(private _httpClient: HttpClient) {
+	constructor(
+    private _httpClient: HttpClient,
+    private _dialogsService: DialogsService
+  ) {
     this.loadTimings();
 
 		this.loadGirls();
@@ -61,7 +65,7 @@ export class GirlsService {
 		unlockedGirls.push(yiny);
 		allGirls.push(yiny);
 
-		this.allGirls.next(unlockedGirls);
+		this.playerGirls.next(unlockedGirls);
 
 		const peta = new Girl();
 		peta.id = 2;
@@ -96,22 +100,30 @@ export class GirlsService {
 	}
 
 	addGirl(girl: Girl): void {
-		const allGirls = this.allGirls.getValue();
+		const allGirls = this.playerGirls.getValue();
 		allGirls.push(girl);
 
-		this.allGirls.next(allGirls);
+		this.playerGirls.next(allGirls);
+    if (allGirls.length-1 >= 2 && this._dialogsService.dialogsStarted[7] === false) {
+      this._dialogsService.startDialog(7);
+    }
 	}
+
+  removeGirl(toRemove: Girl): void {
+    const filteredGirls = this.playerGirls.getValue().filter((girl: Girl) => girl.id !== toRemove.id);
+    this.playerGirls.next(filteredGirls);
+  }
 
 	getTimingRecord(girl: Girl): TimingRecord[] | undefined {
 		return this.girlTimings.find((timing: {girlId: number, timings: TimingRecord[]}) => timing.girlId === girl.id)?.timings;
 	}
 
 	updateGirl(girl: Girl): void {
-		const allGirls = this.allGirls.getValue();
+		const allGirls = this.playerGirls.getValue();
 		const filtered = allGirls.filter((savedGirl) => savedGirl.id !== girl.id);
 		filtered.push(girl);
 
-		this.allGirls.next(filtered);
+		this.playerGirls.next(filtered);
 	}
 
 	unlockPosition(position: string, girl: Girl): void {
