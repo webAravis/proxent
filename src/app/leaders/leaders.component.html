@@ -1,0 +1,64 @@
+<app-background></app-background>
+
+<div class="header">Leaders</div>
+
+<div class="wrapper">
+
+  <div class="leaders-wrapper">
+    <div class="leader" *ngFor="let leader of leaders">
+      <div class="badge">
+        <div class="placeholder" [class.glow]="hasTrophy(leader)"></div>
+        <img
+          *ngIf="hasTrophy(leader)"
+          [src]="'./assets/items/' + leader.name + '_trophy.png'"
+        />
+      </div>
+      <div class="header-leader">
+        {{ leader.name | titlecase }}
+        <div class="subtitle">
+          <i>{{ leader.description }}</i>
+        </div>
+      </div>
+      <div class="bonus-malus">
+        <div class="bonus">
+          <span *ngFor="let bonus of leader.bonus">{{ bonus }}</span>
+        </div>
+        <div class="malus">
+          <span *ngFor="let malus of leader.malus">{{ malus }}</span>
+        </div>
+      </div>
+
+      <div class="lvl">{{ leader.lvl }}</div>
+      <div class="actions">
+        <button
+          [disabled]="!canBattle(leader)"
+          (click)="battle(leader)"
+          class="btn"
+        >
+          Battle!
+          <div class="tooltip">
+            <div class="tooltip-wrapper">
+              <div
+                class="red with-icon"
+                *ngIf="leader.nextLvlCost.type === 'gold'"
+              >
+                -{{ leader.nextLvlCost.value(leader.lvl)
+                }}<img src="./assets/golds.png" />
+              </div>
+              <div
+                class="red with-icon"
+                *ngIf="leader.nextLvlCost.type !== 'gold'"
+              >
+                -{{ leader.nextLvlCost.value(leader.lvl)
+                }}<img
+                  [src]="'./assets/items/' + leader.nextLvlCost.type + '_badge.png'"
+                />
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

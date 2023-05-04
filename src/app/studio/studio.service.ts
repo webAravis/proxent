@@ -141,23 +141,23 @@ export class StudioService {
 		studioQuality +=
 			modifiers
 				.filter((modifier) => modifier.name === 'scene')
-				.map((modifier) => modifier.effectQuality(modifier.level))[0] ?? 0;
+				.map((modifier) => modifier.effectQuality(modifier.level) * (this._hasBadge(modifier) ? 2 : 1))[0] ?? 0;
 		studioQuality +=
 			modifiers
 				.filter((modifier) => modifier.name === 'lights')
-				.map((modifier) => modifier.effectQuality(modifier.level))[0] ?? 0;
+				.map((modifier) => modifier.effectQuality(modifier.level) * (this._hasBadge(modifier) ? 2 : 1))[0] ?? 0;
 		studioQuality +=
 			modifiers
 				.filter((modifier) => modifier.name === 'cameras')
-				.map((modifier) => modifier.effectQuality(modifier.level))[0] ?? 0;
+				.map((modifier) => modifier.effectQuality(modifier.level) * (this._hasBadge(modifier) ? 2 : 1))[0] ?? 0;
 		studioQuality +=
 			modifiers
 				.filter((modifier) => modifier.name === 'director')
-				.map((modifier) => modifier.effectQuality(modifier.level))[0] ?? 0;
+				.map((modifier) => modifier.effectQuality(modifier.level) * (this._hasBadge(modifier) ? 2 : 1))[0] ?? 0;
 		studioQuality +=
 			modifiers
 				.filter((modifier) => modifier.name === 'makeup')
-				.map((modifier) => modifier.effectQuality(modifier.level))[0] ?? 0;
+				.map((modifier) => modifier.effectQuality(modifier.level) * (this._hasBadge(modifier) ? 2 : 1))[0] ?? 0;
 
 		return studioQuality;
 	}
@@ -184,5 +184,9 @@ export class StudioService {
 		allModifiers.sort((a, b) => a.id - b.id);
 
 		this.modifiers.next(allModifiers);
+	}
+
+	private _hasBadge(modifier: StudioModifier): boolean {
+		return this._inventoryService.hasItemByName(modifier.badge + '_badge', 1);
 	}
 }

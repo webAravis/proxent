@@ -33,6 +33,20 @@
 		margin-top: 70px;
     position: relative;
 
+    .attributes {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 7.5px;
+
+      div {
+        background: rgba(0,0,0,0.8);
+        text-transform: capitalize;
+        border-radius: 3px;
+        padding: 3px 18px;
+        border-bottom: 1px solid #ec0100;
+      }
+    }
+
     .contract-cancel {
       position: absolute;
       top: 0;

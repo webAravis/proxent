@@ -8,6 +8,8 @@ import { CorruptComponent } from './corrupt/corrupt.component';
 import { RecordComponent } from './record/record.component';
 import { StudioComponent } from './studio/studio.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { LeadersComponent } from './leaders/leaders.component';
+import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 
 const routes: Routes = [
 	{
@@ -42,6 +44,14 @@ const routes: Routes = [
 	{
 		path: 'inventory',
 		component: InventoryComponent,
+	},
+	{
+		path: 'leaders',
+		component: LeadersComponent,
+	},
+	{
+		path: 'battle',
+		component: LeaderBattleComponent,
 	},
 	{
 		path: '**',

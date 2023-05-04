@@ -28,6 +28,10 @@ export class RewardService {
 		private _inventoryService: InventoryService
 	) {}
 
+  rewardText(text: string): void {
+    this.show.next(new Reward(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, text));
+  }
+
 	giveReward(
 		fansWon: number,
 		xpWon: number,

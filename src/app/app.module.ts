@@ -24,6 +24,9 @@ import { BackgroundComponent } from './girls/background/background.component';
 import { SelectorComponent } from './girls/selector/selector.component';
 import { StudioRecordsComponent } from './studio/studio-records/studio-records.component';
 import { SaveChooserComponent } from './start/save-chooser/save-chooser.component';
+import { LeadersComponent } from './leaders/leaders.component';
+import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
+import { LeaderBattleGirlsComponent } from './leader-battle/leader-battle-girls/leader-battle-girls.component';
 
 @NgModule({
 	declarations: [
@@ -48,6 +51,9 @@ import { SaveChooserComponent } from './start/save-chooser/save-chooser.componen
 		SelectorComponent,
 		StudioRecordsComponent,
   SaveChooserComponent,
+  LeadersComponent,
+  LeaderBattleComponent,
+  LeaderBattleGirlsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
 	providers: [],

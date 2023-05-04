@@ -8,6 +8,7 @@ export class Reward {
 	corruption: number;
 	items: Item[];
 	levelup: boolean;
+  msg: string;
 
 	hardCapCorruption: boolean;
 
@@ -21,7 +22,8 @@ export class Reward {
 		corruption = 0,
 		levelup = false,
 		hardCapCorruption = false,
-		girl: Girl = new Girl()
+		girl: Girl = new Girl(),
+    msg: string = ""
 	) {
 		this.fans = fans;
 		this.xp = xp;
@@ -30,6 +32,7 @@ export class Reward {
 		this.corruption = corruption;
 		this.levelup = levelup;
 		this.hardCapCorruption = hardCapCorruption;
+    this.msg = msg;
 
 		this.girl = girl;
 	}

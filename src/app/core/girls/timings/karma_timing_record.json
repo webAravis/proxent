@@ -1,0 +1,209 @@
+[
+	{
+		"name": "intro",
+		"timing": [],
+		"xpmultiplier": 0,
+		"goldmultiplier": 0,
+
+		"xp": 100,
+		"gold": 50,
+		"fans": 10,
+
+		"timeout": 4000,
+
+		"stamcost": 0,
+		"orgasm": 0
+	},
+	{
+		"name": "tease",
+		"timing": [],
+		"xpmultiplier": 0.1,
+		"goldmultiplier": 0.1,
+
+		"xp": 100,
+		"gold": 80,
+		"fans": 100,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 0,
+		"orgasm": 0
+	},
+	{
+		"name": "rub",
+		"timing": [],
+		"xpmultiplier": 0.1,
+		"goldmultiplier": 0.1,
+
+		"xp": 100,
+		"gold": 120,
+		"fans": 80,
+
+		"timeout": 7000,
+		"timeoutcombo": 250,
+
+		"stamcost": 0,
+		"orgasm": 10
+	},
+	{
+		"name": "handjob",
+		"timing": [],
+		"xpmultiplier": 0.1,
+		"goldmultiplier": 0.1,
+
+		"xp": 100,
+		"gold": 140,
+		"fans": 180,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 0,
+		"orgasm": 10
+	},
+	{
+		"name": "masturbate",
+		"timing": [],
+		"xpmultiplier": 0.1,
+		"goldmultiplier": 0.1,
+
+		"xp": 100,
+		"gold": 160,
+		"fans": 50,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 100,
+		"orgasm": 10
+	},
+	{
+		"name": "boobjob",
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 100,
+		"gold": 180,
+		"fans": 90,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 125,
+		"orgasm": 15
+	},
+	{
+		"name": "blowjob",
+		"timing": [],
+		"xpmultiplier": 0.1,
+		"goldmultiplier": 0.1,
+
+		"xp": 100,
+		"gold": 200,
+		"fans": 60,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 150,
+		"orgasm": 15
+	},
+	{
+		"name": "missionary",
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 100,
+		"gold": 220,
+		"fans": 120,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 175,
+		"orgasm": 40
+	},
+	{
+		"name": "reversecowgirl",
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 100,
+		"gold": 240,
+		"fans": 230,
+
+		"timeout": 7000,
+		"timeoutcombo": 250,
+
+		"stamcost": 200,
+		"orgasm": 40
+	},
+	{
+		"name": "cowgirl",
+		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 100,
+		"gold": 260,
+		"fans": 300,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 225,
+		"orgasm": 40
+	},
+	{
+		"name": "doggy",
+		"timing": [400, 810, 1210, 1570, 1930, 2310, 2680, 3020, 3420, 3740, 4100, 4510, 4890, 5240, 5600, 6000, 6370, 6740, 7140, 7520, 7910, 8290, 8630, 9010, 9400, 9800],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 100,
+		"gold": 300,
+		"fans": 350,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 250,
+		"orgasm": 40
+	},
+	{
+		"name": "doggy2",
+		"timing": [370, 1120, 1790, 2460, 3250, 4270, 5950, 7860, 8880],
+		"xpmultiplier": 0.3,
+		"goldmultiplier": 0.3,
+
+		"xp": 150,
+		"gold": 350,
+		"fans": 600,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 275,
+		"orgasm": 60
+	},
+	{
+		"name": "standing",
+		"timing": [200, 530, 900, 1230, 1600, 2000, 2300, 2640, 3000, 3330, 3700, 4000, 4450, 4810, 5240, 5550, 5996, 6340, 6740, 7130, 7520, 7860, 8270, 8650, 9100, 9350, 9750],
+		"xpmultiplier": 0.6,
+		"goldmultiplier": 0.6,
+
+		"xp": 100,
+		"gold": 350,
+		"fans": 250,
+
+		"timeout": 10000,
+		"timeoutcombo": 250,
+
+		"stamcost": 300,
+		"orgasm": 75
+	}
+]

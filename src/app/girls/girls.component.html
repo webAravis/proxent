@@ -8,6 +8,9 @@
       <button class="btn" (click)="cancelContract()">Cancel contract</button>
     </div>
 		<div class="name">{{ girl.name }}</div>
+    <div class="attributes">
+      <div *ngFor="let attribute of girl.attributes">{{ attribute }}</div>
+    </div>
 		<div class="corruption-level">
 			<div
 				class="star"

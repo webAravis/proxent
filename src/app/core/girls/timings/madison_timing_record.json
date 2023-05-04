@@ -24,7 +24,7 @@
 		"gold": 80,
 		"fans": 100,
 
-		"timeout": 7000,
+		"timeout": 10000,
 		"timeoutcombo": 250,
 
 		"stamcost": 0,
@@ -56,7 +56,7 @@
 		"gold": 140,
 		"fans": 180,
 
-		"timeout": 2000,
+		"timeout": 7000,
 		"timeoutcombo": 250,
 
 		"stamcost": 100,
@@ -72,7 +72,7 @@
 		"gold": 160,
 		"fans": 50,
 
-		"timeout": 10000,
+		"timeout": 8000,
 		"timeoutcombo": 250,
 
 		"stamcost": 0,
@@ -104,7 +104,7 @@
 		"gold": 200,
 		"fans": 60,
 
-		"timeout": 7000,
+		"timeout": 5000,
 		"timeoutcombo": 250,
 
 		"stamcost": 150,
@@ -120,7 +120,7 @@
 		"gold": 220,
 		"fans": 120,
 
-		"timeout": 10000,
+		"timeout": 6000,
 		"timeoutcombo": 250,
 
 		"stamcost": 175,
@@ -168,7 +168,7 @@
 		"gold": 300,
 		"fans": 350,
 
-		"timeout": 10000,
+		"timeout": 5000,
 		"timeoutcombo": 250,
 
 		"stamcost": 250,
@@ -184,7 +184,7 @@
 		"gold": 350,
 		"fans": 600,
 
-		"timeout": 7000,
+		"timeout": 10000,
 		"timeoutcombo": 250,
 
 		"stamcost": 275,
@@ -200,7 +200,7 @@
 		"gold": 350,
 		"fans": 250,
 
-		"timeout": 5000,
+		"timeout": 8000,
 		"timeoutcombo": 250,
 
 		"stamcost": 300,

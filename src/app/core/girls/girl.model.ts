@@ -17,6 +17,7 @@ export class Girl {
 	fitness = 1;
 
 	unlockedPostions: string[] = ['tease'];
+  attributes: string[] = [];
 	freedom = 1;
 	recordCount = 0;
 	shootingCount = 0;

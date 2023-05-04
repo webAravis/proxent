@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { Girl } from './girl.model';
+import { DialogsService } from 'src/app/dialogs/dialogs.service';
 
 import yinyTimings from './timings/yiny_timing_record.json';
 import petaTimings from './timings/peta_timing_record.json';
 import avaTimings from './timings/ava_timing_record.json';
 import madisonTimings from './timings/madison_timing_record.json';
-import { DialogsService } from 'src/app/dialogs/dialogs.service';
+import karmaTimings from './timings/karma_timing_record.json';
 
 export interface TimingRecord {
 	name: string;
@@ -49,7 +50,8 @@ export class GirlsService {
       {girlId: 1, timings: yinyTimings},
       {girlId: 2, timings: petaTimings},
       {girlId: 3, timings: avaTimings},
-      {girlId: 4, timings: madisonTimings}
+      {girlId: 4, timings: madisonTimings},
+      {girlId: 5, timings: karmaTimings}
     );
   }
 
@@ -96,8 +98,59 @@ export class GirlsService {
 
 		allGirls.push(madison);
 
-		this.gameGirls.next(allGirls);
+		const karma = new Girl();
+		karma.id = 5;
+		karma.name = 'Karma';
+		karma.freedom = 1;
+		karma.unlockPrice = [
+			{ type: 'gold', quantity: 15_000 },
+			{ type: 'money_badge', quantity: 2 },
+		];
+
+		allGirls.push(karma);
+
+		const nikki = new Girl();
+		nikki.id = 6;
+		nikki.name = 'Nikki';
+		nikki.freedom = 1;
+		nikki.unlockPrice = [
+			{ type: 'gold', quantity: 15_000 },
+			{ type: 'recordyearly_badge', quantity: 2 },
+		];
+
+		allGirls.push(nikki);
+
+    let toSave = this.initAttributes(allGirls);
+		this.gameGirls.next(toSave);
 	}
+
+  initAttributes(girls: Girl[]) : Girl[] {
+    const toReturn: Girl[] = [];
+
+    for (const girl of girls) {
+      switch (girl.name) {
+        case 'Peta':
+          girl.attributes = ['brunette', 'tattoo', 'fit', 'dark eyes', 'american'];
+          break;
+        case 'Ava':
+          girl.attributes = ['milf', 'brunette', 'dark eyes', 'euro'];
+          break;
+        case 'Madison':
+          girl.attributes = ['blond', 'fit', 'flexible', 'dark eyes', 'small', 'euro'];
+          break;
+        case 'Karma':
+          girl.attributes = ['blond', 'green eyes', 'tattoo', 'american'];
+          break;
+        case 'Nikki':
+          girl.attributes = ['blond', 'dark eyes', 'producer', 'euro'];
+          break;
+      }
+
+      toReturn.push(girl);
+    }
+
+    return toReturn;
+  }
 
 	addGirl(girl: Girl): void {
 		const allGirls = this.playerGirls.getValue();

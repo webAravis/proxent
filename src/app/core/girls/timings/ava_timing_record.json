@@ -56,7 +56,7 @@
 		"gold": 140,
 		"fans": 180,
 
-		"timeout": 2000,
+		"timeout": 4000,
 		"timeoutcombo": 250,
 
 		"stamcost": 100,

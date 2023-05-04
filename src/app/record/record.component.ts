@@ -463,6 +463,16 @@ export class RecordComponent implements OnInit, OnDestroy {
 				this.comboWrapperTranslateX -=
 					this.sceneDuration / (this.sceneDuration / 5);
 			}, 5);
+
+      // slowdown on combo hit
+      // for (const comboHit of this.comboBtns) {
+      //   setTimeout(() => {
+      //     this.vid.playbackRate = 0.5;
+      //     setTimeout(() => {
+      //       this.vid.playbackRate = 1;
+      //     }, 200);
+      //   }, comboHit-200);
+      // }
 		}
 	}
 
