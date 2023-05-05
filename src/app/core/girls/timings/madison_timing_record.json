@@ -2,8 +2,6 @@
 	{
 		"name": "intro",
 		"timing": [],
-		"xpmultiplier": 0,
-		"goldmultiplier": 0,
 
 		"xp": 100,
 		"gold": 50,
@@ -17,15 +15,12 @@
 	{
 		"name": "tease",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 80,
 		"fans": 100,
 
 		"timeout": 10000,
-		"timeoutcombo": 250,
 
 		"stamcost": 0,
 		"orgasm": 0
@@ -33,15 +28,12 @@
 	{
 		"name": "rub",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 120,
 		"fans": 80,
 
 		"timeout": 10000,
-		"timeoutcombo": 250,
 
 		"stamcost": 0,
 		"orgasm": 10
@@ -49,15 +41,12 @@
 	{
 		"name": "handjob",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 140,
 		"fans": 180,
 
 		"timeout": 7000,
-		"timeoutcombo": 250,
 
 		"stamcost": 100,
 		"orgasm": 10
@@ -65,15 +54,12 @@
 	{
 		"name": "masturbate",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 160,
 		"fans": 50,
 
 		"timeout": 8000,
-		"timeoutcombo": 250,
 
 		"stamcost": 0,
 		"orgasm": 10
@@ -81,15 +67,12 @@
 	{
 		"name": "boobjob",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 180,
 		"fans": 90,
 
 		"timeout": 10000,
-		"timeoutcombo": 250,
 
 		"stamcost": 125,
 		"orgasm": 15
@@ -97,15 +80,12 @@
 	{
 		"name": "blowjob",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 200,
 		"fans": 60,
 
 		"timeout": 5000,
-		"timeoutcombo": 250,
 
 		"stamcost": 150,
 		"orgasm": 15
@@ -113,15 +93,12 @@
 	{
 		"name": "missionary",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 220,
 		"fans": 120,
 
 		"timeout": 6000,
-		"timeoutcombo": 250,
 
 		"stamcost": 175,
 		"orgasm": 40
@@ -129,15 +106,12 @@
 	{
 		"name": "reversecowgirl",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 240,
 		"fans": 230,
 
 		"timeout": 10000,
-		"timeoutcombo": 250,
 
 		"stamcost": 200,
 		"orgasm": 40
@@ -145,15 +119,12 @@
 	{
 		"name": "cowgirl",
 		"timing": [],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 260,
 		"fans": 300,
 
 		"timeout": 5000,
-		"timeoutcombo": 250,
 
 		"stamcost": 225,
 		"orgasm": 40
@@ -161,15 +132,12 @@
 	{
 		"name": "doggy",
 		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 300,
 		"fans": 350,
 
 		"timeout": 5000,
-		"timeoutcombo": 250,
 
 		"stamcost": 250,
 		"orgasm": 40
@@ -177,15 +145,12 @@
 	{
 		"name": "doggy2",
 		"timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 150,
 		"gold": 350,
 		"fans": 600,
 
 		"timeout": 10000,
-		"timeoutcombo": 250,
 
 		"stamcost": 275,
 		"orgasm": 60
@@ -193,15 +158,12 @@
 	{
 		"name": "standing",
 		"timing": [1500, 2000, 3000, 3500],
-		"xpmultiplier": 0.1,
-		"goldmultiplier": 0.1,
 
 		"xp": 100,
 		"gold": 350,
 		"fans": 250,
 
 		"timeout": 8000,
-		"timeoutcombo": 250,
 
 		"stamcost": 300,
 		"orgasm": 75

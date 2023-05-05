@@ -342,27 +342,49 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	comboHit(): void {
 		const inPerfectRange = this.comboBtns.some((comboButton: number) =>
-			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 200)
+			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 170)
 		);
 		const inGoodRange = this.comboBtns.some((comboButton: number) =>
-			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 350)
+			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 200)
 		);
 
 		this.comboMessage.next(
 			inPerfectRange ? 'perfect' : inGoodRange ? 'good' : 'miss'
 		);
-		const hitMultiplier = inPerfectRange ? 1 : inGoodRange ? 0.5 : 0;
+		const hitMultiplier = inPerfectRange ? 1 : inGoodRange ? 0.5 : -0.5;
 
     if (inPerfectRange) {
       this.girl.orgasmLevel += 10;
     }
 
+    // remove nearest combo
+    if (inPerfectRange) {
+      let seenCombo = false;
+      this.comboBtns = this.comboBtns.filter((comboButton: number) => {
+          if (seenCombo) {
+              return true;
+          }
+          seenCombo = this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 170);
+          return !seenCombo;
+      });
+    } else if (inGoodRange) {
+      let seenCombo = false;
+      this.comboBtns = this.comboBtns.filter((comboButton: number) => {
+          if (seenCombo) {
+              return true;
+          }
+          seenCombo = this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 200);
+          return !seenCombo;
+      });
+    }
+
 		if (this.currentPosition && this.currentPosition.name !== '') {
 			// multiply by the current position's combo multiplier
-			this.xpmultiplier +=
-				(this.currentPosition?.xpmultiplier ?? 1) * hitMultiplier;
-			this.goldmultiplier +=
-				(this.currentPosition?.goldmultiplier ?? 1) * hitMultiplier;
+			this.xpmultiplier += (0.25 / this.currentPosition.timing.length) * hitMultiplier;
+			this.goldmultiplier += (0.4 / this.currentPosition.timing.length) * hitMultiplier;
+
+      this.xpmultiplier = Math.max(this.xpmultiplier, .1);
+      this.goldmultiplier = Math.max(this.goldmultiplier, .1);
 		}
 	}
 
