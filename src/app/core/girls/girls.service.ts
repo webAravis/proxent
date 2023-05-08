@@ -13,8 +13,6 @@ import karmaTimings from './timings/karma_timing_record.json';
 export interface TimingRecord {
 	name: string;
 	timing: number[];
-	xpmultiplier: number;
-	goldmultiplier: number;
 
 	xp: number;
 	gold: number;
