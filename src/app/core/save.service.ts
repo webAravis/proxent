@@ -125,7 +125,7 @@ export class SaveService {
       otherStudios: otherStudios,
       leaders: leaders,
       lastSaved: new Date(),
-      version: '0.8.0'
+      version: '0.8.1'
     };
 
     let savedGames = this.saves;

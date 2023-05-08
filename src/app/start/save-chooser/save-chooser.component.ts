@@ -80,6 +80,11 @@ export class SaveChooserComponent implements OnInit, OnDestroy {
   }
 
   exportSave(): void {
+    if (this.saveIndex === -1) {
+      alert('Please select a saved game to export by clicking it.');
+      return;
+    }
+
     const file = new window.Blob([this._saveService.export(this.saveIndex)], { type: 'text/plain' });
 
     const downloadAncher = document.createElement("a");
