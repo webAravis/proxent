@@ -8,6 +8,7 @@ import { GameService } from '../core/game.service';
 import { CachingService } from '../core/caching.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ShootingService } from './shooting.service';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 export class PhotoShooting {
   name = '';
@@ -23,6 +24,10 @@ export class PhotoShooting {
   golds = 0;
   fans = 0
   corruptionLevel = 0;
+
+	constructor(values: object = {}) {
+		Object.assign(this, values);
+	}
 }
 
 @Component({
@@ -46,6 +51,12 @@ export class ShootingComponent implements OnInit, OnDestroy {
 
   shakePhoto = '';
   usePhoto = '';
+
+  masonryOptions: NgxMasonryOptions = {
+    gutter: 10,
+    fitWidth: true
+  }
+  updateMasonryLayout = false;
 
   private _golds = 0;
   private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
@@ -76,7 +87,13 @@ export class ShootingComponent implements OnInit, OnDestroy {
 
     this._gameService.pauseGame();
 
-    this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => this.playerPhotos = photos);
+    this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => {
+      this.playerPhotos = photos;
+
+      setTimeout(() => {
+        // this.updateMasonryLayout = true;
+      }, 1000);
+    });
   }
 
   ngOnDestroy(): void {

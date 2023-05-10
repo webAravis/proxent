@@ -27,6 +27,8 @@ import { SaveChooserComponent } from './start/save-chooser/save-chooser.componen
 import { LeadersComponent } from './leaders/leaders.component';
 import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 import { LeaderBattleGirlsComponent } from './leader-battle/leader-battle-girls/leader-battle-girls.component';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -55,7 +57,13 @@ import { LeaderBattleGirlsComponent } from './leader-battle/leader-battle-girls/
   LeaderBattleComponent,
   LeaderBattleGirlsComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+	imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgxMasonryModule
+  ],
 	providers: [],
 	bootstrap: [AppComponent],
 })

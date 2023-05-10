@@ -14,6 +14,8 @@ import { Record } from '../record/record.model';
 import { Studio } from './studio.model';
 import { LeadersService } from '../leaders/leaders.service';
 import { Leader } from '../leaders/leader.model';
+import { ShootingService } from '../shooting/shooting.service';
+import { PhotoShooting } from '../shooting/shooting.component';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +35,8 @@ export class SaveService {
     private _inventoryService: InventoryService,
     private _recordService: RecordService,
     private _leadersService: LeadersService,
-    private _otherStudiosService: OtherStudiosService
+    private _otherStudiosService: OtherStudiosService,
+    private _shootingService: ShootingService
   ) {
     setInterval(() => this.saveGame(), 5000);
     this._gameService.dayChanged.subscribe((day) =>
@@ -115,6 +118,8 @@ export class SaveService {
 
     const leaders = this._leadersService.leaders.getValue();
 
+    const playerPhotos = this._shootingService.playerPhotos.getValue();
+
     const toSave = {
       game: gameParameters,
       girls: girls,
@@ -124,22 +129,12 @@ export class SaveService {
       records: records,
       otherStudios: otherStudios,
       leaders: leaders,
+      playerPhotos: playerPhotos,
       lastSaved: new Date(),
       version: '0.8.1'
     };
 
     let savedGames = this.saves;
-
-    // sanitizing all non-number keys
-    // const keysToDelete = Object.keys(savedGames).filter(key => isNaN(parseInt(key)));
-    // for (const keyToDelete of keysToDelete) {
-    //   delete savedGames[keyToDelete];
-    // }
-
-    // if (!Array.isArray(savedGames)) {
-    //   console.log('converting to array');
-    //   savedGames = Object.values(savedGames);
-    // }
 
     savedGames[this.saveIndex] = toSave;
 
@@ -275,6 +270,17 @@ export class SaveService {
       this._leadersService.leaders.next(
         this._leadersService.initLeadersMethods(leaders)
       );
+    }
+
+    if (savedGame.playerPhotos) {
+      const playerPhotos: PhotoShooting[] = [];
+      for (const savedPhoto of savedGame.playerPhotos) {
+        const photo = new PhotoShooting(savedPhoto);
+
+        playerPhotos.push(photo);
+      }
+
+      this._shootingService.playerPhotos.next(playerPhotos);
     }
 
     return of(true);

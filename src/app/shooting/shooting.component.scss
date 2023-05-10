@@ -20,20 +20,18 @@
 	justify-content: center;
 	gap: 30px;
 
-  .deck {
-    display: flex;
+
+  .masonry {
     width: 100%;
     height: calc(100vh - 300px);
-    flex-wrap: wrap;
     overflow-y: auto;
-    gap: 15px;
-    justify-content: space-between;
     padding: 0 15px;
 
     .flip-card {
+      transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
       background-color: transparent;
-      width: 400px;
-      height: 300px;
+      width: 300px;
+      margin-bottom: 10px;
       perspective: 1000px; /* Remove this if you don't want the 3D effect */
       box-sizing: border-box;
       background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(45deg, #00bf7c 25%, #00a86d 25%, #00a86d 50%, #00bf7c 50%, #00bf7c 75%, #00a86d 75%, #00a86d 100%);
@@ -83,10 +81,6 @@
         }
       }
 
-      &.format-portrait {
-        width: 200px;
-      }
-
       /* Style the back side */
       .flip-card-back {
         background-image: linear-gradient(45deg, #00bf7c 25%, #00a86d 25%, #00a86d 50%, #00bf7c 50%, #00bf7c 75%, #00a86d 75%, #00a86d 100%);
@@ -97,6 +91,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: absolute;
+        top: 0;
 
         .attributes {
           width: 90%;
@@ -142,13 +138,8 @@
       }
 
       .background {
-        position: absolute;
-        object-fit: cover;
         width: 100%;
-        height: 100%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        display: block;
       }
     }
 
@@ -169,7 +160,6 @@
 
     /* Position the front and back side */
     .flip-card-front, .flip-card-back {
-      position: absolute;
       width: 100%;
       height: 100%;
       -webkit-backface-visibility: hidden; /* Safari */
