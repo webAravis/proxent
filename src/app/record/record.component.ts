@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Girl } from '../core/girls/girl.model';
-import { GirlsService, TimingRecord } from '../core/girls/girls.service';
+import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { RewardService } from '../reward/reward.service';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Record } from './record.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { StudioService } from '../studio/studio.service';
+import { Position } from '../core/position.model';
 
 @Component({
 	selector: 'app-record',
@@ -41,9 +42,9 @@ export class RecordComponent implements OnInit, OnDestroy {
 	comboText = '';
 	displayComboText = false;
 
-	positions: TimingRecord[] = [];
-	currentPosition: TimingRecord | undefined;
-	positionsPlayed: TimingRecord[] = [];
+	positions: Position[] = [];
+	currentPosition: Position | undefined;
+	positionsPlayed: Position[] = [];
 	trendingPosition = '';
 
 	nbScenes = 0;
@@ -211,7 +212,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.startScene(this.positions[0]);
 	}
 
-	startScene(position: TimingRecord): void {
+	startScene(position: Position): void {
 		this.nbScenes++;
 		this.positionsPlayed.push(position);
 		if (this.trendingPosition === position.name) {

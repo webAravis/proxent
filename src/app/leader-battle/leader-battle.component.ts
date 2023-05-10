@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { Leader } from '../leaders/leader.model';
 import { GameService } from '../core/game.service';
 import { Girl } from '../core/girls/girl.model';
-import { TimingRecord } from '../core/girls/girls.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { RewardService } from '../reward/reward.service';
+import { Position } from '../core/position.model';
 
 export interface BattleSetup {
   girl: Girl;
-  position: TimingRecord;
+  position: Position;
 }
 
 @Component({

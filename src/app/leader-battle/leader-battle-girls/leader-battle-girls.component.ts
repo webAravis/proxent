@@ -1,11 +1,12 @@
 import { takeUntil, Subject } from 'rxjs';
 import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Girl } from 'src/app/core/girls/girl.model';
-import { GirlsService, TimingRecord } from 'src/app/core/girls/girls.service';
+import { GirlsService } from 'src/app/core/girls/girls.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CachingService } from 'src/app/core/caching.service';
 import { EventEmitter } from '@angular/core';
 import { BattleSetup } from '../leader-battle.component';
+import { Position } from 'src/app/core/position.model';
 
 @Component({
   selector: 'app-leader-battle-girls',
@@ -18,13 +19,13 @@ export class LeaderBattleGirlsComponent implements OnInit, OnDestroy {
 
   show = false;
   girls: Girl[] = [];
-  positions: TimingRecord[] = [];
+  positions: Position[] = [];
 	portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
 
   setup: BattleSetup[] = [];
 
   selectedGirl: Girl | undefined;
-  selectedPosition: TimingRecord | undefined;
+  selectedPosition: Position | undefined;
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
@@ -72,7 +73,7 @@ export class LeaderBattleGirlsComponent implements OnInit, OnDestroy {
   chooseGirl(girl: Girl): void {
     const positions = this._girlService.getTimingRecord(girl);
     if (positions) {
-      this.positions = positions.filter((position: TimingRecord) => girl.unlockedPostions.includes(position.name));
+      this.positions = positions.filter((position: Position) => girl.unlockedPostions.includes(position.name));
     }
 
     this.selectedGirl = girl;

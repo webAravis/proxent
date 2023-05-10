@@ -10,4 +10,6 @@ export class Position {
 
 	stamcost = 0;
 	orgasm = 0;
+
+  corruption = 0;
 }

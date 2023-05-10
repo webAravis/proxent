@@ -9,20 +9,7 @@ import petaTimings from './timings/peta_timing_record.json';
 import avaTimings from './timings/ava_timing_record.json';
 import madisonTimings from './timings/madison_timing_record.json';
 import karmaTimings from './timings/karma_timing_record.json';
-
-export interface TimingRecord {
-	name: string;
-	timing: number[];
-
-	xp: number;
-	gold: number;
-	fans: number;
-
-	timeout: number;
-
-	stamcost: number;
-	orgasm: number;
-}
+import { Position } from '../position.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -32,7 +19,7 @@ export class GirlsService {
 	playerGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 	gameGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 
-  girlTimings: {girlId: number, timings: TimingRecord[]}[] = [];
+  girlTimings: {girlId: number, timings: Position[]}[] = [];
 
 	constructor(
     private _httpClient: HttpClient,
@@ -165,8 +152,8 @@ export class GirlsService {
     this.playerGirls.next(filteredGirls);
   }
 
-	getTimingRecord(girl: Girl): TimingRecord[] | undefined {
-		return this.girlTimings.find((timing: {girlId: number, timings: TimingRecord[]}) => timing.girlId === girl.id)?.timings;
+	getTimingRecord(girl: Girl): Position[] | undefined {
+		return this.girlTimings.find((timing: {girlId: number, timings: Position[]}) => timing.girlId === girl.id)?.timings;
 	}
 
 	updateGirl(girl: Girl): void {

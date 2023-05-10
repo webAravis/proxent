@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GirlsService, TimingRecord } from '../core/girls/girls.service';
+import { GirlsService } from '../core/girls/girls.service';
 import { Girl } from '../core/girls/girl.model';
 import { GameService } from '../core/game.service';
 import { RewardService } from '../reward/reward.service';
@@ -10,13 +10,6 @@ import { Item } from '../inventory/item.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { Position } from '../core/position.model';
-
-interface CorruptPosition {
-	name: string;
-	requirements: {
-		corruptionLevel: number;
-	};
-}
 
 @Component({
 	selector: 'app-corrupt',
@@ -53,26 +46,10 @@ export class CorruptComponent implements OnInit, OnDestroy {
 
 	reasonCorruptDisabled = '';
 
-	positions: CorruptPosition[] = [
-		{ name: 'tease', requirements: { corruptionLevel: 0 } },
-		{ name: 'rub', requirements: { corruptionLevel: 0 } },
-		{ name: 'masturbate', requirements: { corruptionLevel: 2 } },
-		{ name: 'handjob', requirements: { corruptionLevel: 3 } },
-		{ name: 'boobjob', requirements: { corruptionLevel: 3 } },
-		{ name: 'blowjob', requirements: { corruptionLevel: 3 } },
-		{ name: 'missionary', requirements: { corruptionLevel: 6 } },
-		{ name: 'cowgirl', requirements: { corruptionLevel: 6 } },
-		{ name: 'doggy', requirements: { corruptionLevel: 6 } },
-		{ name: 'reversecowgirl', requirements: { corruptionLevel: 8 } },
-		{ name: 'doggy2', requirements: { corruptionLevel: 9 } },
-		{ name: 'standing', requirements: { corruptionLevel: 10 } },
-	];
-	selectedPosition: CorruptPosition = {
-		name: '',
-		requirements: { corruptionLevel: 0 },
-	};
+	positions: Position[] = [];
+	selectedPosition: Position = new Position();
 
-	positionsDef: TimingRecord[] = [];
+	positionsDef: Position[] = [];
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
@@ -155,7 +132,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		}, 3000);
 	}
 
-	selectPosition(position: CorruptPosition): void {
+	selectPosition(position: Position): void {
 		if (this.positionRequirementsMet(position)) {
 			this.selectedPosition = position;
 
@@ -197,10 +174,10 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		this._router.navigate(['girls']);
 	}
 
-	positionRequirementsMet(position: CorruptPosition): boolean {
+	positionRequirementsMet(position: Position): boolean {
 		let requirementsMet = true;
 
-		if (position.requirements.corruptionLevel > this.girl.corruption) {
+		if (position.corruption > this.girl.corruption) {
 			requirementsMet = false;
 		}
 
@@ -239,14 +216,14 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		return true;
 	}
 
-	getPositionDef(positionName: string): TimingRecord {
+	getPositionDef(positionName: string): Position {
 		return (
 			this.positionsDef.find((position) => position.name === positionName) ??
 			new Position()
 		);
 	}
 
-	get newPositions(): CorruptPosition[] {
+	get newPositions(): Position[] {
 		return this.positions.filter(
 			(x) => !this.girl.unlockedPostions.includes(x.name)
 		);

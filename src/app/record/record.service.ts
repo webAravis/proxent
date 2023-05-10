@@ -2,8 +2,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Record } from './record.model';
 import { Girl } from '../core/girls/girl.model';
-import { GirlsService, TimingRecord } from '../core/girls/girls.service';
+import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
+import { Position } from '../core/position.model';
 
 @Injectable({
   providedIn: 'root',
@@ -66,7 +67,7 @@ export class RecordService {
       record.year = this._gameService.year;
       record.name = girl.name + ' - #' + (recordCount + 1);
 
-      const positionsPlayed: TimingRecord[] = [];
+      const positionsPlayed: Position[] = [];
       let trendingPositions = 0;
       let orgasmCount = 0;
       let repetitions = 0;
@@ -134,7 +135,7 @@ export class RecordService {
 
   getScore(
     girl: Girl,
-    positionsPlayed: TimingRecord[],
+    positionsPlayed: Position[],
     trendingPositions: number,
     orgasmCount: number,
     repetitions: number,
@@ -168,7 +169,7 @@ export class RecordService {
 
   getMoney(
     girl: Girl,
-    positionsPlayed: TimingRecord[],
+    positionsPlayed: Position[],
     orgasmCount: number,
     multiplier = 1
   ): number {
@@ -188,7 +189,7 @@ export class RecordService {
 
   getFans(
     girl: Girl,
-    positionsPlayed: TimingRecord[],
+    positionsPlayed: Position[],
     orgasmCount: number,
     multiplier = 1
   ): number {
@@ -206,7 +207,7 @@ export class RecordService {
     return fansWon;
   }
 
-  getScorePositions(positionsPlayed: TimingRecord[]): number {
+  getScorePositions(positionsPlayed: Position[]): number {
     let score = 0;
 
     for (const position of positionsPlayed) {
