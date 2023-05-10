@@ -22,7 +22,6 @@
 
 	<ng-container *ngIf="state === 'recording'">
 		<div class="overlay" [class.show]="showPositions"></div>
-		<div class="header">Recording {{ girl.name }}, enjoy!</div>
 
 		<div class="stats">
 			<div class="orgasm">
@@ -119,6 +118,9 @@
 				</button>
 			</ng-container>
 		</div>
+    <div class="end-record" *ngIf="showPositions">
+      <button class="btn" (click)="endRecord()">End recording</button>
+    </div>
 
 		<div *ngIf="showSkipButton">
 			<button class="btn" (click)="endScene()">Skip scene</button>

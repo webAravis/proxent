@@ -1,4 +1,9 @@
+<app-background></app-background>
+
+<div class="header">Inventory</div>
+
 <div class="wrapper">
+  <div *ngIf="items.length === 0" class="center">Your inventory is empty</div>
 	<div *ngFor="let item of items" class="item">
 		<span class="tooltip">{{ item[0] }}</span>
 		<img [src]="'./assets/items/' + (item[0] | lowercase) + '.png'" />

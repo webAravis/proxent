@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GameService } from 'src/app/core/game.service';
 import { Subject, takeUntil } from 'rxjs';
 import { InventoryService } from '../inventory/inventory.service';
+import { SaveService } from '../core/save.service';
 
 @Component({
 	selector: 'app-status',
@@ -13,6 +14,7 @@ export class StatusComponent implements OnInit, OnDestroy {
 	day = 1;
 	month = 1;
 	year = 1;
+  secondsSave = 0;
 
 	badges: string[] = [
 		'recordmonthly',
@@ -27,7 +29,8 @@ export class StatusComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private _gameService: GameService,
-		private _inventoryService: InventoryService
+		private _inventoryService: InventoryService,
+    private _saveService: SaveService
 	) {}
 
 	ngOnInit() {
@@ -41,6 +44,8 @@ export class StatusComponent implements OnInit, OnDestroy {
 				this.month = this._gameService.month;
 				this.year = this._gameService.year;
 			});
+
+    setInterval(() => this.secondsSave = Math.round(Math.abs((this._saveService.saved.getValue().getTime() - new Date().getTime()) / 1000)), 1000);
 	}
 
 	ngOnDestroy(): void {
@@ -49,7 +54,7 @@ export class StatusComponent implements OnInit, OnDestroy {
 		this._unsubscribeAll.complete();
 	}
 
-	hasBadge(badge: string): boolean {
+  hasBadge(badge: string): boolean {
 		return this._inventoryService.hasItemByName(badge + '_badge', 1);
 	}
 }

@@ -3,7 +3,8 @@ import { GirlsService } from './girls/girls.service';
 import { Girl } from './girls/girl.model';
 import { HttpClient } from '@angular/common/http';
 import { MediaGirl, DataMediaGirl } from './mediagirl.model';
-import { BehaviorSubject, Observable, finalize } from 'rxjs';
+import { BehaviorSubject, Observable, finalize, of } from 'rxjs';
+import { PhotoShooting } from '../shooting/shooting.component';
 
 interface CacheMediaRequest {
 	girl: Girl;
@@ -77,7 +78,7 @@ export class CachingService {
 			.map((photo) => photo.data);
 	}
 
-	cacheMedias(girls: Girl[]): void {
+	async cacheMedias(girls: Girl[]): Promise<void> {
 		this.toLoad = [];
 		this.loaded = 0;
 
@@ -86,17 +87,17 @@ export class CachingService {
 				!this.medias.some((media) => media.girlname === girl.name) &&
 				!this.girlLoading.includes(girl.name)
 			) {
-				this.cache(girl);
+				await this.cache(girl);
 			}
 		}
 
 		this.loadAll('portrait');
 	}
 
-	cache(girl: Girl): void {
+	async cache(girl: Girl): Promise<void> {
 		this.girlLoading.push(girl.name);
-		this.cachePhotos(girl);
-		this.cacheVideos(girl);
+		await this.cachePhotos(girl);
+    this.cacheVideos(girl);
 	}
 
 	loadAll(typeToLoad: string): void {
@@ -158,26 +159,27 @@ export class CachingService {
 		this.medias.push(mediasGirl);
 	}
 
-	cachePhotos(girl: Girl): void {
-		const corruptionLevels = ['normal', 'sexy', 'slutty'];
-		for (const corruptionName of corruptionLevels) {
-			for (let index = 1; index <= 10; index++) {
-				const url =
+	async cachePhotos(girl: Girl): Promise<void> {
+    const photoDefModule = await import(`../shooting/photosdef/${girl.name.toLowerCase()}.json`);
+    if (photoDefModule === null || !photoDefModule.default) {
+      return;
+    }
+
+    const photoDef: PhotoShooting[] = photoDefModule.default;
+    for (const photo of photoDef) {
+      const url =
 					'https://proxentgame.com/medias/' +
 					girl.name.toLowerCase() +
 					'/photos/' +
-					index +
-					'_' +
-					corruptionName +
+					photo.name +
 					'.jpg';
 				this.toLoad.push({
 					girl: girl,
-					type: index === 1 ? 'portrait' : 'photo',
-					name: index + '_' + corruptionName,
+					type: photo.name.startsWith('1_normal') ? 'portrait' : 'photo',
+					name: photo.name,
 					request: this._httpClient.get(url, { responseType: 'blob' }),
 				});
-			}
-		}
+    }
 	}
 
 	cacheVideos(girl: Girl): void {

@@ -1,4 +1,4 @@
-import { of, Observable, Subject } from 'rxjs';
+import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { GameService } from './game.service';
 import { GirlsService } from './girls/girls.service';
@@ -27,6 +27,8 @@ export class SaveService {
   showSaveChooser: Subject<boolean> = new Subject();
   saves: any[] = [];
 
+  saved: BehaviorSubject<Date> = new BehaviorSubject<Date>(new Date());
+
   constructor(
     private _gameService: GameService,
     private _girlsService: GirlsService,
@@ -38,7 +40,6 @@ export class SaveService {
     private _otherStudiosService: OtherStudiosService,
     private _shootingService: ShootingService
   ) {
-    setInterval(() => this.saveGame(), 5000);
     this._gameService.dayChanged.subscribe((day) =>
       day > 1 ? this.saveGame() : undefined
     );
@@ -142,6 +143,7 @@ export class SaveService {
     localStorage.setItem('saveGame', saved);
 
     this.saves = savedGames;
+    this.saved.next(new Date());
   }
 
   loadGame(): Observable<boolean> {
@@ -283,6 +285,7 @@ export class SaveService {
       this._shootingService.playerPhotos.next(playerPhotos);
     }
 
+    this.saved.next(savedGame.lastSaved);
     return of(true);
   }
 

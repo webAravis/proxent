@@ -1,3 +1,15 @@
+.header {
+	position: fixed;
+	top: 8vh;
+	color: white;
+	left: 2vw;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 35px;
+	opacity: 0.8;
+	border-bottom: 1px solid;
+}
+
 .wrapper {
 	width: 600px;
 	margin: 90px auto;
@@ -6,6 +18,9 @@
 	align-items: center;
 	gap: 15px;
 	flex-wrap: wrap;
+  position: fixed;
+  top: 100px;
+  width: 100vw;
 
 	.item {
 		text-align: center;
@@ -55,4 +70,8 @@
 			justify-content: center;
 		}
 	}
+}
+
+.center {
+  color: white;
 }

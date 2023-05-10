@@ -22,7 +22,7 @@ export class InventoryComponent implements OnInit, OnDestroy {
 			.subscribe((items) => {
 				this.itemsInventory = items;
 
-				this.items = [...this.groupBy(this.itemsInventory)];
+				// this.items = [...this.groupBy(this.itemsInventory)];
 			});
 	}
 
