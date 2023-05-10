@@ -12,11 +12,11 @@
 
 .wrapper {
 	position: fixed;
-	top: 0;
+	top: 150px;
 	width: 100%;
-	height: 100vh;
+	height: calc(100vh - 300px);
 	display: flex;
-	align-items: center;
+	align-items: start;
 	justify-content: center;
 	gap: 30px;
 
@@ -25,7 +25,7 @@
     width: 100%;
     height: calc(100vh - 300px);
     overflow-y: auto;
-    padding: 0 15px;
+    padding-left: 15px;
 
     .flip-card {
       transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
@@ -177,5 +177,124 @@
     width: 600px;
     flex-shrink: 0;
     flex-grow: 0;
+
+    .header {
+      position: relative;
+      top: initial;
+      left: initial;
+      margin-bottom: 15px;
+      margin-right: 15px;
+    }
+
+    &>div {
+      position: relative;
+      top: initial;
+      left: initial;
+      margin-bottom: 15px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .requested {
+      display: flex;
+      gap: 15px;
+      justify-content: space-evenly;
+
+      .attribute {
+				border: 2px solid red;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        padding: 7.5px;
+        width: 96px;
+        background: rgb(98, 9, 9);
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, inset 0px 1px 0px 0px #f29c93;
+
+        .name {
+          border-bottom: 1px solid rgba(255,255,255,0.8);
+          margin-bottom: 5px;
+        }
+
+        .value {
+          text-transform: capitalize;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .current-combo {
+      margin-top: 45px;
+
+      .combo-value {
+        color: white;
+        text-shadow: -1px -1px 0 #ce0100, 1px -1px 0 #ce0100, -1px 1px 0 #ce0100,
+          1px 1px 0 #ce0100;
+        font-size: 50px;
+        font-weight: bold;
+      }
+
+      .score {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+
+        & > span {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
+    .played-card {
+      height: 260px;
+
+      .placeholder {
+        background: rgba(0,0,0,0.8);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        height: 100%;
+      }
+
+      .played-photo {
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+
+        img {
+          height: calc(100% - 30px);
+        }
+
+        .attributes {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+  }
+}
+
+.actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  gap: 15px;
+
+  button {
+    font-size: 25px;
   }
 }

@@ -44,6 +44,12 @@ export class ShootingComponent implements OnInit, OnDestroy {
   playedPhotos: PhotoShooting[] = [];
 
   playerPhotos: PhotoShooting[] = [];
+  played = false;
+
+  place = false;
+  outfit = false;
+  format = false;
+  body = false;
 
   combo = 1;
 
@@ -113,7 +119,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   get xpWon(): number {
-    return 50 + (100 * this.girl.popularity) + (100 * this.girl.level);
+    return this.playedPhotos.length > 0 ? (50 + (100 * this.girl.popularity) + (100 * this.girl.level)) * this.combo : 0;
   }
 
   isLocked(photo: PhotoShooting): boolean {
@@ -130,24 +136,27 @@ export class ShootingComponent implements OnInit, OnDestroy {
     }
 
     this.usePhoto = photo.name;
+    this.played = false;
 
     setTimeout(() => {
       this.playedPhotos.push(photo);
       this.photos = this.photos.filter(availablePhoto => photo.name !== availablePhoto.name);
 
       this._computeCombo(photo);
+      this.played = true;
     }, 500);
   }
 
   endShooting(): void {
     this.girl.shootingCount++;
-    this._rewardService.giveReward(this.fansWon, 0, this.goldsWon, [], this.xpWon, this.girl);
+    this._rewardService.giveReward(this.fansWon, this.xpWon, this.goldsWon, [], 0, this.girl);
 
     this._gameService.resumeGame();
     this._router.navigate(['girls']);
   }
 
   newCustomerRequest(): void {
+    this.played = false;
     this.customerRequest = undefined;
 
     setTimeout(() => {
@@ -188,34 +197,52 @@ export class ShootingComponent implements OnInit, OnDestroy {
     }
   }
 
+  availablePhotos(): number {
+    return this.playerPhotos
+      .map((photo: PhotoShooting) => photo.name)
+      .filter((photoName: string) => !this.playedPhotos.map((playedPhoto: PhotoShooting) => playedPhoto.name).includes(photoName)).length;
+  }
+
   private _computeCombo(photo: PhotoShooting): void {
     if (this.customerRequest !== undefined) {
 
       if (photo.attributes.place === this.customerRequest.place) {
-        this.combo = this.combo * 1.1;
+        this.combo += .5;
+        this.place = true;
       } else {
-        this.combo = Math.max((this.combo - 0.5), 1);
+        this.place = false;
+        this.combo = Math.max((this.combo - 0.3), .01);
       }
 
       if (photo.attributes.outfit === this.customerRequest.outfit) {
-        this.combo = this.combo * 1.1;
+        this.combo += .8;
+        this.outfit = true;
       } else {
-        this.combo = Math.max((this.combo - 0.5), 1);
+        this.outfit = false;
+        this.combo = Math.max((this.combo - 0.3), .01);
       }
 
       if (photo.attributes.format === this.customerRequest.format) {
-        this.combo = this.combo * 1.1;
+        this.combo += .3;
+        this.format = true;
       } else {
-        this.combo = Math.max((this.combo - 0.5), 1);
+        this.format = false;
+        this.combo = Math.max((this.combo - 0.4), .01);
       }
 
-      if (photo.attributes.body.includes(this.customerRequest.format)) {
-        this.combo = this.combo * 1.1;
+      if (photo.attributes.body.includes(this.customerRequest.body)) {
+        this.combo += .3;
+        this.body = true;
       } else {
-        this.combo = Math.max((this.combo - 0.5), 1);
+        this.body = false;
+        this.combo = Math.max((this.combo - 0.4), .01);
       }
 
-      this.combo = Math.max(this.combo, 1);
+      if (!this.place && !this.outfit && !this.format && !this.body) {
+        this.combo = .01;
+      }
+
+      this.combo = Math.max(this.combo, .01);
 
     }
   }

@@ -16,7 +16,7 @@
 
             <div class="unlock-price" *ngIf="isLocked(photo)">
               <div [class.red]="!canAfford(photo)">
-                {{ photo.price }}<img src="./assets/golds.png" />
+                {{ photo.price | number : '1.0-0' }}<img src="./assets/golds.png" />
               </div>
               <div [class.red]="photo.corruptionLevel > girl.corruption">
                 Requires corruption lvl{{ photo.corruptionLevel }}
@@ -51,8 +51,8 @@
               </div>
 
               <div class="rewards">
-                <div class="golds">{{ photo.golds }}<img src="./assets/golds.png" /></div>
-                <div class="fans">{{ photo.fans }}<img src="./assets/fans.png" /></div>
+                <div class="golds">{{ photo.golds | number : '1.0-0' }}<img src="./assets/golds.png" /></div>
+                <div class="fans">{{ photo.fans | number : '1.0-0' }}<img src="./assets/fans.png" /></div>
               </div>
             </div>
 
@@ -71,11 +71,52 @@
 
   <div class="request">
     <div class="customer-request">
-      A new customer request!
+      <div class="header">Customer request</div>
+      <div class="requested" *ngIf="customerRequest">
+        <div class="attribute">
+          <div class="name">Place</div>
+          <div class="value">{{ customerRequest.place }}</div>
+        </div>
+        <div class="attribute">
+          <div class="name">Outfit</div>
+          <div class="value">{{ customerRequest.outfit }}</div>
+        </div>
+        <div class="attribute">
+          <div class="name">Format</div>
+          <div class="value">{{ customerRequest.format }}</div>
+        </div>
+        <div class="attribute">
+          <div class="name">Body</div>
+          <div class="value">{{ customerRequest.body }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="current-combo">
+      <div class="header">Combo</div>
+      <div class="combo-value">x{{ combo | number : '1.0-2' }}</div>
+      <div class="score">
+        <span class="with-icon green">+{{ goldsWon | number : '1.0-0' }}<img width="30" src="./assets/golds.png" /></span>
+        <span class="with-icon green">+{{ xpWon | number : '1.0-0' }}<img width="30" src="./assets/experience.png" /></span>
+        <span class="with-icon green">+{{ fansWon | number : '1.0-0' }}<img width="30" src="./assets/fans.png" /></span>
+      </div>
     </div>
     <div class="played-card">
-
+      <div class="header">Photo</div>
+      <div class="placeholder" *ngIf="usePhoto === ''">Please select a photo to submit</div>
+      <div class="played-photo" *ngIf="usePhoto !== ''">
+        <img [src]="this.playedPhotos[this.playedPhotos.length -1].url" />
+        <div class="attributes">
+          <div [class.green]="place" [class.red]="!place">Place: {{ this.playedPhotos[this.playedPhotos.length -1].attributes.place }}</div>
+          <div [class.green]="outfit" [class.red]="!outfit">Outfit: {{ this.playedPhotos[this.playedPhotos.length -1].attributes.outfit }}</div>
+          <div [class.green]="format" [class.red]="!format">Format: {{ this.playedPhotos[this.playedPhotos.length -1].attributes.format }}</div>
+          <div [class.green]="body" [class.red]="!body">Body: {{ this.playedPhotos[this.playedPhotos.length -1].attributes.body.join(', ') }}</div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="actions" *ngIf="played">
+    <button class="btn animate__bounceIn animate__animated" (click)="endShooting()">End photoshoot</button>
+    <button [disabled]="availablePhotos() === 0" class="btn animate__bounceIn animate__animated" (click)="newCustomerRequest()">Ask for new request</button>
+  </div>
 </div>
