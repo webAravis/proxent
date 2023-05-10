@@ -1,0 +1,191 @@
+.header {
+	position: fixed;
+	top: 8vh;
+	color: white;
+	left: 2vw;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 35px;
+	opacity: 0.8;
+	border-bottom: 1px solid;
+}
+
+.wrapper {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+
+  .deck {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 300px);
+    flex-wrap: wrap;
+    overflow-y: auto;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    .flip-card {
+      background-color: transparent;
+      width: 400px;
+      height: 300px;
+      perspective: 1000px; /* Remove this if you don't want the 3D effect */
+      box-sizing: border-box;
+      background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(45deg, #00bf7c 25%, #00a86d 25%, #00a86d 50%, #00bf7c 50%, #00bf7c 75%, #00a86d 75%, #00a86d 100%);
+      background-size: 56.57px 56.57px;
+      border-radius: 0px;
+      padding: 5px;
+      cursor: pointer;
+
+      &.locked {
+        .background, .flip-card-back {
+          filter: brightness(.2);
+        }
+      }
+
+      .unlock-price {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 25px;
+
+        img {
+          width: 20px;
+          margin-left: 5px;
+        }
+      }
+
+      &.type-sexy {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(45deg, #26d2fc 25%, #00cafc 25%, #00cafc 50%, #26d2fc 50%, #26d2fc 75%, #00cafc 75%, #00cafc 100%);
+
+        .flip-card-back {
+          background-image: linear-gradient(45deg, #26d2fc 25%, #00cafc 25%, #00cafc 50%, #26d2fc 50%, #26d2fc 75%, #00cafc 75%, #00cafc 100%);
+        }
+      }
+
+      &.type-slutty {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), linear-gradient(45deg, #9626f6 25%, #8400f5 25%, #8400f5 50%, #9626f6 50%, #9626f6 75%, #8400f5 75%, #8400f5 100%);
+
+        .flip-card-back {
+          background-image: linear-gradient(45deg, #9626f6 25%, #8400f5 25%, #8400f5 50%, #9626f6 50%, #9626f6 75%, #8400f5 75%, #8400f5 100%);
+        }
+      }
+
+      &.format-portrait {
+        width: 200px;
+      }
+
+      /* Style the back side */
+      .flip-card-back {
+        background-image: linear-gradient(45deg, #00bf7c 25%, #00a86d 25%, #00a86d 50%, #00bf7c 50%, #00bf7c 75%, #00a86d 75%, #00a86d 100%);
+        background-size: 56.57px 56.57px;
+        color: white;
+        font-weight: bold;
+        transform: rotateY(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .attributes {
+          width: 90%;
+
+          .attribute {
+            flex-direction: row;
+            display: flex;
+            gap: 15px;
+
+            .name {
+              width: 100%;
+              text-align: right;
+            }
+
+            .value {
+              width: 100%;
+              text-align: left;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        .rewards {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+          font-size: 20px;
+          gap: 15px;
+          margin-top: 30px;
+
+          &>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          img {
+            width: 20px;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .background {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+      background-color: #bbb;
+      color: black;
+    }
+  }
+
+  .request {
+    width: 600px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}

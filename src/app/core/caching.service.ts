@@ -96,7 +96,7 @@ export class CachingService {
 	cache(girl: Girl): void {
 		this.girlLoading.push(girl.name);
 		this.cachePhotos(girl);
-		// this.cacheVideos(girl);
+		this.cacheVideos(girl);
 	}
 
 	loadAll(typeToLoad: string): void {

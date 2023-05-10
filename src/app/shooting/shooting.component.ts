@@ -7,6 +7,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { GameService } from '../core/game.service';
 import { CachingService } from '../core/caching.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ShootingService } from './shooting.service';
 
 export class PhotoShooting {
   name = '';
@@ -17,16 +18,17 @@ export class PhotoShooting {
     outfit: string,
     body: string[],
     format: string
-  } = {type: '', place: '', outfit: '', body: [], format: ''};
+  } = { type: '', place: '', outfit: '', body: [], format: '' };
   price = 0;
   golds = 0;
   fans = 0
+  corruptionLevel = 0;
 }
 
 @Component({
   selector: 'app-shooting',
   templateUrl: './shooting.component.html',
-  styleUrls: ['./shooting.component.scss'],
+  styleUrls: ['./shooting.component.scss']
 })
 export class ShootingComponent implements OnInit, OnDestroy {
 
@@ -36,11 +38,16 @@ export class ShootingComponent implements OnInit, OnDestroy {
   photoDef: PhotoShooting[] = [];
   playedPhotos: PhotoShooting[] = [];
 
+  playerPhotos: PhotoShooting[] = [];
+
   combo = 1;
 
-  customerRequest: {place: string, outfit: string, body: string, format: string} | undefined;
+  customerRequest: { place: string, outfit: string, body: string, format: string } | undefined;
 
-	private _golds = 0;
+  shakePhoto = '';
+  usePhoto = '';
+
+  private _golds = 0;
   private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
   constructor(
@@ -49,15 +56,16 @@ export class ShootingComponent implements OnInit, OnDestroy {
     private _rewardService: RewardService,
     private _gameService: GameService,
     private _cachingService: CachingService,
+    private _shootingService: ShootingService,
     private _sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-		this._gameService.goldChanged
-			.pipe(takeUntil(this._unsubscribeAll))
-			.subscribe((golds) => (this._golds = golds));
+    this._gameService.goldChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((golds) => (this._golds = golds));
 
-		this._golds = this._gameService.golds;
+    this._golds = this._gameService.golds;
 
     this._girlsService.currentGirl
       .pipe(takeUntil(this._unsubscribeAll))
@@ -67,6 +75,8 @@ export class ShootingComponent implements OnInit, OnDestroy {
       });
 
     this._gameService.pauseGame();
+
+    this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => this.playerPhotos = photos);
   }
 
   ngOnDestroy(): void {
@@ -77,32 +87,47 @@ export class ShootingComponent implements OnInit, OnDestroy {
     this._gameService.resumeGame();
   }
 
-  isLocked(photo: PhotoShooting): boolean {
-    return true;
+  get goldsWon(): number {
+    return this.playedPhotos.map((photo: PhotoShooting) => photo.golds).reduce((acc, current) => acc + current, 0) * this.combo;
   }
 
-  isUnlockable(photo: PhotoShooting): boolean {
+  get fansWon(): number {
+    return this.playedPhotos.map((photo: PhotoShooting) => photo.fans).reduce((acc, current) => acc + current, 0) * this.combo;
+  }
+
+  get xpWon(): number {
+    return 50 + (100 * this.girl.popularity) + (100 * this.girl.level);
+  }
+
+  isLocked(photo: PhotoShooting): boolean {
+    return !this.playerPhotos.some((playerPhoto: PhotoShooting) => playerPhoto.name === photo.name);
+  }
+
+  canAfford(photo: PhotoShooting): boolean {
     return photo.price <= this._golds;
   }
 
   playPhoto(photo: PhotoShooting): void {
-    this.playedPhotos.push(photo);
-    this.photos = this.photos.filter(availablePhoto => photo.name !== availablePhoto.name);
+    if (this.usePhoto === photo.name) {
+      return;
+    }
 
-    this._computeCombo(photo);
+    this.usePhoto = photo.name;
+
+    setTimeout(() => {
+      this.playedPhotos.push(photo);
+      this.photos = this.photos.filter(availablePhoto => photo.name !== availablePhoto.name);
+
+      this._computeCombo(photo);
+    }, 500);
   }
 
   endShooting(): void {
-    const goldsWon = this.playedPhotos.map((photo: PhotoShooting) => photo.golds).reduce((acc, current) => acc + current, 0) * this.combo;
-    const fansWon = this.playedPhotos.map((photo: PhotoShooting) => photo.fans).reduce((acc, current) => acc + current, 0) * this.combo;
+    this.girl.shootingCount++;
+    this._rewardService.giveReward(this.fansWon, 0, this.goldsWon, [], this.xpWon, this.girl);
 
-    const xpWon = 50 + (100 * this.girl.popularity) + (100 * this.girl.level);
-
-		this.girl.shootingCount++;
-    this._rewardService.giveReward(fansWon, 0, goldsWon, [], xpWon, this.girl);
-
-		this._gameService.resumeGame();
-		this._router.navigate(['girls']);
+    this._gameService.resumeGame();
+    this._router.navigate(['girls']);
   }
 
   newCustomerRequest(): void {
@@ -131,6 +156,19 @@ export class ShootingComponent implements OnInit, OnDestroy {
       };
 
     }, 500);
+  }
+
+  buyPhoto(photo: PhotoShooting): void {
+    if (this.canAfford(photo) && photo.corruptionLevel <= this.girl.corruption) {
+      this._gameService.updateGolds(photo.price * -1);
+
+      this._shootingService.addPhoto(photo);
+    } else {
+      this.shakePhoto = photo.name;
+      setTimeout(() => {
+        this.shakePhoto = '';
+      }, 500);
+    }
   }
 
   private _computeCombo(photo: PhotoShooting): void {
@@ -188,9 +226,9 @@ export class ShootingComponent implements OnInit, OnDestroy {
   private _getGolds(photo: PhotoShooting): number {
     return Math.round(
       (600 * this._getLewdnessModifier(photo)) +
-      (750 / this._getAttributeFrequency(photo, 'place')) +
-      (500 / this._getAttributeFrequency(photo, 'outfit')) +
-      (1000 / this._getAttributeFrequency(photo, 'format'))
+      (500 / this._getAttributeFrequency(photo, 'place')) +
+      (400 / this._getAttributeFrequency(photo, 'outfit')) +
+      (100 / this._getAttributeFrequency(photo, 'format'))
     );
   }
 
@@ -214,7 +252,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   private _getPrice(photo: PhotoShooting): number {
-    return Math.round( (100 * photo.attributes.body.length) + (1000 * this._getLewdnessModifier(photo)) );
+    return Math.round((200 * photo.attributes.body.length) + (2400 * this._getLewdnessModifier(photo)));
   }
 
   private _getLewdnessModifier(photo: PhotoShooting): number {
@@ -222,7 +260,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
 
     switch (photo.attributes.type) {
       case 'normal':
-        modifier = 1;
+        modifier = 0;
         break;
       case 'sexy':
         modifier = 2;

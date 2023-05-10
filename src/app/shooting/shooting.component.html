@@ -1,41 +1,76 @@
+<app-background></app-background>
+
+<div class="header">Shooting for {{ girl.name }}</div>
+
 <div class="wrapper">
   <div class="deck">
 
-    <div class="card" [class.type]="photo.attributes.type" [class.locked]="isLocked(photo)" *ngFor="let photo of photos">
-      <img [src]="photo.url" alt="" class="background">
+    <div
+      (click)="isLocked(photo) ? buyPhoto(photo) : playPhoto(photo)"
+      [class.animate__shakeX]="shakePhoto === photo.name"
+      [class.animate__zoomOutUp]="usePhoto === photo.name"
+      [class.locked]="isLocked(photo)"
+      class="animate__animated animate__faster flip-card type-{{photo.attributes.type}} format-{{photo.attributes.format}}"
+      *ngFor="let photo of photos">
+      <div class="flip-card-inner">
 
-      <div class="attributes">
-        <div class="attribute">
-          <div class="name">Lewdness</div>
-          <div class="value">{{ photo.attributes.type }}</div>
+        <div class="flip-card-front">
+
+          <div class="unlock-price" *ngIf="isLocked(photo)">
+            <div [class.red]="!canAfford(photo)">
+              {{ photo.price }}<img src="./assets/golds.png" />
+            </div>
+            <div [class.red]="photo.corruptionLevel > girl.corruption">
+              Requires corruption lvl{{ photo.corruptionLevel }}
+            </div>
+          </div>
+
+          <img [src]="photo.url" alt="" class="background">
         </div>
-        <div class="attribute">
-          <div class="name">Place</div>
-          <div class="value">{{ photo.attributes.place }}</div>
-        </div>
-        <div class="attribute">
-          <div class="name">Outfit</div>
-          <div class="value">{{ photo.attributes.outfit }}</div>
-        </div>
-        <div class="attribute">
-          <div class="name">Body</div>
-          <div class="value">{{ photo.attributes.body.join(', ') }}</div>
-        </div>
-        <div class="attribute">
-          <div class="name">Format</div>
-          <div class="value">{{ photo.attributes.format }}</div>
+
+        <div class="flip-card-back">
+
+          <div class="attributes">
+            <div class="attribute">
+              <div class="name">Lewdness</div>
+              <div class="value">{{ photo.attributes.type }}</div>
+            </div>
+            <div class="attribute">
+              <div class="name">Place</div>
+              <div class="value">{{ photo.attributes.place }}</div>
+            </div>
+            <div class="attribute">
+              <div class="name">Outfit</div>
+              <div class="value">{{ photo.attributes.outfit }}</div>
+            </div>
+            <div class="attribute">
+              <div class="name">Body</div>
+              <div class="value">{{ photo.attributes.body.join(', ') }}</div>
+            </div>
+            <div class="attribute">
+              <div class="name">Format</div>
+              <div class="value">{{ photo.attributes.format }}</div>
+            </div>
+
+            <div class="rewards">
+              <div class="golds">{{ photo.golds }}<img src="./assets/golds.png" /></div>
+              <div class="fans">{{ photo.fans }}<img src="./assets/fans.png" /></div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="rewards">
-        <div class="golds">{{ photo.golds }}<img src="./assets/golds.png" /></div>
-        <div class="fans">{{ photo.fans }}<img src="./assets/fans.png" /></div>
-      </div>
-
-      <div class="tooltip with-icon" *ngIf="isLocked(photo)">{{ photo.price }}<img src="./assets/golds.png" /></div>
     </div>
 
   </div>
 
-  <div class="customer-request"></div>
+  <div class="request">
+    <div class="customer-request">
+      A new customer request!
+    </div>
+    <div class="played-card">
+
+    </div>
+  </div>
+
 </div>
