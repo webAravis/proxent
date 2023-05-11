@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MediaGirl, DataMediaGirl } from './mediagirl.model';
 import { BehaviorSubject, Observable, finalize, of } from 'rxjs';
 import { PhotoShooting } from '../shooting/shooting.component';
+import { Position } from './position.model';
 
 interface CacheMediaRequest {
 	girl: Girl;
@@ -97,7 +98,7 @@ export class CachingService {
 	async cache(girl: Girl): Promise<void> {
 		this.girlLoading.push(girl.name);
 		await this.cachePhotos(girl);
-    this.cacheVideos(girl);
+    await this.cacheVideos(girl);
 	}
 
 	loadAll(typeToLoad: string): void {
@@ -182,33 +183,40 @@ export class CachingService {
     }
 	}
 
-	cacheVideos(girl: Girl): void {
-		const positions = [
-			'blowjob',
-			'boobjob',
-			'cowgirl',
-			'doggy',
-			'doggy2',
-			'intro',
-			'masturbate',
-			'missionary',
-			'orgasm',
-			'reversecowgirl',
-			'rub',
-			'standing',
-			'tease',
-		];
-		for (const position of positions) {
+	async cacheVideos(girl: Girl): Promise<void> {
+    const positionDefModule = await import(`./girls/timings/${girl.name.toLowerCase()}_timing_record.json`);
+    if (positionDefModule === null || !positionDefModule.default) {
+      return;
+    }
+
+    const positionDef: Position[] = positionDefModule.default;
+
+		// const positions = [
+		// 	'blowjob',
+		// 	'boobjob',
+		// 	'cowgirl',
+		// 	'doggy',
+		// 	'doggy2',
+		// 	'intro',
+		// 	'masturbate',
+		// 	'missionary',
+		// 	'orgasm',
+		// 	'reversecowgirl',
+		// 	'rub',
+		// 	'standing',
+		// 	'tease',
+		// ];
+		for (const position of positionDef) {
 			const url =
 				'https://proxentgame.com/medias/' +
 				girl.name.toLowerCase() +
 				'/videos/record/' +
-				position +
+				position.name +
 				'.webm';
 			this.toLoad.push({
 				girl: girl,
 				type: 'video',
-				name: position,
+				name: position.name,
 				request: this._httpClient.get(url, { responseType: 'blob' }),
 			});
 		}

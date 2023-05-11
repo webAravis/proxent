@@ -16,6 +16,7 @@ export class InventoryService {
 		items.push(item);
 
 		this.items.next(items);
+    console.log('added items', items);
 	}
 
 	removeItem(itemtoremove: Item): void {

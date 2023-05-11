@@ -225,7 +225,8 @@ export class SaveService {
       );
     }
 
-    if (savedGame.items) {
+    console.log(savedGame.inventory.items);
+    if (savedGame.inventory.items) {
       const items: Item[] = [];
       for (const savedItem of savedGame.inventory.items) {
         const item = new Item(savedItem);
@@ -278,6 +279,7 @@ export class SaveService {
       const playerPhotos: PhotoShooting[] = [];
       for (const savedPhoto of savedGame.playerPhotos) {
         const photo = new PhotoShooting(savedPhoto);
+        photo.girl = new Girl(photo.girl);
 
         playerPhotos.push(photo);
       }
@@ -285,7 +287,7 @@ export class SaveService {
       this._shootingService.playerPhotos.next(playerPhotos);
     }
 
-    this.saved.next(savedGame.lastSaved);
+    this.saved.next(new Date(savedGame.lastSaved));
     return of(true);
   }
 

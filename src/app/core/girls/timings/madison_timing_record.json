@@ -4,9 +4,9 @@
     "corruption": 0,
 		"timing": [],
 
-		"xp": 100,
-		"gold": 50,
-		"fans": 10,
+		"xp": 0,
+		"gold": 0,
+		"fans": 0,
 
 		"timeout": 4000,
 

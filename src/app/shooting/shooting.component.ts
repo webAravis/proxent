@@ -24,6 +24,7 @@ export class PhotoShooting {
   golds = 0;
   fans = 0
   corruptionLevel = 0;
+  girl: Girl = new Girl();
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
@@ -62,7 +63,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
     gutter: 10,
     fitWidth: true
   }
-  updateMasonryLayout = false;
 
   private _golds = 0;
   private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
@@ -94,11 +94,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
     this._gameService.pauseGame();
 
     this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => {
-      this.playerPhotos = photos;
-
-      setTimeout(() => {
-        // this.updateMasonryLayout = true;
-      }, 1000);
+      this.playerPhotos = photos.filter(photo => photo.girl.id === this.girl.id);
     });
   }
 
@@ -188,6 +184,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
     if (this.canAfford(photo) && photo.corruptionLevel <= this.girl.corruption) {
       this._gameService.updateGolds(photo.price * -1);
 
+      photo.girl = this.girl;
       this._shootingService.addPhoto(photo);
     } else {
       this.shakePhoto = photo.name;
@@ -330,6 +327,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
       return this._sanitizer.bypassSecurityTrustUrl(objectURL);
     }
 
-    return this._sanitizer.bypassSecurityTrustUrl('http://proxentgame.com/medias/placeholder.jpg');
+    return this._sanitizer.bypassSecurityTrustUrl('https://proxentgame.com/medias/placeholder.jpg');
   }
 }

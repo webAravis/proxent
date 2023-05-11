@@ -20,6 +20,8 @@
   {"name": "8_sexy", "corruptionLevel": 2, "attributes": {"type": "sexy", "place": "living", "outfit": "lingerie", "body": ["face", "boobs", "legs"], "format": "4:3"}},
   {"name": "9_sexy", "corruptionLevel": 2, "attributes": {"type": "sexy", "place": "club", "outfit": "lingerie", "body": ["face", "boobs", "legs", "butt", "feet"], "format": "4:3"}},
   {"name": "10_sexy", "corruptionLevel": 2, "attributes": {"type": "sexy", "place": "bedroom", "outfit": "lingerie", "body": ["face", "butt", "legs", "feet"], "format": "4:3"}},
+  {"name": "11_sexy", "corruptionLevel": 2, "attributes": {"type": "sexy", "place": "living", "outfit": "cosplay", "body": ["face", "boobs"], "format": "portrait"}},
+  {"name": "12_sexy", "corruptionLevel": 2, "attributes": {"type": "sexy", "place": "living", "outfit": "lingerie", "body": ["face", "boobs", "legs"], "format": "portrait"}},
 
   {"name": "1_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "outdoor", "outfit": "lingerie", "body": ["face", "boobs", "legs", "butt"], "format": "portrait"}},
   {"name": "2_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "naked", "body": ["face", "boobs", "legs", "feet"], "format": "4:3"}},
@@ -30,5 +32,8 @@
   {"name": "7_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "cosplay", "body": ["face", "boobs", "butt", "legs", "feet"], "format": "4:3"}},
   {"name": "8_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "hospital", "outfit": "cosplay", "body": ["face", "boobs", "legs"], "format": "4:3"}},
   {"name": "9_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bedroom", "outfit": "naked", "body": ["face", "boobs", "legs"], "format": "4:3"}},
-  {"name": "10_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "naked", "body": ["face", "boobs", "butt", "legs"], "format": "4:3"}}
+  {"name": "10_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "naked", "body": ["face", "boobs", "butt", "legs"], "format": "4:3"}},
+  {"name": "11_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "naked", "body": ["face", "boobs", "tits", "butt"], "format": "portrait"}},
+  {"name": "12_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bedroom", "outfit": "naked", "body": ["face", "boobs", "tits", "pussy", "legs"], "format": "portrait"}},
+  {"name": "13_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "shopping", "outfit": "lingerie", "body": ["face", "boobs", "tits", "butt", "legs"], "format": "portrait"}}
 ]

@@ -4,7 +4,7 @@
 
 <div class="wrapper">
   <div class="masonry">
-    <ngx-masonry [updateLayout]="updateMasonryLayout" [options]="masonryOptions" [ordered]="true">
+    <ngx-masonry [options]="masonryOptions" [ordered]="true">
       <div ngxMasonryItem (click)="isLocked(photo) ? buyPhoto(photo) : playPhoto(photo)"
         [class.animate__shakeX]="shakePhoto === photo.name" [class.animate__zoomOutUp]="usePhoto === photo.name"
         [class.locked]="isLocked(photo)"
@@ -103,7 +103,7 @@
     <div class="played-card">
       <div class="header">Photo</div>
       <div class="placeholder" *ngIf="usePhoto === ''">Please select a photo to submit</div>
-      <div class="played-photo" *ngIf="usePhoto !== ''">
+      <div class="played-photo" *ngIf="usePhoto !== '' && this.playedPhotos[this.playedPhotos.length -1]">
         <img [src]="this.playedPhotos[this.playedPhotos.length -1].url" />
         <div class="attributes">
           <div [class.green]="place" [class.red]="!place">Place: {{ this.playedPhotos[this.playedPhotos.length -1].attributes.place }}</div>

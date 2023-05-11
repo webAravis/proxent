@@ -224,7 +224,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	}
 
 	get newPositions(): Position[] {
-		return this.positions.filter(
+		return this.positionsDef.filter(
 			(x) => !this.girl.unlockedPostions.includes(x.name)
 		);
 	}

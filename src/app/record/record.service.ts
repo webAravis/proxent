@@ -179,7 +179,7 @@ export class RecordService {
       goldsWon += position.gold;
     }
 
-    goldsWon = goldsWon * multiplier + 400 * girl.popularity;
+    goldsWon = goldsWon * multiplier + 15 * girl.popularity;
 
     // rewards from orgasms
     goldsWon = goldsWon * (1 + 0.1 * orgasmCount);
@@ -199,7 +199,7 @@ export class RecordService {
       fansWon += position.fans;
     }
 
-    fansWon = fansWon * multiplier + 200 * girl.popularity;
+    fansWon = fansWon * multiplier + 20 * girl.popularity;
 
     // rewards from orgasms
     fansWon = fansWon * (1 + 0.1 * orgasmCount);

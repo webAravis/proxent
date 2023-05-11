@@ -87,7 +87,7 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
 		}
 
 		let objectURL =
-			'http://proxentgame.com/medias/' +
+			'https://proxentgame.com/medias/' +
 			battleSetup.girl.name.toLowerCase() +
 			'/videos/record/' +
 			battleSetup.position.name +

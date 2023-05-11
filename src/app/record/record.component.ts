@@ -226,7 +226,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.currentPosition = position;
 
 		let objectURL =
-			'http://proxentgame.com/medias/' +
+			'https://proxentgame.com/medias/' +
 			this.girl.name.toLowerCase() +
 			'/videos/record/' +
 			position.name +
@@ -289,7 +289,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 		if (this.girl.orgasmLevel >= 100) {
 			let objectURL =
-				'http://proxentgame/medias/' +
+				'https://proxentgame.com/medias/' +
 				this.girl.name.toLowerCase() +
 				'/videos/record/orgasm.webm';
 			const blobDatas = this._cachingService.getVideo(this.girl.name, 'orgasm');
@@ -393,7 +393,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this._gameService.updateGolds(this.price * -1); // remove the record price
 
 		// rewards
-		this.xpWon = this.xpWon * this.xpmultiplier + 50 * this.girl.popularity;
+		this.xpWon = this.xpWon * this.xpmultiplier + 15 * this.girl.popularity;
 
 		// rewards from orgasms
 		this.xpWon = this.xpWon * (1 + 0.1 * this.orgasmCount);

@@ -95,7 +95,6 @@ export class RewardService {
 
     // hard caps from corruption level
     const maxXpCap = this.corruptionCaps[girl.corruption - 1];
-    console.log(maxXpCap);
     if (maxXpCap === undefined || girl.xp + xpWon <= maxXpCap) {
       const oldLevel = girl.level;
       girl.xp += xpWon;
