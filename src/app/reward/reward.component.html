@@ -45,18 +45,6 @@
 			{{ reward.girl.name }} has level up ! She is now lvl
 			{{ reward.girl.level }}
 		</div>
-		<div>
-			<video controls autoplay muted loop>
-				<source
-					[src]="
-						'./assets/' +
-						(reward.girl.name | lowercase) +
-						'/videos/levelup.webm'
-					"
-					type="video/mp4"
-				/>
-			</video>
-		</div>
 	</div>
 
   <div class="center" *ngIf="reward.msg">{{ reward.msg }}</div>

@@ -155,7 +155,7 @@ export class RecordService {
 
   getScoreExtra(trending: number, orgasm: number, repetitions: number): number {
     return (
-      Math.max(trending * 200, 1) * Math.max(orgasm, 1) + ( 1000 - (Math.abs(Math.max(repetitions, 1)) * 200))
+      Math.max(trending * 400, 1) * Math.max(orgasm, 1) + ( 1000 - (Math.abs(Math.max(repetitions, 1)) * 200))
     );
   }
 

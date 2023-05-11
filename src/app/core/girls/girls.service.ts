@@ -105,6 +105,17 @@ export class GirlsService {
 
 		allGirls.push(nikki);
 
+		const abella = new Girl();
+		abella.id = 7;
+		abella.name = 'Abella';
+		abella.freedom = 1;
+		abella.unlockPrice = [
+			{ type: 'gold', quantity: 20_000 },
+			{ type: 'recordmonthly_badge', quantity: 3 },
+		];
+
+		allGirls.push(abella);
+
     let toSave = this.initAttributes(allGirls);
 		this.gameGirls.next(toSave);
 	}
@@ -128,6 +139,9 @@ export class GirlsService {
           break;
         case 'Nikki':
           girl.attributes = ['blond', 'dark eyes', 'producer', 'euro'];
+          break;
+        case 'Abella':
+          girl.attributes = ['teen', 'brunette', 'dark eyes', 'natural boobs', 'american'];
           break;
       }
 

@@ -95,6 +95,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
 
     this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => {
       this.playerPhotos = photos.filter(photo => photo.girl.id === this.girl.id);
+      this.playerPhotos.sort((a, b) => a.corruptionLevel - b.corruptionLevel);
     });
   }
 
@@ -115,7 +116,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   get xpWon(): number {
-    return this.playedPhotos.length > 0 ? (50 + (100 * this.girl.popularity) + (100 * this.girl.level)) * this.combo : 0;
+    return this.playedPhotos.length > 0 ? (50 + (25 * this.girl.popularity) + (25 * this.girl.level)) * this.combo : 0;
   }
 
   isLocked(photo: PhotoShooting): boolean {

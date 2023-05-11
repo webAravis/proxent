@@ -329,10 +329,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	pickTrendingPosition(): void {
 		const availablePositions = this.girl.unlockedPostions.filter(
-			(position) => position !== this.trendingPosition
+			(position) => position !== this.trendingPosition && position !== 'intro'
 		);
-		this.trendingPosition =
-			availablePositions[Math.floor(Math.random() * availablePositions.length)];
+		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
+    console.log(this.trendingPosition);
 	}
 
 	positionRepeated(positionName: string): number {

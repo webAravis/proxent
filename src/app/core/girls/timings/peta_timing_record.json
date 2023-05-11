@@ -190,7 +190,7 @@
 		"gold": 350,
 		"fans": 600,
 
-		"timeout": 10000,
+		"timeout": 6000,
 
 		"stamcost": 275,
 		"orgasm": 60

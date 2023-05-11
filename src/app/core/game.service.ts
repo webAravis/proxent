@@ -6,8 +6,8 @@ import { DialogsService } from '../dialogs/dialogs.service';
 	providedIn: 'root',
 })
 export class GameService {
-	golds = 0;
-	goldChanged: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+	golds = 3000;
+	goldChanged: BehaviorSubject<number> = new BehaviorSubject<number>(3000);
 
 	day = 1;
 	dayChanged: BehaviorSubject<number> = new BehaviorSubject<number>(1);
