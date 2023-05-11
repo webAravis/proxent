@@ -6,13 +6,6 @@
 
   <div class="leaders-wrapper">
     <div class="leader" *ngFor="let leader of leaders">
-      <div class="badge">
-        <div class="placeholder" [class.glow]="hasTrophy(leader)"></div>
-        <img
-          *ngIf="hasTrophy(leader)"
-          [src]="'./assets/items/' + leader.name + '_trophy.png'"
-        />
-      </div>
       <div class="header-leader">
         {{ leader.name | titlecase }}
         <div class="subtitle">
