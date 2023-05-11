@@ -332,7 +332,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 			(position) => position !== this.trendingPosition && position !== 'intro'
 		);
 		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
-    console.log(this.trendingPosition);
 	}
 
 	positionRepeated(positionName: string): number {

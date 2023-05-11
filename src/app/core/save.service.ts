@@ -225,7 +225,6 @@ export class SaveService {
       );
     }
 
-    console.log(savedGame.inventory.items);
     if (savedGame.inventory.items) {
       const items: Item[] = [];
       for (const savedItem of savedGame.inventory.items) {
