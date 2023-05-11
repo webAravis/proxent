@@ -132,7 +132,7 @@ export class SaveService {
       leaders: leaders,
       playerPhotos: playerPhotos,
       lastSaved: new Date(),
-      version: '0.8.1'
+      version: '0.9.0'
     };
 
     let savedGames = this.saves;

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MediaGirl, DataMediaGirl } from './mediagirl.model';
 import { BehaviorSubject, Observable, finalize, of } from 'rxjs';
 import { PhotoShooting } from '../shooting/shooting.component';
-import { Position } from './position.model';
+import { ShootingService } from '../shooting/shooting.service';
 
 interface CacheMediaRequest {
 	girl: Girl;
@@ -30,7 +30,8 @@ export class CachingService {
 
 	constructor(
 		private _girlService: GirlsService,
-		private _httpClient: HttpClient
+		private _httpClient: HttpClient,
+    private _shootingService: ShootingService
 	) {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
@@ -167,14 +168,9 @@ export class CachingService {
 	}
 
 	async cachePhotos(girl: Girl): Promise<void> {
-    const photoDefModule = await import(`../shooting/photosdef/${girl.name.toLowerCase()}.json`);
-    if (photoDefModule === null || !photoDefModule.default) {
-      return;
-    }
-
-    const photoDef: PhotoShooting[] = photoDefModule.default;
+    const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(girl);
     for (const photo of photoDef) {
-      let url = this.isOnline ? 'https://proxentgame.com/medias/' : './assets/medias/';
+      let url = this.isOnline ? 'https://proxentgame.com/assets/medias/' : './assets/medias/';
       url +=
 					girl.name.toLowerCase() +
 					'/photos/' +
@@ -190,15 +186,10 @@ export class CachingService {
 	}
 
 	async cacheVideos(girl: Girl): Promise<void> {
-    const positionDefModule = await import(`./girls/timings/${girl.name.toLowerCase()}_timing_record.json`);
-    if (positionDefModule === null || !positionDefModule.default) {
-      return;
-    }
-
-    const positionDef: Position[] = positionDefModule.default;
+    const positionDef = this._girlService.getTimingRecord(girl);
 
 		for (const position of positionDef) {
-      let url = this.isOnline ? 'https://proxentgame.com/medias/' : './assets/medias/';
+      let url = this.isOnline ? 'https://proxentgame.com/assets/medias/' : './assets/medias/';
       url +=
 				girl.name.toLowerCase() +
 				'/videos/record/' +

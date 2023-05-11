@@ -246,12 +246,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   private async _initializePhotos(): Promise<void> {
-    const photoDefModule = await import(`./photosdef/${this.girl.name.toLowerCase()}.json`);
-    if (photoDefModule === null || !photoDefModule.default) {
-      return;
-    }
-
-    const photoDef: PhotoShooting[] = photoDefModule.default;
+    const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(this.girl);
     this.photoDef = photoDef;
     for (const photo of photoDef) {
       photo.url = this._getUrl(photo);

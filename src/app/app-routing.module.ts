@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './start/start.component';
 import { DashComponent } from './dash/dash.component';
 import { ShootingComponent } from './shooting/shooting.component';
@@ -60,7 +60,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { useHash: true })],
+	imports: [RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules})],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}
