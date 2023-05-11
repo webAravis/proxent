@@ -1,3 +1,4 @@
+import isOnline from 'is-online';
 import { Injectable } from '@angular/core';
 import { GirlsService } from './girls/girls.service';
 import { Girl } from './girls/girl.model';
@@ -25,11 +26,16 @@ export class CachingService {
 	loaded = 0;
 	loadedPercent: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
+  isOnline: boolean = false;
+
 	constructor(
 		private _girlService: GirlsService,
 		private _httpClient: HttpClient
 	) {
-		this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
+    isOnline().then((isOnline: boolean) => {
+      this.isOnline = isOnline;
+      this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
+    });
 	}
 
 	getProgress(type: string): number {
@@ -168,8 +174,8 @@ export class CachingService {
 
     const photoDef: PhotoShooting[] = photoDefModule.default;
     for (const photo of photoDef) {
-      const url =
-					'https://proxentgame.com/medias/' +
+      let url = this.isOnline ? 'https://proxentgame.com/medias/' : './assets/medias/';
+      url +=
 					girl.name.toLowerCase() +
 					'/photos/' +
 					photo.name +
@@ -191,24 +197,9 @@ export class CachingService {
 
     const positionDef: Position[] = positionDefModule.default;
 
-		// const positions = [
-		// 	'blowjob',
-		// 	'boobjob',
-		// 	'cowgirl',
-		// 	'doggy',
-		// 	'doggy2',
-		// 	'intro',
-		// 	'masturbate',
-		// 	'missionary',
-		// 	'orgasm',
-		// 	'reversecowgirl',
-		// 	'rub',
-		// 	'standing',
-		// 	'tease',
-		// ];
 		for (const position of positionDef) {
-			const url =
-				'https://proxentgame.com/medias/' +
+      let url = this.isOnline ? 'https://proxentgame.com/medias/' : './assets/medias/';
+      url +=
 				girl.name.toLowerCase() +
 				'/videos/record/' +
 				position.name +
