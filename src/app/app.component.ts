@@ -16,7 +16,6 @@ export class AppComponent {
 
 	constructor(
 		private _router: Router,
-		private _saveService: SaveService,
 		private _cachingService: CachingService
 	) {
 		this._router.navigate(['/']);
@@ -29,5 +28,7 @@ export class AppComponent {
 				}, 500);
 			}
 		});
+
+    this.ready = !this._cachingService.isOnline;
 	}
 }

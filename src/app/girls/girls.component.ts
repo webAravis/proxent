@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { FreedomService } from './freedom.service';
 import { CachingService } from '../core/caching.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { GameService } from '../core/game.service';
+import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-girls',
@@ -30,8 +30,7 @@ export class GirlsComponent implements OnInit, OnDestroy {
 		private _freedomService: FreedomService,
 		private _cachingService: CachingService,
 		private _gameService: GameService,
-		private _router: Router,
-		private _sanitizer: DomSanitizer
+		private _router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -70,17 +69,9 @@ export class GirlsComponent implements OnInit, OnDestroy {
 					}
 
 					for (const girl of girlPortraits) {
-						const blobDatas = this._cachingService.getPhoto(
-							girl.name,
-							'1_' + girl.corruptionName
-						);
-						if (blobDatas === undefined) {
-							continue;
-						}
-						const objectURL = URL.createObjectURL(blobDatas);
 						this.portraits.set(
 							girl.name,
-							this._sanitizer.bypassSecurityTrustUrl(objectURL)
+							this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName)
 						);
 					}
 

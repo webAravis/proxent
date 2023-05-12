@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { InventoryService } from '../inventory/inventory.service';
 import { Item } from '../inventory/item.model';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { Position } from '../core/position.model';
 
@@ -59,8 +59,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		private _rewardService: RewardService,
 		private _router: Router,
 		private _inventoryService: InventoryService,
-		private _cachingService: CachingService,
-		private _sanitizer: DomSanitizer
+		private _cachingService: CachingService
 	) {}
 
 	ngOnInit(): void {
@@ -69,19 +68,11 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			.subscribe((girl: Girl) => {
 				this.girl = girl;
 
-				const blobDatas = this._cachingService.getPhoto(
-					girl.name,
-					'1_' + girl.corruptionName
-				);
-				if (blobDatas === undefined) {
-					return;
-				}
-				const objectURL = URL.createObjectURL(blobDatas);
-				this.portrait = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+				this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
 
         const positions = this._girlsService.getTimingRecord(girl);
         if (positions) {
-          this.positionsDef = positions;
+          this.positionsDef = positions.filter(position => position.name !== 'intro');
         }
 			});
 		this._gameService.goldChanged
@@ -136,15 +127,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		if (this.positionRequirementsMet(position)) {
 			this.selectedPosition = position;
 
-			const blobDatas = this._cachingService.getVideo(
-				this.girl.name,
-				this.selectedPosition.name
-			);
-			if (blobDatas === undefined) {
-				return;
-			}
-			const objectURL = URL.createObjectURL(blobDatas);
-			this.corrupt = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+			this.corrupt = this._cachingService.getVideo(this.girl.name, this.selectedPosition.name);
 
 			const vid = <HTMLVideoElement>document.querySelector('#video-position');
 

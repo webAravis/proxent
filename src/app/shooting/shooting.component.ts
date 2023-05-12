@@ -6,7 +6,7 @@ import { RewardService } from '../reward/reward.service';
 import { Subject, takeUntil } from 'rxjs';
 import { GameService } from '../core/game.service';
 import { CachingService } from '../core/caching.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { ShootingService } from './shooting.service';
 import { NgxMasonryOptions } from 'ngx-masonry';
 
@@ -73,8 +73,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
     private _rewardService: RewardService,
     private _gameService: GameService,
     private _cachingService: CachingService,
-    private _shootingService: ShootingService,
-    private _sanitizer: DomSanitizer
+    private _shootingService: ShootingService
   ) { }
 
   ngOnInit(): void {
@@ -249,7 +248,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
     const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(this.girl);
     this.photoDef = photoDef;
     for (const photo of photoDef) {
-      photo.url = this._getUrl(photo);
+      photo.url = this._cachingService.getPhoto(this.girl.name, photo.name);
       photo.price = this._getPrice(photo);
       photo.golds = this._getGolds(photo);
       photo.fans = this._getFans(photo);
@@ -314,15 +313,5 @@ export class ShootingComponent implements OnInit, OnDestroy {
     }
 
     return modifier
-  }
-
-  private _getUrl(photo: PhotoShooting): SafeUrl {
-    const blobDatas = this._cachingService.getPhoto(this.girl.name, photo.name);
-    if (blobDatas) {
-      const objectURL = URL.createObjectURL(blobDatas);
-      return this._sanitizer.bypassSecurityTrustUrl(objectURL);
-    }
-
-    return this._sanitizer.bypassSecurityTrustUrl('https://proxentgame.com/medias/placeholder.jpg');
   }
 }

@@ -7,6 +7,7 @@ import { MediaGirl, DataMediaGirl } from './mediagirl.model';
 import { BehaviorSubject, Observable, finalize, of } from 'rxjs';
 import { PhotoShooting } from '../shooting/shooting.component';
 import { ShootingService } from '../shooting/shooting.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 interface CacheMediaRequest {
 	girl: Girl;
@@ -31,7 +32,8 @@ export class CachingService {
 	constructor(
 		private _girlService: GirlsService,
 		private _httpClient: HttpClient,
-    private _shootingService: ShootingService
+    private _shootingService: ShootingService,
+    private _sanitizer: DomSanitizer
 	) {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
@@ -55,24 +57,32 @@ export class CachingService {
 		return percent;
 	}
 
-	getPhoto(girlname: string, name: string): Blob | undefined {
+	getPhoto(girlname: string, name: string): SafeUrl {
+    let objectURL = '/assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg';
+
 		const girlMedia = this.medias.find((media) => media.girlname === girlname);
-		if (girlMedia === undefined) {
-			return new Blob();
+		if (girlMedia !== undefined) {
+      const girlPhoto = girlMedia.photos.find((photoMedia) => photoMedia.name === name)?.data;
+      if (girlPhoto !== undefined) {
+        objectURL = URL.createObjectURL(girlPhoto);
+      }
 		}
 
-		return girlMedia.photos.find((photoMedia) => photoMedia.name === name)
-			?.data;
+    return this._sanitizer.bypassSecurityTrustUrl(objectURL);
 	}
 
-	getVideo(girlname: string, name: string): Blob | undefined {
+	getVideo(girlname: string, name: string): SafeUrl {
+    let objectURL = '/assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm';
+
 		const girlMedia = this.medias.find((media) => media.girlname === girlname);
-		if (girlMedia === undefined) {
-			return new Blob();
+		if (girlMedia !== undefined) {
+      const girlVideo = girlMedia.videos.find((videoMedia) => videoMedia.name === name)?.data;
+      if (girlVideo !== undefined) {
+        objectURL = URL.createObjectURL(girlVideo);
+      }
 		}
 
-		return girlMedia.videos.find((videoMedia) => videoMedia.name === name)
-			?.data;
+    return this._sanitizer.bypassSecurityTrustUrl(objectURL);
 	}
 
 	getAllPhotos(girlname: string, corruptionName: string): Blob[] {
@@ -168,14 +178,17 @@ export class CachingService {
 	}
 
 	async cachePhotos(girl: Girl): Promise<void> {
+    if (!this.isOnline) {
+      return;
+    }
+
     const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(girl);
     for (const photo of photoDef) {
-      let url = this.isOnline ? 'https://proxentgame.com/assets/medias/' : './assets/medias/';
-      url +=
+      const url = 'https://proxentgame.com/assets/medias/' +
 					girl.name.toLowerCase() +
 					'/photos/' +
 					photo.name +
-					'.jpg';
+					'.jpg?v=0.9.1';
 				this.toLoad.push({
 					girl: girl,
 					type: photo.name.startsWith('1_normal') ? 'portrait' : 'photo',
@@ -186,15 +199,18 @@ export class CachingService {
 	}
 
 	async cacheVideos(girl: Girl): Promise<void> {
+    if (!this.isOnline) {
+      return;
+    }
+
     const positionDef = this._girlService.getTimingRecord(girl);
 
 		for (const position of positionDef) {
-      let url = this.isOnline ? 'https://proxentgame.com/assets/medias/' : './assets/medias/';
-      url +=
+      const url = 'https://proxentgame.com/assets/medias/' +
 				girl.name.toLowerCase() +
 				'/videos/record/' +
 				position.name +
-				'.webm';
+				'.webm?v=0.9.1';
 			this.toLoad.push({
 				girl: girl,
 				type: 'video',

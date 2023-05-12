@@ -41,8 +41,7 @@
 									"maximumError": "4gb"
 								}
 							],
-							"outputHashing": "all",
-              "namedChunks": true
+							"outputHashing": "all"
 						},
 						"development": {
 							"buildOptimizer": false,

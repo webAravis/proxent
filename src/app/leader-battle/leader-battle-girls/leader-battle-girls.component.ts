@@ -2,7 +2,7 @@ import { takeUntil, Subject } from 'rxjs';
 import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Girl } from 'src/app/core/girls/girl.model';
 import { GirlsService } from 'src/app/core/girls/girls.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from 'src/app/core/caching.service';
 import { EventEmitter } from '@angular/core';
 import { BattleSetup } from '../leader-battle.component';
@@ -31,8 +31,7 @@ export class LeaderBattleGirlsComponent implements OnInit, OnDestroy {
 
   constructor(
     private _girlService: GirlsService,
-    private _cachingService: CachingService,
-		private _sanitizer: DomSanitizer
+    private _cachingService: CachingService
   ) {}
 
   ngOnInit(): void {
@@ -41,17 +40,9 @@ export class LeaderBattleGirlsComponent implements OnInit, OnDestroy {
       this.girls = girls.filter((girl: Girl) => girl.id !== 1);
 
       for (const girl of this.girls) {
-        const blobDatas = this._cachingService.getPhoto(
-          girl.name,
-          '1_' + girl.corruptionName
-        );
-        if (blobDatas === undefined) {
-          continue;
-        }
-        const objectURL = URL.createObjectURL(blobDatas);
         this.portraits.set(
           girl.name,
-          this._sanitizer.bypassSecurityTrustUrl(objectURL)
+          this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName)
         );
       }
     });

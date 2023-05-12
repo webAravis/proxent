@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Leader } from '../leaders/leader.model';
 import { GameService } from '../core/game.service';
 import { Girl } from '../core/girls/girl.model';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { RewardService } from '../reward/reward.service';
 import { Position } from '../core/position.model';
@@ -38,7 +38,6 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     private _leaderService: LeadersService,
     private _gameService: GameService,
     private _cachingService: CachingService,
-    private _sanitizer: DomSanitizer,
     private _rewardService: RewardService,
     private _router: Router
   ) { }
@@ -86,20 +85,7 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
 			return;
 		}
 
-		let objectURL =
-			'https://proxentgame.com/medias/' +
-			battleSetup.girl.name.toLowerCase() +
-			'/videos/record/' +
-			battleSetup.position.name +
-			'.webm';
-		const blobDatas = this._cachingService.getVideo(
-			battleSetup.girl.name,
-			battleSetup.position.name
-		);
-		if (blobDatas !== undefined) {
-			objectURL = URL.createObjectURL(blobDatas);
-		}
-		this.recordUrl = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+    this.recordUrl = this._cachingService.getVideo(battleSetup.girl.name, battleSetup.position.name);
 
     this.vid.load();
 		this.vid.play();

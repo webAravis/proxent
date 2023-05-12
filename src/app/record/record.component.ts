@@ -8,7 +8,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { Item } from '../inventory/item.model';
 import { RecordService } from './record.service';
 import { Record } from './record.model';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { StudioService } from '../studio/studio.service';
 import { Position } from '../core/position.model';
@@ -79,7 +79,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 		private _rewardService: RewardService,
 		private _recordService: RecordService,
 		private _cachingService: CachingService,
-		private _sanitizer: DomSanitizer,
 		private _studioService: StudioService,
 		private _router: Router
 	) {}
@@ -93,15 +92,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 					this._router.navigate(['girls']);
 				}
 
-				const blobDatas = this._cachingService.getPhoto(
-					girl.name,
-					'1_' + girl.corruptionName
-				);
-				if (blobDatas === undefined) {
-					return;
-				}
-				const objectURL = URL.createObjectURL(blobDatas);
-				this.portrait = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+				this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
 
         const positions = this._girlsService.getTimingRecord(girl);
         if (positions) {
@@ -225,20 +216,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.showPositions = false;
 		this.currentPosition = position;
 
-		let objectURL =
-			'https://proxentgame.com/medias/' +
-			this.girl.name.toLowerCase() +
-			'/videos/record/' +
-			position.name +
-			'.webm';
-		const blobDatas = this._cachingService.getVideo(
-			this.girl.name,
-			position.name
-		);
-		if (blobDatas !== undefined) {
-			objectURL = URL.createObjectURL(blobDatas);
-		}
-		this.recordUrl = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+		this.recordUrl = this._cachingService.getVideo(this.girl.name, position.name);
 
 		this.vid.load();
 		this.vid.play().then(() => {
@@ -288,15 +266,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.girl.orgasmLevel += this.currentPosition?.orgasm ?? 0;
 
 		if (this.girl.orgasmLevel >= 100) {
-			let objectURL =
-				'https://proxentgame.com/medias/' +
-				this.girl.name.toLowerCase() +
-				'/videos/record/orgasm.webm';
-			const blobDatas = this._cachingService.getVideo(this.girl.name, 'orgasm');
-			if (blobDatas !== undefined) {
-				objectURL = URL.createObjectURL(blobDatas);
-			}
-			this.recordUrl = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+			this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
 
 			this.vid.load();
 			this.vid.play();
