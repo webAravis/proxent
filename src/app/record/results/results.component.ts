@@ -13,6 +13,7 @@ export class ResultsComponent {
 	@Input() extra = 318;
 	@Input() score = 1220;
 	@Input() grade = 'S';
+	@Input() freedom = 1;
 
 	@Output() finish: EventEmitter<void> = new EventEmitter();
 

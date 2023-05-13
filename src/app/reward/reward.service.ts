@@ -40,9 +40,9 @@ export class RewardService {
     corruptionWon: number,
     girl: Girl
   ): Girl {
-    fansWon = Math.round(fansWon);
-    xpWon = Math.round(xpWon);
-    moneyWon = Math.round(moneyWon);
+    fansWon = Math.round(fansWon * (1 - girl.freedom));
+    xpWon = Math.round(xpWon * (1 - girl.freedom));
+    moneyWon = Math.round(moneyWon * (1 - girl.freedom));
 
     girl.corruption += corruptionWon;
     girl.fans += fansWon;

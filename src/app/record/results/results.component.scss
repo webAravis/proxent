@@ -56,11 +56,21 @@
 			padding: 7.5px 15px;
 			display: flex;
 			justify-content: space-between;
+      position: relative;
 
 			& > div {
 				color: white;
 				font-size: 40px;
 			}
+
+      .girl-freedom-reduction {
+        position: absolute;
+        font-size: 13px;
+        font-weight: bold;
+        right: 15px;
+        bottom: 0;
+        color: red;
+      }
 		}
 	}
 }

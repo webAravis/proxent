@@ -123,7 +123,8 @@ export class RecordService {
         trendingPositions,
         orgasmCount,
         repetitions,
-        studioQuality
+        studioQuality,
+        false
       );
       record.studioscore = this.getScoreStudio(studioQuality);
       record.money = this.getMoney(girl, positionsPlayed, orgasmCount);
@@ -139,7 +140,8 @@ export class RecordService {
     trendingPositions: number,
     orgasmCount: number,
     repetitions: number,
-    studioQuality: number
+    studioQuality: number,
+    isPlayer: boolean = true
   ): number {
     let score = 0;
 
@@ -149,6 +151,10 @@ export class RecordService {
       this.getScoreGirl(girl) +
       this.getScoreStudio(studioQuality) +
       this.getScoreExtra(trendingPositions, orgasmCount, repetitions);
+
+    if (isPlayer) {
+      score = score * (1 - girl.freedom);
+    }
 
     return Math.round(score);
   }

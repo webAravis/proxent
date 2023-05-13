@@ -28,7 +28,10 @@
 
 		<div class="total-score">
 			<div class="label">Total Record Score</div>
-			<div class="value">{{ score | number : '1.0-0' }}</div>
+			<div class="value">
+        {{ score | number : '1.0-0' }}
+      </div>
+      <div class="girl-freedom-reduction">Reduced by girl independency (-{{ freedom * 100 }}%)</div>
 		</div>
 	</div>
 
