@@ -17,7 +17,7 @@ export class GameService {
 	yearChanged: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
 	dayTicker: NodeJS.Timer | undefined;
-	msDayTicker = 3500;
+	msDayTicker = 2000;
 
 	dialogsStarted: boolean[] = [false, false, false];
 	isPaused = true;

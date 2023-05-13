@@ -1251,7 +1251,7 @@ export class GirlsService {
         },
         {
           "name": "missionary",
-          "corruption": 6,
+          "corruption": 5,
           "timing": [],
 
           "xp": 100,
@@ -1265,7 +1265,7 @@ export class GirlsService {
         },
         {
           "name": "doggy",
-          "corruption": 8,
+          "corruption": 5,
           "timing": [],
 
           "xp": 100,
@@ -1293,7 +1293,7 @@ export class GirlsService {
         },
         {
           "name": "doggy2",
-          "corruption": 6,
+          "corruption": 7,
           "timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
 
           "xp": 100,
@@ -1307,7 +1307,7 @@ export class GirlsService {
         },
         {
           "name": "cowgirl2",
-          "corruption": 9,
+          "corruption": 8,
           "timing": [1500, 2000, 2500, 3000, 3600, 4300, 4800, 5400, 6000, 6500],
 
           "xp": 150,
