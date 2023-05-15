@@ -47,8 +47,13 @@ export class SaveService {
       golds > 0 ? this.saveGame() : undefined
     );
 
-    const allSaves = localStorage.getItem('saveGame') ?? btoa('[]');
-    const savesObject = JSON.parse(atob(allSaves));
+    let allSaves = localStorage.getItem('saveGame') ?? btoa('[]');
+    allSaves = atob(allSaves);
+
+    // fix wrong property names
+    allSaves = allSaves.replaceAll('unlockedPostions', 'unlockedPositions');
+
+    const savesObject = JSON.parse(allSaves);
     this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
     this.saveIndex = this.saves.length;
   }
@@ -62,7 +67,11 @@ export class SaveService {
       return false;
     }
 
-    const savedGame = JSON.parse(atob(save));
+    save = atob(save);
+
+    // fix wrong property names
+    save = save.replaceAll('unlockedPostions', 'unlockedPositions');
+    const savedGame = JSON.parse(save);
     if (!(typeof savedGame === 'object') || !Object.keys(savedGame).includes('game')) {
       return false;
     }

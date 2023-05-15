@@ -16,7 +16,7 @@ export class Girl {
 	skill = 1;
 	fitness = 1;
 
-	unlockedPostions: string[] = ['tease'];
+	unlockedPositions: string[] = ['tease'];
   attributes: string[] = [];
 	freedom = 1;
 	recordCount = 0;
@@ -38,10 +38,6 @@ export class Girl {
 
 	set popularity(value: number) {
 		this.fans = value;
-	}
-
-	get stamina(): number {
-		return 100 + this.level * 40;
 	}
 
 	get corruptionName(): string {

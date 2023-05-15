@@ -75,7 +75,7 @@ export class RecordService {
       let trendingPosition = '';
       let orgasmLevel = 0;
       for (let index = 0; index < girl.corruption; index++) {
-        let positionsPool = girl.unlockedPostions;
+        let positionsPool = girl.unlockedPositions;
         if (allPositions) {
           positionsPool = positions.map((oPosition) => oPosition.name);
         }
@@ -110,7 +110,7 @@ export class RecordService {
           repetitions++;
         }
 
-        orgasmLevel += pickedPosition.orgasm;
+        orgasmLevel += pickedPosition.getOrgasm(Math.floor(Math.random() * (100 - 0 + 1)) + 0, 1);
         if (orgasmLevel >= 100) {
           orgasmCount++;
           orgasmLevel = 0;
@@ -127,8 +127,8 @@ export class RecordService {
         false
       );
       record.studioscore = this.getScoreStudio(studioQuality);
-      record.money = this.getMoney(girl, positionsPlayed, orgasmCount);
-      record.fans = this.getFans(girl, positionsPlayed, orgasmCount);
+      record.money = this.getMoney(positionsPlayed, orgasmCount);
+      record.fans = this.getFans(positionsPlayed, orgasmCount);
 
       this.recordSimulated.next(record);
     }
@@ -174,18 +174,14 @@ export class RecordService {
   }
 
   getMoney(
-    girl: Girl,
     positionsPlayed: Position[],
-    orgasmCount: number,
-    multiplier = 1
+    orgasmCount: number
   ): number {
     let goldsWon = 0;
 
     for (const position of positionsPlayed) {
-      goldsWon += position.gold;
+      goldsWon += position.getGold(1);
     }
-
-    goldsWon = goldsWon * multiplier + 15 * girl.popularity;
 
     // rewards from orgasms
     goldsWon = goldsWon * (1 + 0.1 * orgasmCount);
@@ -194,18 +190,14 @@ export class RecordService {
   }
 
   getFans(
-    girl: Girl,
     positionsPlayed: Position[],
-    orgasmCount: number,
-    multiplier = 1
+    orgasmCount: number
   ): number {
     let fansWon = 0;
 
     for (const position of positionsPlayed) {
-      fansWon += position.fans;
+      fansWon += position.getFans(1);
     }
-
-    fansWon = fansWon * multiplier + 20 * girl.popularity;
 
     // rewards from orgasms
     fansWon = fansWon * (1 + 0.1 * orgasmCount);
@@ -217,7 +209,7 @@ export class RecordService {
     let score = 0;
 
     for (const position of positionsPlayed) {
-      score += position.fans;
+      score += position.getFans(1);
     }
 
     return score * positionsPlayed.length;

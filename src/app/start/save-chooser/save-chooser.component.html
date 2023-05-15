@@ -14,7 +14,7 @@
       <div class="stats">
         <div>#{{index}}</div>
         <div>{{save.girls.length-1}} Girls</div>
-        <div class="with-icon">{{save.game.golds}}<img src="./assets/golds.png" /></div>
+        <div class="with-icon">{{save.game.golds | number : '1.0-0'}}<img src="./assets/golds.png" /></div>
       </div>
       <div class="lastsaved">
         <div class="date">{{ save.lastSaved ? (save.lastSaved|date:'short') : 'unknown date' }}</div>

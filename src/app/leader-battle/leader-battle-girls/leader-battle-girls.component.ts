@@ -64,7 +64,7 @@ export class LeaderBattleGirlsComponent implements OnInit, OnDestroy {
   chooseGirl(girl: Girl): void {
     const positions = this._girlService.getTimingRecord(girl);
     if (positions) {
-      this.positions = positions.filter((position: Position) => girl.unlockedPostions.includes(position.name));
+      this.positions = positions.filter((position: Position) => girl.unlockedPositions.includes(position.name));
     }
 
     this.selectedGirl = girl;

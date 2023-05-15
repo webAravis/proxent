@@ -11,7 +11,7 @@ import { Record } from './record.model';
 import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { StudioService } from '../studio/studio.service';
-import { Position } from '../core/position.model';
+import { Position, PositionType } from '../core/position.model';
 
 @Component({
 	selector: 'app-record',
@@ -19,6 +19,7 @@ import { Position } from '../core/position.model';
 	styleUrls: ['./record.component.scss'],
 })
 export class RecordComponent implements OnInit, OnDestroy {
+  PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
 	timeoutscene: NodeJS.Timeout[] = [];
 
@@ -34,24 +35,12 @@ export class RecordComponent implements OnInit, OnDestroy {
 	showPositions = false;
 	showSkipButton = false;
 
-	sceneDuration = 0;
-	comboWrapperTranslateX = 0;
-	comboBtns: number[] = [];
-	intervalTranslateX: NodeJS.Timer | undefined;
-	comboMessage: Subject<string> = new Subject();
-	comboText = '';
-	displayComboText = false;
-
 	positions: Position[] = [];
 	currentPosition: Position | undefined;
 	positionsPlayed: Position[] = [];
 	trendingPosition = '';
 
 	nbScenes = 0;
-
-	xpmultiplier = 1;
-	goldmultiplier = 1;
-	fansmultiplier = 1;
 
 	goldsWon = 0;
 	fansWon = 0;
@@ -66,10 +55,15 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	simulations: Record[] = [];
 
-	staminaUsed = 0;
+	bonner = 1; // starts at 1 to reset to 0 when playing intro
 	orgasmCount = 0;
 	trendingPositions = 0;
 	repetitions = 0;
+
+  nbCombos = 2;
+  comboBtns: { coordX: string; coordY: string; }[] = [];
+  hitted = 0;
+  comboMessage = false;
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
@@ -104,19 +98,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((gold: number) => (this.golds = gold));
 		this.golds = this._gameService.golds;
-
-		this.comboMessage
-			.pipe(takeUntil(this._unsubscribeAll))
-			.subscribe((message: string) => {
-				this.comboText = message;
-				this.displayComboText = true;
-				setTimeout(() => {
-					this.displayComboText = false;
-				}, 100);
-				setTimeout(() => {
-					this.comboText = '';
-				}, 500);
-			});
 
 		this._gameService.pauseGame();
 	}
@@ -208,10 +189,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.positionsPlayed.push(position);
 		if (this.trendingPosition === position.name) {
 			this.trendingPositions++;
-			this.fansmultiplier = Math.round(this.fansmultiplier * 1.2 * 100) / 100;
 		}
 
-		this.staminaUsed += position.stamcost;
+		this.bonner += position.bonner;
+    this.bonner = Math.max(this.bonner, 0);
 
 		this.showPositions = false;
 		this.currentPosition = position;
@@ -222,7 +203,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.vid.play().then(() => {
 			this.showSkipButton = true;
 
-			this._initCombos(position.timing, position.timeout);
+			this._initCombos(position);
 
 			this.timeoutscene.push(
 				setTimeout(() => {
@@ -230,8 +211,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 				}, position.timeout)
 			);
 		});
-
-		this.fansmultiplier += Math.round(0.01 * this.girl.popularity * 100) / 100;
 
 		const positionPlayedTimes = this.positionsPlayed.filter(
 			(positionPlayed) => position.name === positionPlayed.name
@@ -245,16 +224,12 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.repetitions++;
 		}
 
-		this.goldsWon += Math.round(position.gold * repeatedMultiplier);
-		this.xpWon += Math.round(position.xp * repeatedMultiplier);
-		this.fansWon += Math.round(position.fans * repeatedMultiplier);
+		this.goldsWon += Math.round(position.getGold(this.trendingMultiplier(position)) * repeatedMultiplier);
+		this.xpWon += Math.round(position.getXp(this.trendingMultiplier(position)) * repeatedMultiplier);
+		this.fansWon += Math.round(position.getFans(this.trendingMultiplier(position)) * repeatedMultiplier);
 	}
 
 	endScene(): void {
-		clearInterval(this.intervalTranslateX);
-		this.comboBtns = [];
-		this.comboWrapperTranslateX = 0;
-
 		if (this.timeoutscene.length > 0) {
 			for (const timeout of this.timeoutscene) {
 				clearTimeout(timeout);
@@ -263,7 +238,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.timeoutscene = [];
 
 		this.showSkipButton = false;
-		this.girl.orgasmLevel += this.currentPosition?.orgasm ?? 0;
+		this.girl.orgasmLevel += this.currentPosition?.getOrgasm(this.bonner, this.trendingMultiplier(this.currentPosition)) ?? 0;
 
 		if (this.girl.orgasmLevel >= 100) {
 			this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
@@ -276,7 +251,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
 			this.orgasmCount += nbOrgasm;
 
-			this.staminaUsed -= 250;
+			this.bonner -= 50;
 
       for (let i = 0; i < nbOrgasm; i++) {
         this.itemsWon.push(
@@ -298,11 +273,15 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	pickTrendingPosition(): void {
-		const availablePositions = this.girl.unlockedPostions.filter(
+		const availablePositions = this.girl.unlockedPositions.filter(
 			(position) => position !== this.trendingPosition && position !== 'intro'
 		);
 		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
 	}
+
+  trendingMultiplier(position: Position): number {
+    return this.trendingPosition === position.name ? 4 : 1;
+  }
 
 	positionRepeated(positionName: string): number {
 		return this.positionsPlayed.filter(
@@ -310,74 +289,19 @@ export class RecordComponent implements OnInit, OnDestroy {
 		).length;
 	}
 
-	comboHit(): void {
-		const inPerfectRange = this.comboBtns.some((comboButton: number) =>
-			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 170)
-		);
-		const inGoodRange = this.comboBtns.some((comboButton: number) =>
-			this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 200)
-		);
-
-		this.comboMessage.next(
-			inPerfectRange ? 'perfect' : inGoodRange ? 'good' : 'miss'
-		);
-		const hitMultiplier = inPerfectRange ? 1 : inGoodRange ? 0.5 : -0.5;
-
-    if (inPerfectRange) {
-      this.girl.orgasmLevel += 10;
-    }
-
-    // remove nearest combo
-    if (inPerfectRange) {
-      let seenCombo = false;
-      this.comboBtns = this.comboBtns.filter((comboButton: number) => {
-          if (seenCombo) {
-              return true;
-          }
-          seenCombo = this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 170);
-          return !seenCombo;
-      });
-    } else if (inGoodRange) {
-      let seenCombo = false;
-      this.comboBtns = this.comboBtns.filter((comboButton: number) => {
-          if (seenCombo) {
-              return true;
-          }
-          seenCombo = this._nearInt(Math.abs(this.comboWrapperTranslateX), comboButton, 200);
-          return !seenCombo;
-      });
-    }
-
-		if (this.currentPosition && this.currentPosition.name !== '') {
-			// multiply by the current position's combo multiplier
-			this.xpmultiplier += (0.25 / this.currentPosition.timing.length) * hitMultiplier;
-			this.goldmultiplier += (0.4 / this.currentPosition.timing.length) * hitMultiplier;
-
-      this.xpmultiplier = Math.max(this.xpmultiplier, .1);
-      this.goldmultiplier = Math.max(this.goldmultiplier, .1);
-		}
-	}
-
 	endRecord(): void {
 		this._gameService.updateGolds(this.price * -1); // remove the record price
-
-		// rewards
-		this.xpWon = this.xpWon * this.xpmultiplier + 15 * this.girl.popularity;
 
 		// rewards from orgasms
 		this.xpWon = this.xpWon * (1 + 0.1 * this.orgasmCount);
 
 		this.goldsWon = this._recordService.getMoney(
-			this.girl,
 			this.positionsPlayed,
-			this.orgasmCount,
-			this.goldmultiplier
+			this.orgasmCount
 		);
 		this.fansWon = this._recordService.getFans(
-			this.girl,
 			this.positionsPlayed,
-			this.orgasmCount,
-			this.goldmultiplier
+			this.orgasmCount
 		);
 
 		// save record
@@ -443,32 +367,68 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	isAllowed(positionName: string): boolean {
-		return this.girl.unlockedPostions.includes(positionName);
+		return this.girl.unlockedPositions.includes(positionName);
 	}
 
-	private _initCombos(timings: number[], timeout: number): void {
-		if (timings.length > 0) {
-			this.comboBtns = timings;
+	comboHit(event: MouseEvent): void {
 
-			this.sceneDuration = timeout;
-			this.intervalTranslateX = setInterval(() => {
-				this.comboWrapperTranslateX -=
-					this.sceneDuration / (this.sceneDuration / 5);
-			}, 5);
+    if (event.target) {
+      let targetElement = <HTMLElement> event.target;
+      if (targetElement.tagName.toUpperCase() !== 'DIV') {
+        targetElement = targetElement.closest('.combo-btn') ?? <HTMLElement> event.target;
+      }
 
-      // slowdown on combo hit
-      // for (const comboHit of this.comboBtns) {
-      //   setTimeout(() => {
-      //     this.vid.playbackRate = 0.5;
-      //     setTimeout(() => {
-      //       this.vid.playbackRate = 1;
-      //     }, 200);
-      //   }, comboHit-200);
-      // }
-		}
+      targetElement.classList.add("animate__bounceOut");
+      targetElement.outerHTML = targetElement.outerHTML;
+
+      this.hitted++;
+      if (this.hitted === this.nbCombos && this.currentPosition !== undefined && this.currentPosition.unlocker !== undefined) {
+        this.nbCombos++;
+
+        this.comboMessage = true;
+        setTimeout(() => {
+          this.comboMessage = false;
+        }, 500);
+
+        // automatically plays next scene!
+        this.endScene();
+        this.startScene(this.currentPosition.unlocker);
+      }
+    }
+
 	}
 
-	private _nearInt(op: number, target: number, range: number) {
-		return op < target + range && op > target - range;
+  private _closestAncestor(el: any, selector: any, stopSelector: any) {
+    var retval = null;
+    while (el) {
+      if (el.matches(selector)) {
+        retval = el;
+        break
+      } else if (stopSelector && el.matches(stopSelector)) {
+        break
+      }
+      el = el.parentElement;
+    }
+    return retval;
+  }
+
+	private _initCombos(position: Position): void {
+    this.comboBtns = [];
+    this.hitted = 0;
+
+    if (position.unlocker !== undefined) {
+
+      for (let index = 1; index <= this.nbCombos; index++) {
+        setTimeout(() => {
+          this.comboBtns.push({
+            coordX: Math.random() * (75 - 25) + 25 + 'vw',
+            coordY: Math.random() * (75 - 25) + 25 + 'vh',
+          });
+        }, index * (Math.random() * (1500 - 500) + 500));
+      }
+
+    } else {
+      this.nbCombos = 2;
+    }
 	}
 }

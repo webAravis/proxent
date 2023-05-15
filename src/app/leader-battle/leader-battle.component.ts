@@ -103,7 +103,7 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     const bonusFromAttributes = 1 + (0.5 * battleSetup.girl.attributes.filter((girlAttrib: string) => this.leader.bonus.includes(girlAttrib)).length);
     const malusFromAttributes = Math.max(1 - (0.3 * battleSetup.girl.attributes.filter((girlAttrib: string) => this.leader.malus.includes(girlAttrib)).length), 0.1);
 
-    this.scorePositions.push((Math.round(battleSetup.position.fans * scoreGirl * bonusFromAttributes * malusFromAttributes)));
+    this.scorePositions.push((Math.round(battleSetup.position.getFans(1) * scoreGirl * bonusFromAttributes * malusFromAttributes)));
   }
 
   private _endScene() : void {
