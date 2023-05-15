@@ -435,7 +435,7 @@ export class RecordComponent implements OnInit, OnDestroy {
             coordX: Math.random() * (75 - 25) + 25 + 'vw',
             coordY: Math.random() * (75 - 25) + 25 + 'vh',
           });
-        }, index * (Math.random() * (1500 - 500) + 500));
+        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (position.timeout - 1000)));
       }
 
     } else {
