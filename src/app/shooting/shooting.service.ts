@@ -91,7 +91,7 @@ export class ShootingService {
         {"name": "1_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bedroom", "outfit": "lingerie", "body": ["face", "boobs", "legs", "butt", "feet"], "format": "portrait"}},
         {"name": "2_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bedroom", "outfit": "naked", "body": ["butt", "legs", "feet"], "format": "4:3"}},
         {"name": "3_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bathroom", "outfit": "lingerie", "body": ["face", "boobs"], "format": "portrait"}},
-        {"name": "4_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "lingerie", "body": ["butt", "legs", "feet"], "format": "portrait"}},
+        {"name": "4_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "naked", "body": ["face", "boobs", "tits"], "format": "4:3"}},
         {"name": "5_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "living", "outfit": "lingerie", "body": ["face", "legs", "butt", "feet"], "format": "portrait"}},
         {"name": "6_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "bedroom", "outfit": "BDSM", "body": ["face", "boobs", "legs"], "format": "4:3"}},
         {"name": "7_slutty", "corruptionLevel": 4, "attributes": {"type": "slutty", "place": "kitchen", "outfit": "sports", "body": ["butt", "legs", "feet"], "format": "4:3"}},
