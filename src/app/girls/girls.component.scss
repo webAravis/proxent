@@ -1,3 +1,5 @@
+@import '../../_screensize.scss';
+
 .background {
 	position: fixed;
 	z-index: -1;
@@ -5,14 +7,16 @@
 }
 
 .selector {
-	position: fixed;
-	bottom: 150px;
-	width: 100%;
+  position: fixed;
+  display: flex;
+  bottom: 150px;
+  width: 100%;
+  justify-content: end;
 }
 
 .header {
 	position: fixed;
-	top: 8vh;
+	top: 15px;
 	color: white;
 	left: 2vw;
 	text-transform: uppercase;
@@ -32,6 +36,10 @@
 		color: white;
 		margin-top: 70px;
     position: relative;
+
+    @media screen and (max-width: $medium-desktop) {
+      margin-top: 0;
+    }
 
     .attributes {
       display: flex;

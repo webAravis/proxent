@@ -29,7 +29,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 	@Output() girlUnlocked = new EventEmitter<Girl>();
 
 	clickAgain = 0;
-  girlLimitReached = false;
+  girlLimit = 0;
 
 	private _scroller: HTMLElement = document.createElement('div');
   private _unsubscribeAll: Subject<boolean> = new Subject();
@@ -40,7 +40,9 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 	) {}
 
   ngOnInit(): void {
-    this._gameService.girlLimit.pipe(takeUntil(this._unsubscribeAll)).subscribe((girlLimit: number) => this.girlLimitReached = this.girls.length-1 >= girlLimit);
+    this._gameService.girlLimit.pipe(takeUntil(this._unsubscribeAll)).subscribe((girlLimit: number) => {
+      this.girlLimit = girlLimit;
+    });
   }
 
   ngOnDestroy(): void {
@@ -60,6 +62,10 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 			this.selectGirl(this.selectedGirl);
 		}
 	}
+
+  get girlLimitReached(): boolean {
+    return this.girls.length-1 >= this.girlLimit;
+  }
 
 	onWheel(event: WheelEvent): void {
 		event.preventDefault();
@@ -137,5 +143,6 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 
 		this.clickAgain = 0;
 		this.girlUnlocked.emit(girl);
+
 	}
 }

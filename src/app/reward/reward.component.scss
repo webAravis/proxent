@@ -10,6 +10,7 @@
 
 	padding: 15px 45px 45px;
 	transition: top 0.2s;
+  width: max-content;
 
 	&.show {
 		top: 50%;
@@ -18,7 +19,7 @@
 
 	.reward-header {
 		font-weight: bold;
-		font-size: 35px;
+		font-size: 25px;
 		text-align: center;
 		margin-bottom: 15px;
 	}

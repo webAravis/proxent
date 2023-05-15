@@ -1208,20 +1208,6 @@ export class GirlsService {
           "orgasm": 10
         },
         {
-          "name": "spank",
-          "corruption": 3,
-          "timing": [],
-
-          "xp": 100,
-          "gold": 140,
-          "fans": 180,
-
-          "timeout": 10000,
-
-          "stamcost": 100,
-          "orgasm": 10
-        },
-        {
           "name": "masturbate",
           "corruption": 2,
           "timing": [],
@@ -1233,6 +1219,20 @@ export class GirlsService {
           "timeout": 7000,
 
           "stamcost": 0,
+          "orgasm": 10
+        },
+        {
+          "name": "spank",
+          "corruption": 3,
+          "timing": [],
+
+          "xp": 100,
+          "gold": 140,
+          "fans": 180,
+
+          "timeout": 10000,
+
+          "stamcost": 100,
           "orgasm": 10
         },
         {

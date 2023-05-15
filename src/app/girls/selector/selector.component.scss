@@ -1,7 +1,7 @@
 .scrollview {
-	width: 100%;
-	overflow-x: auto;
-	transform: translateX(-300px);
+  width: calc(100vw + 400px);
+  overflow-x: auto;
+  flex-shrink: 0;
 }
 
 .wrapper {

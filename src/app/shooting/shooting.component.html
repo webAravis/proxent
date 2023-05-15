@@ -100,9 +100,12 @@
         <span class="with-icon green">+{{ fansWon | number : '1.0-0' }}<img width="30" src="./assets/fans.png" /></span>
       </div>
     </div>
+  </div>
+
+  <div class="result" *ngIf="played">
+
     <div class="played-card">
       <div class="header">Photo</div>
-      <div class="placeholder" *ngIf="usePhoto === ''">Please select a photo to submit</div>
       <div class="played-photo" *ngIf="usePhoto !== '' && this.playedPhotos[this.playedPhotos.length -1]">
         <img [src]="this.playedPhotos[this.playedPhotos.length -1].url" />
         <div class="attributes">
@@ -113,10 +116,11 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="actions" *ngIf="played">
-    <button class="btn animate__bounceIn animate__animated" (click)="endShooting()">End photoshoot</button>
-    <button [disabled]="availablePhotos() === 0" class="btn animate__bounceIn animate__animated" (click)="newCustomerRequest()">Ask for new request</button>
+    <div class="actions">
+      <button class="btn animate__bounceIn animate__animated" (click)="endShooting()">End photoshoot</button>
+      <button [disabled]="availablePhotos() === 0" class="btn animate__bounceIn animate__animated" (click)="newCustomerRequest()">Ask for new request</button>
+    </div>
+
   </div>
 </div>

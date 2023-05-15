@@ -1,19 +1,17 @@
 .wrapper {
-	background: rgba(60,60,60, 0.8);
-	color: white;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: fit-content;
-	border-radius: 45px;
-	padding: 5px 45px;
-	font-size: 20px;
-
-	position: absolute;
-	top: 15px;
-	left: 50%;
-	transform: translateX(-50%);
-	gap: 15px;
+  background: rgba(60, 60, 60, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  border-radius: 45px 0 0 45px;
+  padding: 5px 15px 5px 45px;
+  font-size: 20px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  gap: 15px;
 
 	.with-icon {
 		display: flex;

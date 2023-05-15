@@ -1,6 +1,8 @@
+@import '../../_screensize.scss';
+
 .header {
 	position: fixed;
-	top: 8vh;
+	top: 15px;
 	color: white;
 	left: 2vw;
 	text-transform: uppercase;
@@ -12,9 +14,9 @@
 
 .wrapper {
 	position: fixed;
-	top: 150px;
-	width: 100%;
-	height: calc(100vh - 300px);
+  top: 90px;
+  width: 100%;
+  height: calc(100vh - 220px);
 	display: flex;
 	align-items: start;
 	justify-content: center;
@@ -23,7 +25,7 @@
 
   .masonry {
     width: 100%;
-    height: calc(100vh - 300px);
+    height: 100%;
     overflow-y: auto;
     padding-left: 15px;
 
@@ -174,9 +176,13 @@
   }
 
   .request {
-    width: 600px;
+    width: 250px;
     flex-shrink: 0;
     flex-grow: 0;
+
+    @media screen and (max-width: $medium-desktop) {
+      width: 265px;
+    }
 
     .header {
       position: relative;
@@ -199,6 +205,13 @@
       display: flex;
       gap: 15px;
       justify-content: space-evenly;
+      flex-direction: column;
+      align-items: center;
+
+      @media screen and (max-width: $medium-desktop) {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
 
       .attribute {
 				border: 2px solid red;
@@ -239,7 +252,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 35px;
+        gap: 12px;
 
         & > span {
           display: flex;
@@ -248,53 +261,47 @@
       }
     }
 
-    .played-card {
-      height: 260px;
-
-      .placeholder {
-        background: rgba(0,0,0,0.8);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 25px;
-        height: 100%;
-      }
-
-      .played-photo {
-        height: 100%;
-        display: block;
-        margin: 0 auto;
-
-        img {
-          height: calc(100% - 30px);
-        }
-
-        .attributes {
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-          margin-top: 5px;
-        }
-      }
-    }
-
   }
 }
 
-.actions {
-  position: absolute;
+.result {position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: -40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 0;
   background: rgba(0,0,0,0.6);
-  gap: 15px;
 
-  button {
-    font-size: 25px;
+  .played-card {
+    height: calc(100% - 150px);
+    text-align: center;
+    margin: 35px auto;
+
+    .played-photo {
+      height: 100%;
+      display: block;
+      margin: 0 auto;
+
+      img {
+        height: calc(100% - 30px);
+      }
+
+      .attributes {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    button {
+      font-size: 25px;
+    }
   }
 }
