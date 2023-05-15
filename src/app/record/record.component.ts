@@ -6,7 +6,7 @@ import { RewardService } from '../reward/reward.service';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Item } from '../inventory/item.model';
-import { RecordService } from './record.service';
+import { PlayedPosition, RecordService } from './record.service';
 import { Record } from './record.model';
 import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
@@ -37,7 +37,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	positions: Position[] = [];
 	currentPosition: Position | undefined;
-	positionsPlayed: Position[] = [];
+	positionsPlayed: PlayedPosition[] = [];
 	trendingPosition = '';
 
 	nbScenes = 0;
@@ -58,7 +58,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 	bonner = 1; // starts at 1 to reset to 0 when playing intro
 	orgasmCount = 0;
 	trendingPositions = 0;
-	repetitions = 0;
 
   nbCombos = 2;
   comboBtns: { coordX: string; coordY: string; }[] = [];
@@ -121,9 +120,9 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.state = 'recording';
 
 		// simulate records to know grade
-		this._recordService.recordSimulated.subscribe((record: Record) =>
-			this.simulations.push(record)
-		);
+		this._recordService.recordSimulated.subscribe((record: Record) => {
+			this.simulations.push(record);
+		});
 		this._recordService.simulateRecord(
 			this.girl,
 			'',
@@ -184,15 +183,15 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.startScene(this.positions[0]);
 	}
 
-	startScene(position: Position): void {
-		this.nbScenes++;
-		this.positionsPlayed.push(position);
-		if (this.trendingPosition === position.name) {
+	startScene(position: Position, isCombo: boolean = false): void {
+    let positionName = position.name;
+    if (isCombo) {
+      positionName = positionName.substring(0, positionName.length -1 );
+    }
+
+		if (this.trendingPosition === positionName) {
 			this.trendingPositions++;
 		}
-
-		this.bonner += position.bonner;
-    this.bonner = Math.max(this.bonner, 0);
 
 		this.showPositions = false;
 		this.currentPosition = position;
@@ -212,35 +211,62 @@ export class RecordComponent implements OnInit, OnDestroy {
 			);
 		});
 
-		const positionPlayedTimes = this.positionsPlayed.filter(
-			(positionPlayed) => position.name === positionPlayed.name
-		);
+		const positionPlayedTimes = this.positionRepeated(position.name);
 		let repeatedMultiplier = 1;
-		for (let index = 1; index < positionPlayedTimes.length; index++) {
+		for (let index = 1; index < positionPlayedTimes; index++) {
 			repeatedMultiplier = repeatedMultiplier / 1.2;
 		}
 
-		if (positionPlayedTimes.length > 1) {
-			this.repetitions++;
-		}
+    const positionStats = this.positionStats(position);
+		this.goldsWon += positionStats.golds;
+		this.xpWon += positionStats.xp;
+		this.fansWon += positionStats.fans;
+		this.girl.orgasmLevel += positionStats.orgasm;
 
-		this.goldsWon += Math.round(position.getGold(this.trendingMultiplier(position)) * repeatedMultiplier);
-		this.xpWon += Math.round(position.getXp(this.trendingMultiplier(position)) * repeatedMultiplier);
-		this.fansWon += Math.round(position.getFans(this.trendingMultiplier(position)) * repeatedMultiplier);
+    if (!isCombo) {
+      this.nbScenes++;
+      this.bonner += positionStats.bonner;
+      this.bonner = Math.max(this.bonner, 0);
+      this.bonner = Math.min(this.bonner, 100);
+    }
+
+		this.positionsPlayed.push({
+      position: position,
+      fans: positionStats.fans,
+      golds: positionStats.golds
+    });
 	}
 
-	endScene(): void {
+  positionStats(position: Position, nextPosition: boolean = false): {golds: number, xp: number, fans: number, bonner: number, orgasm: number} {
+		let positionPlayedTimes = this.positionRepeated(position.name);
+    if (nextPosition) {
+      positionPlayedTimes++;
+    }
+		let repeatedMultiplier = 1;
+		for (let index = 1; index < positionPlayedTimes; index++) {
+			repeatedMultiplier = repeatedMultiplier / 1.2;
+		}
+
+    return {
+      golds: Math.round(position.getGold(this.trendingMultiplier(position)) * repeatedMultiplier),
+      xp: Math.round(position.getXp(this.trendingMultiplier(position)) * repeatedMultiplier),
+      fans: Math.round(position.getFans(this.trendingMultiplier(position)) * repeatedMultiplier),
+      bonner: Math.round(position.bonner * repeatedMultiplier),
+      orgasm: position.getOrgasm(this.bonner, this.trendingMultiplier(position))
+    }
+  }
+
+	endScene(isCombo: boolean = false): void {
+
 		if (this.timeoutscene.length > 0) {
 			for (const timeout of this.timeoutscene) {
 				clearTimeout(timeout);
 			}
 		}
 		this.timeoutscene = [];
-
 		this.showSkipButton = false;
-		this.girl.orgasmLevel += this.currentPosition?.getOrgasm(this.bonner, this.trendingMultiplier(this.currentPosition)) ?? 0;
 
-		if (this.girl.orgasmLevel >= 100) {
+		if (this.girl.orgasmLevel >= 100 && !isCombo) {
 			this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
 
 			this.vid.load();
@@ -263,46 +289,47 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.vid.pause();
 		}
 
-		// time to change position or end of recording based on corruption!
-		if (this.nbScenes >= this.girl.corruption) {
-			this.endRecord();
-		} else {
-			this.showPositions = true;
-			this.pickTrendingPosition();
-		}
+    if (!isCombo) {
+      // time to change position or end of recording based on corruption!
+      if (this.nbScenes >= this.girl.corruption) {
+        this.endRecord();
+      } else {
+        this.showPositions = true;
+        this.pickTrendingPosition();
+      }
+    }
+
 	}
 
 	pickTrendingPosition(): void {
 		const availablePositions = this.girl.unlockedPositions.filter(
-			(position) => position !== this.trendingPosition && position !== 'intro'
+			(position) => position !== this.trendingPosition && position !== 'intro' && isNaN(parseInt(position.charAt(position.length - 1)))
 		);
 		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
 	}
 
   trendingMultiplier(position: Position): number {
-    return this.trendingPosition === position.name ? 4 : 1;
+    let multiplier = 0;
+    let positionName = position.name;
+    const comboPositionNumber = parseInt(positionName.charAt(positionName.length - 1));
+    if (!isNaN(comboPositionNumber)) {
+      positionName = positionName.substring(0, positionName.length -1 );
+      multiplier += comboPositionNumber;
+    }
+
+    multiplier += this.trendingPosition === positionName ? 4 : 1;
+
+    return multiplier;
   }
 
 	positionRepeated(positionName: string): number {
 		return this.positionsPlayed.filter(
-			(positionPlayed) => positionName === positionPlayed.name
+			(positionPlayed) => positionName === positionPlayed.position.name
 		).length;
 	}
 
 	endRecord(): void {
 		this._gameService.updateGolds(this.price * -1); // remove the record price
-
-		// rewards from orgasms
-		this.xpWon = this.xpWon * (1 + 0.1 * this.orgasmCount);
-
-		this.goldsWon = this._recordService.getMoney(
-			this.positionsPlayed,
-			this.orgasmCount
-		);
-		this.fansWon = this._recordService.getFans(
-			this.positionsPlayed,
-			this.orgasmCount
-		);
 
 		// save record
 		this.score = this._recordService.getScore(
@@ -310,7 +337,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.positionsPlayed,
 			this.trendingPositions,
 			this.orgasmCount,
-			this.repetitions,
 			this._studioService.getStudioQuality()
 		);
 		this.scorePositions = this._recordService.getScorePositions(
@@ -322,8 +348,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		);
 		this.scoreExtra = this._recordService.getScoreExtra(
 			this.trendingPositions,
-			this.orgasmCount,
-			this.repetitions
+			this.orgasmCount
 		);
 
 		this.record = this._recordService.addRecord(
@@ -391,32 +416,18 @@ export class RecordComponent implements OnInit, OnDestroy {
         }, 500);
 
         // automatically plays next scene!
-        this.endScene();
-        this.startScene(this.currentPosition.unlocker);
+        this.endScene(true);
+        this.startScene(this.currentPosition.unlocker, true);
       }
     }
 
 	}
 
-  private _closestAncestor(el: any, selector: any, stopSelector: any) {
-    var retval = null;
-    while (el) {
-      if (el.matches(selector)) {
-        retval = el;
-        break
-      } else if (stopSelector && el.matches(stopSelector)) {
-        break
-      }
-      el = el.parentElement;
-    }
-    return retval;
-  }
-
 	private _initCombos(position: Position): void {
     this.comboBtns = [];
     this.hitted = 0;
 
-    if (position.unlocker !== undefined) {
+    if (position.unlocker !== undefined && this.girl.unlockedPositions.includes(position.unlocker.name)) {
 
       for (let index = 1; index <= this.nbCombos; index++) {
         setTimeout(() => {

@@ -1,7 +1,8 @@
 export enum PositionType {
   INTRO = 0,
   FOREPLAY = 1,
-  PENETRATION = 10
+  PENETRATION = 10,
+  FETISH = 15
 }
 
 export class Position {

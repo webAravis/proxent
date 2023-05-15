@@ -94,24 +94,24 @@
 	</ng-container>
 </div>
 
-<ng-template #tooltip let-positiondef="positiondef">
+<ng-template #tooltip let-position="positiondef">
 	<div class="tooltip">
 		<div class="tooltip-wrapper">
-			<div class="red with-icon">
-				-{{ positiondef.stamcost }} <img src="./assets/stamina.png" />
-			</div>
-			<div class="green with-icon">
-				+{{ positiondef.xp }} <img src="./assets/experience.png" />
-			</div>
-			<div class="green with-icon">
-				+{{ positiondef.gold }} <img src="./assets/golds.png" />
-			</div>
-			<div class="green with-icon">
-				+{{ positiondef.fans }} <img src="./assets/fans.png" />
-			</div>
-			<div class="green with-icon">
-				+{{ positiondef.orgasm }} <img src="./assets/items/cum.png" />
-			</div>
+      <div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
+        {{ position.bonner }} <img src="./assets/stamina.png" />
+      </div>
+      <div class="green with-icon">
+        +{{ position.getXp(1) | number : '1.0-0' }} <img src="./assets/experience.png" />
+      </div>
+      <div class="green with-icon">
+        +{{ position.getGold(1) | number : '1.0-0' }} <img src="./assets/golds.png" />
+      </div>
+      <div class="green with-icon">
+        +{{ position.getFans(1) | number : '1.0-0' }} <img src="./assets/fans.png" />
+      </div>
+      <div class="green with-icon">
+        +{{ position.getOrgasm(100, 1) }} <img src="./assets/items/cum.png" />
+      </div>
 		</div>
 	</div>
 </ng-template>

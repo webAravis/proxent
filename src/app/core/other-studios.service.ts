@@ -19,7 +19,7 @@ export class OtherStudiosService {
 		private _recordService: RecordService,
 		private _gameService: GameService
 	) {
-		setInterval(() => this.tryRecording(), 30_000);
+		setInterval(() => this.tryRecording(), 15_000);
 
 		const studios = [];
 		studios.push(
@@ -65,9 +65,7 @@ export class OtherStudiosService {
 				studioToAdd.records.push(record);
 
 				const girlRecorded = record.girl;
-				const playerGirls = this._girlsService.playerGirls
-					.getValue()
-					.filter((girl: Girl) => girl.name !== 'Yiny');
+				const playerGirls = this._girlsService.playerGirls.getValue();
 
 				const girlToSave = playerGirls.find(
 					(playerGirl: Girl) => playerGirl.id === girlRecorded.id
@@ -86,12 +84,8 @@ export class OtherStudiosService {
 		if (this._gameService.isPaused) {
 			return;
 		}
-		let girls = this._girlsService.gameGirls
-			.getValue()
-			.filter((girl: Girl) => girl.name !== 'Yiny');
-		const playerGirls = this._girlsService.playerGirls
-			.getValue()
-			.filter((girl: Girl) => girl.name !== 'Yiny');
+		let girls = this._girlsService.gameGirls.getValue();
+		const playerGirls = this._girlsService.playerGirls.getValue();
 
 		const studios = this.studios.getValue();
 		if (studios.length === 0) {
@@ -148,8 +142,9 @@ export class OtherStudiosService {
 		girls: Girl[],
 		playerGirls: Girl[]
 	): Girl | undefined {
+    let availableGirls = [...girls.filter((girl: Girl) => !playerGirls.some((playerGirl: Girl) => girl.id === playerGirl.id)), ...playerGirls];
 		const girlsAccepted: Girl[] = [];
-		for (const girl of girls) {
+		for (const girl of availableGirls) {
 			if (
 				this._willAccept(studio) &&
 				this._girlIsIndependant(girl, playerGirls)

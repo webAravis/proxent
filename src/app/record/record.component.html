@@ -82,25 +82,13 @@
 					<span class="badge-btn">{{
 						positionRepeated(position.name) === 0 ? 'New' : 'Repeat!'
 					}}</span>
-					<div class="tooltip">
-						<div class="tooltip-wrapper">
-							<div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
-								{{ position.bonner }} <img src="./assets/stamina.png" />
-							</div>
-							<div class="green with-icon">
-								+{{ position.getXp(trendingMultiplier(position)) | number : '1.0-0' }} <img src="./assets/experience.png" />
-							</div>
-							<div class="green with-icon">
-								+{{ position.getGold(trendingMultiplier(position)) | number : '1.0-0' }} <img src="./assets/golds.png" />
-							</div>
-							<div class="green with-icon">
-								+{{ position.getFans(trendingMultiplier(position)) | number : '1.0-0' }} <img src="./assets/fans.png" />
-							</div>
-							<div class="green with-icon">
-								+{{ position.getOrgasm(bonner, trendingMultiplier(position)) }} <img src="./assets/items/cum.png" />
-							</div>
-						</div>
-					</div>
+
+          <ng-container
+							*ngTemplateOutlet="
+								tooltip;
+								context: { positionstats: positionStats(position, true) }
+							"
+						></ng-container>
 				</button>
 			</ng-container>
 		</div>
@@ -112,7 +100,7 @@
 			<button class="btn" (click)="endScene()">Skip scene</button>
 		</div>
 
-    <!-- <ng-container *ngIf="!showPositions"> -->
+    <ng-container *ngIf="!showPositions">
       <div (click)="comboHit($event)" class="animate__bounceIn animate__animated animate__faster combo-btn btn" [style.left]="btn.coordX" [style.top]="btn.coordY" *ngFor="let btn of comboBtns">
         <svg width="45pt" height="45pt" version="1.1" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
@@ -185,7 +173,7 @@
           </g>
          </svg>
       </div>
-    <!-- </ng-container> -->
+    </ng-container>
 
     <div class="combo-message animate__animated animate__fadeOutUp animate__fadeInUp" *ngIf="comboMessage">Great!</div>
 	</ng-container>
@@ -204,3 +192,26 @@
 		></app-results>
 	</ng-container>
 </div>
+
+
+<ng-template #tooltip let-position="positionstats">
+	<div class="tooltip">
+		<div class="tooltip-wrapper">
+      <div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
+        {{ position.bonner }} <img src="./assets/stamina.png" />
+      </div>
+      <div [class.red]="position.xp < 0" [class.green]="position.xp > 0" class="with-icon">
+        +{{ position.xp | number : '1.0-0' }} <img src="./assets/experience.png" />
+      </div>
+      <div [class.red]="position.golds < 0" [class.green]="position.golds > 0" class="with-icon">
+        +{{ position.golds | number : '1.0-0' }} <img src="./assets/golds.png" />
+      </div>
+      <div [class.red]="position.fans < 0" [class.green]="position.fans > 0" class="with-icon">
+        +{{ position.fans | number : '1.0-0' }} <img src="./assets/fans.png" />
+      </div>
+      <div [class.red]="position.orgasm < 0" [class.green]="position.orgasm > 0" class="with-icon">
+        +{{ position.orgasm }} <img src="./assets/items/cum.png" />
+      </div>
+		</div>
+	</div>
+</ng-template>

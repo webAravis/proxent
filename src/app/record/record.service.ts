@@ -6,6 +6,12 @@ import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { Position } from '../core/position.model';
 
+export interface PlayedPosition {
+  position: Position,
+  fans: number,
+  golds: number
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -67,10 +73,9 @@ export class RecordService {
       record.year = this._gameService.year;
       record.name = girl.name + ' - #' + (recordCount + 1);
 
-      const positionsPlayed: Position[] = [];
+      const positionsPlayed: PlayedPosition[] = [];
       let trendingPositions = 0;
       let orgasmCount = 0;
-      let repetitions = 0;
 
       let trendingPosition = '';
       let orgasmLevel = 0;
@@ -98,17 +103,25 @@ export class RecordService {
           continue;
         }
 
-        positionsPlayed.push(pickedPosition);
-        if (pickedPosition.name === trendingPosition) {
-          trendingPositions++;
+        const positionPlayedTimes = positionsPlayed.filter(
+          (positionPlayed) => pickedPosition.name === positionPlayed.position.name
+        ).length;
+        let repeatedMultiplier = 1;
+        for (let index = 1; index < positionPlayedTimes; index++) {
+          repeatedMultiplier = repeatedMultiplier / 1.2;
         }
 
-        const positionPlayedTimes = positionsPlayed.filter(
-          (positionPlayed) => pickedPosition.name === positionPlayed.name
-        );
-        if (positionPlayedTimes.length > 1) {
-          repetitions++;
+        let trendingMultiplier = 1;
+        if (pickedPosition.name === trendingPosition) {
+          trendingPositions++;
+          trendingMultiplier = 4;
         }
+
+        positionsPlayed.push({
+          position: pickedPosition,
+          golds: Math.round(pickedPosition.getGold(trendingMultiplier) * repeatedMultiplier),
+          fans: Math.round(pickedPosition.getFans(trendingMultiplier) * repeatedMultiplier)
+        });
 
         orgasmLevel += pickedPosition.getOrgasm(Math.floor(Math.random() * (100 - 0 + 1)) + 0, 1);
         if (orgasmLevel >= 100) {
@@ -122,24 +135,30 @@ export class RecordService {
         positionsPlayed,
         trendingPositions,
         orgasmCount,
-        repetitions,
         studioQuality,
         false
       );
       record.studioscore = this.getScoreStudio(studioQuality);
-      record.money = this.getMoney(positionsPlayed, orgasmCount);
-      record.fans = this.getFans(positionsPlayed, orgasmCount);
+      record.money = this.getMoney(positionsPlayed);
+      record.fans = this.getFans(positionsPlayed);
 
       this.recordSimulated.next(record);
     }
   }
 
+  getMoney(positionsPlayed: PlayedPosition[]): number {
+    return positionsPlayed.map((position: PlayedPosition) => position.golds).reduce((sum, current) => sum + current);
+  }
+
+  getFans(positionsPlayed: PlayedPosition[]): number {
+    return positionsPlayed.map((position: PlayedPosition) => position.fans).reduce((sum, current) => sum + current);
+  }
+
   getScore(
     girl: Girl,
-    positionsPlayed: Position[],
+    positionsPlayed: PlayedPosition[],
     trendingPositions: number,
     orgasmCount: number,
-    repetitions: number,
     studioQuality: number,
     isPlayer: boolean = true
   ): number {
@@ -150,7 +169,7 @@ export class RecordService {
       this.getScorePositions(positionsPlayed) +
       this.getScoreGirl(girl) +
       this.getScoreStudio(studioQuality) +
-      this.getScoreExtra(trendingPositions, orgasmCount, repetitions);
+      this.getScoreExtra(trendingPositions, orgasmCount);
 
     if (isPlayer) {
       score = score * (1 - girl.freedom);
@@ -159,9 +178,9 @@ export class RecordService {
     return Math.round(score);
   }
 
-  getScoreExtra(trending: number, orgasm: number, repetitions: number): number {
+  getScoreExtra(trending: number, orgasm: number): number {
     return (
-      Math.max(trending * 400, 1) * Math.max(orgasm, 1) + ( 1000 - (Math.abs(Math.max(repetitions, 1)) * 200))
+      Math.max(trending * 400, 1) * Math.max(orgasm, 1)
     );
   }
 
@@ -173,43 +192,11 @@ export class RecordService {
     return Math.max(girl.popularity, 1) * Math.max(girl.level, 1);
   }
 
-  getMoney(
-    positionsPlayed: Position[],
-    orgasmCount: number
-  ): number {
-    let goldsWon = 0;
-
-    for (const position of positionsPlayed) {
-      goldsWon += position.getGold(1);
-    }
-
-    // rewards from orgasms
-    goldsWon = goldsWon * (1 + 0.1 * orgasmCount);
-
-    return goldsWon;
-  }
-
-  getFans(
-    positionsPlayed: Position[],
-    orgasmCount: number
-  ): number {
-    let fansWon = 0;
-
-    for (const position of positionsPlayed) {
-      fansWon += position.getFans(1);
-    }
-
-    // rewards from orgasms
-    fansWon = fansWon * (1 + 0.1 * orgasmCount);
-
-    return fansWon;
-  }
-
-  getScorePositions(positionsPlayed: Position[]): number {
+  getScorePositions(positionsPlayed: PlayedPosition[]): number {
     let score = 0;
 
     for (const position of positionsPlayed) {
-      score += position.getFans(1);
+      score += position.fans;
     }
 
     return score * positionsPlayed.length;

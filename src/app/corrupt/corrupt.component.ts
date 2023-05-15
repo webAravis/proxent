@@ -22,7 +22,26 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	items: Item[] = [];
 
 	priceGrid: number[] = [
-		100, 500, 2000, 4500, 6000, 8000, 12_000, 15_000, 19_000, 25_000,
+		100,
+    500,
+    2000,
+    4500,
+    6000,
+    8000,
+    12_000,
+    15_000,
+    19_000,
+    25_000,
+    28_000,
+    32_000,
+    48_000,
+    55_000,
+    62_000,
+    72_000,
+    90_000,
+    125_000,
+    160_000,
+    190_000,
 	];
 
 	itemsGrid: { itemName: string; quantity: number }[] = [
@@ -30,12 +49,22 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		{ itemName: 'cum', quantity: 6 },
 		{ itemName: 'cum', quantity: 7 },
 		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
-		{ itemName: 'cum', quantity: 8 },
+		{ itemName: 'cum', quantity: 9 },
+		{ itemName: 'cum', quantity: 10 },
+		{ itemName: 'cum', quantity: 11 },
+		{ itemName: 'cum', quantity: 12 },
+		{ itemName: 'cum', quantity: 13 },
+		{ itemName: 'cum', quantity: 14 },
+		{ itemName: 'cum', quantity: 15 },
+		{ itemName: 'cum', quantity: 16 },
+		{ itemName: 'cum', quantity: 17 },
+		{ itemName: 'cum', quantity: 18 },
+		{ itemName: 'cum', quantity: 19 },
+		{ itemName: 'cum', quantity: 20 },
+		{ itemName: 'cum', quantity: 21 },
+		{ itemName: 'cum', quantity: 22 },
+		{ itemName: 'cum', quantity: 23 },
+		{ itemName: 'cum', quantity: 24 },
 	];
 
 	portrait: SafeUrl = '';
@@ -73,6 +102,17 @@ export class CorruptComponent implements OnInit, OnDestroy {
         const positions = this._girlsService.getTimingRecord(girl);
         if (positions) {
           this.positionsDef = positions.filter(position => position.name !== 'intro');
+
+          const comboPositions: Position[] = [];
+          for (const position of this.positionsDef) {
+            let currentPosition = position;
+            while (this.girl.unlockedPositions.includes(currentPosition.name) && currentPosition.unlocker !== undefined) {
+              comboPositions.push(currentPosition.unlocker);
+              currentPosition = currentPosition.unlocker;
+            }
+          }
+
+          this.positionsDef = [...this.positionsDef, ...comboPositions];
         }
 			});
 		this._gameService.goldChanged
