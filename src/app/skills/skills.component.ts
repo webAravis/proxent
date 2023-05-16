@@ -30,9 +30,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((treeSkills: TreeSkills[]) => {
         this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === this._girlService.currentGirl.getValue().id);
-        console.log('skills', this.treeSkills);
       });
-
 
     this._gameService.goldChanged
       .pipe(takeUntil(this._unsubscribeAll))

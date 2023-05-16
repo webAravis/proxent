@@ -78,8 +78,7 @@ export class GirlsService {
           "corruption": 3,
           "timeout": 10000,
 
-          "type": PositionType.FOREPLAY,
-          "unlocker": undefined
+          "type": PositionType.FOREPLAY
         }),
         new Position({
           "name": "blowjob",
@@ -88,7 +87,38 @@ export class GirlsService {
           "timeout": 7000,
 
           "type": PositionType.FOREPLAY,
-          "unlocker": undefined
+          "unlocker": new Position({
+            "name": "blowjob2",
+            "label": "Blowjob 2",
+            "corruption": 4,
+            "timeout": 5000,
+
+            "type": PositionType.FOREPLAY_SKILL,
+            "unlocker": new Position({
+              "name": "blowjob3",
+              "label": "Blowjob 3",
+              "corruption": 5,
+              "timeout": 10000,
+
+              "type": PositionType.FOREPLAY_SKILL,
+              "unlocker": new Position({
+                "name": "blowjob4",
+                "label": "Blowjob 4",
+                "corruption": 6,
+                "timeout": 10000,
+
+                "type": PositionType.FOREPLAY_SKILL,
+                "unlocker": new Position({
+                  "name": "blowjob5",
+                  "label": "Blowjob 5",
+                  "corruption": 7,
+                  "timeout": 5000,
+
+                  "type": PositionType.FOREPLAY_SKILL
+                })
+              })
+            })
+          })
         }),
         new Position({
           "name": "missionary",
@@ -206,6 +236,16 @@ export class GirlsService {
               "unlocker": undefined
             })
           })
+        }),
+
+        ///////////////////// SPECIALS //////////////////////
+        new Position({
+          "name": "anal",
+          "label": "Anal",
+          "timeout": 5000,
+          "corruption": 15,
+
+          "type": PositionType.SPECIAL,
         })
       ]
       },

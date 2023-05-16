@@ -1,8 +1,10 @@
 export enum PositionType {
   INTRO = 0,
   FOREPLAY = 1,
+  FOREPLAY_SKILL = 2,
   PENETRATION = 10,
-  FETISH = 15
+  SKILL = 15,
+  SPECIAL = 20,
 }
 
 export class Position {
@@ -31,19 +33,19 @@ export class Position {
   }
 
   getOrgasm(currentBonner: number = 0, trending: number = 1): number {
-    return Math.round(this.multiplierDuration * (this.type === PositionType.FOREPLAY ? 0 : (40 + this.corruption * 10) * (currentBonner / 100)) * (trending / 2));
+    return Math.round(this.multiplierDuration * (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (40 + this.corruption * 10) * (currentBonner / 100)) * (trending / 2));
   }
 
   get bonner(): number {
     let bonner = Math.round(
       this.multiplierDuration * (
-        this.type === PositionType.FOREPLAY ?
+        this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ?
           (this.corruption + 1) * 8 :
           this.corruption * 3
         )
     );
     bonner = Math.min(bonner, 100);
-    const revert = this.type === PositionType.FOREPLAY ? 1 : -1;
+    const revert = this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 1 : -1;
 
     return bonner * revert;
   }

@@ -22,11 +22,12 @@ body {
 }
 
 .btn {
+	border-radius: 6px;
 	box-shadow: inset 0px 1px 0px 0px #f29c93;
 	background: linear-gradient(to bottom, #e51b22 5%, #ce0100 100%);
 	background-color: #e51b22;
-	border-radius: 6px;
 	border: 1px solid #d83526;
+	text-shadow: 0px 1px 0px #b23e35;
 	display: inline-block;
 	cursor: pointer;
 	color: #ffffff;
@@ -35,7 +36,6 @@ body {
 	font-weight: bold;
 	padding: 6px 24px;
 	text-decoration: none;
-	text-shadow: 0px 1px 0px #b23e35;
 	position: relative;
 
 	user-select: none;
@@ -50,6 +50,19 @@ body {
 		right: 2px;
 		font-size: 9px;
 	}
+
+  &.special {
+    box-shadow: inset 0px 1px 0px 0px #ac93f2;
+    background: linear-gradient(to bottom, #731be5 5%, #5900ce 100%);
+    background-color: #731be5;
+    border: 1px solid #9126d8;
+    text-shadow: 0px 1px 0px #8635b2;
+
+    &:hover{
+      background: linear-gradient(to bottom, #5900ce 5%, #731be5 100%);
+      background-color: #5900ce;
+    }
+  }
 
 	&:hover {
 		background: linear-gradient(to bottom, #ce0100 5%, #e51b22 100%);
@@ -117,6 +130,11 @@ body {
 	cursor: not-allowed;
 	background: linear-gradient(to bottom, #e1484d 5%, #e67878 100%);
 	background-color: #d4989a;
+
+  &.special {
+    background: linear-gradient(to bottom, #8f48e1 5%, #9478e6 100%);
+    background-color: #b498d4;
+  }
 }
 
 .disabled {

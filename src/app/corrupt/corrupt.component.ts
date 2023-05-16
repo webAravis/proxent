@@ -9,7 +9,7 @@ import { InventoryService } from '../inventory/inventory.service';
 import { Item } from '../inventory/item.model';
 import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
-import { Position } from '../core/position.model';
+import { Position, PositionType } from '../core/position.model';
 
 @Component({
 	selector: 'app-corrupt',
@@ -101,12 +101,12 @@ export class CorruptComponent implements OnInit, OnDestroy {
 
         const positions = this._girlsService.getTimingRecord(girl);
         if (positions) {
-          this.positionsDef = positions.filter(position => position.name !== 'intro');
+          this.positionsDef = positions.filter(position => !this._prohibitedType(position));
 
           const comboPositions: Position[] = [];
           for (const position of this.positionsDef) {
             let currentPosition = position;
-            while (this.girl.unlockedPositions.includes(currentPosition.name) && currentPosition.unlocker !== undefined) {
+            while (this.girl.unlockedPositions.includes(currentPosition.name) && currentPosition.unlocker !== undefined && !this._prohibitedType(currentPosition.unlocker)) {
               comboPositions.push(currentPosition.unlocker);
               currentPosition = currentPosition.unlocker;
             }
@@ -256,4 +256,8 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			(x) => !this.girl.unlockedPositions.includes(x.name)
 		);
 	}
+
+  private _prohibitedType(position: Position): boolean {
+    return position.type === PositionType.INTRO || position.type === PositionType.SKILL || position.type === PositionType.FOREPLAY_SKILL || position.type === PositionType.SPECIAL
+  }
 }

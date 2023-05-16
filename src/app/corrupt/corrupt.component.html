@@ -52,7 +52,7 @@
 					(click)="selectPosition(position)"
 					[class.selected]="selectedPosition.name === position.name"
 					[class.disabled]="!positionRequirementsMet(position)"
-					class="btn"
+					class="btn has-tooltip"
 				>
 					{{ position.label }}
 					<span class="badge-btn">{{

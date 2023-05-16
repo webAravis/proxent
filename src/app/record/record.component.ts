@@ -12,6 +12,8 @@ import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { StudioService } from '../studio/studio.service';
 import { Position, PositionType } from '../core/position.model';
+import { SkillsService } from '../skills/skills.service';
+import { TreeSkills } from '../skills/treeskills.model';
 
 @Component({
 	selector: 'app-record',
@@ -64,6 +66,9 @@ export class RecordComponent implements OnInit, OnDestroy {
   hitted = 0;
   comboMessage = false;
 
+  treeSkills: TreeSkills[] = [];
+  sceneSkills: string[] = [];
+
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
@@ -73,6 +78,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 		private _recordService: RecordService,
 		private _cachingService: CachingService,
 		private _studioService: StudioService,
+    private _skillService: SkillsService,
+    private _girlService: GirlsService,
 		private _router: Router
 	) {}
 
@@ -89,9 +96,45 @@ export class RecordComponent implements OnInit, OnDestroy {
 
         const positions = this._girlsService.getTimingRecord(girl);
         if (positions) {
-          this.positions = positions;
+          this.positions = [...this.positions, ...positions];
         }
 			});
+
+
+    this._skillService.treeSkills
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((treeSkills: TreeSkills[]) => {
+        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === this._girlService.currentGirl.getValue().id);
+        for (const treeSkill of this.treeSkills) {
+          for (const skillTiers of treeSkill.skillTiers) {
+            for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
+              console.log('skill unlocked', skill);
+              if (skill.effects.length >= skill.level) {
+                for (const effects of skill.effects[skill.level-1]) {
+                  console.log('skill effects to apply', effects);
+                  switch (effects.stat) {
+                    case 'scene':
+                      const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
+
+                      if (!isNaN(sceneRank)) {
+                        const sceneName = effects.value.slice(0, -2).toLowerCase();
+                        for (let index = sceneRank; index > 1; index--) {
+                          this.sceneSkills.push(sceneName + index);
+                        }
+                        this.sceneSkills.push(sceneName);
+                      } else {
+                        this.sceneSkills.push(effects.value.toLowerCase());
+                      }
+                      break;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        console.log('scene skills', this.sceneSkills);
+      });
 
 		this._gameService.goldChanged
 			.pipe(takeUntil(this._unsubscribeAll))
@@ -223,11 +266,12 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.fansWon += positionStats.fans;
 		this.girl.orgasmLevel += positionStats.orgasm;
 
+    this.bonner += positionStats.bonner;
+    this.bonner = Math.max(this.bonner, 0);
+    this.bonner = Math.min(this.bonner, 100);
+
     if (!isCombo) {
       this.nbScenes++;
-      this.bonner += positionStats.bonner;
-      this.bonner = Math.max(this.bonner, 0);
-      this.bonner = Math.min(this.bonner, 100);
     }
 
 		this.positionsPlayed.push({
@@ -392,7 +436,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	isAllowed(positionName: string): boolean {
-		return this.girl.unlockedPositions.includes(positionName);
+		return this.girl.unlockedPositions.includes(positionName) || this.sceneSkills.includes(positionName);
 	}
 
 	comboHit(event: MouseEvent): void {
@@ -432,7 +476,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     this.comboBtns = [];
     this.hitted = 0;
 
-    if (position.unlocker !== undefined && this.girl.unlockedPositions.includes(position.unlocker.name)) {
+    if (position.unlocker !== undefined && this.isAllowed(position.unlocker.name)) {
 
       for (let index = 1; index <= this.nbCombos; index++) {
         setTimeout(() => {
