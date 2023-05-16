@@ -131,6 +131,10 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 		this._router.navigate(['record']);
 	}
 
+  skills(): void {
+    this._router.navigate(['skills']);
+  }
+
 	showFreedomReducer(): void {
 		this._freedomService.showFreedomReducer.next(this.girl);
 	}

@@ -42,26 +42,16 @@
 					<button
 						[disabled]="!canLevelUp(modifier)"
 						(click)="levelup(modifier)"
-						class="btn"
+						class="btn has-tooltip"
 					>
 						Levelup!
 						<div class="tooltip">
 							<div class="tooltip-wrapper">
-								<div
-									class="red with-icon"
-									*ngIf="modifier.nextLvlCost.type === 'gold'"
-								>
-									-{{ modifier.nextLvlCost.value(modifier.level)
-									}}<img src="./assets/golds.png" />
+								<div class="red with-icon" *ngIf="modifier.nextLvlCost.type === 'gold'">
+									-{{ modifier.nextLvlCost.value(modifier.level) | number : '1.0-0' }}<img src="./assets/golds.png" />
 								</div>
-								<div
-									class="red with-icon"
-									*ngIf="modifier.nextLvlCost.type !== 'gold'"
-								>
-									-{{ modifier.nextLvlCost.value(modifier.level)
-									}}<img
-										[src]="'./assets/items/' + modifier.badge + '_badge.png'"
-									/>
+								<div class="red with-icon" *ngIf="modifier.nextLvlCost.type !== 'gold'">
+									-{{ modifier.nextLvlCost.value(modifier.level) | number : '1.0-0' }}<img [src]="'./assets/items/' + modifier.badge + '_badge.png'" />
 								</div>
 								<div class="green">
 									+{{ modifier.effectQuality(2) * 100 | number : '1.0-0' }}%

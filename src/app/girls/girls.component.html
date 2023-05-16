@@ -7,7 +7,14 @@
     <div class="contract-cancel" *ngIf="girlFreeable()">
       <button class="btn" (click)="cancelContract()">Cancel contract</button>
     </div>
-		<div class="name">{{ girl.name }}</div>
+		<div class="name">
+      <div>
+        {{ girl.name }}
+      </div>
+      <div>
+        <button (click)="skills()" class="btn">Skills</button>
+      </div>
+    </div>
     <div class="attributes">
       <div *ngFor="let attribute of girl.attributes">{{ attribute }}</div>
     </div>
@@ -39,11 +46,11 @@
 			</div>
 			<div class="row">
 				<div class="label">Shootings</div>
-				<div class="value">{{ girl.shootingCount }}</div>
+				<div class="value">{{ girl.shootingCount | number : '1.0-0' }}</div>
 			</div>
 			<div class="row">
 				<div class="label">Records</div>
-				<div class="value">{{ girl.recordCount }}</div>
+				<div class="value">{{ girl.recordCount | number : '1.0-0' }}</div>
 			</div>
 		</div>
 

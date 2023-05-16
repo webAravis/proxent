@@ -10,6 +10,7 @@ import { StudioComponent } from './studio/studio.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { LeadersComponent } from './leaders/leaders.component';
 import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
+import { SkillsComponent } from './skills/skills.component';
 
 const routes: Routes = [
 	{
@@ -52,6 +53,10 @@ const routes: Routes = [
 	{
 		path: 'battle',
 		component: LeaderBattleComponent,
+	},
+	{
+		path: 'skills',
+		component: SkillsComponent,
 	},
 	{
 		path: '**',

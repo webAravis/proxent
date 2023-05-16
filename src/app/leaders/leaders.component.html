@@ -26,26 +26,16 @@
         <button
           [disabled]="!canBattle(leader)"
           (click)="battle(leader)"
-          class="btn"
+          class="btn has-tooltip"
         >
           Battle!
           <div class="tooltip">
             <div class="tooltip-wrapper">
-              <div
-                class="red with-icon"
-                *ngIf="leader.nextLvlCost.type === 'gold'"
-              >
-                -{{ leader.nextLvlCost.value(leader.lvl)
-                }}<img src="./assets/golds.png" />
+              <div class="red with-icon" *ngIf="leader.nextLvlCost.type === 'gold'">
+                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img src="./assets/golds.png" />
               </div>
-              <div
-                class="red with-icon"
-                *ngIf="leader.nextLvlCost.type !== 'gold'"
-              >
-                -{{ leader.nextLvlCost.value(leader.lvl)
-                }}<img
-                  [src]="'./assets/items/' + leader.nextLvlCost.type + '_badge.png'"
-                />
+              <div class="red with-icon" *ngIf="leader.nextLvlCost.type !== 'gold'">
+                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.nextLvlCost.type + '_badge.png'" />
               </div>
             </div>
           </div>

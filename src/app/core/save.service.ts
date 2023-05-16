@@ -16,6 +16,8 @@ import { LeadersService } from '../leaders/leaders.service';
 import { Leader } from '../leaders/leader.model';
 import { ShootingService } from '../shooting/shooting.service';
 import { PhotoShooting } from '../shooting/shooting.component';
+import { SkillsService } from '../skills/skills.service';
+import { TreeSkills } from '../skills/treeskills.model';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +40,8 @@ export class SaveService {
     private _recordService: RecordService,
     private _leadersService: LeadersService,
     private _otherStudiosService: OtherStudiosService,
-    private _shootingService: ShootingService
+    private _shootingService: ShootingService,
+    private _skillService: SkillsService
   ) {
     this._gameService.dayChanged.subscribe((day) =>
       day > 1 ? this.saveGame() : undefined
@@ -130,6 +133,8 @@ export class SaveService {
 
     const playerPhotos = this._shootingService.playerPhotos.getValue();
 
+    const skills = this._skillService.treeSkills.getValue();
+
     const toSave = {
       game: gameParameters,
       girls: girls,
@@ -140,6 +145,7 @@ export class SaveService {
       otherStudios: otherStudios,
       leaders: leaders,
       playerPhotos: playerPhotos,
+      skills: skills,
       lastSaved: new Date(),
       version: '0.9.1'
     };
@@ -178,37 +184,8 @@ export class SaveService {
 
     const girlsToLoad = [];
     for (const savedGirl of savedGame.girls) {
-      const girl = new Girl(savedGirl);
-
-      girlsToLoad.push(girl);
+      girlsToLoad.push(new Girl(savedGirl));
     }
-
-    // let yiny = new Girl({
-    //   id: 1,
-    //   name: "Yiny",
-    //   fans: 300_000,
-    //   xp: 300_000,
-    //   skill: 20,
-    //   freedom: 0,
-    //   corruption: 20,
-    //   unlockedPostions: [
-    //     "intro", "tease", "rub", "handjob", "masturbate", "boobjob", "blowjob", "missionary", "reversecowgirl", "cowgirl", "doggy", "doggy2", "standing"
-    //   ]
-    // });
-    // girlsToLoad.push(yiny);
-
-    // let peta = new Girl({
-    //   id: 2,
-    //   name: "Peta",
-    //   fans: 300_000,
-    //   xp: 175_000,
-    //   skill: 20,
-    //   corruption: 20,
-    //   unlockedPostions: [
-    //     "intro", "tease", "rub", "handjob", "masturbate", "boobjob", "blowjob", "missionary", "reversecowgirl", "cowgirl", "doggy", "doggy2", "standing"
-    //   ]
-    // });
-    // girlsToLoad.push(peta);
 
     this._girlsService.playerGirls.next(this._girlsService.initAttributes(girlsToLoad));
     savedGame.game.girlLimit && !Number.isNaN(savedGame.game.girlLimit) ? this._gameService.girlLimit.next(savedGame.game.girlLimit) : undefined;
@@ -226,8 +203,7 @@ export class SaveService {
     if (savedGame.studio.modifiers) {
       const modifiers: StudioModifier[] = [];
       for (const savedModifier of savedGame.studio.modifiers) {
-        const modifier = new StudioModifier(savedModifier);
-        modifiers.push(modifier);
+        modifiers.push(new StudioModifier(savedModifier));
       }
       this._studioService.modifiers.next(
         this._studioService.initModifiersMethods(modifiers)
@@ -237,18 +213,15 @@ export class SaveService {
     if (savedGame.inventory.items) {
       const items: Item[] = [];
       for (const savedItem of savedGame.inventory.items) {
-        const item = new Item(savedItem);
-        items.push(item);
+        items.push(new Item(savedItem));
       }
       this._inventoryService.items.next(items);
     }
 
     if (savedGame.records) {
       const records: Record[] = [];
-      for (const savedrecords of savedGame.records) {
-        const record = new Record(savedrecords);
-        record.creationtime = new Date(savedrecords.creationtime);
-        records.push(record);
+      for (const savedrecord of savedGame.records) {
+        records.push(new Record(savedrecord));
       }
       this._recordService.records.next(records);
     }
@@ -256,16 +229,7 @@ export class SaveService {
     if (savedGame.otherStudios) {
       const otherStudios: Studio[] = [];
       for (const savedotherStudios of savedGame.otherStudios) {
-        const otherStudio = new Studio(savedotherStudios);
-
-        const records = [];
-        for (let savedRecord of otherStudio.records) {
-          savedRecord = new Record(savedRecord);
-          savedRecord.creationtime = new Date(savedRecord.creationtime);
-          records.push(savedRecord);
-        }
-        otherStudio.records = records;
-        otherStudios.push(otherStudio);
+        otherStudios.push(new Studio(savedotherStudios));
       }
       this._otherStudiosService.studios.next(otherStudios);
     }
@@ -273,9 +237,7 @@ export class SaveService {
     if (savedGame.leaders) {
       const leaders: Leader[] = [];
       for (const savedLeader of savedGame.leaders) {
-        const leader = new Leader(savedLeader);
-
-        leaders.push(leader);
+        leaders.push(new Leader(savedLeader));
       }
 
       this._leadersService.leaders.next(
@@ -286,13 +248,19 @@ export class SaveService {
     if (savedGame.playerPhotos) {
       const playerPhotos: PhotoShooting[] = [];
       for (const savedPhoto of savedGame.playerPhotos) {
-        const photo = new PhotoShooting(savedPhoto);
-        photo.girl = new Girl(photo.girl);
-
-        playerPhotos.push(photo);
+        playerPhotos.push(new PhotoShooting(savedPhoto));
       }
 
       this._shootingService.playerPhotos.next(playerPhotos);
+    }
+
+    if (savedGame.skills && Array.isArray(savedGame.skills) && savedGame.skills.length > 0) {
+      const treeSkills: TreeSkills[] = [];
+      for (const savedTreeSkill of savedGame.skills) {
+        treeSkills.push(new TreeSkills(savedTreeSkill));
+      }
+
+      this._skillService.updateTrees(treeSkills);
     }
 
     this.saved.next(new Date(savedGame.lastSaved));

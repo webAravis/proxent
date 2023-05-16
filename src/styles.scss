@@ -51,7 +51,29 @@ body {
 		font-size: 9px;
 	}
 
-	&:hover .tooltip {
+	&:hover {
+		background: linear-gradient(to bottom, #ce0100 5%, #e51b22 100%);
+		background-color: #ce0100;
+	}
+
+	&.trending {
+		box-shadow: inset 0px 1px 0px 0px #f9eca0;
+		background: linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
+		background-color: #f0c911;
+		border: 1px solid #d99714;
+		animation: glow-trend 1.5s infinite;
+
+		&:hover {
+			background: linear-gradient(to bottom, #f2ab1e 5%, #f0c911 100%);
+			background-color: #f2ab1e;
+		}
+	}
+}
+
+.has-tooltip {
+  position: relative;
+
+  &:hover .tooltip {
 		opacity: 1;
 		bottom: 33px;
 		z-index: 15;
@@ -85,25 +107,8 @@ body {
 			}
 		}
 	}
-
-	&:hover {
-		background: linear-gradient(to bottom, #ce0100 5%, #e51b22 100%);
-		background-color: #ce0100;
-	}
-
-	&.trending {
-		box-shadow: inset 0px 1px 0px 0px #f9eca0;
-		background: linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
-		background-color: #f0c911;
-		border: 1px solid #d99714;
-		animation: glow-trend 1.5s infinite;
-
-		&:hover {
-			background: linear-gradient(to bottom, #f2ab1e 5%, #f0c911 100%);
-			background-color: #f2ab1e;
-		}
-	}
 }
+
 .btn:active {
 	position: relative;
 	top: 1px;

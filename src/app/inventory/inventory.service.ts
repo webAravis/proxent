@@ -53,11 +53,12 @@ export class InventoryService {
 	}
 
 	hasItemByName(name: string, quantity: number): boolean {
-		return (
-			this.items.getValue().filter((item: Item) => item.name === name).length >=
-			quantity
-		);
+    return this.quantity(name) >= quantity;
 	}
+
+  quantity(name: string): number {
+    return this.items.getValue().filter((item: Item) => item.name === name).length;
+  }
 
 	sellItem(item: Item): void {
 		this.removeItem(item);

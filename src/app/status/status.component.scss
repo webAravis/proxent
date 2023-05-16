@@ -21,13 +21,22 @@
 	.badge-wrapper {
 		display: flex;
 		align-items: center;
+    gap: 5px;
 
-		div:not(.owned) {
-			opacity: 0.2;
-		}
+		.badge {
+      display: flex;
+      align-items: center;
 
-		img {
-			width: 30px;
-		}
+      &:not(.owned) {
+        opacity: 0.2;
+      }
+
+      img {
+        height: 25px;
+        width: auto;
+        display: block;
+        box-sizing: border-box;
+      }
+    }
 	}
 }

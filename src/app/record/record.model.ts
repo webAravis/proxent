@@ -16,5 +16,7 @@ export class Record {
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
+    this.girl = new Girl(this.girl);
+    this.creationtime = new Date(this.creationtime);
 	}
 }

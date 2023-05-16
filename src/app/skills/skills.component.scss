@@ -1,0 +1,210 @@
+.header {
+	position: fixed;
+	top: 15px;
+	color: white;
+	left: 2vw;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 35px;
+	opacity: 0.8;
+	border-bottom: 1px solid;
+}
+
+.wrapper {
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  height: calc(100vh - 185px);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  gap: 30px;
+  overflow-y: auto;
+
+	.branch-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+    width: 100%;
+    justify-content: space-evenly;
+
+		.branch {
+			width: 25%;
+			text-align: center;
+			margin-top: 30px;
+			position: relative;
+      border: 2px solid red;
+      border-radius: 15px;
+
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+        inset 0px 1px 0px 0px #f29c93;
+      background: rgb(98, 9, 9);
+      padding: 7.5px;
+
+			.header-branch {
+				color: white;
+				font-size: 25px;
+				font-weight: bold;
+				margin-bottom: 10px;
+
+        .subtitle {
+          font-size: 14px;
+        }
+			}
+
+      .skills-tier {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .line {
+        position: fixed;
+        stroke: rgba(255, 255, 255, 0.2);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+
+        line {
+          stroke-width: 2px;
+        }
+
+        &.can-unlock {
+          line {
+            stroke: white;
+          }
+        }
+      }
+
+      .skill {
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 5px;
+        margin: 15px;
+        border: 1px solid white;
+        position: relative;
+        z-index: 1;
+
+        .skill-icon {
+          border: 2px solid white;
+          overflow: hidden;
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 3px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .skill-level {
+          position: absolute;
+          bottom: -9px;
+          right: -10px;
+          background: #3c3c3c;
+          border: 1px solid white;
+          border-radius: 2px;
+          color: rgba(255,255,255,0.5);
+          padding: 2px;
+          font-size: 12px;
+
+          .bigger {
+            color: white;
+            font-size: 15px;
+          }
+        }
+
+        &.locked {
+          background: #4c4c4c;
+          border-color: #686868;
+
+          .skill-icon {
+            border-color: #3b3b3b;
+
+            img {
+              filter: brightness(0.5) grayscale(1);
+            }
+          }
+
+          &:not(.can-unlock) {
+            cursor: not-allowed;
+          }
+        }
+
+        &.can-unlock {
+          border-color: #d99714;
+          animation: glow-skill 1.5s infinite;
+          cursor: pointer;
+        }
+
+        .tooltip {
+          width: 220px;
+          left: -90px;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          padding-top: 8px;
+          transition: .2s;
+          transform: scale(0);
+          transform-origin: center bottom;
+
+          .tooltip-wrapper {
+            justify-content: center;
+            align-items: center;
+
+            .name {
+              font-weight: bold;
+              margin-bottom: 8px;
+            }
+
+            .effects-wrapper, .next {
+              margin-top: 10px;
+              flex-direction: column;
+            }
+
+            .effects {
+              display: flex;
+              gap: 5px;
+              align-items: center;
+
+              * {
+                text-transform: capitalize;
+              }
+            }
+
+            .price {
+              gap: 15px;
+            }
+          }
+        }
+
+        &:hover {
+          .tooltip {
+            transform: scale(1);
+          }
+        }
+      }
+		}
+	}
+}
+
+@keyframes glow-skill {
+	0% {
+		box-shadow: 0px 0px 20px 10px #f9eca0;
+	}
+	50% {
+		box-shadow: 0px 0px 20px 10px #f0c911;
+	}
+	75% {
+		box-shadow: 0px 0px 20px 10px #f2ab1e;
+	}
+	100% {
+		box-shadow: 0px 0px 20px 10px #f9eca0;
+	}
+}

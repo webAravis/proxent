@@ -57,4 +57,8 @@ export class StatusComponent implements OnInit, OnDestroy {
   hasBadge(badge: string): boolean {
 		return this._inventoryService.hasItemByName(badge + '_badge', 1);
 	}
+
+  badgeQuantity(badge: string): number {
+		return this._inventoryService.quantity(badge + '_badge');
+	}
 }

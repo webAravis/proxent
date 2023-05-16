@@ -28,6 +28,7 @@ export class PhotoShooting {
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
+    this.girl = new Girl(this.girl);
 	}
 }
 

@@ -1,0 +1,83 @@
+<app-background class="background"></app-background>
+
+<div class="header">
+  Skills
+</div>
+
+<div class="wrapper">
+  <div class="branch-wrapper">
+
+    <div class="branch" *ngFor="let branch of treeSkills">
+      <div class="header-branch">
+        {{ branch.name | titlecase }}
+        <div class="subtitle">
+          <i>{{ branch.description }}</i>
+        </div>
+      </div>
+
+      <div class="skills-tier" *ngFor="let skillTier of branch.skillTiers">
+
+        <ng-container *ngFor="let skill of skillTier.skills">
+          <svg [class.can-unlock]="canUnlock(skill)" class="line" *ngIf="skill.requires !== undefined">
+            <line [attr.x1]="getDivPosition('skill-'+skill.name).x" [attr.y1]="getDivPosition('skill-'+skill.name).y" [attr.x2]="getDivPosition('skill-'+skill.requires).x" [attr.y2]="getDivPosition('skill-'+skill.requires).y" />
+          </svg>
+          <div id="skill-{{( skill.name )}}" (click)="upgradeSkill(skill)" [class.can-unlock]="canUnlock(skill)" [class.locked]="skill.level === 0" class="skill has-tooltip">
+
+            <div class="skill-icon">
+              <img [src]="'./assets/skills/' + (skill.name | lowercase) + '.png'" alt="">
+            </div>
+            <div class="skill-level">
+              <span [class.bigger]="skill.level > 0">{{ skill.level }}</span>/{{ skill.maxlevel }}
+            </div>
+            <div class="tooltip">
+              <div class="tooltip-wrapper">
+                <div class="name">{{ skill.name }}</div>
+
+                <div class="description">{{ skill.description }}</div>
+
+                <div class="effects-wrapper" *ngIf="skill.effects.length > 0">
+                  <div class="effects" *ngFor="let effect of skill.effects[skill.level-1]">
+                    <div class="position">
+                      {{ effect.position }}
+                    </div>
+                    <div class="stat">
+                      {{ effect.stat }}
+                    </div>
+                    <div class="value">
+                      {{ effect.value }}
+                    </div>
+                  </div>
+
+                  <div class="next" *ngIf="skill.effects[(skill.level)]">
+                    <div class="next-rank green">Next rank</div>
+                    <div [class.green]="effect.value.includes('+')" [class.red]="effect.value.includes('-')" class="effects" *ngFor="let effect of skill.effects[(skill.level)]">
+                      <div class="position">
+                        {{ effect.position }}
+                      </div>
+                      <div class="stat">
+                        {{ effect.stat }}
+                      </div>
+                      <div class="value">
+                        {{ effect.value }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="price" *ngIf="skill.level < skill.maxlevel">
+                  <div [class.red]="!canAfford(unlockPrice)" class="with-icon" *ngFor="let unlockPrice of skill.unlockPrice">
+                    {{ unlockPrice.quantity | number : '1.0-0' }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

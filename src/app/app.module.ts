@@ -29,6 +29,7 @@ import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 import { LeaderBattleGirlsComponent } from './leader-battle/leader-battle-girls/leader-battle-girls.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SkillsComponent } from './skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LeadersComponent,
     LeaderBattleComponent,
     LeaderBattleGirlsComponent,
+    SkillsComponent,
   ],
   imports: [
     BrowserModule,
