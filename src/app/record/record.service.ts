@@ -147,11 +147,11 @@ export class RecordService {
   }
 
   getMoney(positionsPlayed: PlayedPosition[]): number {
-    return positionsPlayed.map((position: PlayedPosition) => position.golds).reduce((sum, current) => sum + current);
+    return positionsPlayed.length > 0 ? positionsPlayed.map((position: PlayedPosition) => position.golds).reduce((sum, current) => sum + current) : 0;
   }
 
   getFans(positionsPlayed: PlayedPosition[]): number {
-    return positionsPlayed.map((position: PlayedPosition) => position.fans).reduce((sum, current) => sum + current);
+    return positionsPlayed.length > 0 ? positionsPlayed.map((position: PlayedPosition) => position.fans).reduce((sum, current) => sum + current) : 0;
   }
 
   getScore(

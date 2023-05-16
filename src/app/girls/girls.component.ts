@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { GirlsService } from '../core/girls/girls.service';
 import { Girl } from '../core/girls/girl.model';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { SafeUrl } from '@angular/platform-browser';
 	templateUrl: './girls.component.html',
 	styleUrls: ['./girls.component.scss'],
 })
-export class GirlsComponent implements OnInit, OnDestroy {
+export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 	girls: Girl[] = [];
 	allGirls: Girl[] = [];
 	portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
@@ -30,8 +30,15 @@ export class GirlsComponent implements OnInit, OnDestroy {
 		private _freedomService: FreedomService,
 		private _cachingService: CachingService,
 		private _gameService: GameService,
-		private _router: Router
+		private _router: Router,
+    private _cdRef: ChangeDetectorRef
 	) {}
+
+  ngAfterContentChecked() {
+
+    this._cdRef.detectChanges();
+
+  }
 
 	ngOnInit(): void {
 		this._gameService.goldChanged
