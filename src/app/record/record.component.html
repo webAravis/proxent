@@ -1,4 +1,4 @@
-<app-background></app-background>
+<app-background class="background"></app-background>
 
 <div class="wrapper">
 	<ng-container *ngIf="state === 'init'">
@@ -20,6 +20,10 @@
 				<div><img src="./assets/golds.png" width="30" alt="" srcset="" /></div>
 			</div>
 		</div>
+
+    <button (click)="exit()" class="btn">
+      Back to girls
+    </button>
 	</ng-container>
 
 	<ng-container *ngIf="state === 'recording'">
@@ -78,9 +82,9 @@
 					[class.trending]="position.name === trendingPosition"
 					class="btn"
 				>
-					{{ position.name }}
+					{{ position.label }}
 					<span class="badge-btn">{{
-						positionRepeated(position.name) === 0 ? 'New' : 'Repeat!'
+						positionRepeated(position.name) === 0 ? '' : 'Repeat!'
 					}}</span>
 
           <ng-container

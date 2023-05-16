@@ -20,7 +20,9 @@ export class GameService {
 	msDayTicker = 2000;
 
 	dialogsStarted: boolean[] = [false, false, false];
+
 	isPaused = true;
+  gameState: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   girlLimit: BehaviorSubject<number> = new BehaviorSubject<number>(2);
 
@@ -40,12 +42,17 @@ export class GameService {
 
 	pauseGame(): void {
 		this.isPaused = true;
+    this.gameState.next(true);
+
 		clearInterval(this.dayTicker);
 	}
 
 	resumeGame(): void {
 		this.isPaused = false;
+    this.gameState.next(false);
+
 		clearInterval(this.dayTicker);
+
 		this.dayTicker = setInterval(() => {
 			this.day++;
 			if (this.day >= 31) {

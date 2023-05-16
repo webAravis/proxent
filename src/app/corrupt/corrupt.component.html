@@ -1,4 +1,4 @@
-<app-background></app-background>
+<app-background class="background"></app-background>
 
 <div class="wrapper">
 	<ng-container *ngIf="!corrupting">
@@ -36,6 +36,9 @@
 					</div>
 				</div>
 			</div>
+			<button (click)="exit()" class="btn">
+				Back to girls
+			</button>
 		</div>
 	</ng-container>
 
@@ -51,7 +54,7 @@
 					[class.disabled]="!positionRequirementsMet(position)"
 					class="btn"
 				>
-					{{ position.name }}
+					{{ position.label }}
 					<span class="badge-btn">{{
 						position.corruption
 					}}</span>

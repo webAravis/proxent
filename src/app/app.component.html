@@ -2,8 +2,19 @@
 	<app-dialogs></app-dialogs>
 	<router-outlet></router-outlet>
 
-	<app-status></app-status>
-	<app-navigation></app-navigation>
+  <div
+    [class.animate__slideInDown]="!gamePaused"
+    [class.animate__slideOutUp]="gamePaused"
+    class="animate__animated ui">
+    <app-status></app-status>
+  </div>
+
+  <div
+    [class.animate__slideInUp]="!gamePaused"
+    [class.animate__slideOutDown]="gamePaused"
+    class="animate__animated ui">
+	  <app-navigation></app-navigation>
+  </div>
 	<app-reward></app-reward>
 
 	<app-new-record></app-new-record>
@@ -16,7 +27,7 @@
 </ng-container>
 
 <ng-container *ngIf="!ready">
-  <app-background></app-background>
+  <app-background class="background"></app-background>
 
 	<div class="wrapper">
 		<img src="./assets/logo.png" alt="" srcset="" />

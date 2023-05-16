@@ -29,6 +29,7 @@ export class GirlsService {
       {girlId: 1, timings: [
         new Position({
           "name": "intro",
+          "label": "Intro",
           "corruption": 0,
           "timeout": 4000,
 
@@ -37,6 +38,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "tease",
+          "label": "Tease",
           "corruption": 0,
           "timeout": 7000,
 
@@ -45,6 +47,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "rub",
+          "label": "Rub",
           "corruption": 0,
           "timeout": 10000,
 
@@ -53,6 +56,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "masturbate",
+          "label": "Masturbate",
           "corruption": 2,
           "timeout": 10000,
 
@@ -61,6 +65,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "handjob",
+          "label": "Handjob",
           "corruption": 3,
           "timeout": 2000,
 
@@ -69,6 +74,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "boobjob",
+          "label": "Boobjob",
           "corruption": 3,
           "timeout": 10000,
 
@@ -77,6 +83,7 @@ export class GirlsService {
         }),
         new Position({
           "name": "blowjob",
+          "label": "Blowjob",
           "corruption": 3,
           "timeout": 7000,
 
@@ -85,18 +92,21 @@ export class GirlsService {
         }),
         new Position({
           "name": "missionary",
+          "label": "Missionary",
           "corruption": 6,
           "timeout": 10000,
 
           "type": PositionType.PENETRATION,
           "unlocker": new Position({
             "name": "missionary2",
+            "label": "Missionary 2",
             "corruption": 7,
             "timeout": 5000,
 
             "type": PositionType.PENETRATION,
             "unlocker": new Position({
               "name": "missionary3",
+              "label": "Missionary 3",
               "corruption": 7,
               "timeout": 10000,
 
@@ -107,12 +117,14 @@ export class GirlsService {
         }),
         new Position({
           "name": "reversecowgirl",
+          "label": "Reverse Cowgirl",
           "corruption": 8,
           "timeout": 10000,
 
           "type": PositionType.PENETRATION,
           "unlocker": new Position({
             "name": "reversecowgirl2",
+            "label": "Reverse Cowgirl 2",
             "corruption": 9,
             "timeout": 10000,
 
@@ -122,12 +134,14 @@ export class GirlsService {
         }),
         new Position({
           "name": "cowgirl",
+          "label": "Cowgirl",
           "corruption": 6,
           "timeout": 5000,
 
           "type": PositionType.PENETRATION,
           "unlocker": new Position({
             "name": "cowgirl2",
+            "label": "Cowgirl 2",
             "corruption": 7,
             "timeout": 5000,
 
@@ -137,24 +151,28 @@ export class GirlsService {
         }),
         new Position({
           "name": "doggy",
+          "label": "Doggy",
           "corruption": 6,
           "timeout": 10000,
 
           "type": PositionType.PENETRATION,
           "unlocker": new Position({
             "name": "doggy2",
+            "label": "Doggy 2",
             "corruption": 9,
             "timeout": 7000,
 
             "type": PositionType.PENETRATION,
             "unlocker": new Position({
               "name": "doggy3",
+              "label": "Doggy 3",
               "corruption": 11,
               "timeout": 10000,
 
               "type": PositionType.PENETRATION,
               "unlocker": new Position({
                 "name": "doggy4",
+                "label": "Doggy 4",
                 "corruption": 12,
                 "timeout": 10000,
 
@@ -166,18 +184,21 @@ export class GirlsService {
         }),
         new Position({
           "name": "standing",
+          "label": "Standing",
           "corruption": 10,
           "timeout": 5000,
 
           "type": PositionType.PENETRATION,
           "unlocker": new Position({
             "name": "standing2",
+            "label": "Standing 2",
             "corruption": 11,
             "timeout": 8000,
 
             "type": PositionType.PENETRATION,
             "unlocker": new Position({
               "name": "standing3",
+              "label": "Standing 3",
               "corruption": 12,
               "timeout": 3000,
 

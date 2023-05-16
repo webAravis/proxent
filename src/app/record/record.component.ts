@@ -423,6 +423,11 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	}
 
+  exit(): void {
+		this._gameService.resumeGame();
+		this._router.navigate(['girls']);
+  }
+
 	private _initCombos(position: Position): void {
     this.comboBtns = [];
     this.hitted = 0;

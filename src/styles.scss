@@ -2,6 +2,13 @@ body {
 	margin: 0;
 	background: white;
 	font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.background {
+	position: fixed;
+	z-index: -1;
+	width: 100%;
 }
 
 .error {

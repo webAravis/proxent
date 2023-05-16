@@ -7,6 +7,7 @@ export enum PositionType {
 
 export class Position {
 	name = '';
+  label = '';
   corruption = 0;
 	timeout = 0;
 

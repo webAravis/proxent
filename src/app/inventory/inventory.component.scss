@@ -11,16 +11,15 @@
 }
 
 .wrapper {
-	width: 600px;
-	margin: 90px auto;
+  top: 70px;
+  height: calc(100vh - 185px);
+  width: 100vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 15px;
 	flex-wrap: wrap;
   position: fixed;
-  top: 100px;
-  width: 100vw;
 
 	.item {
 		text-align: center;

@@ -246,6 +246,11 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		);
 	}
 
+  exit(): void {
+		this._gameService.resumeGame();
+		this._router.navigate(['girls']);
+  }
+
 	get newPositions(): Position[] {
 		return this.positionsDef.filter(
 			(x) => !this.girl.unlockedPositions.includes(x.name)

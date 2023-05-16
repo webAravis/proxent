@@ -43,7 +43,7 @@
       cursor: pointer;
 
       &.locked {
-        .background, .flip-card-back {
+        .background-girl, .flip-card-back {
           filter: brightness(.2);
         }
       }
@@ -139,7 +139,7 @@
         }
       }
 
-      .background {
+      .background-girl {
         width: 100%;
         display: block;
       }
