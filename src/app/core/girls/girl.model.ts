@@ -28,6 +28,10 @@ export class Girl {
 		Object.assign(this, values);
 	}
 
+  getNextLevelXp(level: number): number {
+    return (level/0.07) * (level/0.07);
+  }
+
 	get level(): number {
 		return Math.trunc(0.07 * Math.sqrt(this.xp)) + 1;
 	}
@@ -45,4 +49,8 @@ export class Girl {
 			? 'slutty'
 			: ['normal', 'normal', 'sexy', 'sexy', 'sexy'][this.corruption - 1];
 	}
+
+  get skillPoints(): number {
+    return Math.trunc(this.level / 5)
+  }
 }

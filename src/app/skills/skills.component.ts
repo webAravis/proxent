@@ -5,6 +5,7 @@ import { GameService } from '../core/game.service';
 import { Skill, TreeSkills } from './treeskills.model';
 import { GirlsService } from '../core/girls/girls.service';
 import { InventoryService } from '../inventory/inventory.service';
+import { Girl } from '../core/girls/girl.model';
 
 @Component({
   selector: 'app-skills',
@@ -13,8 +14,10 @@ import { InventoryService } from '../inventory/inventory.service';
 })
 export class SkillsComponent implements OnInit, OnDestroy {
 
-  treeSkills: TreeSkills[] = [];
   golds = 0;
+  girl: Girl = new Girl();
+
+  treeSkills: TreeSkills[] = [];
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
@@ -36,11 +39,26 @@ export class SkillsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((golds) => (this.golds = golds));
     this.golds = this._gameService.golds;
+
+    this._girlService.currentGirl.pipe(takeUntil(this._unsubscribeAll)).subscribe(girl => this.girl = girl);
   }
 
   ngOnDestroy(): void {
     this._unsubscribeAll.next(true);
     this._unsubscribeAll.complete();
+  }
+
+  get skillPointsSpent(): number {
+    let total = 0;
+    for (const treeSkills of this.treeSkills) {
+      for (const skillTier of treeSkills.skillTiers) {
+        for (const skill of skillTier.skills) {
+          total += skill.level
+        }
+      }
+    }
+
+    return total;
   }
 
   canAfford(price: { type: string, quantity: number}): boolean {
@@ -59,6 +77,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
   }
 
   canUnlock(skill: Skill): boolean {
+    if ((this.girl.skillPoints - this.skillPointsSpent) <= 0) {
+      return false;
+    }
+
     if (skill.level >= skill.maxlevel) {
       return false;
     }

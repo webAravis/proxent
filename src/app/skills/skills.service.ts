@@ -40,9 +40,33 @@ export class SkillsService {
   updateTrees(skillTrees: TreeSkills[]): void {
     let allSkillTrees = this.treeSkills.getValue();
     for (const skillTree of skillTrees) {
-      if (allSkillTrees.find(tree => tree.name === skillTree.name && tree.girl.id === skillTree.girl.id) !== undefined) {
-        allSkillTrees = allSkillTrees.filter(tree => !(tree.name === skillTree.name && tree.girl.id === skillTree.girl.id));
-        allSkillTrees.push(skillTree);
+      const skillTreeToUpdate = allSkillTrees.find(tree => tree.name === skillTree.name && tree.girl.id === skillTree.girl.id);
+      if (skillTreeToUpdate !== undefined) {
+
+        for (const skillTier of skillTreeToUpdate.skillTiers) {
+          for (const skill of skillTier.skills) {
+            // finding skill in skillTree parameter
+            for (const skillTierParameter of skillTree.skillTiers) {
+              // let skillsUpdated: Skill[] = [];
+              for (const skillInTier of skillTierParameter.skills) {
+                if (skill.name === skillInTier.name) {
+                  const skillUpdated = new Skill({name: skillInTier.name, level: skillInTier.level});
+
+                  skillUpdated.description = skill.description;
+                  skillUpdated.effects = skill.effects;
+                  skillUpdated.maxlevel = skill.maxlevel;
+                  skillUpdated.requires = skill.requires;
+                  skillUpdated.unlockPrice = skill.unlockPrice;
+
+                  Object.assign(skill, skillUpdated);
+                }
+              }
+            }
+          }
+        }
+
+        allSkillTrees = allSkillTrees.filter(tree => !(tree.name === skillTreeToUpdate.name && tree.girl.id === skillTreeToUpdate.girl.id));
+        allSkillTrees.push(skillTreeToUpdate);
       }
     }
 
@@ -63,7 +87,6 @@ export class SkillsService {
     allTrees.push(this._initCommonTree('recording', this._girlService.gameGirls.getValue().find(girl => girl.id === 1) ?? new Girl()));
     allTrees.push(this._initCommonTree('battle', this._girlService.gameGirls.getValue().find(girl => girl.id === 1) ?? new Girl()));
 
-    console.log('init done', allTrees);
     this.treeSkills.next(allTrees);
   }
 
@@ -152,9 +175,9 @@ export class SkillsService {
             ],
             requires: 'Anal',
             effects: [
-              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+5%' }],
-              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+12%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+7.5%' }],
-              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+14%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+10%' }],
+              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+8%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+5%' }],
+              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+7.5%' }],
+              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+12%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+10%' }],
             ]
           }),
           new Skill({
@@ -290,8 +313,8 @@ export class SkillsService {
             ],
             requires: 'Mouthist',
             effects: [
+              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+25%' }],
               [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+50%' }],
-              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+100%' }],
             ],
           })
         ];

@@ -29,7 +29,7 @@ export class RewardService {
   ) { }
 
   rewardText(text: string): void {
-    this.show.next(new Reward(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, text));
+    this.show.next(new Reward(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, text));
   }
 
   giveReward(
@@ -79,6 +79,7 @@ export class RewardService {
       itemsWon,
       corruptionWon,
       levelupResult.hasLevelup,
+      levelupResult.gainedSkillPoint,
       levelupResult.hardCapCorruption,
       girl
     );
@@ -89,14 +90,17 @@ export class RewardService {
   private _levelupGirl(
     girl: Girl,
     xpWon: number
-  ): { girl: Girl; hasLevelup: boolean; hardCapCorruption: boolean } {
+  ): { girl: Girl, hasLevelup: boolean, gainedSkillPoint: boolean, hardCapCorruption: boolean } {
     let hasLevelup = false;
+    let gainedSkillPoint = false;
     let hardCapCorruption = false;
 
     // hard caps from corruption level
     const maxXpCap = this.corruptionCaps[girl.corruption - 1];
     if (maxXpCap === undefined || girl.xp + xpWon <= maxXpCap) {
       const oldLevel = girl.level;
+      const oldSkillPoints = girl.skillPoints;
+
       girl.xp += xpWon;
       if (girl.level !== oldLevel) {
         hasLevelup = true;
@@ -108,6 +112,10 @@ export class RewardService {
         girl.skill += 1;
         girl.fitness += 1;
         girl.hp += 100;
+      }
+
+      if (girl.skillPoints !== oldSkillPoints) {
+        gainedSkillPoint = true;
       }
     } else {
       hardCapCorruption = true;
@@ -140,6 +148,7 @@ export class RewardService {
     return {
       girl: girl,
       hasLevelup: hasLevelup,
+      gainedSkillPoint: gainedSkillPoint,
       hardCapCorruption: hardCapCorruption,
     };
   }
@@ -151,6 +160,7 @@ export class RewardService {
     itemsWon: Item[],
     corruptionWon: number,
     hasLevelup: boolean,
+    gainedSkillPoint: boolean,
     hardCapCorruption: boolean,
     girl: Girl
   ): void {
@@ -161,6 +171,7 @@ export class RewardService {
       itemsWon,
       corruptionWon,
       hasLevelup,
+      gainedSkillPoint,
       hardCapCorruption,
       girl
     );

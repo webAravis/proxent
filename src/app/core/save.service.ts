@@ -260,7 +260,7 @@ export class SaveService {
         treeSkills.push(new TreeSkills(savedTreeSkill));
       }
 
-      // this._skillService.updateTrees(treeSkills);
+      this._skillService.updateTrees(treeSkills);
     }
 
     this.saved.next(new Date(savedGame.lastSaved));

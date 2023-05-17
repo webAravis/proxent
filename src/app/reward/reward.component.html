@@ -46,8 +46,14 @@
 
 	<div class="levelup-wrapper" *ngIf="reward.levelup">
 		<div class="header">
-			{{ reward.girl.name }} has level up ! She is now lvl
+			{{ reward.girl.name }} has level up! She is now lvl
 			{{ reward.girl.level }}
+		</div>
+	</div>
+
+	<div class="levelup-wrapper" *ngIf="reward.gainedSkillPoint">
+		<div class="header">
+			+1 skill point for {{ reward.girl.name }}!
 		</div>
 	</div>
 
