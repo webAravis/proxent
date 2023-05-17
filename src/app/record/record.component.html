@@ -220,7 +220,7 @@
 <ng-template #buttonPosition let-position="position">
   <button
     *ngIf="position.name !== 'intro' && isAllowed(position.name)"
-    [disabled]="position.type !== PositionType.FOREPLAY && bonner + position.bonner < 20"
+    [disabled]="position.type !== PositionType.FOREPLAY && bonner + position.bonner < 0"
     (click)="startScene(position)"
     [class.trending]="position.name === trendingPosition"
     [class.special]="position.type === PositionType.SPECIAL"

@@ -74,7 +74,7 @@ export class SkillsService {
   }
 
   private _initTrees(): void {
-    const allTrees: TreeSkills[] = [];
+    let allTrees: TreeSkills[] = [];
 
     // Yiny
     let yinySkills = new TreeSkills();
@@ -84,8 +84,22 @@ export class SkillsService {
     yinySkills.skillTiers = this._initSkills(yinySkills.girl.name);
 
     allTrees.push(yinySkills);
-    allTrees.push(this._initCommonTree('recording', this._girlService.gameGirls.getValue().find(girl => girl.id === 1) ?? new Girl()));
-    allTrees.push(this._initCommonTree('battle', this._girlService.gameGirls.getValue().find(girl => girl.id === 1) ?? new Girl()));
+
+    // Peta
+    let petaSkills = new TreeSkills();
+    petaSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 2) ?? new Girl();
+    petaSkills.name = 'special';
+    petaSkills.description = 'Special skills and scenes';
+    petaSkills.skillTiers = this._initSkills(petaSkills.girl.name);
+
+    allTrees.push(petaSkills);
+
+    let commonTrees: TreeSkills[] = [];
+    for (const tree of allTrees) {
+      commonTrees.push(this._initCommonTree('recording', this._girlService.gameGirls.getValue().find(girl => girl.id === tree.girl.id) ?? new Girl()));
+      commonTrees.push(this._initCommonTree('battle', this._girlService.gameGirls.getValue().find(girl => girl.id === tree.girl.id) ?? new Girl()));
+    }
+    allTrees = [...allTrees, ...commonTrees];
 
     this.treeSkills.next(allTrees);
   }
@@ -225,6 +239,70 @@ export class SkillsService {
           }),
         ]
 
+        break;
+
+      case 'peta':
+        skillTier0.skills = [
+          new Skill({
+            name: 'Fetishist',
+            description: 'Unlocks Peta\'s special scenes',
+            maxlevel: 1,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 }
+            ]
+          })
+        ];
+
+        skillTier1.skills = [
+          new Skill({
+            name: 'Piledriving',
+            description: 'Flexibility and agility',
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Fetishist',
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Piledriving' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Piledriving 2' }],
+            ]
+          }),
+          new Skill({
+            name: 'Sidefuck',
+            description: 'No more place for relaxation',
+            maxlevel: 5,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Fetishist',
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Sidefuck' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Sidefuck 2' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Sidefuck 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Sidefuck 4' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Sidefuck 5' }],
+            ]
+          }),
+          new Skill({
+            name: 'Cosplay',
+            description: 'She likes to disguise',
+            maxlevel: 5,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Fetishist',
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Cosplay' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cosplay 2' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cosplay 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cosplay 4' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cosplay 5' }],
+            ]
+          }),
+        ]
         break;
 
       // COMMON TREE SKILLS

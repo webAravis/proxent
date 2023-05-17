@@ -101,7 +101,7 @@ export class RecordComponent implements OnInit, OnDestroy {
               btnElement.click();
             }
           }
-        }, 1000)
+        }, 500)
       }
     });
 
@@ -154,9 +154,6 @@ export class RecordComponent implements OnInit, OnDestroy {
             }
           }
         }
-
-        console.log('scene skills', this.sceneSkills);
-        console.log('stats modifiers skills', this.skillStatsModifiers);
       });
 
 		this._gameService.goldChanged
@@ -392,8 +389,6 @@ export class RecordComponent implements OnInit, OnDestroy {
         );
       }
 
-		} else {
-			// this.vid.pause();
 		}
 
     if (!isCombo) {

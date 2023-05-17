@@ -148,7 +148,7 @@ export class SaveService {
       playerPhotos: playerPhotos,
       skills: skills,
       lastSaved: new Date(),
-      version: '0.9.1'
+      version: '0.10.0'
     };
 
     let savedGames = this.saves;
