@@ -17,8 +17,8 @@ export class SkillsService {
     this._initTrees();
   }
 
-  upgradeSkill(skill: Skill): void {
-    skill.level++;
+  updateSkillLevel(skill: Skill, level: number): void {
+    skill.level = level;
   }
 
   hasSkill(skillname: string, girl: Girl): boolean {

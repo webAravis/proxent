@@ -18,6 +18,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
   girl: Girl = new Girl();
 
   treeSkills: TreeSkills[] = [];
+  resetPrice: { type: string; quantity: number }[] = [
+    { type: 'gold', quantity: 15_000 },
+    { type: 'recordmonthly_badge', quantity: 2 },
+  ];
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
@@ -113,24 +117,58 @@ export class SkillsComponent implements OnInit, OnDestroy {
       //   }
       // }
 
-      this._skillService.upgradeSkill(skill);
+      this._skillService.updateSkillLevel(skill, skill.level+1);
     }
   }
 
-  getDivPosition(divId: string): {x: number, y: number} {
+  getDivPosition(divId: string, treeId: string): {x: number, y: number} {
     const searched = <HTMLElement> document.getElementById(divId);
+    const containerTree = <HTMLElement> document.getElementById(treeId);
+
     if (searched) {
       const boundings = searched.getBoundingClientRect();
+      const boundingsTree = containerTree.getBoundingClientRect();
 
       return {
-        x: boundings.left + (boundings.width/2),
-        y: boundings.top + (boundings.height/2)
+        x: boundings.left - boundingsTree.left + (boundings.width/2),
+        y: boundings.top - boundingsTree.top + (boundings.height/2)
       }
     }
 
     return {
       x: 0,
       y: 0
+    }
+  }
+
+  canReset(): boolean {
+    for (const price of this.resetPrice) {
+      if (!this.canAfford(price)) {
+          return false;
+      }
+    }
+
+    return true;
+  }
+
+  resetAll(): void {
+    if (this.canReset() && confirm('Are you sure you want to reset all skills? NO REFUND FOR SPENT MATERIALS!')) {
+
+      for (const price of this.resetPrice) {
+        if (price.type === 'gold') {
+          this._gameService.updateGolds(price.quantity * -1);
+        } else {
+          this._inventoryService.removeItemByName(price.type, price.quantity);
+        }
+      }
+
+      for (const treeSkills of this.treeSkills) {
+        for (const skillTier of treeSkills.skillTiers) {
+          for (const skill of skillTier.skills) {
+            this._skillService.updateSkillLevel(skill, 0);
+          }
+        }
+      }
     }
   }
 

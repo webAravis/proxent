@@ -9,11 +9,12 @@
   <div class="skillpoints-wrapper">
     <div class="label">Skill Points available</div>
     <div class="total">{{ girl.skillPoints - skillPointsSpent }}</div>
+    <button class="btn" [disabled]="!canReset()" (click)="resetAll()">Reset skills</button>
   </div>
 
   <div class="branch-wrapper">
 
-    <div class="branch" *ngFor="let branch of treeSkills">
+    <div id="branch-{{branch.name}}" class="branch" *ngFor="let branch of treeSkills">
       <div class="header-branch">
         {{ branch.name | titlecase }}
         <div class="subtitle">
@@ -25,7 +26,12 @@
 
         <ng-container *ngFor="let skill of skillTier.skills">
           <svg [class.can-unlock]="canUnlock(skill)" class="line" *ngIf="skill.requires !== undefined">
-            <line [attr.x1]="getDivPosition('skill-'+skill.name).x" [attr.y1]="getDivPosition('skill-'+skill.name).y" [attr.x2]="getDivPosition('skill-'+skill.requires).x" [attr.y2]="getDivPosition('skill-'+skill.requires).y" />
+            <line
+              [attr.x1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).x"
+              [attr.y1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).y"
+              [attr.x2]="getDivPosition('skill-'+skill.requires, 'branch-'+branch.name).x"
+              [attr.y2]="getDivPosition('skill-'+skill.requires, 'branch-'+branch.name).y"
+              />
           </svg>
           <div id="skill-{{( skill.name )}}" (click)="upgradeSkill(skill)" [class.can-unlock]="canUnlock(skill)" [class.locked]="skill.level === 0" class="skill has-tooltip">
 
