@@ -104,7 +104,8 @@ export class SaveService {
       month: this._gameService.month,
       year: this._gameService.year,
       golds: this._gameService.golds,
-      girlLimit: this._gameService.girlLimit.getValue()
+      girlLimit: this._gameService.girlLimit.getValue(),
+      fapMode: this._gameService.fapMode.getValue()
     };
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
@@ -179,6 +180,7 @@ export class SaveService {
       : savedGame.game.golds;
     this._gameService.dayChanged.next(savedGame.game.day);
     this._gameService.goldChanged.next(savedGame.game.golds);
+    this._gameService.fapMode.next(savedGame.game.fapMode ?? false);
 
     this._dialogsService.dialogsStarted = savedGame.dialogsStarted;
 

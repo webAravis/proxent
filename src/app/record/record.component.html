@@ -27,7 +27,7 @@
 	</ng-container>
 
 	<ng-container *ngIf="state === 'recording'">
-		<div class="overlay" [class.show]="showPositions"></div>
+		<div class="overlay" [class.show]="showPositions || comboMessage"></div>
 
 		<div class="stats">
 			<div class="orgasm">
@@ -69,33 +69,52 @@
 			<span class="with-icon">{{ orgasmCount }}<img width="30" src="./assets/items/cum.png"/></span>
 		</div>
 
-		<video id="video-record" controls muted class="video-background">
+		<video id="video-record" controls class="video-background">
 			<source [src]="recordUrl" type="video/mp4" />
 		</video>
 
 		<div class="positions-wrapper" *ngIf="showPositions">
-			<ng-container *ngFor="let position of positions">
-				<button
-					*ngIf="position.name !== 'intro' && isAllowed(position.name)"
-					[disabled]="position.type !== PositionType.FOREPLAY && bonner + position.bonner < 20"
-					(click)="startScene(position)"
-					[class.trending]="position.name === trendingPosition"
-          [class.special]="position.type === PositionType.SPECIAL"
-					class="btn has-tooltip"
-				>
-					{{ position.label }}
-					<span class="badge-btn">{{
-						positionRepeated(position.name) === 0 ? '' : 'Repeat!'
-					}}</span>
+      <ng-container *ngIf="filteredPositions([PositionType.FOREPLAY, PositionType.FOREPLAY_SKILL]) as positions">
+        <div class="foreplay" *ngIf="positions.length > 0">
+          <div class="header-positions">Foreplay</div>
+          <ng-container *ngFor="let position of positions">
+            <ng-container
+                *ngTemplateOutlet="
+                  buttonPosition;
+                  context: { position: position }
+                "
+              ></ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
 
-          <ng-container
-							*ngTemplateOutlet="
-								tooltip;
-								context: { positionstats: positionStats(position, true) }
-							"
-						></ng-container>
-				</button>
-			</ng-container>
+      <ng-container *ngIf="filteredPositions([PositionType.PENETRATION, PositionType.SKILL]) as positions">
+        <div class="penetration" *ngIf="positions.length > 0">
+          <div class="header-positions">Penetration</div>
+          <ng-container *ngFor="let position of positions">
+            <ng-container
+                *ngTemplateOutlet="
+                  buttonPosition;
+                  context: { position: position }
+                "
+              ></ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="filteredPositions([PositionType.SPECIAL]) as positions">
+        <div class="special" *ngIf="positions.length > 0">
+          <div class="header-positions">Special</div>
+          <ng-container *ngFor="let position of positions">
+            <ng-container
+                *ngTemplateOutlet="
+                  buttonPosition;
+                  context: { position: position }
+                "
+              ></ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
 		</div>
     <div class="end-record" *ngIf="showPositions">
       <button class="btn" (click)="endRecord()">End recording</button>
@@ -198,6 +217,28 @@
 	</ng-container>
 </div>
 
+<ng-template #buttonPosition let-position="position">
+  <button
+    *ngIf="position.name !== 'intro' && isAllowed(position.name)"
+    [disabled]="position.type !== PositionType.FOREPLAY && bonner + position.bonner < 20"
+    (click)="startScene(position)"
+    [class.trending]="position.name === trendingPosition"
+    [class.special]="position.type === PositionType.SPECIAL"
+    class="btn has-tooltip"
+  >
+    {{ position.label }}
+    <span class="badge-btn">{{
+      positionRepeated(position.name) === 0 ? '' : 'Repeat!'
+    }}</span>
+
+    <ng-container
+        *ngTemplateOutlet="
+          tooltip;
+          context: { positionstats: positionStats(position, true) }
+        "
+      ></ng-container>
+  </button>
+</ng-template>
 
 <ng-template #tooltip let-position="positionstats">
 	<div class="tooltip">

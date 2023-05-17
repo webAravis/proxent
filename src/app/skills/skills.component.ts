@@ -154,13 +154,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
   resetAll(): void {
     if (this.canReset() && confirm('Are you sure you want to reset all skills? NO REFUND FOR SPENT MATERIALS!')) {
 
-      for (const price of this.resetPrice) {
-        if (price.type === 'gold') {
-          this._gameService.updateGolds(price.quantity * -1);
-        } else {
-          this._inventoryService.removeItemByName(price.type, price.quantity);
-        }
-      }
+      // for (const price of this.resetPrice) {
+      //   if (price.type === 'gold') {
+      //     this._gameService.updateGolds(price.quantity * -1);
+      //   } else {
+      //     this._inventoryService.removeItemByName(price.type, price.quantity);
+      //   }
+      // }
 
       for (const treeSkills of this.treeSkills) {
         for (const skillTier of treeSkills.skillTiers) {

@@ -23,6 +23,7 @@ import { TreeSkills } from '../skills/treeskills.model';
 export class RecordComponent implements OnInit, OnDestroy {
   PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
+  volume: number = 1;
 	timeoutscene: NodeJS.Timeout[] = [];
 
 	record: Record = new Record();
@@ -71,6 +72,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   skillStatsModifiers: { stat: string, position: string, label: string, value: string }[] = [];
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
+  private _fapInterval: NodeJS.Timer | undefined = undefined;
 
 	constructor(
 		private _girlsService: GirlsService,
@@ -85,6 +87,24 @@ export class RecordComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+    this._gameService.fapMode.pipe(takeUntil(this._unsubscribeAll)).subscribe((fapMode: boolean) => {
+      if (this._fapInterval !== undefined) {
+        clearInterval(this._fapInterval);
+      }
+
+      if (fapMode) {
+        this._fapInterval = setInterval(() => {
+          let comboBtns = <HTMLCollectionOf<Element>> document.getElementsByClassName('combo-btn');
+          for (var i = 0; i < comboBtns.length; i++) {
+            const btnElement = <HTMLElement> comboBtns.item(i);
+            if (btnElement !== null) {
+              btnElement.click();
+            }
+          }
+        }, 1000)
+      }
+    });
+
 		this._girlsService.currentGirl
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((girl: Girl) => {
@@ -116,13 +136,13 @@ export class RecordComponent implements OnInit, OnDestroy {
                       const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
 
                       if (!isNaN(sceneRank)) {
-                        const sceneName = effects.value.slice(0, -2).toLowerCase();
+                        const sceneName = effects.value.slice(0, -2).toLowerCase().replaceAll(' ', '');
                         for (let index = sceneRank; index > 1; index--) {
                           this.sceneSkills.push(sceneName + index);
                         }
                         this.sceneSkills.push(sceneName);
                       } else {
-                        this.sceneSkills.push(effects.value.toLowerCase());
+                        this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
                       }
                       break;
                     default:
@@ -230,9 +250,19 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	startScene(position: Position, isCombo: boolean = false): void {
+    // volume control
+    let intervalVolume = setInterval(() => {
+      if (this.vid.volume >= 0.9) {
+        this.vid.volume = 1;
+        clearInterval(intervalVolume);
+      } else if (this.vid.volume + 0.1 < 1) {
+        this.vid.volume += 0.1;
+      }
+    }, 50);
+
     let positionName = position.name;
     if (isCombo) {
-      positionName = positionName.substring(0, positionName.length -1 );
+      positionName = positionName.substring(0, positionName.length - 1);
     }
 
 		if (this.trendingPosition === positionName) {
@@ -253,7 +283,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.timeoutscene.push(
 				setTimeout(() => {
 					this.endScene();
-				}, position.timeout)
+				}, position.timeout - 500)
 			);
 		});
 
@@ -269,9 +299,11 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.fansWon += positionStats.fans;
 		this.girl.orgasmLevel += positionStats.orgasm;
 
-    this.bonner += positionStats.bonner;
-    this.bonner = Math.max(this.bonner, 0);
-    this.bonner = Math.min(this.bonner, 100);
+    if (!isCombo || positionStats.bonner > 0) {
+      this.bonner += positionStats.bonner;
+      this.bonner = Math.max(this.bonner, 0);
+      this.bonner = Math.min(this.bonner, 100);
+    }
 
     if (!isCombo) {
       this.nbScenes++;
@@ -323,6 +355,15 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
 	endScene(isCombo: boolean = false): void {
+    // volume control
+    let intervalVolume = setInterval(() => {
+      if (this.vid.volume <= 0.1) {
+        this.vid.volume = 0;
+        clearInterval(intervalVolume);
+      } else if (this.vid.volume - 0.1 > 0) {
+        this.vid.volume -= 0.1;
+      }
+    }, 50);
 
 		if (this.timeoutscene.length > 0) {
 			for (const timeout of this.timeoutscene) {
@@ -352,7 +393,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
 
 		} else {
-			this.vid.pause();
+			// this.vid.pause();
 		}
 
     if (!isCombo) {
@@ -484,7 +525,11 @@ export class RecordComponent implements OnInit, OnDestroy {
 
         // automatically plays next scene!
         this.endScene(true);
-        this.startScene(this.currentPosition.unlocker, true);
+        setTimeout(() => {
+          if (this.currentPosition?.unlocker) {
+            this.startScene(this.currentPosition.unlocker, true);
+          }
+        }, 500);
       }
     }
 
@@ -493,6 +538,10 @@ export class RecordComponent implements OnInit, OnDestroy {
   exit(): void {
 		this._gameService.resumeGame();
 		this._router.navigate(['girls']);
+  }
+
+  filteredPositions(positionTypes: PositionType[]): Position[] {
+    return this.positions.filter(position => positionTypes.includes(position.type));
   }
 
 	private _initCombos(position: Position): void {

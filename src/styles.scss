@@ -85,6 +85,7 @@ body {
 
 .has-tooltip {
   position: relative;
+  cursor: pointer !important;
 
   &:hover .tooltip {
 		opacity: 1;
@@ -93,6 +94,7 @@ body {
 	}
 
 	.tooltip {
+    width: max-content;
 		position: absolute;
 		background: #242424;
 		color: white;

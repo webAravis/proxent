@@ -133,16 +133,7 @@ export class GirlsService {
             "corruption": 7,
             "timeout": 5000,
 
-            "type": PositionType.PENETRATION,
-            "unlocker": new Position({
-              "name": "missionary3",
-              "label": "Missionary 3",
-              "corruption": 7,
-              "timeout": 10000,
-
-              "type": PositionType.PENETRATION,
-              "unlocker": undefined
-            })
+            "type": PositionType.PENETRATION
           })
         }),
         new Position({
@@ -159,7 +150,23 @@ export class GirlsService {
             "timeout": 10000,
 
             "type": PositionType.PENETRATION,
-            "unlocker": undefined
+            "unlocker": new Position({
+              "name": "reversecowgirl3",
+              "label": "Reverse Cowgirl 3",
+              "corruption": 10,
+              "timeout": 10000,
+
+              "type": PositionType.SKILL,
+              "unlocker": new Position({
+                "name": "reversecowgirl4",
+                "label": "Reverse Cowgirl 4",
+                "corruption": 11,
+                "timeout": 5000,
+
+                "type": PositionType.SKILL,
+                "unlocker": undefined
+              })
+            })
           }),
         }),
         new Position({
@@ -176,7 +183,23 @@ export class GirlsService {
             "timeout": 5000,
 
             "type": PositionType.PENETRATION,
-            "unlocker": undefined
+            "unlocker": new Position({
+              "name": "cowgirl3",
+              "label": "Cowgirl 3",
+              "corruption": 8,
+              "timeout": 10000,
+
+              "type": PositionType.SKILL,
+              "unlocker": new Position({
+                "name": "cowgirl4",
+                "label": "Cowgirl 4",
+                "corruption": 9,
+                "timeout": 10000,
+
+                "type": PositionType.SKILL,
+                "unlocker": undefined
+              })
+            })
           })
         }),
         new Position({
@@ -242,10 +265,42 @@ export class GirlsService {
         new Position({
           "name": "anal",
           "label": "Anal",
-          "timeout": 5000,
+          "timeout": 10000,
           "corruption": 15,
 
           "type": PositionType.SPECIAL,
+          "unlocker": new Position({
+            "name": "anal2",
+            "label": "Anal 2",
+            "timeout": 10000,
+            "corruption": 16,
+
+            "type": PositionType.SPECIAL,
+            "unlocker": new Position({
+              "name": "anal3",
+              "label": "Anal 3",
+              "timeout": 5000,
+              "corruption": 17,
+
+              "type": PositionType.SPECIAL,
+              "unlocker": new Position({
+                "name": "anal4",
+                "label": "Anal 4",
+                "timeout": 10000,
+                "corruption": 18,
+
+                "type": PositionType.SPECIAL,
+                "unlocker": new Position({
+                  "name": "anal5",
+                  "label": "Anal 5",
+                  "timeout": 10000,
+                  "corruption": 19,
+
+                  "type": PositionType.SPECIAL,
+                })
+              })
+            })
+          })
         }),
         new Position({
           "name": "footjob",

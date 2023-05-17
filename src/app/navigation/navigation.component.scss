@@ -18,10 +18,9 @@
 		font-size: 25px;
 		color: #ce0100;
 		text-decoration: none;
-
-		&.disabled {
-			cursor: not-allowed;
-			opacity: 0.3;
-		}
 	}
+}
+
+.disabled {
+  opacity: 0.5;
 }

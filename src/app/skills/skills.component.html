@@ -9,7 +9,16 @@
   <div class="skillpoints-wrapper">
     <div class="label">Skill Points available</div>
     <div class="total">{{ girl.skillPoints - skillPointsSpent }}</div>
-    <button class="btn" [disabled]="!canReset()" (click)="resetAll()">Reset skills</button>
+    <button class="btn has-tooltip" [disabled]="!canReset()" (click)="resetAll()">
+      Reset skills
+      <div class="tooltip">
+        <div class="tooltip-wrapper">
+          <div class="red with-icon" *ngFor="let unlockPrice of resetPrice">
+            {{ unlockPrice.quantity | number : '1.0-0' }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
+          </div>
+        </div>
+      </div>
+    </button>
   </div>
 
   <div class="branch-wrapper">

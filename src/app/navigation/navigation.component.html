@@ -1,4 +1,11 @@
 <div class="wrapper">
+  <div [class.disabled]="fapMode === false" (click)="toggleFapMode()" class="with-icon has-tooltip">
+    <div><img src="./assets/fap.png" width="30" alt="" srcset="" /></div>
+    <div class="tooltip">
+      Fap Mode: {{ fapMode ? 'true' : 'false' }}
+    </div>
+  </div>
+
 	<a [routerLink]="'girls'">Girls</a>
 
 	<a *ngIf="studioUnlocked" [routerLink]="'studio'">Studio</a>

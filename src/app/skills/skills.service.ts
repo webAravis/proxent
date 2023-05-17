@@ -242,19 +242,31 @@ export class SkillsService {
 
         skillTier1.skills = [
           new Skill({
-            name: 'Boobist',
-            description: 'Boobs are now the MVP (Most Valuable Part) of the record',
-            maxlevel: 4,
+            name: 'Cowgirl',
+            description: 'Training her legs for better bounce',
+            maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
             requires: 'Actor',
             effects: [
-              [{ stat: 'scene', label: 'New scene', value: 'Boobjob 2' }],
-              [{ stat: 'scene', label: 'New scene', value: 'Boobjob 3' }],
-              [{ stat: 'scene', label: 'New scene', value: 'Boobjob 4' }],
-              [{ stat: 'scene', label: 'New scene', value: 'Boobjob 5' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cowgirl 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Cowgirl 4' }],
+            ]
+          }),
+          new Skill({
+            name: 'Reverse Cowgirl',
+            description: 'Training her legs for better bounce',
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Actor',
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Reverse Cowgirl 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Reverse Cowgirl 4' }],
             ]
           }),
           new Skill({
@@ -276,32 +288,38 @@ export class SkillsService {
 
         skillTier2.skills = [
           new Skill({
-            name: 'Silicon',
-            description: 'Increasing boobs size',
-            maxlevel: 2,
-            unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
-            ],
-            requires: 'Boobist',
-            effects: [
-              [{ stat: 'bonner', position: 'boobjob', label: 'Bonner', value: '+50%' }, { stat: 'golds', position: 'boobjob', label: 'Gold', value: '-5%' }],
-              [{ stat: 'bonner', position: 'boobjob', label: 'Bonner', value: '+100%' }, { stat: 'golds', position: 'boobjob', label: 'Gold', value: '-15%' }],
-            ],
-          }),
-          new Skill({
             name: 'Jumping jacks',
             description: 'By an intense training, girl gains skill efficiency',
             maxlevel: 5,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 }
             ],
-            requires: 'Boobist',
+            requires: 'Cowgirl',
             effects: [
-              [{ stat: 'golds', position: 'boobjob', label: 'Gold', value: '+5%' }, { stat: 'fans', position: 'boobjob', label: 'Fans', value: '+1%' }],
-              [{ stat: 'golds', position: 'boobjob', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'boobjob', label: 'Fans', value: '+2%' }],
-              [{ stat: 'golds', position: 'boobjob', label: 'Gold', value: '+15%' }, { stat: 'fans', position: 'boobjob', label: 'Fans', value: '+3%' }],
-              [{ stat: 'golds', position: 'boobjob', label: 'Gold', value: '+20%' }, { stat: 'fans', position: 'boobjob', label: 'Fans', value: '+4%' }],
-              [{ stat: 'golds', position: 'boobjob', label: 'Gold', value: '+25%' }, { stat: 'fans', position: 'boobjob', label: 'Fans', value: '+5%' }],
+              [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+5%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+1%' }],
+              [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+2%' }],
+              [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+15%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+3%' }],
+              [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+20%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+4%' }],
+              [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+25%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+5%' }],
+            ],
+          }),
+          new Skill({
+            name: 'Firm legs',
+            description: 'Increasing bouncing',
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 }
+            ],
+            requires: 'Reverse Cowgirl',
+            effects: [
+              [
+                { stat: 'bonner', position: 'reversecowgirl', label: 'Bonner', value: '+15%' },
+                { stat: 'golds', position: 'reversecowgirl', label: 'Gold', value: '-5%' },
+              ],
+              [
+                { stat: 'bonner', position: 'reversecowgirl', label: 'Bonner', value: '+25%' },
+                { stat: 'golds', position: 'reversecowgirl', label: 'Gold', value: '-5%' },
+              ],
             ],
           }),
           new Skill({
