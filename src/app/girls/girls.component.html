@@ -4,15 +4,17 @@
 
 <div class="wrapper">
 	<div class="girl" *ngIf="girl.id !== 0">
-    <div class="contract-cancel" *ngIf="girlFreeable()">
-      <button class="btn" (click)="cancelContract()">Cancel contract</button>
-    </div>
-		<div class="name">
-      <div>
-        {{ girl.name }}
+    <div class="header-wrapper">
+      <div class="name">
+        <div>
+          {{ girl.name }}
+        </div>
+        <div class="btn-skills">
+          <button (click)="skills()" class="btn">Skills</button>
+        </div>
       </div>
-      <div>
-        <button (click)="skills()" class="btn">Skills</button>
+      <div class="contract-cancel" *ngIf="girlFreeable()">
+        <button class="btn" (click)="cancelContract()">Cancel contract</button>
       </div>
     </div>
     <div class="attributes">

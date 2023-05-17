@@ -35,10 +35,34 @@
       margin-top: 0;
     }
 
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .contract-cancel {
+        display: flex;
+
+        .btn {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .name {
+        font-size: 30px;
+        display: flex;
+        gap: 15px;
+
+        .btn-skills {
+          display: flex;
+        }
+      }
+    }
+
     .attributes {
       display: flex;
       gap: 6px;
-      margin-bottom: 7.5px;
+      margin: 7.5px 0;
 
       div {
         background: rgba(0,0,0,0.8);
@@ -49,17 +73,6 @@
       }
     }
 
-    .contract-cancel {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-		.name {
-			font-size: 30px;
-      display: flex;
-      gap: 15px;
-		}
 
 		.level-wrapper {
 			display: flex;

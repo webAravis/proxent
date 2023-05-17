@@ -246,6 +246,14 @@ export class GirlsService {
           "corruption": 15,
 
           "type": PositionType.SPECIAL,
+        }),
+        new Position({
+          "name": "footjob",
+          "label": "Footjob",
+          "timeout": 10000,
+          "corruption": 15,
+
+          "type": PositionType.SPECIAL,
         })
       ]
       },

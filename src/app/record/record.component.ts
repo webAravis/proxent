@@ -68,6 +68,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   treeSkills: TreeSkills[] = [];
   sceneSkills: string[] = [];
+  skillStatsModifiers: { stat: string, position: string, label: string, value: string }[] = [];
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
@@ -108,10 +109,8 @@ export class RecordComponent implements OnInit, OnDestroy {
         for (const treeSkill of this.treeSkills) {
           for (const skillTiers of treeSkill.skillTiers) {
             for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
-              console.log('skill unlocked', skill);
               if (skill.effects.length >= skill.level) {
                 for (const effects of skill.effects[skill.level-1]) {
-                  console.log('skill effects to apply', effects);
                   switch (effects.stat) {
                     case 'scene':
                       const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
@@ -126,6 +125,9 @@ export class RecordComponent implements OnInit, OnDestroy {
                         this.sceneSkills.push(effects.value.toLowerCase());
                       }
                       break;
+                    default:
+                      this.skillStatsModifiers.push(effects);
+                      break;
                   }
                 }
               }
@@ -134,6 +136,7 @@ export class RecordComponent implements OnInit, OnDestroy {
         }
 
         console.log('scene skills', this.sceneSkills);
+        console.log('stats modifiers skills', this.skillStatsModifiers);
       });
 
 		this._gameService.goldChanged
@@ -292,11 +295,30 @@ export class RecordComponent implements OnInit, OnDestroy {
 		}
 
     return {
-      golds: Math.round(position.getGold(this.trendingMultiplier(position)) * repeatedMultiplier),
-      xp: Math.round(position.getXp(this.trendingMultiplier(position)) * repeatedMultiplier),
-      fans: Math.round(position.getFans(this.trendingMultiplier(position)) * repeatedMultiplier),
-      bonner: Math.round(position.bonner * repeatedMultiplier),
-      orgasm: position.getOrgasm(this.bonner, this.trendingMultiplier(position))
+      golds: Math.round(
+        position.getGold(this.trendingMultiplier(position))
+        * this._skillModifier('golds', position)
+        * repeatedMultiplier
+      ),
+      xp: Math.round(
+        position.getXp(this.trendingMultiplier(position))
+        * this._skillModifier('xp', position)
+        * repeatedMultiplier
+      ),
+      fans: Math.round(
+        position.getFans(this.trendingMultiplier(position))
+        * this._skillModifier('fans', position)
+        * repeatedMultiplier
+      ),
+      bonner: Math.round(
+        position.bonner
+        * this._skillModifier('bonner', position)
+        * repeatedMultiplier
+      ),
+      orgasm: Math.round(
+        position.getOrgasm(this.bonner, this.trendingMultiplier(position))
+        * this._skillModifier('orgasm', position)
+      )
     }
   }
 
@@ -346,9 +368,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	pickTrendingPosition(): void {
-		const availablePositions = this.girl.unlockedPositions.filter(
+		let availablePositions = this.girl.unlockedPositions.filter(
 			(position) => position !== this.trendingPosition && position !== 'intro' && isNaN(parseInt(position.charAt(position.length - 1)))
 		);
+    availablePositions = [...availablePositions, ...this.sceneSkills.filter(scene => isNaN(parseInt(scene.charAt(scene.length - 1))))];
 		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
 	}
 
@@ -491,4 +514,25 @@ export class RecordComponent implements OnInit, OnDestroy {
       this.nbCombos = 2;
     }
 	}
+
+  private _skillModifier(statName: string, position: Position): number {
+    let positionName = position.name.toLowerCase();
+    const sceneRank = parseInt(positionName.charAt(positionName.length-1));
+
+    if (!isNaN(sceneRank)) {
+      positionName = positionName.slice(0, -1).toLowerCase();
+    }
+
+    const modifiersToApply = this.skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
+
+    let modifier = 100;
+    for (const modifierStat of modifiersToApply) {
+      let modifierValue = parseInt(modifierStat.value.replaceAll('%', '').replaceAll('+', '').replaceAll('-', ''));
+      if (!isNaN(modifierValue)) {
+        modifier = modifier + (modifierValue * (modifierStat.value.charAt(0) === '+' ? 1 : -1));
+      }
+    }
+
+    return modifier / 100;
+  }
 }

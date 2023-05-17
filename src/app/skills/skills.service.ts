@@ -93,6 +93,7 @@ export class SkillsService {
     const skillTier0 = new SkillTier({tier: 0});
     const skillTier1 = new SkillTier({tier: 1});
     const skillTier2 = new SkillTier({tier: 2});
+    const skillTier3 = new SkillTier({tier: 3});
 
     switch (branch.toLowerCase()) {
       case 'yiny':
@@ -125,6 +126,19 @@ export class SkillsService {
               [{ stat: 'scene', label: 'New scene', value: 'Anal 5' }],
             ]
           }),
+          new Skill({
+            name: 'Footjob',
+            description: 'Unlocks or upgrades footjob scenes',
+            maxlevel: 1,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Fetishist',
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Footjob' }],
+            ]
+          }),
         ];
 
         skillTier2.skills = [
@@ -153,11 +167,40 @@ export class SkillsService {
             ],
             requires: 'Anal',
             effects: [
-              [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+50%' }],
-              [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+100%' }],
+              [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+5%' }],
+              [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+10%' }],
             ],
           }),
         ];
+
+        skillTier3.skills = [
+          new Skill({
+            name: 'Anal Stretching',
+            description: 'Yiny is capable of stretching her anus',
+            maxlevel: 1,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Anal Enlargement',
+            effects: [
+              [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+25%' }],
+            ]
+          }),
+          new Skill({
+            name: 'Natural excitation',
+            description: 'More excitation means better lubrication',
+            maxlevel: 1,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: 'Anal Lubricant',
+            effects: [
+              [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+25%' }],
+            ],
+          }),
+        ]
 
         break;
 
@@ -218,8 +261,8 @@ export class SkillsService {
             ],
             requires: 'Boobist',
             effects: [
-              [{ stat: 'orgasm', position: 'boobjob', label: 'Orgasm', value: '+50%' }, { stat: 'orgasm', position: 'boobjob', label: 'Gold', value: '-5%' }],
-              [{ stat: 'orgasm', position: 'boobjob', label: 'Orgasm', value: '+100%' }, { stat: 'orgasm', position: 'boobjob', label: 'Gold', value: '-15%' }],
+              [{ stat: 'bonner', position: 'boobjob', label: 'Bonner', value: '+50%' }, { stat: 'golds', position: 'boobjob', label: 'Gold', value: '-5%' }],
+              [{ stat: 'bonner', position: 'boobjob', label: 'Bonner', value: '+100%' }, { stat: 'golds', position: 'boobjob', label: 'Gold', value: '-15%' }],
             ],
           }),
           new Skill({
@@ -247,8 +290,8 @@ export class SkillsService {
             ],
             requires: 'Mouthist',
             effects: [
-              [{ stat: 'orgasm', position: 'blowjob', label: 'Orgasm', value: '+50%' }],
-              [{ stat: 'orgasm', position: 'blowjob', label: 'Orgasm', value: '+100%' }],
+              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+50%' }],
+              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+100%' }],
             ],
           })
         ];
@@ -270,6 +313,7 @@ export class SkillsService {
     skillTiers.push(skillTier0);
     skillTiers.push(skillTier1);
     skillTiers.push(skillTier2);
+    skillTiers.push(skillTier3);
 
     return skillTiers;
   }
