@@ -64,6 +64,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   nbCombos = 2;
   comboBtns: { coordX: string; coordY: string; }[] = [];
+  timeoutCombos: any[] = [];
   hitted = 0;
   comboMessage = false;
 
@@ -247,6 +248,12 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	startScene(position: Position, isCombo: boolean = false): void {
+    for (const timeout of this.timeoutCombos) {
+      clearTimeout(timeout);
+    }
+    this.timeoutCombos = [];
+    this.comboBtns = [];
+
     // volume control
     let intervalVolume = setInterval(() => {
       if (this.vid.volume >= 0.9) {
@@ -458,8 +465,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.girl,
 			this.score,
 			this.scoreStudio,
-			this.goldsWon,
-			this.fansWon,
+			this.goldsWon * (1 - this.girl.freedom),
+			this.fansWon * (1 - this.girl.freedom),
 			'player'
 		);
 
@@ -546,12 +553,12 @@ export class RecordComponent implements OnInit, OnDestroy {
     if (position.unlocker !== undefined && this.isAllowed(position.unlocker.name)) {
 
       for (let index = 1; index <= this.nbCombos; index++) {
-        setTimeout(() => {
+        this.timeoutCombos.push(setTimeout(() => {
           this.comboBtns.push({
             coordX: Math.random() * (75 - 25) + 25 + 'vw',
             coordY: Math.random() * (75 - 25) + 25 + 'vh',
           });
-        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (position.timeout - 1000)));
+        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (position.timeout - 1000))));
       }
 
     } else {

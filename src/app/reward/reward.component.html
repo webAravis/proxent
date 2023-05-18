@@ -4,7 +4,7 @@
 	<hr />
 
   <div class="red center" *ngIf="reward.girl.freedom > 0">
-    Rewards have been reduced by {{ reward.girl.freedom * 100 }}% due to girl independency!
+    Rewards have been reduced by {{ (reward.girl.freedom * 100) | number : '1.0-0' }}% due to girl independency!
   </div>
 
 	<div class="rewards-wrapper">
@@ -13,20 +13,20 @@
 			*ngIf="reward.xp > 0"
 			class="with-icon"
 			><b
-				>+ {{ reward.xp }}
+				>+ {{ reward.xp | number : '1.0-0' }}
 				<img src="./assets/experience.png" width="30" alt="" srcset="" /></b
 		></span>
 		<span *ngIf="reward.money > 0" class="with-icon"
 			><b
-				>+ {{ reward.money }}
+				>+ {{ reward.money | number : '1.0-0' }}
 				<img src="./assets/golds.png" width="30" alt="" srcset="" /></b
 		></span>
 		<span *ngIf="reward.corruption > 0"
-			><b>+ {{ reward.corruption }} corruption</b></span
+			><b>+ {{ reward.corruption | number : '1.0-0' }} corruption</b></span
 		>
 		<span *ngIf="reward.fans > 0" class="with-icon"
 			><b
-				>+ {{ reward.fans }}
+				>+ {{ reward.fans | number : '1.0-0' }}
 				<img src="./assets/fans.png" width="30" alt="" srcset="" /></b
 		></span>
 	</div>
@@ -35,7 +35,7 @@
 		<div *ngFor="let item of items" class="item">
 			<span class="tooltip">{{ item[0] }}</span>
 			<img [src]="'./assets/items/' + (item[0] | lowercase) + '.png'" />
-			<span class="quantity">{{ item[1].length }}</span>
+			<span class="quantity">{{ item[1].length | number : '1.0-0' }}</span>
 		</div>
 	</div>
 
@@ -47,7 +47,7 @@
 	<div class="levelup-wrapper" *ngIf="reward.levelup">
 		<div class="header">
 			{{ reward.girl.name }} has level up! She is now lvl
-			{{ reward.girl.level }}
+			{{ reward.girl.level | number : '1.0-0' }}
 		</div>
 	</div>
 
