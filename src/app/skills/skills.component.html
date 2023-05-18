@@ -21,6 +21,11 @@
     </button>
   </div>
 
+  <div class="material-wrapper">
+    <div>{{ itemQuantity('basic_skill_gem') }}<img [src]="'./assets/items/basic_skill_gem.png'" /></div>
+    <div>{{ itemQuantity('advanced_skill_gem') }}<img [src]="'./assets/items/advanced_skill_gem.png'" /></div>
+  </div>
+
   <div class="branch-wrapper">
 
     <div id="branch-{{branch.name}}" class="branch" *ngFor="let branch of treeSkills">

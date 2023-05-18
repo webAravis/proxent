@@ -140,7 +140,7 @@ export class SkillsService {
             description: 'Unlocks Yiny\'s special scenes',
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              { type: 'basic_skill_gem', quantity: 1 }
             ]
           })
         ];
@@ -248,7 +248,7 @@ export class SkillsService {
             description: 'Unlocks Peta\'s special scenes',
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              { type: 'basic_skill_gem', quantity: 1 }
             ]
           })
         ];
@@ -313,7 +313,7 @@ export class SkillsService {
             description: 'Professional training, Unlocks recording habilities',
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              { type: 'basic_skill_gem', quantity: 1 }
             ]
           })
         ];
@@ -423,7 +423,7 @@ export class SkillsService {
             description: 'Competitor training, Unlocks recording habilities',
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              { type: 'basic_skill_gem', quantity: 1 }
             ]
           })
         ];

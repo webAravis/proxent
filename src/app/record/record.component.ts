@@ -393,10 +393,12 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 			this.bonner -= 50;
 
-      for (let i = 0; i < nbOrgasm; i++) {
-        this.itemsWon.push(
-          new Item({ name: 'cum', price: 100, quality: 'normal' })
-        );
+      if (!this.isBattle) {
+        for (let i = 0; i < nbOrgasm; i++) {
+          this.itemsWon.push(
+            new Item({ name: 'cum', price: 100, quality: 'normal' })
+          );
+        }
       }
 
 		}

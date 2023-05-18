@@ -4,10 +4,8 @@ import { LeadersService } from '../leaders/leaders.service';
 import { Router } from '@angular/router';
 import { Leader } from '../leaders/leader.model';
 import { GameService } from '../core/game.service';
-import { Girl } from '../core/girls/girl.model';
-import { SafeUrl } from '@angular/platform-browser';
-import { CachingService } from '../core/caching.service';
-import { RewardService } from '../reward/reward.service';
+import { Item } from '../inventory/item.model';
+import { InventoryService } from '../inventory/inventory.service';
 
 @Component({
   selector: 'app-leader-battle',
@@ -27,13 +25,14 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
   metaCumDone: boolean = false;
 
   rewardText: string = 'You didn\'t beat leader, train harder and come back!';
+  rewardItem: string = '';
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
   constructor(
     private _leaderService: LeadersService,
     private _gameService: GameService,
-    private _rewardService: RewardService,
+    private _inventoryService: InventoryService,
     private _router: Router
   ) { }
 
@@ -71,6 +70,17 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
         case 'expandor':
           this.rewardText = 'Girl limit increased!';
           break;
+        case 'skillus':
+          this.rewardText = '+1';
+          this.rewardItem = 'basic_skill_gem';
+          break;
+        case 'aniter':
+        case 'multiplor':
+        case 'blows':
+        case 'savager':
+          this.rewardText = '+1';
+          this.rewardItem = 'advanced_skill_gem';
+          break;
       }
     }
   }
@@ -90,6 +100,15 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     switch (this.leader.name.toLowerCase()) {
       case 'expandor':
         this._gameService.girlLimit.next(this._gameService.girlLimit.getValue()+1);
+        break;
+      case 'skillus':
+        this._inventoryService.addItem(new Item({name: 'basic_skill_gem'}));
+        break;
+      case 'aniter':
+      case 'multiplor':
+      case 'blows':
+      case 'savager':
+        this._inventoryService.addItem(new Item({name: 'advanced_skill_gem'}));
         break;
     }
   }

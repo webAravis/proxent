@@ -209,6 +209,26 @@
 	}
 }
 
+.material-wrapper {
+  display: flex;
+  gap: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+      height: 30px;
+    }
+  }
+}
+
 @keyframes glow-skill {
 	0% {
 		box-shadow: 0px 0px 20px 10px #f9eca0;

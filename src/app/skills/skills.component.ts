@@ -172,4 +172,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
     }
   }
 
+  itemQuantity(itemName: string): number {
+    return this._inventoryService.quantity(itemName);
+  }
+
 }

@@ -41,7 +41,7 @@
                 -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img src="./assets/golds.png" />
               </div>
               <div class="red with-icon" *ngIf="leader.nextLvlCost.type !== 'gold'">
-                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.nextLvlCost.type + '_badge.png'" />
+                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.nextLvlCost.type + '.png'" />
               </div>
 
               <div class="score">

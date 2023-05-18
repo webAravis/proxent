@@ -24,10 +24,45 @@ export class LeadersService {
 
     leaders.push(expandor);
 
+    const skillus = new Leader();
+    skillus.name = 'skillus';
+    skillus.description = 'Skill specialist. Beat him to grab basic skill material';
+
+    leaders.push(skillus);
+
+    const aniter = new Leader();
+    aniter.name = 'aniter';
+    aniter.description = 'Anal fetishist. Beat him to grab advanced skill material';
+
+    leaders.push(aniter);
+
+    const multiplor = new Leader();
+    multiplor.name = 'multiplor';
+    multiplor.description = 'Multiple fetishist. Beat him to grab advanced skill material';
+
+    leaders.push(multiplor);
+
+    const blows = new Leader();
+    blows.name = 'blows';
+    blows.description = 'Mouth fetishist. Beat him to grab advanced skill material';
+
+    leaders.push(blows);
+
+    const savager = new Leader();
+    savager.name = 'savager';
+    savager.description = 'Rough fetishist. Beat him to grab advanced skill material';
+
+    leaders.push(savager);
+
     this.leaders.next(this.initLeadersMethods(leaders));
   }
 
   initLeadersMethods(leaders: Leader[]): Leader[] {
+    for (const leader of this.leaders.getValue()) {
+      if (!leaders.map(leaderParam => leaderParam.name.toLowerCase()).includes(leader.name.toLowerCase())) {
+        leaders.push(leader);
+      }
+    }
 		const toReturn: Leader[] = [];
 
 		for (const leader of leaders) {
@@ -45,6 +80,66 @@ export class LeadersService {
           leader.bonus = ['small', 'brunette'];
           leader.malus = ['milf', 'euro'];
           leader.fetish = [];
+          break;
+        case 'skillus':
+          modifierLevelCost.type = 'gold';
+          modifierLevelCost.value = function (level: number): number {
+            return Math.round((level / 0.07) ** 2);
+          };
+          leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
+          leader.bonus = ['milf', 'dark eyes'];
+          leader.malus = ['american', 'blond'];
+          leader.fetish = [];
+          break;
+        case 'aniter':
+          modifierLevelCost.type = 'recordmonthly_badge';
+          modifierLevelCost.value = function (level: number): number {
+            return Math.round((level / 0.9));
+          };
+          leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
+          leader.bonus = [];
+          leader.malus = [];
+          leader.fetish = ['tease', 'handjob', 'boobjob', 'blowjob', 'anal'];
+          break;
+        case 'multiplor':
+          modifierLevelCost.type = 'recordmonthly_badge';
+          modifierLevelCost.value = function (level: number): number {
+            return Math.round((level / 0.9));
+          };
+          leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
+          leader.bonus = [];
+          leader.malus = [];
+          leader.fetish = ['tease', 'handjob', 'boobjob', 'blowjob', 'gangbang', 'double', 'triple'];
+          break;
+        case 'blows':
+          modifierLevelCost.type = 'recordmonthly_badge';
+          modifierLevelCost.value = function (level: number): number {
+            return Math.round((level / 0.9));
+          };
+          leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
+          leader.bonus = [];
+          leader.malus = [];
+          leader.fetish = ['blowjob', 'deepthroat', 'mouthfuck'];
+          break;
+        case 'savager':
+          modifierLevelCost.type = 'recordmonthly_badge';
+          modifierLevelCost.value = function (level: number): number {
+            return Math.round((level / 0.9));
+          };
+          leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
+          leader.bonus = [];
+          leader.malus = [];
+          leader.fetish = ['tease', 'handjob', 'boobjob', 'blowjob', 'gangbang', 'bdsm'];
           break;
       }
 

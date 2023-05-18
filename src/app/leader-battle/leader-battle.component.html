@@ -17,7 +17,10 @@
     </div>
   </div>
 
-  <div class="center">{{ rewardText }}</div>
+  <div class="center with-icon">
+    {{ rewardText }}
+    <img *ngIf="rewardItem !== ''" src="./assets/items/{{rewardItem}}.png" alt="">
+  </div>
 
 	<div class="center">
 		<a (click)="endBattle()" class="btn">Close</a>
