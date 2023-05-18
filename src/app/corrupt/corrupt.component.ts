@@ -42,6 +42,14 @@ export class CorruptComponent implements OnInit, OnDestroy {
     125_000,
     160_000,
     190_000,
+    230_000,
+    280_000,
+    350_000,
+    440_000,
+    580_000,
+    700_000,
+    900_000,
+    1_125_000,
 	];
 
 	itemsGrid: { itemName: string; quantity: number }[] = [
@@ -65,13 +73,18 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		{ itemName: 'cum', quantity: 22 },
 		{ itemName: 'cum', quantity: 23 },
 		{ itemName: 'cum', quantity: 24 },
+		{ itemName: 'cum', quantity: 25 },
+		{ itemName: 'cum', quantity: 26 },
+		{ itemName: 'cum', quantity: 27 },
+		{ itemName: 'cum', quantity: 28 },
+		{ itemName: 'cum', quantity: 29 },
+		{ itemName: 'cum', quantity: 30 },
 	];
 
 	portrait: SafeUrl = '';
 	corrupt: SafeUrl = '';
 
 	corrupting = false;
-	canEnd = false;
 
 	reasonCorruptDisabled = '';
 
@@ -157,10 +170,6 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			return;
 		}
 		this.corrupting = true;
-
-		setTimeout(() => {
-			this.canEnd = true;
-		}, 3000);
 	}
 
 	selectPosition(position: Position): void {
@@ -208,12 +217,6 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	}
 
 	canCorrupt(): boolean {
-		if (this.newPositions.length === 0) {
-			this.reasonCorruptDisabled =
-				'You already unlocked all positions for ' + this.girl.name;
-			return false;
-		}
-
 		if (this.price > this.golds) {
 			this.reasonCorruptDisabled =
 				'You need more cash to corrupt ' + this.girl.name;
