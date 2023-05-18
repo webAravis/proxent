@@ -13,11 +13,17 @@
         </div>
       </div>
       <div class="bonus-malus">
-        <div class="bonus">
-          <span *ngFor="let bonus of leader.bonus">{{ bonus }}</span>
+        <div class="bonus green">
+          <div class="header-perk">Bonus</div>
+          <span *ngFor="let bonus of leader.bonus">{{ bonus | titlecase }}</span>
         </div>
-        <div class="malus">
-          <span *ngFor="let malus of leader.malus">{{ malus }}</span>
+        <div class="malus red">
+          <div class="header-perk">Malus</div>
+          <span *ngFor="let malus of leader.malus">{{ malus | titlecase }}</span>
+        </div>
+        <div class="fetish purple">
+          <div class="header-perk">Fetish</div>
+          <span *ngFor="let fetish of leader.fetish">{{ fetish | titlecase }}</span>
         </div>
       </div>
 
@@ -36,6 +42,12 @@
               </div>
               <div class="red with-icon" *ngIf="leader.nextLvlCost.type !== 'gold'">
                 -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.nextLvlCost.type + '_badge.png'" />
+              </div>
+
+              <div class="score">
+                <div class="score-header">To beat</div>
+                <div>{{ getMetaScore(leader) | number : '1.0-0' }}pts</div>
+                <div class="with-icon">{{ getMetaCum(leader) | number : '1.0-0' }}<img src="./assets/items/cum.png" /></div>
               </div>
             </div>
           </div>

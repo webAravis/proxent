@@ -29,7 +29,7 @@ export class Girl {
 	}
 
   getNextLevelXp(level: number): number {
-    return (level/0.07) * (level/0.07);
+    return (level/0.07) ** 2;
   }
 
 	get level(): number {

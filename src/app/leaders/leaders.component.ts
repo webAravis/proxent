@@ -39,8 +39,12 @@ export class LeadersComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.complete();
   }
 
-  hasTrophy(leader: Leader): boolean {
-    return true;
+  getMetaScore(leader: Leader) {
+    return this._leaderService.getMetaScore(leader);
+  }
+
+  getMetaCum(leader: Leader) {
+    return this._leaderService.getMetaCum(leader);
   }
 
   canBattle(leader: Leader): boolean {

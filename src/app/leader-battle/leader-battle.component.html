@@ -1,34 +1,25 @@
 <div class="wrapper">
   <img src="./assets/vs-background.jpg" alt="" class="background-battle">
-
-  <div class="player">
-    <div class="header">Player Studio</div>
-    <div class="positions">
-      <div class="position" [class.selected]="index === indexBattle" *ngFor="let setup of battleSetup;let index = index">
-        <div class="girl">{{ setup.girl.name }} - {{ setup.position.name }}</div>
-        <div class="score">{{ scorePositions[index] ? scorePositions[index] : 0 }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="leader">
-    <div class="header">{{ leader.name }}</div>
-    <div class="score">Target: {{ metaScore }}</div>
-    <div class="meta">
-      <div class="bar">
-        <div class="progress" [style.width]="((score / metaScore) * 100) + '%'"></div>
-      </div>
-      <div class="icon">
-        <img src="./assets/star.png" alt="">
-      </div>
-    </div>
-  </div>
 </div>
 
-<app-leader-battle-girls (battleSetup)="initBattle($event)"></app-leader-battle-girls>
+<app-record [leader]="leader" [isBattle]="true" (recordResults)="recordResults($event)"></app-record>
 
-<div class="video-wrapper">
-  <video id="video-record" controls muted class="video-battle">
-    <source [src]="recordUrl" type="video/mp4" />
-  </video>
+<div class="modal" [class.show]="show">
+	<div class="modal-header">Battle completed, let's check this out</div>
+
+	<hr />
+
+  <div class="rewards">
+    <div class="title">Recording results</div>
+    <div>
+      <div [class.red]="!metaScoreDone" [class.green]="metaScoreDone">{{ resultScore | number: '1.0-0' }}/{{ metaScore | number: '1.0-0' }}pts</div>
+      <div [class.red]="!metaCumDone" [class.green]="metaCumDone" class="with-icon">{{ resultCum | number: '1.0-0' }}/{{ metaCum | number: '1.0-0' }}<img src="./assets/items/cum.png" /></div>
+    </div>
+  </div>
+
+  <div class="center">{{ rewardText }}</div>
+
+	<div class="center">
+		<a (click)="endBattle()" class="btn">Close</a>
+	</div>
 </div>

@@ -27,14 +27,15 @@
 		gap: 30px;
 
 		.leader {
-			width: 250px;
+			width: 280px;
 			text-align: center;
-			margin-top: 30px;
+			margin-bottom: 30px;
 			position: relative;
 
 			.header-leader {
 				border: 2px solid red;
-				border-radius: 15px;
+				border-top-left-radius: 15px;
+				border-top-right-radius: 15px;
 
 				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
 					inset 0px 1px 0px 0px #f29c93;
@@ -43,7 +44,6 @@
 				padding: 7.5px;
 				font-size: 25px;
 				font-weight: bold;
-				margin-bottom: 10px;
 
         .subtitle {
           font-size: 14px;
@@ -51,32 +51,24 @@
 			}
 
       .bonus-malus {
+        margin-bottom: 15px;
+				border-bottom-left-radius: 15px;
+				border-bottom-right-radius: 15px;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-      }
+        align-items: baseline;
+        background: rgba(0,0,0,0.8);
+        padding: 15px;
+        gap: 5px;
+        box-sizing: border-box;
 
-      .bonus, .malus {
-        display: flex;
-        gap: 6px;
-        margin-bottom: 7.5px;
-
-        span {
-          color: white;
-          text-transform: capitalize;
-          border-radius: 3px;
-          padding: 3px 18px;
+        & > div {
+          width: 33.3333%;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
         }
-      }
-
-      .bonus span {
-        background: green;
-        border-bottom: 1px solid rgb(7, 78, 7);
-      }
-
-      .malus span {
-        background: red;
-        border-bottom: 1px solid rgb(105, 13, 13);
       }
 
 			.lvl {
@@ -94,6 +86,19 @@
 				font-weight: bold;
 				font-size: 10px;
 			}
+
+      .score {
+        flex-direction: column;
+        gap: 5px;
+
+        .score-header {
+          font-style: italic;
+
+          img {
+            height: 20px;
+          }
+        }
+      }
 		}
 	}
 }

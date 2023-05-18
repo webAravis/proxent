@@ -24,6 +24,11 @@
 		margin-bottom: 15px;
 	}
 
+	.center {
+		display: flex;
+		justify-content: center;
+	}
+
 	.rewards-wrapper {
 		display: flex;
 		gap: 15px;
@@ -36,11 +41,6 @@
 			align-items: center;
 			justify-content: center;
 		}
-	}
-
-	.center {
-		display: flex;
-		justify-content: center;
 	}
 
 	.levelup-wrapper {

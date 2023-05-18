@@ -26,7 +26,6 @@ import { StudioRecordsComponent } from './studio/studio-records/studio-records.c
 import { SaveChooserComponent } from './start/save-chooser/save-chooser.component';
 import { LeadersComponent } from './leaders/leaders.component';
 import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
-import { LeaderBattleGirlsComponent } from './leader-battle/leader-battle-girls/leader-battle-girls.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsComponent } from './skills/skills.component';
@@ -56,7 +55,6 @@ import { SkillsComponent } from './skills/skills.component';
     SaveChooserComponent,
     LeadersComponent,
     LeaderBattleComponent,
-    LeaderBattleGirlsComponent,
     SkillsComponent,
   ],
   imports: [

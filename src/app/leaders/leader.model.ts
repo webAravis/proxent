@@ -6,7 +6,10 @@ export class Leader {
   lvl = 1;
   bonus: string[] = [];
   malus: string[] = [];
+  fetish: string[] = [];
 	nextLvlCost: ModifierLevelCost = new ModifierLevelCost();
+
+  activityProb = 0;
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);

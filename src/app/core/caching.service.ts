@@ -37,7 +37,7 @@ export class CachingService {
 	) {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
-      this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
+      this._girlService.playerGirls.subscribe((girls) => this.cacheMedias(girls));
     });
 	}
 

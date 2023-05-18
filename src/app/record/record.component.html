@@ -1,11 +1,41 @@
 <app-background class="background"></app-background>
 
 <div class="wrapper">
-	<ng-container *ngIf="state === 'init'">
+	<ng-container *ngIf="state === 'init' && isBattle">
+		<div class="header">Choose a girl to record</div>
+
+		<div class="girl-picker">
+      <div class="arrow" (click)="changeGirl(-1)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="arrow arrow-reverse" (click)="changeGirl(1)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+			<img class="portrait" [src]="portrait" />
+      <div>{{ name }}</div>
+		</div>
+
+		<div>
+			<button (click)="startRecord()" class="btn">
+				Start Recording
+			</button>
+		</div>
+
+    <button (click)="exitLeaders()" class="btn">
+      Back to leaders
+    </button>
+	</ng-container>
+
+	<ng-container *ngIf="state === 'init' && !isBattle">
 		<div class="header">You're about to record {{ girl.name }}</div>
 
 		<div>
-			<img [src]="portrait" />
+			<img class="portrait" [src]="portrait" />
 		</div>
 
 		<div>
@@ -27,7 +57,7 @@
 	</ng-container>
 
 	<ng-container *ngIf="state === 'recording'">
-		<div class="overlay" [class.show]="showPositions || comboMessage"></div>
+		<div class="overlay" [style.opacity]="(1 - volume)"></div>
 
 		<div class="stats">
 			<div class="orgasm">
@@ -63,9 +93,12 @@
 		</div>
 
 		<div class="score">
-			<span class="with-icon">{{ goldsWon }}<img width="30" src="./assets/golds.png" /></span>
-			<span class="with-icon">{{ xpWon }}<img width="30" src="./assets/experience.png" /></span>
-			<span class="with-icon">{{ fansWon }}<img width="30" src="./assets/fans.png" /></span>
+			<span>{{ score | number: '1.0-0' }}pts</span>
+      <ng-container *ngIf="!isBattle">
+        <span class="with-icon">{{ goldsWon }}<img width="30" src="./assets/golds.png" /></span>
+        <span class="with-icon">{{ xpWon }}<img width="30" src="./assets/experience.png" /></span>
+        <span class="with-icon">{{ fansWon }}<img width="30" src="./assets/fans.png" /></span>
+      </ng-container>
 			<span class="with-icon">{{ orgasmCount }}<img width="30" src="./assets/items/cum.png"/></span>
 		</div>
 
@@ -120,8 +153,8 @@
       <button class="btn" (click)="endRecord()">End recording</button>
     </div>
 
-		<div *ngIf="showSkipButton">
-			<button class="btn" (click)="endScene()">Skip scene</button>
+		<div *ngIf="showSkipButton" class="skip-button">
+			<button class="btn" (click)="endScene()">{{comboDone ? 'Next' : 'Skip'}} scene</button>
 		</div>
 
     <ng-container *ngIf="!showPositions">
@@ -200,6 +233,24 @@
     </ng-container>
 
     <div class="combo-message animate__animated animate__fadeOutUp animate__fadeInUp" *ngIf="comboMessage">Great!</div>
+
+    <div class="leader-activity" *ngIf="leaderActivity">
+      <div class="header-activity">{{ leader.name | titlecase }} activity!</div>
+      <div class="activity-effect" *ngIf="leaderActivity">
+        <div class="effect-name">{{ leaderActivity.name | titlecase }}</div>
+        <div class="effect-stat">
+          <ng-container *ngIf="leaderActivity.effect === 'bonner'">
+            {{ leaderActivity.value | number : '1.0-0' }}% Bonner reduction
+          </ng-container>
+          <ng-container *ngIf="leaderActivity.effect === 'cum'">
+            {{ leaderActivity.value | number : '1.0-0' }} Cum reduction
+          </ng-container>
+          <ng-container *ngIf="leaderActivity.effect === 'position'">
+            Disabling: {{ leaderDisabledPositions.join(', ') }}
+          </ng-container>
+        </div>
+      </div>
+    </div>
 	</ng-container>
 
 	<ng-container *ngIf="state === 'end'">
@@ -220,7 +271,7 @@
 <ng-template #buttonPosition let-position="position">
   <button
     *ngIf="position.name !== 'intro' && isAllowed(position.name)"
-    [disabled]="position.type !== PositionType.FOREPLAY && bonner + position.bonner < 0"
+    [disabled]="(position.type !== PositionType.FOREPLAY && bonner + position.bonner < 0) || isLeaderPositionDisabled(position.name)"
     (click)="startScene(position)"
     [class.trending]="position.name === trendingPosition"
     [class.special]="position.type === PositionType.SPECIAL"
@@ -246,15 +297,19 @@
       <div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
         {{ position.bonner }} <img src="./assets/stamina.png" />
       </div>
-      <div [class.red]="position.xp < 0" [class.green]="position.xp > 0" class="with-icon">
-        +{{ position.xp | number : '1.0-0' }} <img src="./assets/experience.png" />
-      </div>
-      <div [class.red]="position.golds < 0" [class.green]="position.golds > 0" class="with-icon">
-        +{{ position.golds | number : '1.0-0' }} <img src="./assets/golds.png" />
-      </div>
-      <div [class.red]="position.fans < 0" [class.green]="position.fans > 0" class="with-icon">
-        +{{ position.fans | number : '1.0-0' }} <img src="./assets/fans.png" />
-      </div>
+
+      <ng-container *ngIf="!isBattle">
+        <div [class.red]="position.xp < 0" [class.green]="position.xp > 0" class="with-icon">
+          +{{ position.xp | number : '1.0-0' }} <img src="./assets/experience.png" />
+        </div>
+        <div [class.red]="position.golds < 0" [class.green]="position.golds > 0" class="with-icon">
+          +{{ position.golds | number : '1.0-0' }} <img src="./assets/golds.png" />
+        </div>
+        <div [class.red]="position.fans < 0" [class.green]="position.fans > 0" class="with-icon">
+          +{{ position.fans | number : '1.0-0' }} <img src="./assets/fans.png" />
+        </div>
+      </ng-container>
+
       <div [class.red]="position.orgasm < 0" [class.green]="position.orgasm > 0" class="with-icon">
         +{{ position.orgasm }} <img src="./assets/items/cum.png" />
       </div>

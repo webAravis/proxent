@@ -21,8 +21,6 @@ export class LeadersService {
     const expandor = new Leader();
     expandor.name = 'expandor';
     expandor.description = 'Logistic specialist. Beat him to increase girl capacity';
-    expandor.bonus = ['small', 'brunette'];
-    expandor.malus = ['milf', 'euro'];
 
     leaders.push(expandor);
 
@@ -42,6 +40,11 @@ export class LeadersService {
             return Math.round((level / 0.07) ** 2);
           };
           leader.nextLvlCost = modifierLevelCost;
+
+          leader.activityProb = Math.min(0.2 + (leader.lvl * 0.01), 1);
+          leader.bonus = ['small', 'brunette'];
+          leader.malus = ['milf', 'euro'];
+          leader.fetish = [];
           break;
       }
 
@@ -51,16 +54,16 @@ export class LeadersService {
     return toReturn;
   }
 
-  getMetaScore() : number {
-    return 1000 + Math.round((this._getAllLeadersLevel() / 0.07) ** 2);
+  getMetaScore(leader: Leader) : number {
+    return (1000 * leader.lvl) + Math.round((this._getAllLeadersLevel() / 0.07) ** 2);
+  }
+
+  getMetaCum(leader: Leader) : number {
+    return Math.round( (1 * leader.lvl) + Math.round((this._getAllLeadersLevel() / 0.9) ** 2) / 75 ) ;
   }
 
   nextLevel(toLevel: Leader) : void {
-    const filtered = this.leaders.getValue().filter(leader => leader.name !== leader.name);
     toLevel.lvl++;
-
-    filtered.push(toLevel);
-    this.leaders.next(filtered);
   }
 
   private _getAllLeadersLevel() : number {

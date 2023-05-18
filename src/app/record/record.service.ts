@@ -5,6 +5,7 @@ import { Girl } from '../core/girls/girl.model';
 import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { Position } from '../core/position.model';
+import { Leader } from '../leaders/leader.model';
 
 export interface PlayedPosition {
   position: Position,
@@ -136,6 +137,7 @@ export class RecordService {
         trendingPositions,
         orgasmCount,
         studioQuality,
+        new Leader(),
         false
       );
       record.studioscore = this.getScoreStudio(studioQuality);
@@ -160,6 +162,7 @@ export class RecordService {
     trendingPositions: number,
     orgasmCount: number,
     studioQuality: number,
+    leader: Leader,
     isPlayer: boolean = true
   ): number {
     let score = 0;
@@ -173,6 +176,22 @@ export class RecordService {
 
     if (isPlayer) {
       score = score * (1 - girl.freedom);
+    }
+
+    if (leader.name !== '') {
+      score = score * 0.05;
+
+      // modifiers due to leader
+      for (const bonus of leader.bonus) {
+        if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(bonus.toLowerCase())) {
+          score = score * 1.5;
+        }
+      }
+      for (const malus of leader.malus) {
+        if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(malus.toLowerCase())) {
+          score = score * 0.01;
+        }
+      }
     }
 
     return Math.round(score);

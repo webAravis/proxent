@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Girl } from '../core/girls/girl.model';
 import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { RewardService } from '../reward/reward.service';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { Item } from '../inventory/item.model';
 import { PlayedPosition, RecordService } from './record.service';
 import { Record } from './record.model';
@@ -14,6 +14,13 @@ import { StudioService } from '../studio/studio.service';
 import { Position, PositionType } from '../core/position.model';
 import { SkillsService } from '../skills/skills.service';
 import { TreeSkills } from '../skills/treeskills.model';
+import { Leader } from '../leaders/leader.model';
+
+interface LeaderActivity {
+  name: string;
+  effect: string;
+  value: number;
+}
 
 @Component({
 	selector: 'app-record',
@@ -21,6 +28,16 @@ import { TreeSkills } from '../skills/treeskills.model';
 	styleUrls: ['./record.component.scss'],
 })
 export class RecordComponent implements OnInit, OnDestroy {
+  // BATTLE
+  @Input() isBattle: boolean = false;
+  @Input() leader: Leader = new Leader();
+  @Output() recordResults: EventEmitter<{score: number, cum: number}> = new EventEmitter();
+  leaderActivity: LeaderActivity | undefined;
+  leaderDisabledPositions: string[] = [];
+
+  playerGirls: Girl[] = [];
+  girlIndex: number = 0;
+
   PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
   volume: number = 1;
@@ -30,6 +47,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 	girl: Girl = new Girl();
 	golds = 0;
 
+  name: string = '';
 	portrait: SafeUrl = '';
 	recordUrl: SafeUrl = '';
 
@@ -67,6 +85,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   timeoutCombos: any[] = [];
   hitted = 0;
   comboMessage = false;
+  comboDone = false;
 
   treeSkills: TreeSkills[] = [];
   sceneSkills: string[] = [];
@@ -106,61 +125,23 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
     });
 
-		this._girlsService.currentGirl
-			.pipe(takeUntil(this._unsubscribeAll))
-			.subscribe((girl: Girl) => {
-				this.girl = girl;
-				if (this.girl.name === '') {
-					this._router.navigate(['girls']);
-				}
-
-				this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
-
-        const positions = this._girlsService.getTimingRecord(girl);
-        if (positions) {
-          this.positions = [...this.positions, ...positions];
-        }
-			});
-
-
-    this._skillService.treeSkills
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === this._girlService.currentGirl.getValue().id);
-        for (const treeSkill of this.treeSkills) {
-          for (const skillTiers of treeSkill.skillTiers) {
-            for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
-              if (skill.effects.length >= skill.level) {
-                for (const effects of skill.effects[skill.level-1]) {
-                  switch (effects.stat) {
-                    case 'scene':
-                      const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
-
-                      if (!isNaN(sceneRank)) {
-                        const sceneName = effects.value.slice(0, -2).toLowerCase().replaceAll(' ', '');
-                        for (let index = sceneRank; index > 1; index--) {
-                          this.sceneSkills.push(sceneName + index);
-                        }
-                        this.sceneSkills.push(sceneName);
-                      } else {
-                        this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
-                      }
-                      break;
-                    default:
-                      this.skillStatsModifiers.push(effects);
-                      break;
-                  }
-                }
-              }
-            }
-          }
-        }
-      });
-
 		this._gameService.goldChanged
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((gold: number) => (this.golds = gold));
 		this.golds = this._gameService.golds;
+
+    if (this.isBattle) {
+      this._girlService.playerGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((playerGirls: Girl[]) => {
+        this.playerGirls = playerGirls.filter(girl => girl.id !== 1); // Yiny doesn't compete!
+        this._selectGirl(this.playerGirls[this.girlIndex]);
+      });
+    } else {
+      this._girlsService.currentGirl
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((girl: Girl) => {
+        this._selectGirl(girl);
+      });
+    }
 
 		this._gameService.pauseGame();
 	}
@@ -179,49 +160,61 @@ export class RecordComponent implements OnInit, OnDestroy {
 		);
 	}
 
+  changeGirl(index: number): void {
+    if (this.girlIndex + index >= 0 && this.girlIndex + index <= this.playerGirls.length) {
+      this.girlIndex += index;
+    }
+
+    this._selectGirl(this.playerGirls[this.girlIndex]);
+  }
+
 	startRecord(): void {
 		this.girl.orgasmLevel = 0;
 		this.state = 'recording';
 
-		// simulate records to know grade
-		this._recordService.recordSimulated.subscribe((record: Record) => {
-			this.simulations.push(record);
-		});
-		this._recordService.simulateRecord(
-			this.girl,
-			'',
-			false,
-			Math.random() * (20 - 0.1) + 0.1,
-			this.girl.recordCount + 1
-		);
-		this._recordService.simulateRecord(
-			this.girl,
-			'',
-			false,
-			Math.random() * (20 - 0.1) + 0.1,
-			this.girl.recordCount + 1
-		);
-		this._recordService.simulateRecord(
-			this.girl,
-			'',
-			false,
-			Math.random() * (20 - 0.1) + 0.1,
-			this.girl.recordCount + 1
-		);
-		this._recordService.simulateRecord(
-			this.girl,
-			'',
-			false,
-			Math.random() * (20 - 0.1) + 0.1,
-			this.girl.recordCount + 1
-		);
-		this._recordService.simulateRecord(
-			this.girl,
-			'',
-			false,
-			Math.random() * (20 - 0.1) + 0.1,
-			this.girl.recordCount + 1
-		);
+    if (this.isBattle) {
+      this._initLeaderActivity();
+    } else {
+      // simulate records to know grade
+      this._recordService.recordSimulated.subscribe((record: Record) => {
+        this.simulations.push(record);
+      });
+      this._recordService.simulateRecord(
+        this.girl,
+        '',
+        false,
+        Math.random() * (20 - 0.1) + 0.1,
+        this.girl.recordCount + 1
+      );
+      this._recordService.simulateRecord(
+        this.girl,
+        '',
+        false,
+        Math.random() * (20 - 0.1) + 0.1,
+        this.girl.recordCount + 1
+      );
+      this._recordService.simulateRecord(
+        this.girl,
+        '',
+        false,
+        Math.random() * (20 - 0.1) + 0.1,
+        this.girl.recordCount + 1
+      );
+      this._recordService.simulateRecord(
+        this.girl,
+        '',
+        false,
+        Math.random() * (20 - 0.1) + 0.1,
+        this.girl.recordCount + 1
+      );
+      this._recordService.simulateRecord(
+        this.girl,
+        '',
+        false,
+        Math.random() * (20 - 0.1) + 0.1,
+        this.girl.recordCount + 1
+      );
+    }
 
 		this.doStartRecord();
 	}
@@ -256,12 +249,13 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     // volume control
     let intervalVolume = setInterval(() => {
-      if (this.vid.volume >= 0.9) {
-        this.vid.volume = 1;
+      if (this.volume >= 0.9) {
+        this.volume = 1;
         clearInterval(intervalVolume);
-      } else if (this.vid.volume + 0.1 < 1) {
-        this.vid.volume += 0.1;
+      } else if (this.volume + 0.1 < 1) {
+        this.volume += 0.1;
       }
+      this.vid.volume = this.volume;
     }, 50);
 
     let positionName = position.name;
@@ -302,12 +296,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.xpWon += positionStats.xp;
 		this.fansWon += positionStats.fans;
 		this.girl.orgasmLevel += positionStats.orgasm;
-
-    if (!isCombo || positionStats.bonner > 0) {
-      this.bonner += positionStats.bonner;
-      this.bonner = Math.max(this.bonner, 0);
-      this.bonner = Math.min(this.bonner, 100);
-    }
 
     if (!isCombo) {
       this.nbScenes++;
@@ -359,15 +347,30 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
 	endScene(isCombo: boolean = false): void {
+
     // volume control
     let intervalVolume = setInterval(() => {
-      if (this.vid.volume <= 0.1) {
-        this.vid.volume = 0;
+      if (this.volume <= 0.1) {
+        this.volume = 0;
         clearInterval(intervalVolume);
-      } else if (this.vid.volume - 0.1 > 0) {
-        this.vid.volume -= 0.1;
+      } else if (this.volume - 0.1 > 0) {
+        this.volume -= 0.1;
       }
+      this.vid.volume = this.volume;
     }, 50);
+
+    if (this.comboDone) {
+      this.comboDone = false;
+
+      // automatically plays next scene!
+      this.endScene(true);
+      setTimeout(() => {
+        if (this.currentPosition?.unlocker) {
+          this.startScene(this.currentPosition.unlocker, true);
+        }
+      }, 500);
+      return;
+    }
 
 		if (this.timeoutscene.length > 0) {
 			for (const timeout of this.timeoutscene) {
@@ -398,6 +401,13 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 		}
 
+    const positionStats = this.positionStats(this.currentPosition ?? new Position());
+    if (!isCombo || positionStats.bonner > 0) {
+      this.bonner += positionStats.bonner;
+      this.bonner = Math.max(this.bonner, 0);
+      this.bonner = Math.min(this.bonner, 100);
+    }
+
     if (!isCombo) {
       // time to change position or end of recording based on corruption!
       if (this.nbScenes >= this.girl.corruption) {
@@ -407,6 +417,15 @@ export class RecordComponent implements OnInit, OnDestroy {
         this.pickTrendingPosition();
       }
     }
+
+		this.score = this._recordService.getScore(
+			this.girl,
+			this.positionsPlayed,
+			this.trendingPositions,
+			this.orgasmCount,
+			this._studioService.getStudioQuality(),
+      this.leader
+		);
 
 	}
 
@@ -439,15 +458,14 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
 	endRecord(): void {
-		this._gameService.updateGolds(this.price * -1); // remove the record price
-
-		// save record
+		// Compute scores
 		this.score = this._recordService.getScore(
 			this.girl,
 			this.positionsPlayed,
 			this.trendingPositions,
 			this.orgasmCount,
-			this._studioService.getStudioQuality()
+			this._studioService.getStudioQuality(),
+      this.leader
 		);
 		this.scorePositions = this._recordService.getScorePositions(
 			this.positionsPlayed
@@ -461,16 +479,26 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.orgasmCount
 		);
 
-		this.record = this._recordService.addRecord(
-			this.girl,
-			this.score,
-			this.scoreStudio,
-			this.goldsWon * (1 - this.girl.freedom),
-			this.fansWon * (1 - this.girl.freedom),
-			'player'
-		);
+    if (this.isBattle) {
 
-		this.state = 'end';
+      this.recordResults.emit({score: this.score, cum: this.orgasmCount});
+
+    } else {
+
+      this._gameService.updateGolds(this.price * -1); // remove the record price
+
+      this.record = this._recordService.addRecord(
+        this.girl,
+        this.score,
+        this.scoreStudio,
+        this.goldsWon * (1 - this.girl.freedom),
+        this.fansWon * (1 - this.girl.freedom),
+        'player'
+      );
+
+      this.state = 'end';
+
+    }
 	}
 
 	get grade(): string {
@@ -505,6 +533,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 		return this.girl.unlockedPositions.includes(positionName) || this.sceneSkills.includes(positionName);
 	}
 
+  isLeaderPositionDisabled(positionName: string): boolean {
+    return this.leaderDisabledPositions.includes(positionName) || !this.leader.fetish.map(fetish => fetish.toLowerCase()).includes(positionName);
+  }
+
 	comboHit(event: MouseEvent): void {
 
     if (event.target) {
@@ -521,16 +553,9 @@ export class RecordComponent implements OnInit, OnDestroy {
         this.nbCombos++;
 
         this.comboMessage = true;
+        this.comboDone = true;
         setTimeout(() => {
           this.comboMessage = false;
-        }, 500);
-
-        // automatically plays next scene!
-        this.endScene(true);
-        setTimeout(() => {
-          if (this.currentPosition?.unlocker) {
-            this.startScene(this.currentPosition.unlocker, true);
-          }
         }, 500);
       }
     }
@@ -540,6 +565,11 @@ export class RecordComponent implements OnInit, OnDestroy {
   exit(): void {
 		this._gameService.resumeGame();
 		this._router.navigate(['girls']);
+  }
+
+  exitLeaders(): void {
+		this._gameService.resumeGame();
+		this._router.navigate(['leaders']);
   }
 
   filteredPositions(positionTypes: PositionType[]): Position[] {
@@ -585,5 +615,119 @@ export class RecordComponent implements OnInit, OnDestroy {
     }
 
     return modifier / 100;
+  }
+
+  private _selectGirl(girl: Girl): void {
+    this.positions = [];
+    this.sceneSkills = [];
+    this.skillStatsModifiers = [];
+
+    this.girl = girl;
+    if (this.girl.name === '') {
+      this._router.navigate(['girls']);
+    }
+
+    this.name = girl.name;
+    this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
+
+    const positions = this._girlsService.getTimingRecord(girl);
+    if (positions) {
+      this.positions = [...this.positions, ...positions];
+    }
+
+    this._skillService.treeSkills
+      .pipe(take(1))
+      .subscribe((treeSkills: TreeSkills[]) => {
+        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === girl.id);
+        for (const treeSkill of this.treeSkills) {
+          for (const skillTiers of treeSkill.skillTiers) {
+            for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
+              if (skill.effects.length >= skill.level) {
+                for (const effects of skill.effects[skill.level-1]) {
+                  switch (effects.stat) {
+                    case 'scene':
+                      const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
+
+                      if (!isNaN(sceneRank)) {
+                        const sceneName = effects.value.slice(0, -2).toLowerCase().replaceAll(' ', '');
+                        for (let index = sceneRank; index > 1; index--) {
+                          this.sceneSkills.push(sceneName + index);
+                        }
+                        this.sceneSkills.push(sceneName);
+                      } else {
+                        this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
+                      }
+                      break;
+                    default:
+                      this.skillStatsModifiers.push(effects);
+                      break;
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+  }
+
+  private _initLeaderActivity(): void {
+    setInterval(() => {
+      if (this._leaderWillAct()) {
+        this._pickLeaderActivity();
+      }
+    }, 2000);
+  }
+
+  private _leaderWillAct(): boolean {
+		return Math.random() < this.leader.activityProb;
+  }
+
+  private _pickLeaderActivity(): void {
+    this.leaderDisabledPositions = [];
+
+    const activities: LeaderActivity[] = [
+      {name: 'bonner reduction', effect: 'bonner', value: -10},
+      {name: 'bonner reduction advanced', effect: 'bonner', value: -50},
+      {name: 'bonner reduction ultimate', effect: 'bonner', value: -100},
+
+      {name: 'position inhibition', effect: 'position', value: 1},
+      {name: 'position inhibition advanced', effect: 'position', value: 2},
+      {name: 'position inhibition ultimate', effect: 'position', value: 4},
+
+      {name: 'cum spoil', effect: 'cum', value: -1},
+      {name: 'cum spoil advanced', effect: 'cum', value: -5},
+      {name: 'cum ultimate', effect: 'cum', value: -10},
+    ];
+    const activity = activities[Math.floor(Math.random() * activities.length)];
+
+    switch (activity.effect) {
+      case 'bonner':
+        this.bonner += activity.value;
+        this.bonner < 0 ? this.bonner = 0 : undefined;
+        break;
+      case 'position':
+        let allPositions: string[] = [
+          ...this.girl.unlockedPositions.filter(scene => scene !== 'intro'),
+          ...this.sceneSkills
+        ].filter(scene => isNaN(parseInt(scene.charAt(scene.length - 1))));
+
+        for (let index = 0; index < activity.value; index++) {
+          if (allPositions.length > 0) {
+            const positionToDisable = allPositions[Math.floor(Math.random() * allPositions.length)];
+            this.leaderDisabledPositions.push(positionToDisable);
+            allPositions = allPositions.filter(positionName => positionName !== positionToDisable);
+          }
+        }
+        break;
+      case 'cum':
+        this.orgasmCount += activity.value;
+        this.orgasmCount < 0 ? this.orgasmCount = 0 : undefined;
+        break;
+
+      default:
+        break;
+    }
+
+    this.leaderActivity = activity;
   }
 }
