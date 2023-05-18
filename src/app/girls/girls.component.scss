@@ -18,6 +18,10 @@
 	font-size: 35px;
 	opacity: 0.8;
 	border-bottom: 1px solid;
+
+  @media screen and (max-width: $medium-desktop) {
+    font-size: 25px;
+  }
 }
 
 .wrapper {

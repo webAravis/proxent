@@ -536,7 +536,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
   isLeaderPositionDisabled(positionName: string): boolean {
-    return this.leaderDisabledPositions.includes(positionName) || !this.leader.fetish.map(fetish => fetish.toLowerCase()).includes(positionName);
+    return this.leaderDisabledPositions.includes(positionName)
+      || (this.leader.fetish.length > 0 && !this.leader.fetish.map(fetish => fetish.toLowerCase()).includes(positionName));
   }
 
 	comboHit(event: MouseEvent): void {
