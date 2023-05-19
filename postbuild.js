@@ -15,12 +15,15 @@ fs.readFile(indexFile, 'utf8', function (err,data) {
 
 });
 
+var pjson = require('./package.json');
+console.log(pjson.version);
+
 var zipper = require('zip-local');
-zipper.sync.zip("./dist/proxent").compress().save("./dist/full.zip");
+zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
 
 let rimraf = require("rimraf");
 rimraf("./dist/proxent/assets/medias", function () { console.log("done removing medias"); });
 
-zipper.sync.zip("./dist/proxent").compress().save("./dist/light.zip");
+zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_light.zip");
 
 console.log('post build done');
