@@ -37,6 +37,15 @@ export class SkillsService {
     return false;
   }
 
+  hasSkills(skillnames: string[], girl: Girl): boolean {
+    for (const skillname of skillnames) {
+      if (!this.hasSkill(skillname, girl)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   updateTrees(skillTrees: TreeSkills[]): void {
     let allSkillTrees = this.treeSkills.getValue();
     for (const skillTree of skillTrees) {
@@ -53,6 +62,8 @@ export class SkillsService {
                   const skillUpdated = new Skill({name: skillInTier.name, level: skillInTier.level});
 
                   skillUpdated.description = skill.description;
+                  skillUpdated.sprite_postop = skill.sprite_postop;
+                  skillUpdated.sprite_posleft = skill.sprite_posleft;
                   skillUpdated.effects = skill.effects;
                   skillUpdated.maxlevel = skill.maxlevel;
                   skillUpdated.requires = skill.requires;
@@ -138,6 +149,8 @@ export class SkillsService {
           new Skill({
             name: 'Fetishist',
             description: 'Unlocks Yiny\'s special scenes',
+            sprite_postop: -95,
+            sprite_posleft: -5,
             maxlevel: 1,
             unlockPrice: [
               { type: 'basic_skill_gem', quantity: 1 }
@@ -149,12 +162,14 @@ export class SkillsService {
           new Skill({
             name: 'Anal',
             description: 'Unlocks or upgrades anal scenes',
+            sprite_postop: -5,
+            sprite_posleft: -102,
             maxlevel: 5,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Fetishist',
+            requires: ['Fetishist'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Anal' }],
               [{ stat: 'scene', label: 'New scene', value: 'Anal 2' }],
@@ -166,12 +181,14 @@ export class SkillsService {
           new Skill({
             name: 'Footjob',
             description: 'Unlocks or upgrades footjob scenes',
+            sprite_postop: -378,
+            sprite_posleft: -47,
             maxlevel: 1,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Fetishist',
+            requires: ['Fetishist'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Footjob' }],
             ]
@@ -182,12 +199,14 @@ export class SkillsService {
           new Skill({
             name: 'Anal Enlargement',
             description: 'Yiny has now more experience with anal, improving thoses scenes rewards',
+            sprite_postop: -239,
+            sprite_posleft: -374,
             maxlevel: 3,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Anal',
+            requires: ['Anal'],
             effects: [
               [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+8%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+5%' }],
               [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'anal', label: 'Fans', value: '+7.5%' }],
@@ -197,12 +216,14 @@ export class SkillsService {
           new Skill({
             name: 'Anal Lubricant',
             description: 'Usage of lubricant increases pleasure',
+            sprite_postop: -422,
+            sprite_posleft: -186,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Anal',
+            requires: ['Anal'],
             effects: [
               [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+5%' }],
               [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+10%' }],
@@ -214,12 +235,14 @@ export class SkillsService {
           new Skill({
             name: 'Anal Stretching',
             description: 'Yiny is capable of stretching her anus',
+            sprite_postop: -422,
+            sprite_posleft: -374,
             maxlevel: 1,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Anal Enlargement',
+            requires: ['Anal Enlargement'],
             effects: [
               [{ stat: 'golds', position: 'anal', label: 'Gold', value: '+25%' }],
             ]
@@ -227,12 +250,14 @@ export class SkillsService {
           new Skill({
             name: 'Natural excitation',
             description: 'More excitation means better lubrication',
+            sprite_postop: -332,
+            sprite_posleft: -186,
             maxlevel: 1,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Anal Lubricant',
+            requires: ['Anal Lubricant'],
             effects: [
               [{ stat: 'orgasm', position: 'anal', label: 'Orgasm', value: '+25%' }],
             ],
@@ -246,6 +271,8 @@ export class SkillsService {
           new Skill({
             name: 'Fetishist',
             description: 'Unlocks Peta\'s special scenes',
+            sprite_postop: -95,
+            sprite_posleft: -5,
             maxlevel: 1,
             unlockPrice: [
               { type: 'basic_skill_gem', quantity: 1 }
@@ -257,12 +284,14 @@ export class SkillsService {
           new Skill({
             name: 'Piledriving',
             description: 'Flexibility and agility',
+            sprite_postop: -422,
+            sprite_posleft: -283,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Fetishist',
+            requires: ['Fetishist'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Piledriving' }],
               [{ stat: 'scene', label: 'New scene', value: 'Piledriving 2' }],
@@ -271,12 +300,14 @@ export class SkillsService {
           new Skill({
             name: 'Sidefuck',
             description: 'No more place for relaxation',
+            sprite_postop: -238,
+            sprite_posleft: -926,
             maxlevel: 5,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Fetishist',
+            requires: ['Fetishist'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Sidefuck' }],
               [{ stat: 'scene', label: 'New scene', value: 'Sidefuck 2' }],
@@ -288,12 +319,14 @@ export class SkillsService {
           new Skill({
             name: 'Cosplay',
             description: 'She likes to disguise',
+            sprite_postop: -286,
+            sprite_posleft: -3,
             maxlevel: 5,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Fetishist',
+            requires: ['Fetishist'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Cosplay' }],
               [{ stat: 'scene', label: 'New scene', value: 'Cosplay 2' }],
@@ -311,6 +344,8 @@ export class SkillsService {
           new Skill({
             name: 'Actor',
             description: 'Professional training, Unlocks recording habilities',
+            sprite_postop: -5,
+            sprite_posleft: -6,
             maxlevel: 1,
             unlockPrice: [
               { type: 'basic_skill_gem', quantity: 1 }
@@ -322,12 +357,14 @@ export class SkillsService {
           new Skill({
             name: 'Cowgirl',
             description: 'Training her legs for better bounce',
+            sprite_postop: -185,
+            sprite_posleft: -925,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Actor',
+            requires: ['Actor'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Cowgirl 3' }],
               [{ stat: 'scene', label: 'New scene', value: 'Cowgirl 4' }],
@@ -336,12 +373,14 @@ export class SkillsService {
           new Skill({
             name: 'Reverse Cowgirl',
             description: 'Training her legs for better bounce',
+            sprite_postop: -184,
+            sprite_posleft: -832,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
               { type: 'recordmonthly_badge', quantity: 2 },
             ],
-            requires: 'Actor',
+            requires: ['Actor'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Reverse Cowgirl 3' }],
               [{ stat: 'scene', label: 'New scene', value: 'Reverse Cowgirl 4' }],
@@ -350,11 +389,13 @@ export class SkillsService {
           new Skill({
             name: 'Mouthist',
             description: 'Mouth special treatment, increasing efficiency',
+            sprite_postop: -95,
+            sprite_posleft: -1063,
             maxlevel: 4,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 },
             ],
-            requires: 'Actor',
+            requires: ['Actor'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Blowjob 2' }],
               [{ stat: 'scene', label: 'New scene', value: 'Blowjob 3' }],
@@ -368,11 +409,13 @@ export class SkillsService {
           new Skill({
             name: 'Jumping jacks',
             description: 'By an intense training, girl gains skill efficiency',
+            sprite_postop: -185,
+            sprite_posleft: -1109,
             maxlevel: 5,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 }
             ],
-            requires: 'Cowgirl',
+            requires: ['Cowgirl'],
             effects: [
               [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+5%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+1%' }],
               [{ stat: 'golds', position: 'cowgirl', label: 'Gold', value: '+10%' }, { stat: 'fans', position: 'cowgirl', label: 'Fans', value: '+2%' }],
@@ -384,11 +427,13 @@ export class SkillsService {
           new Skill({
             name: 'Firm legs',
             description: 'Increasing bouncing',
+            sprite_postop: -185,
+            sprite_posleft: -1154,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 }
             ],
-            requires: 'Reverse Cowgirl',
+            requires: ['Reverse Cowgirl'],
             effects: [
               [
                 { stat: 'bonner', position: 'reversecowgirl', label: 'Bonner', value: '+15%' },
@@ -403,11 +448,13 @@ export class SkillsService {
           new Skill({
             name: 'Botox',
             description: 'Bigger lips for bigger pleasure',
+            sprite_postop: -5,
+            sprite_posleft: -1064,
             maxlevel: 2,
             unlockPrice: [
               { type: 'gold', quantity: 15_000 }
             ],
-            requires: 'Mouthist',
+            requires: ['Mouthist'],
             effects: [
               [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+25%' }],
               [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+50%' }],
@@ -421,12 +468,133 @@ export class SkillsService {
           new Skill({
             name: 'Competitor',
             description: 'Competitor training, Unlocks recording habilities',
+            sprite_postop: -186,
+            sprite_posleft: -198,
             maxlevel: 1,
             unlockPrice: [
               { type: 'basic_skill_gem', quantity: 1 }
             ]
           })
         ];
+
+        skillTier1.skills = [
+          new Skill({
+            name: 'Sitted',
+            description: 'Relax and take it',
+            sprite_postop: -141,
+            sprite_posleft: -198,
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Competitor'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Sitted' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Sitted 2' }],
+            ]
+          }),
+          new Skill({
+            name: 'Outdoor',
+            description: 'Nothing better than fresh air',
+            sprite_postop: -5,
+            sprite_posleft: -924,
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Competitor'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Outdoor' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Outdoor 2' }],
+            ]
+          }),
+          new Skill({
+            name: 'Foreplay trainer',
+            description: 'Feedback & data analysis helps to get better feeling',
+            sprite_postop: -5,
+            sprite_posleft: -54,
+            maxlevel: 8,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+            ],
+            requires: ['Competitor'],
+            effects: [
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+1%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+2%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+3%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+4%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+5%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+6%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+7%' }],
+              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+8%' }],
+            ]
+          }),
+        ];
+
+        skillTier2.skills = [
+          new Skill({
+            name: 'Penetration trainer',
+            description: 'Feedback & data analysis helps to get better feeling',
+            sprite_postop: -5,
+            sprite_posleft: -198,
+            maxlevel: 8,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+            ],
+            requires: ['Foreplay trainer'],
+            effects: [
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+1%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+2%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+3%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+4%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+5%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+6%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+7%' }],
+              [{ stat: 'orgasm', position: 'all_penetration', label: 'All penetration orgasm', value: '+8%' }],
+            ]
+          }),
+          new Skill({
+            name: 'Special trainer',
+            description: 'Feedback & data analysis helps to get better feeling',
+            sprite_postop: -50,
+            sprite_posleft: -101,
+            maxlevel: 8,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+            ],
+            requires: ['Foreplay trainer'],
+            effects: [
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+1%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+2%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+3%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+4%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+5%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+6%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+7%' }],
+              [{ stat: 'orgasm', position: 'all_special', label: 'All special orgasm', value: '+8%' }],
+            ]
+          }),
+        ];
+
+        skillTier3.skills = [
+          new Skill({
+            name: 'Endurance',
+            description: 'Self-control improvement leads to bonner conservation',
+            sprite_postop: -95,
+            sprite_posleft: -1017,
+            maxlevel: 2,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+            ],
+            requires: ['Penetration trainer', 'Special trainer'],
+            effects: [
+              [{ stat: 'bonner', position: 'all_penetration', label: 'All penetration bonner', value: '+10%' }],
+              [{ stat: 'bonner', position: 'all_penetration', label: 'All penetration bonner', value: '+20%' }],
+            ]
+          }),
+        ]
     }
 
     skillTiers.push(skillTier0);

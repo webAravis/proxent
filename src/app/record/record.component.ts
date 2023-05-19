@@ -607,7 +607,10 @@ export class RecordComponent implements OnInit, OnDestroy {
       positionName = positionName.slice(0, -1).toLowerCase();
     }
 
-    const modifiersToApply = this.skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
+    let modifiersToApply = this.skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
+    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_foreplay' && (position.type === PositionType.FOREPLAY || position.type === PositionType.FOREPLAY_SKILL))];
+    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_penetration' && (position.type === PositionType.PENETRATION || position.type === PositionType.SKILL))];
+    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_special' && (position.type === PositionType.SPECIAL))];
 
     let modifier = 100;
     for (const modifierStat of modifiersToApply) {
@@ -642,6 +645,12 @@ export class RecordComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe((treeSkills: TreeSkills[]) => {
         this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === girl.id);
+        if (this.isBattle) {
+          this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.name !== 'recording');
+        } else {
+          this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.name !== 'battle');
+        }
+
         for (const treeSkill of this.treeSkills) {
           for (const skillTiers of treeSkill.skillTiers) {
             for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {

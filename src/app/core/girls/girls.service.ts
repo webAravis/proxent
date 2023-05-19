@@ -131,7 +131,7 @@ export class GirlsService {
             "name": "missionary2",
             "label": "Missionary 2",
             "corruption": 7,
-            "timeout": 5000,
+            "timeout": 10000,
 
             "type": PositionType.PENETRATION
           })
@@ -256,8 +256,48 @@ export class GirlsService {
               "timeout": 3000,
 
               "type": PositionType.PENETRATION,
-              "unlocker": undefined
+              "unlocker": new Position({
+                "name": "standing4",
+                "label": "Standing 4",
+                "corruption": 13,
+                "timeout": 5000,
+
+                "type": PositionType.PENETRATION,
+                "unlocker": undefined
+              })
             })
+          })
+        }),
+        new Position({
+          "name": "outdoor",
+          "label": "Outdoor",
+          "corruption": 10,
+          "timeout": 10000,
+
+          "type": PositionType.SKILL,
+          "unlocker": new Position({
+            "name": "outdoor2",
+            "label": "Outdoor 2",
+            "corruption": 11,
+            "timeout": 10000,
+
+            "type": PositionType.SKILL
+          })
+        }),
+        new Position({
+          "name": "sitted",
+          "label": "Sitted",
+          "corruption": 10,
+          "timeout": 5000,
+
+          "type": PositionType.SKILL,
+          "unlocker": new Position({
+            "name": "sitted2",
+            "label": "Sitted 2",
+            "corruption": 11,
+            "timeout": 10000,
+
+            "type": PositionType.SKILL
           })
         }),
 
@@ -531,7 +571,52 @@ export class GirlsService {
           "timeout": 10000,
 
           "type": PositionType.PENETRATION,
-          "unlocker": undefined
+          "unlocker": new Position({
+            "name": "standing2",
+            "label": "Standing 2",
+            "corruption": 11,
+            "timeout": 9000,
+
+            "type": PositionType.PENETRATION,
+            "unlocker": new Position({
+              "name": "standing3",
+              "label": "Standing 3",
+              "corruption": 12,
+              "timeout": 6000,
+            })
+          })
+        }),
+        new Position({
+          "name": "outdoor",
+          "label": "Outdoor",
+          "corruption": 10,
+          "timeout": 10000,
+
+          "type": PositionType.SKILL,
+          "unlocker": new Position({
+            "name": "outdoor2",
+            "label": "Outdoor 2",
+            "corruption": 11,
+            "timeout": 5000,
+
+            "type": PositionType.SKILL
+          })
+        }),
+        new Position({
+          "name": "sitted",
+          "label": "Sitted",
+          "corruption": 10,
+          "timeout": 10000,
+
+          "type": PositionType.SKILL,
+          "unlocker": new Position({
+            "name": "sitted2",
+            "label": "Sitted 2",
+            "corruption": 11,
+            "timeout": 10000,
+
+            "type": PositionType.SKILL
+          })
         }),
 
         // SPECIAL

@@ -37,13 +37,16 @@ export class Skill {
   name: string = '';
   description: string = '';
 
+  sprite_postop = 0;
+  sprite_posleft = 0;
+
   level: number = 0;
   maxlevel: number = 0;
 
 	unlockPrice: { type: string; quantity: number }[] = [];
 
   effects: { stat: string, position: string, label: string, value: string }[][] = [];
-  requires: string | undefined = undefined;
+  requires: string[] | undefined = undefined;
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);

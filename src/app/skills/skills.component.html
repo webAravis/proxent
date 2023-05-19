@@ -39,18 +39,20 @@
       <div class="skills-tier" *ngFor="let skillTier of branch.skillTiers">
 
         <ng-container *ngFor="let skill of skillTier.skills">
-          <svg [class.can-unlock]="canUnlock(skill)" class="line" *ngIf="skill.requires !== undefined">
-            <line
-              [attr.x1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).x"
-              [attr.y1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).y"
-              [attr.x2]="getDivPosition('skill-'+skill.requires, 'branch-'+branch.name).x"
-              [attr.y2]="getDivPosition('skill-'+skill.requires, 'branch-'+branch.name).y"
-              />
-          </svg>
+          <ng-container *ngIf="skill.requires">
+            <svg [class.can-unlock]="canUnlock(skill)" class="line" *ngFor="let requires of skill.requires">
+              <line
+                [attr.x1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).x"
+                [attr.y1]="getDivPosition('skill-'+skill.name, 'branch-'+branch.name).y"
+                [attr.x2]="getDivPosition('skill-'+requires, 'branch-'+branch.name).x"
+                [attr.y2]="getDivPosition('skill-'+requires, 'branch-'+branch.name).y"
+                />
+            </svg>
+          </ng-container>
           <div id="skill-{{( skill.name )}}" (click)="upgradeSkill(skill)" [class.can-unlock]="canUnlock(skill)" [class.locked]="skill.level === 0" class="skill has-tooltip">
 
             <div class="skill-icon">
-              <img [src]="'./assets/skills/' + (skill.name | lowercase) + '.png'" alt="">
+              <img [style.top]="skill.sprite_postop + 'px'" [style.left]="skill.sprite_posleft + 'px'" [src]="'./assets/skills/skill_sprite.jpg'" alt="">
             </div>
             <div class="skill-level">
               <span [class.bigger]="skill.level > 0">{{ skill.level }}</span>/{{ skill.maxlevel }}

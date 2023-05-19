@@ -99,7 +99,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
       }
     }
 
-    if (skill.requires !== undefined && !this._skillService.hasSkill(skill.requires, this._girlService.currentGirl.getValue())) {
+    if (skill.requires !== undefined && !this._skillService.hasSkills(skill.requires, this._girlService.currentGirl.getValue())) {
       return false;
     }
 
