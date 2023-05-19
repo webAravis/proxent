@@ -4,7 +4,7 @@ import { GirlsService } from './girls/girls.service';
 import { Girl } from './girls/girl.model';
 import { HttpClient } from '@angular/common/http';
 import { MediaGirl, DataMediaGirl } from './mediagirl.model';
-import { BehaviorSubject, Observable, finalize, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, finalize, map, of } from 'rxjs';
 import { PhotoShooting } from '../shooting/shooting.component';
 import { ShootingService } from '../shooting/shooting.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -28,6 +28,7 @@ export class CachingService {
 	loadedPercent: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   isOnline: boolean = false;
+  mediasExist: boolean = false;
 
 	constructor(
 		private _girlService: GirlsService,
@@ -38,6 +39,9 @@ export class CachingService {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
       this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
+
+      // checking if medias are present
+      this._fileExists('./assets/medias/yiny/videos/record/intro.webm').subscribe((exists) => {this.mediasExist = exists});
     });
 	}
 
@@ -72,7 +76,9 @@ export class CachingService {
 	}
 
 	getVideo(girlname: string, name: string): SafeUrl {
-    const objectURL =  './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm';
+    const objectURL =
+      this.mediasExist ? './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' :
+      this.isOnline ? 'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' : '';
 
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
 	}
@@ -210,4 +216,8 @@ export class CachingService {
 	// 		});
 	// 	}
 	// }
+
+  private _fileExists(url: string): Observable<boolean> {
+    return this._httpClient.get(url).pipe(map(() => true), catchError(() => of(false)));
+  }
 }
