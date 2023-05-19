@@ -105,6 +105,51 @@ export class SkillsService {
 
     allTrees.push(petaSkills);
 
+    // Ava
+    let avaSkills = new TreeSkills();
+    avaSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 3) ?? new Girl();
+    avaSkills.name = 'special';
+    avaSkills.description = 'Special skills and scenes';
+    avaSkills.skillTiers = this._initSkills(avaSkills.girl.name);
+
+    allTrees.push(avaSkills);
+
+    // Madison
+    let madisonSkills = new TreeSkills();
+    madisonSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 4) ?? new Girl();
+    madisonSkills.name = 'special';
+    madisonSkills.description = 'Special skills and scenes';
+    madisonSkills.skillTiers = this._initSkills(madisonSkills.girl.name);
+
+    allTrees.push(madisonSkills);
+
+    // Karma
+    let karmaSkills = new TreeSkills();
+    karmaSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 5) ?? new Girl();
+    karmaSkills.name = 'special';
+    karmaSkills.description = 'Special skills and scenes';
+    karmaSkills.skillTiers = this._initSkills(karmaSkills.girl.name);
+
+    allTrees.push(karmaSkills);
+
+    // Nikki
+    let nikkiSkills = new TreeSkills();
+    nikkiSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 6) ?? new Girl();
+    nikkiSkills.name = 'special';
+    nikkiSkills.description = 'Special skills and scenes';
+    nikkiSkills.skillTiers = this._initSkills(nikkiSkills.girl.name);
+
+    allTrees.push(nikkiSkills);
+
+    // Abella
+    let abellaSkills = new TreeSkills();
+    abellaSkills.girl = this._girlService.gameGirls.getValue().find(girl => girl.id === 7) ?? new Girl();
+    abellaSkills.name = 'special';
+    abellaSkills.description = 'Special skills and scenes';
+    abellaSkills.skillTiers = this._initSkills(abellaSkills.girl.name);
+
+    allTrees.push(abellaSkills);
+
     let commonTrees: TreeSkills[] = [];
     for (const tree of allTrees) {
       commonTrees.push(this._initCommonTree('recording', this._girlService.gameGirls.getValue().find(girl => girl.id === tree.girl.id) ?? new Girl()));
@@ -333,6 +378,93 @@ export class SkillsService {
               [{ stat: 'scene', label: 'New scene', value: 'Cosplay 3' }],
               [{ stat: 'scene', label: 'New scene', value: 'Cosplay 4' }],
               [{ stat: 'scene', label: 'New scene', value: 'Cosplay 5' }],
+            ]
+          }),
+        ]
+        break;
+      case 'ava':
+        skillTier0.skills = [
+          new Skill({
+            name: 'Fetishist',
+            description: 'Unlocks Ava\'s special scenes',
+            sprite_postop: -95,
+            sprite_posleft: -5,
+            maxlevel: 1,
+            unlockPrice: [
+              { type: 'basic_skill_gem', quantity: 1 }
+            ]
+          })
+        ];
+
+        skillTier1.skills = [
+          new Skill({
+            name: 'Mouthfuck',
+            description: 'Turn her mouth in another hole',
+            sprite_postop: -422,
+            sprite_posleft: -283,
+            maxlevel: 3,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Fetishist'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Mouthfuck' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Mouthfuck 2' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Mouthfuck 3' }],
+            ]
+          }),
+          new Skill({
+            name: 'Anal',
+            description: 'Tighter hole for bigger pleasure',
+            sprite_postop: -238,
+            sprite_posleft: -926,
+            maxlevel: 4,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Fetishist'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Anal' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Anal 2' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Anal 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Anal 4' }],
+            ]
+          }),
+          new Skill({
+            name: 'Double',
+            description: 'One is not enough',
+            sprite_postop: -286,
+            sprite_posleft: -3,
+            maxlevel: 5,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Fetishist'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Double' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Double 2' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Double 3' }],
+            ]
+          }),
+        ]
+
+        skillTier3.skills = [
+          new Skill({
+            name: 'Triple',
+            description: 'Two is not enough?',
+            sprite_postop: -286,
+            sprite_posleft: -3,
+            maxlevel: 5,
+            unlockPrice: [
+              { type: 'gold', quantity: 15_000 },
+              { type: 'recordmonthly_badge', quantity: 2 },
+            ],
+            requires: ['Fetishist'],
+            effects: [
+              [{ stat: 'scene', label: 'New scene', value: 'Triple' }],
             ]
           }),
         ]

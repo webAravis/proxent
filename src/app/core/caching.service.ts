@@ -188,7 +188,7 @@ export class CachingService {
 					girl.name.toLowerCase() +
 					'/photos/' +
 					photo.name +
-					'.jpg?v=0.10.0';
+					'.jpg?v=0.10.1';
 				this.toLoad.push({
 					girl: girl,
 					type: photo.name.startsWith('1_normal') ? 'portrait' : 'photo',
@@ -210,7 +210,7 @@ export class CachingService {
 				girl.name.toLowerCase() +
 				'/videos/record/' +
 				position.name +
-				'.webm?v=0.10.0';
+				'.webm?v=0.10.1';
 			this.toLoad.push({
 				girl: girl,
 				type: 'video',
