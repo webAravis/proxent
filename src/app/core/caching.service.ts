@@ -62,7 +62,9 @@ export class CachingService {
 	}
 
 	getPhoto(girlname: string, name: string): SafeUrl {
-    let objectURL =  './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg';
+    let objectURL =
+      this.mediasExist ? './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' :
+      this.isOnline ? 'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' : '';
 
 		const girlMedia = this.medias.find((media) => media.girlname === girlname);
 		if (girlMedia !== undefined) {
