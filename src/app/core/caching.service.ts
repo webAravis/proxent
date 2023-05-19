@@ -28,7 +28,7 @@ export class CachingService {
   loadedPercent: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   isOnline: boolean = false;
-  mediasExist: boolean = false;
+  mediasExist: boolean = true;
 
   constructor(
     private _girlService: GirlsService,
@@ -37,7 +37,6 @@ export class CachingService {
     private _sanitizer: DomSanitizer
   ) {
     isOnline().then((isOnline: boolean) => {
-      console.log('got is onlineeee', isOnline);
       this.isOnline = isOnline;
       this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
     });
