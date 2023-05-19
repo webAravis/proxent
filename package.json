@@ -1,6 +1,6 @@
 {
 	"name": "proxent",
-	"version": "0.7.1",
+	"version": "0.10.1",
 	"scripts": {
 		"start": "ng serve",
 		"package": "ng build --configuration production --base-href ./",

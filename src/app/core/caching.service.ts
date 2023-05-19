@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import isOnline from 'is-online';
 import { Injectable } from '@angular/core';
 import { GirlsService } from './girls/girls.service';
@@ -37,7 +38,7 @@ export class CachingService {
 	) {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
-      this._girlService.playerGirls.subscribe((girls) => this.cacheMedias(girls));
+      this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
     });
 	}
 
@@ -58,7 +59,11 @@ export class CachingService {
 	}
 
 	getPhoto(girlname: string, name: string): SafeUrl {
-    let objectURL = './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg';
+    let objectURL =
+      environment.buildtype === 'full' ?
+      './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' :
+      'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg'
+    ;
 
 		const girlMedia = this.medias.find((media) => media.girlname === girlname);
 		if (girlMedia !== undefined) {
@@ -72,15 +77,11 @@ export class CachingService {
 	}
 
 	getVideo(girlname: string, name: string): SafeUrl {
-    let objectURL = './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm';
-
-		const girlMedia = this.medias.find((media) => media.girlname === girlname);
-		if (girlMedia !== undefined) {
-      const girlVideo = girlMedia.videos.find((videoMedia) => videoMedia.name === name)?.data;
-      if (girlVideo !== undefined) {
-        objectURL = URL.createObjectURL(girlVideo);
-      }
-		}
+    const objectURL =
+      environment.buildtype === 'full' ?
+      './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' :
+      'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm'
+      ;
 
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
 	}
@@ -115,7 +116,6 @@ export class CachingService {
 	async cache(girl: Girl): Promise<void> {
 		this.girlLoading.push(girl.name);
 		await this.cachePhotos(girl);
-    await this.cacheVideos(girl);
 	}
 
 	loadAll(typeToLoad: string): void {
@@ -198,25 +198,25 @@ export class CachingService {
     }
 	}
 
-	async cacheVideos(girl: Girl): Promise<void> {
-    if (!this.isOnline) {
-      return;
-    }
+	// async cacheVideos(girl: Girl): Promise<void> {
+  //   if (!this.isOnline) {
+  //     return;
+  //   }
 
-    const positionDef = this._girlService.getTimingRecord(girl);
+  //   const positionDef = this._girlService.getTimingRecord(girl);
 
-		for (const position of positionDef) {
-      const url = 'https://proxentgame.com/assets/medias/' +
-				girl.name.toLowerCase() +
-				'/videos/record/' +
-				position.name +
-				'.webm?v=0.10.1';
-			this.toLoad.push({
-				girl: girl,
-				type: 'video',
-				name: position.name,
-				request: this._httpClient.get(url, { responseType: 'blob' }),
-			});
-		}
-	}
+	// 	for (const position of positionDef) {
+  //     const url = 'https://proxentgame.com/assets/medias/' +
+	// 			girl.name.toLowerCase() +
+	// 			'/videos/record/' +
+	// 			position.name +
+	// 			'.webm?v=0.10.1';
+	// 		this.toLoad.push({
+	// 			girl: girl,
+	// 			type: 'video',
+	// 			name: position.name,
+	// 			request: this._httpClient.get(url, { responseType: 'blob' }),
+	// 		});
+	// 	}
+	// }
 }
