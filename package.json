@@ -3,7 +3,8 @@
 	"version": "0.10.1",
 	"scripts": {
 		"start": "ng serve",
-		"package": "ng build --configuration production --base-href ./",
+		"package": "ng build --configuration production --base-href ./ && npm run postbuild",
+		"postbuild": "node ./postbuild.js",
 		"e2e": "ng e2e",
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run"
@@ -25,6 +26,7 @@
 		"ngx-masonry": "^14.0.1",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.5.0",
+		"zip-local": "^0.3.5",
 		"zone.js": "~0.13.0"
 	},
 	"devDependencies": {

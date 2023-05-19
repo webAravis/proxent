@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment';
 import isOnline from 'is-online';
 import { Injectable } from '@angular/core';
 import { GirlsService } from './girls/girls.service';
@@ -59,11 +58,7 @@ export class CachingService {
 	}
 
 	getPhoto(girlname: string, name: string): SafeUrl {
-    let objectURL =
-      environment.buildtype === 'full' ?
-      './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' :
-      'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg'
-    ;
+    let objectURL =  './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg';
 
 		const girlMedia = this.medias.find((media) => media.girlname === girlname);
 		if (girlMedia !== undefined) {
@@ -77,11 +72,7 @@ export class CachingService {
 	}
 
 	getVideo(girlname: string, name: string): SafeUrl {
-    const objectURL =
-      environment.buildtype === 'full' ?
-      './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' :
-      'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm'
-      ;
+    const objectURL =  './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm';
 
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
 	}
