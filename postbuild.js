@@ -23,8 +23,8 @@ var zipper = require('zip-local');
 zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
 
 console.log('removing medias');
-let rimraf = require("rimraf");
-rimraf("./dist/proxent/assets/medias", () => {
+let rimrafSync = require("rimraf");
+rimrafSync("./dist/proxent/assets/medias", () => {
   console.log("done removing medias");
 
   console.log('compressing light version');
