@@ -46,4 +46,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next(true);
     this._unsubscribeAll.complete();
   }
+
+  mediasNotExit(): void {
+    this._cachingService.mediasExist = false;
+  }
 }
