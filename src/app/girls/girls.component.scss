@@ -1,11 +1,9 @@
-@import '../../_screensize.scss';
-
 .selector {
   position: fixed;
   display: flex;
   bottom: 150px;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .header {
@@ -19,7 +17,7 @@
 	opacity: 0.8;
 	border-bottom: 1px solid;
 
-  @media screen and (max-width: $medium-desktop) {
+  @media screen and (max-width: 1280px) {
     font-size: 25px;
   }
 }
@@ -35,7 +33,7 @@
 		margin-top: 70px;
     position: relative;
 
-    @media screen and (max-width: $medium-desktop) {
+    @media screen and (max-width: 1280px) {
       margin-top: 0;
     }
 

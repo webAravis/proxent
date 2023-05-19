@@ -1,4 +1,3 @@
-@import '../../_screensize.scss';
 .header {
 	position: fixed;
 	top: 15px;
@@ -10,7 +9,7 @@
 	opacity: 0.8;
 	border-bottom: 1px solid;
 
-  @media screen and (max-width: $medium-desktop) {
+  @media screen and (max-width: 1280px) {
     font-size: 25px;
   }
 }
@@ -22,7 +21,7 @@
   height: calc(100vh - 185px);
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   gap: 30px;
   overflow-y: auto;

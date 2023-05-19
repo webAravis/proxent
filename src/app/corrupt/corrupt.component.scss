@@ -1,4 +1,3 @@
-@import '../../_screensize.scss';
 .wrapper {
 	position: fixed;
 	z-index: 0;
@@ -43,7 +42,7 @@ img {
 	opacity: 0.8;
 	border-bottom: 1px solid;
 
-  @media screen and (max-width: $medium-desktop) {
+  @media screen and (max-width: 1280px) {
     font-size: 25px;
   }
 }

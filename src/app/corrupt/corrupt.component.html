@@ -1,9 +1,9 @@
 <app-background class="background"></app-background>
 
+<div class="header">Corruption</div>
+
 <div class="wrapper">
 	<ng-container *ngIf="!corrupting">
-
-		<div class="header">Corruption</div>
 
 		<div>
 			<img [src]="portrait" />
@@ -43,7 +43,6 @@
 	</ng-container>
 
 	<ng-container *ngIf="corrupting">
-		<div class="header">Corrupting {{ girl.name }}, enjoy!</div>
 
 		<div class="positions">
 			<div class="positions-wrapper">
