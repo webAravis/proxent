@@ -18,12 +18,15 @@ fs.readFile(indexFile, 'utf8', function (err,data) {
 var pjson = require('./package.json');
 console.log(pjson.version);
 
+console.log('compressing full version');
 var zipper = require('zip-local');
 zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
 
+console.log('removing medias');
 let rimraf = require("rimraf");
 rimraf("./dist/proxent/assets/medias", function () { console.log("done removing medias"); });
 
+console.log('compressing light version');
 zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_light.zip");
 
 console.log('post build done');
