@@ -660,8 +660,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     this._skillService.treeSkills
       .pipe(take(1))
       .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === girl.id);
-        this.treeSkills.filter((tree: TreeSkills) => tree.name === 'special' || this.isBattle ? tree.name === 'battle' : tree.name === 'recording');
+        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === girl.id && (tree.name === 'special' || (this.isBattle ? tree.name === 'battle' : tree.name === 'recording')));
 
         for (const treeSkill of this.treeSkills) {
           for (const skillTiers of treeSkill.skillTiers) {
