@@ -1756,7 +1756,7 @@ export class GirlsService {
           })
         }),
       ]},
-      {girlId: 6, timings: [
+      {girlId: 7, timings: [
         new Position({
           "name": "intro",
           "label": "Intro",

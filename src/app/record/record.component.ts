@@ -436,7 +436,18 @@ export class RecordComponent implements OnInit, OnDestroy {
 			(position) => position !== this.trendingPosition && position !== 'intro' && isNaN(parseInt(position.charAt(position.length - 1)))
 		);
     availablePositions = [...availablePositions, ...this.sceneSkills.filter(scene => isNaN(parseInt(scene.charAt(scene.length - 1))))];
-		this.trendingPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
+
+    const positionsWithCount: {position: string, count: number}[] = [];
+    for (const position of availablePositions) {
+      positionsWithCount.push({position: position, count: this.positionRepeated(position)});
+    }
+
+    positionsWithCount.sort((a, b) => a.count - b.count);
+
+    const lowestCount = positionsWithCount[0].count;
+    const positionsToPick: string[] = positionsWithCount.filter(position => position.count === lowestCount).map(position => position.position);
+
+		this.trendingPosition = positionsToPick[Math.floor(Math.random() * positionsToPick.length)];
 	}
 
   trendingMultiplier(position: Position): number {
@@ -687,7 +698,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       if (this._leaderWillAct()) {
         this._pickLeaderActivity();
       }
-    }, 2000);
+    }, 3000);
   }
 
   private _leaderWillAct(): boolean {

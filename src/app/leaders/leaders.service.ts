@@ -76,7 +76,7 @@ export class LeadersService {
           };
           leader.nextLvlCost = modifierLevelCost;
 
-          leader.activityProb = Math.min(0.2 + (leader.lvl * 0.01), 1);
+          leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = ['small', 'brunette'];
           leader.malus = ['milf', 'euro'];
           leader.fetish = [];
