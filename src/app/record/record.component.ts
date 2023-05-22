@@ -631,6 +631,11 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
     }
 
+    if (statName === 'boner') {
+      // console.log('boner modifier', modifier);
+    }
+
+
     return statName === 'boner' ? modifier : modifier / 100;
   }
 
@@ -655,12 +660,8 @@ export class RecordComponent implements OnInit, OnDestroy {
     this._skillService.treeSkills
       .pipe(take(1))
       .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === girl.id);
-        if (this.isBattle) {
-          this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.name !== 'recording');
-        } else {
-          this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.name !== 'battle');
-        }
+        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === girl.id);
+        this.treeSkills.filter((tree: TreeSkills) => tree.name === 'special' || this.isBattle ? tree.name === 'battle' : tree.name === 'recording');
 
         for (const treeSkill of this.treeSkills) {
           for (const skillTiers of treeSkill.skillTiers) {

@@ -1320,6 +1320,15 @@ export class GirlsService {
           "unlocker": undefined
         }),
         new Position({
+          "name": "reveal",
+          "label": "Reveal",
+          "corruption": 0,
+          "timeout": 10000,
+
+          "type": PositionType.FOREPLAY,
+          "unlocker": undefined
+        }),
+        new Position({
           "name": "rub",
           "label": "Rub",
           "corruption": 0,
