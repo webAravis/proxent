@@ -76,7 +76,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	simulations: Record[] = [];
 
-	bonner = 1; // starts at 1 to reset to 0 when playing intro
+	boner = 1; // starts at 1 to reset to 0 when playing intro
 	orgasmCount = 0;
 	trendingPositions = 0;
 
@@ -308,7 +308,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     });
 	}
 
-  positionStats(position: Position, nextPosition: boolean = false): {golds: number, xp: number, fans: number, bonner: number, orgasm: number} {
+  positionStats(position: Position, nextPosition: boolean = false): {golds: number, xp: number, fans: number, boner: number, orgasm: number} {
 		let positionPlayedTimes = this.positionRepeated(position.name);
     if (nextPosition) {
       positionPlayedTimes++;
@@ -334,13 +334,13 @@ export class RecordComponent implements OnInit, OnDestroy {
         * this._skillModifier('fans', position)
         * repeatedMultiplier
       ),
-      bonner: Math.round(
-        position.bonner
-        * this._skillModifier('bonner', position)
+      boner: Math.round(
+        position.boner
+        * this._skillModifier('boner', position)
         * repeatedMultiplier
       ),
       orgasm: Math.round(
-        position.getOrgasm(this.bonner, this.trendingMultiplier(position))
+        position.getOrgasm(this.boner, this.trendingMultiplier(position))
         * this._skillModifier('orgasm', position)
       )
     }
@@ -391,7 +391,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
 			this.orgasmCount += nbOrgasm;
 
-			this.bonner -= 50;
+			this.boner -= 50;
 
       if (!this.isBattle) {
         for (let i = 0; i < nbOrgasm; i++) {
@@ -404,10 +404,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 		}
 
     const positionStats = this.positionStats(this.currentPosition ?? new Position());
-    if (!isCombo || positionStats.bonner > 0) {
-      this.bonner += positionStats.bonner;
-      this.bonner = Math.max(this.bonner, 0);
-      this.bonner = Math.min(this.bonner, 100);
+    if (!isCombo || positionStats.boner > 0) {
+      this.boner += positionStats.boner;
+      this.boner = Math.max(this.boner, 0);
+      this.boner = Math.min(this.boner, 100);
     }
 
     if (!isCombo) {
@@ -698,9 +698,9 @@ export class RecordComponent implements OnInit, OnDestroy {
     this.leaderDisabledPositions = [];
 
     const activities: LeaderActivity[] = [
-      {name: 'bonner reduction', effect: 'bonner', value: -10},
-      {name: 'bonner reduction advanced', effect: 'bonner', value: -50},
-      {name: 'bonner reduction ultimate', effect: 'bonner', value: -100},
+      {name: 'boner reduction', effect: 'boner', value: -10},
+      {name: 'boner reduction advanced', effect: 'boner', value: -50},
+      {name: 'boner reduction ultimate', effect: 'boner', value: -100},
 
       {name: 'position inhibition', effect: 'position', value: 1},
       {name: 'position inhibition advanced', effect: 'position', value: 2},
@@ -713,9 +713,9 @@ export class RecordComponent implements OnInit, OnDestroy {
     const activity = activities[Math.floor(Math.random() * activities.length)];
 
     switch (activity.effect) {
-      case 'bonner':
-        this.bonner += activity.value;
-        this.bonner < 0 ? this.bonner = 0 : undefined;
+      case 'boner':
+        this.boner += activity.value;
+        this.boner < 0 ? this.boner = 0 : undefined;
         break;
       case 'position':
         let allPositions: string[] = [

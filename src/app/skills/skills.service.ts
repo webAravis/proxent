@@ -568,11 +568,11 @@ export class SkillsService {
             requires: ['Reverse Cowgirl'],
             effects: [
               [
-                { stat: 'bonner', position: 'reversecowgirl', label: 'Bonner', value: '+15%' },
+                { stat: 'boner', position: 'reversecowgirl', label: 'Boner', value: '+15%' },
                 { stat: 'golds', position: 'reversecowgirl', label: 'Gold', value: '-5%' },
               ],
               [
-                { stat: 'bonner', position: 'reversecowgirl', label: 'Bonner', value: '+25%' },
+                { stat: 'boner', position: 'reversecowgirl', label: 'Boner', value: '+25%' },
                 { stat: 'golds', position: 'reversecowgirl', label: 'Gold', value: '-5%' },
               ],
             ],
@@ -588,8 +588,8 @@ export class SkillsService {
             ],
             requires: ['Mouthist'],
             effects: [
-              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+25%' }],
-              [{ stat: 'bonner', position: 'blowjob', label: 'Bonner', value: '+50%' }],
+              [{ stat: 'boner', position: 'blowjob', label: 'Boner', value: '+25%' }],
+              [{ stat: 'boner', position: 'blowjob', label: 'Boner', value: '+50%' }],
             ],
           })
         ];
@@ -653,14 +653,14 @@ export class SkillsService {
             ],
             requires: ['Competitor'],
             effects: [
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+1%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+2%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+3%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+4%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+5%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+6%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+7%' }],
-              [{ stat: 'bonner', position: 'all_foreplay', label: 'All foreplay bonner', value: '+8%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+1%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+2%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+3%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+4%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+5%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+6%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+7%' }],
+              [{ stat: 'boner', position: 'all_foreplay', label: 'All foreplay boner', value: '+8%' }],
             ]
           }),
         ];
@@ -713,7 +713,7 @@ export class SkillsService {
         skillTier3.skills = [
           new Skill({
             name: 'Endurance',
-            description: 'Self-control improvement leads to bonner conservation',
+            description: 'Self-control improvement leads to boner conservation',
             sprite_postop: -95,
             sprite_posleft: -1017,
             maxlevel: 2,
@@ -722,8 +722,8 @@ export class SkillsService {
             ],
             requires: ['Penetration trainer', 'Special trainer'],
             effects: [
-              [{ stat: 'bonner', position: 'all_penetration', label: 'All penetration bonner', value: '+10%' }],
-              [{ stat: 'bonner', position: 'all_penetration', label: 'All penetration bonner', value: '+20%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+10%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+20%' }],
             ]
           }),
         ]

@@ -70,12 +70,12 @@
 			</div>
 			<div class="stamina">
 				<div class="label with-icon">
-					Bonner<img width="30" src="./assets/stamina.png" />
+					Boner<img width="30" src="./assets/stamina.png" />
 				</div>
 				<div class="bar">
 					<div
 						class="progress"
-						[style.width]="bonner + '%'"
+						[style.width]="boner + '%'"
 					></div>
 				</div>
 			</div>
@@ -239,8 +239,8 @@
       <div class="activity-effect" *ngIf="leaderActivity">
         <div class="effect-name">{{ leaderActivity.name | titlecase }}</div>
         <div class="effect-stat">
-          <ng-container *ngIf="leaderActivity.effect === 'bonner'">
-            {{ leaderActivity.value | number : '1.0-0' }}% Bonner reduction
+          <ng-container *ngIf="leaderActivity.effect === 'boner'">
+            {{ leaderActivity.value | number : '1.0-0' }}% Boner reduction
           </ng-container>
           <ng-container *ngIf="leaderActivity.effect === 'cum'">
             {{ leaderActivity.value | number : '1.0-0' }} Cum reduction
@@ -271,7 +271,7 @@
 <ng-template #buttonPosition let-position="position">
   <button
     *ngIf="position.name !== 'intro' && isAllowed(position.name)"
-    [disabled]="(position.type !== PositionType.FOREPLAY && bonner + position.bonner < 0) || isLeaderPositionDisabled(position.name)"
+    [disabled]="(position.type !== PositionType.FOREPLAY && boner + position.boner < 0) || isLeaderPositionDisabled(position.name)"
     (click)="startScene(position)"
     [class.trending]="position.name === trendingPosition"
     [class.special]="position.type === PositionType.SPECIAL"
@@ -294,8 +294,8 @@
 <ng-template #tooltip let-position="positionstats">
 	<div class="tooltip">
 		<div class="tooltip-wrapper">
-      <div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
-        {{ position.bonner }} <img src="./assets/stamina.png" />
+      <div [class.red]="position.boner < 0" [class.green]="position.boner > 0" class="with-icon">
+        {{ position.boner }} <img src="./assets/stamina.png" />
       </div>
 
       <ng-container *ngIf="!isBattle">

@@ -95,8 +95,8 @@
 <ng-template #tooltip let-position="positiondef">
 	<div class="tooltip">
 		<div class="tooltip-wrapper">
-      <div [class.red]="position.bonner < 0" [class.green]="position.bonner > 0" class="with-icon">
-        {{ position.bonner }} <img src="./assets/stamina.png" />
+      <div [class.red]="position.boner < 0" [class.green]="position.boner > 0" class="with-icon">
+        {{ position.boner }} <img src="./assets/stamina.png" />
       </div>
       <div class="green with-icon">
         +{{ position.getXp(1) | number : '1.0-0' }} <img src="./assets/experience.png" />

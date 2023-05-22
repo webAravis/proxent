@@ -32,22 +32,22 @@ export class Position {
     return Math.round(this.multiplierDuration * ((this.corruption + 1) * 10 + this.type * 150) * trending);
   }
 
-  getOrgasm(currentBonner: number = 0, trending: number = 1): number {
-    return Math.round(this.multiplierDuration * (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (40 + this.corruption * 10) * (currentBonner / 100)) * (trending / 2));
+  getOrgasm(currentBoner: number = 0, trending: number = 1): number {
+    return Math.round(this.multiplierDuration * (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (40 + this.corruption * 10) * (currentBoner / 100)) * (trending / 2));
   }
 
-  get bonner(): number {
-    let bonner = Math.round(
+  get boner(): number {
+    let boner = Math.round(
       this.multiplierDuration * (
         this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ?
           (this.corruption + 1) * 8 :
           this.corruption * 3
         )
     );
-    bonner = Math.min(bonner, 100);
+    boner = Math.min(boner, 100);
     const revert = this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 1 : -1;
 
-    return bonner * revert;
+    return boner * revert;
   }
 
   get multiplierDuration(): number {
