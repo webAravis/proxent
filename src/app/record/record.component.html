@@ -154,7 +154,7 @@
     </div>
 
 		<div *ngIf="showSkipButton" class="skip-button animate__animated" [class.animate__heartBeat]="comboDone">
-			<button class="btn" (click)="endScene()">{{comboDone ? 'Next' : 'Skip'}} scene</button>
+			<button [class.trending]="comboDone" class="btn" (click)="endScene()">{{comboDone ? 'Next' : 'Skip'}} scene</button>
 		</div>
 
     <ng-container *ngIf="!showPositions">
@@ -277,10 +277,8 @@
     [class.special]="position.type === PositionType.SPECIAL"
     class="btn has-tooltip"
   >
-    {{ position.label }}
-    <span class="badge-btn">{{
-      positionRepeated(position.name) === 0 ? '' : 'Repeat!'
-    }}</span>
+    {{ position.label }}<span class="comboBtn" *ngIf="position.unlocker !== undefined">+</span>
+    <span class="badge-btn">{{ positionRepeated(position.name) === 0 ? '' : 'Repeat!' }}</span>
 
     <ng-container
         *ngTemplateOutlet="
