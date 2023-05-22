@@ -7,14 +7,14 @@
   <div
     [class.animate__slideInDown]="!gamePaused"
     [class.animate__slideOutUp]="gamePaused"
-    class="animate__animated ui">
+    class="animate__animated ui top">
     <app-status></app-status>
   </div>
 
   <div
     [class.animate__slideInUp]="!gamePaused"
     [class.animate__slideOutDown]="gamePaused"
-    class="animate__animated ui">
+    class="animate__animated ui bottom">
 	  <app-navigation></app-navigation>
   </div>
 	<app-reward></app-reward>
@@ -23,8 +23,7 @@
 	<app-ceremony></app-ceremony>
 
 	<div class="version">
-		Proxent - {{version}} / Contact me at: proxentgame@gmail.com / Looking for
-		help/contibutors!
+		Proxent v{{version}}
 	</div>
 </ng-container>
 

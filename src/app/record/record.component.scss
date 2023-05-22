@@ -35,6 +35,10 @@ video {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 1279px) {
+    height: auto;
+  }
 }
 
 img {
@@ -50,12 +54,20 @@ img {
 	flex-wrap: wrap;
   flex-direction: column;
 
+  @media screen and (max-width: 1279px) {
+    gap: 8px;
+  }
+
   & > div {
     display: flex;
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 30px;
+
+    @media screen and (max-width: 1279px) {
+      gap: 5px;
+    }
   }
 
   .header-positions {
@@ -85,6 +97,13 @@ img {
   justify-content: center;
   align-items: center;
   gap: 35px;
+
+  @media screen and (max-width: 1279px) {
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 0;
+    padding: 7.5px;
+  }
 
 	& > span {
 		display: flex;

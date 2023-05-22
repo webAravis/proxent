@@ -44,6 +44,10 @@
       padding: 5px;
       cursor: pointer;
 
+      @media screen and (max-width: 650px) {
+        width: 99%;
+      }
+
       &.locked {
         .background-girl, .flip-card-back {
           filter: brightness(.2);
@@ -183,7 +187,11 @@
     flex-grow: 0;
 
     @media screen and (max-width: 1280px) {
-      width: 265px;
+      width: 174px;
+    }
+
+    @media screen and (max-width: 1279px) {
+      width: 120px;
     }
 
     .header {
@@ -255,6 +263,10 @@
         justify-content: center;
         align-items: center;
         gap: 12px;
+
+        @media screen and (max-width: 1279px) {
+          flex-direction: column;
+        }
 
         & > span {
           display: flex;
