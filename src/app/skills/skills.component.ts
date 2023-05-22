@@ -121,13 +121,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
   upgradeSkill(skill: Skill): void {
     if (this.canUnlock(skill)) {
 
-      // for (const price of skill.unlockPrice) {
-      //   if (price.type === 'gold') {
-      //     this._gameService.updateGolds(price.quantity * -1);
-      //   } else {
-      //     this._inventoryService.removeItemByName(price.type, price.quantity);
-      //   }
-      // }
+      for (const price of this.skillPrice(skill)) {
+        if (price.type === 'gold') {
+          this._gameService.updateGolds(price.quantity * -1);
+        } else {
+          this._inventoryService.removeItemByName(price.type, price.quantity);
+        }
+      }
 
       this._skillService.updateSkillLevel(skill, skill.level+1);
     }
