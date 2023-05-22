@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SaveService } from './core/save.service';
 import { CachingService } from './core/caching.service';
 import { Router } from '@angular/router';
 import { GameService } from './core/game.service';
 import { Subject, takeUntil } from 'rxjs';
+import packageJson from '../../package.json';
 
 @Component({
 	selector: 'app-root',
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	loadProgress = 0;
   gamePaused = true;
+  version = packageJson.version;
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 

@@ -16,43 +16,14 @@ export class LeadersService {
   }
 
   initLeaders() : void {
-    const leaders = [];
-
-    const expandor = new Leader();
-    expandor.name = 'expandor';
-    expandor.description = 'Logistic specialist. Beat him to increase girl capacity';
-
-    leaders.push(expandor);
-
-    const skillus = new Leader();
-    skillus.name = 'skillus';
-    skillus.description = 'Skill specialist. Beat him to grab basic skill material';
-
-    leaders.push(skillus);
-
-    const aniter = new Leader();
-    aniter.name = 'aniter';
-    aniter.description = 'Anal fetishist. Beat him to grab advanced skill material';
-
-    leaders.push(aniter);
-
-    const multiplor = new Leader();
-    multiplor.name = 'multiplor';
-    multiplor.description = 'Multiple fetishist. Beat him to grab advanced skill material';
-
-    leaders.push(multiplor);
-
-    const blows = new Leader();
-    blows.name = 'blows';
-    blows.description = 'Mouth fetishist. Beat him to grab advanced skill material';
-
-    leaders.push(blows);
-
-    const savager = new Leader();
-    savager.name = 'savager';
-    savager.description = 'Rough fetishist. Beat him to grab advanced skill material';
-
-    leaders.push(savager);
+    const leaders = [
+      new Leader({name: 'expandor'}),
+      new Leader({name: 'skillus'}),
+      new Leader({name: 'aniter'}),
+      new Leader({name: 'multiplor'}),
+      new Leader({name: 'blows'}),
+      new Leader({name: 'savager'}),
+    ];
 
     this.leaders.next(this.initLeadersMethods(leaders));
   }
@@ -76,6 +47,8 @@ export class LeadersService {
           };
           leader.nextLvlCost = modifierLevelCost;
 
+          leader.description = 'Logistic specialist. Beat him to increase girl capacity';
+
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = ['small', 'brunette'];
           leader.malus = ['milf', 'euro'];
@@ -87,6 +60,8 @@ export class LeadersService {
             return Math.round((level / 0.07) ** 2);
           };
           leader.nextLvlCost = modifierLevelCost;
+
+          leader.description = 'Skill specialist. Beat him to grab basic skill material';
 
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = ['milf', 'dark eyes'];
@@ -100,6 +75,8 @@ export class LeadersService {
           };
           leader.nextLvlCost = modifierLevelCost;
 
+          leader.description = 'Anal fetishist. Beat him to grab advanced skill material';
+
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = [];
           leader.malus = [];
@@ -111,6 +88,8 @@ export class LeadersService {
             return Math.round((level / 0.9));
           };
           leader.nextLvlCost = modifierLevelCost;
+
+          leader.description = 'Multiple fetishist. Beat him to grab advanced skill material';
 
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = [];
@@ -124,6 +103,8 @@ export class LeadersService {
           };
           leader.nextLvlCost = modifierLevelCost;
 
+          leader.description = 'Mouth fetishist. Beat him to grab advanced skill material';
+
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = [];
           leader.malus = [];
@@ -135,6 +116,8 @@ export class LeadersService {
             return Math.round((level / 0.9));
           };
           leader.nextLvlCost = modifierLevelCost;
+
+          leader.description = 'Rough fetishist. Beat him to grab advanced skill material';
 
           leader.activityProb = Math.min(0.1 + (leader.lvl * 0.01), 1);
           leader.bonus = [];

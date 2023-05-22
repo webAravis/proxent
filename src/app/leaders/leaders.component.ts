@@ -78,5 +78,24 @@ export class LeadersComponent implements OnInit, OnDestroy {
     }
   }
 
+  getRewards(name: string): {text: string, item: string} {
+    let rewards: {text: string, item: string} = {text: '', item: ''};
+    switch (name.toLowerCase()) {
+      case 'expandor':
+        rewards = {text: 'Girl limit increased!', item: ''};
+        break;
+      case 'skillus':
+        rewards = {text: '+1', item: 'basic_skill_gem'};
+        break;
+      case 'aniter':
+      case 'multiplor':
+      case 'blows':
+      case 'savager':
+        rewards = {text: '+1', item: 'advanced_skill_gem'};
+        break;
+    }
+
+    return rewards;
+  }
 
 }

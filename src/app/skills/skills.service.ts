@@ -198,7 +198,7 @@ export class SkillsService {
             sprite_posleft: -5,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'basic_skill_gem', quantity: 1 }
+              [{ type: 'gold', quantity: 15_000 }],
             ]
           })
         ];
@@ -211,8 +211,8 @@ export class SkillsService {
             sprite_posleft: -102,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -230,8 +230,8 @@ export class SkillsService {
             sprite_posleft: -47,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -248,8 +248,7 @@ export class SkillsService {
             sprite_posleft: -374,
             maxlevel: 3,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 10_000 }],
             ],
             requires: ['Anal'],
             effects: [
@@ -265,8 +264,7 @@ export class SkillsService {
             sprite_posleft: -186,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 10_000 }]
             ],
             requires: ['Anal'],
             effects: [
@@ -284,8 +282,7 @@ export class SkillsService {
             sprite_posleft: -374,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 60_000 }]
             ],
             requires: ['Anal Enlargement'],
             effects: [
@@ -299,8 +296,7 @@ export class SkillsService {
             sprite_posleft: -186,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 60_000 }]
             ],
             requires: ['Anal Lubricant'],
             effects: [
@@ -320,7 +316,7 @@ export class SkillsService {
             sprite_posleft: -5,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'basic_skill_gem', quantity: 1 }
+              [{ type: 'gold', quantity: 15_000 }]
             ]
           })
         ];
@@ -333,8 +329,8 @@ export class SkillsService {
             sprite_posleft: -283,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -349,8 +345,8 @@ export class SkillsService {
             sprite_posleft: -926,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -368,8 +364,8 @@ export class SkillsService {
             sprite_posleft: -3,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -391,7 +387,7 @@ export class SkillsService {
             sprite_posleft: -5,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'basic_skill_gem', quantity: 1 }
+              [{ type: 'gold', quantity: 15_000 }]
             ]
           })
         ];
@@ -404,8 +400,8 @@ export class SkillsService {
             sprite_posleft: -283,
             maxlevel: 3,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -421,8 +417,8 @@ export class SkillsService {
             sprite_posleft: -926,
             maxlevel: 4,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -439,8 +435,8 @@ export class SkillsService {
             sprite_posleft: -3,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -459,8 +455,8 @@ export class SkillsService {
             sprite_posleft: -3,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 45_000 }, { type: 'basic_skill_gem', quantity: 2 }],
+              [{ type: 'gold', quantity: 60_000 }, { type: 'advanced_skill_gem', quantity: 2 }],
             ],
             requires: ['Fetishist'],
             effects: [
@@ -480,7 +476,7 @@ export class SkillsService {
             sprite_posleft: -6,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'basic_skill_gem', quantity: 1 }
+              [{ type: 'gold', quantity: 15_000 }]
             ]
           })
         ];
@@ -493,8 +489,8 @@ export class SkillsService {
             sprite_posleft: -925,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Actor'],
             effects: [
@@ -509,8 +505,8 @@ export class SkillsService {
             sprite_posleft: -832,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Actor'],
             effects: [
@@ -525,7 +521,8 @@ export class SkillsService {
             sprite_posleft: -1063,
             maxlevel: 4,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Actor'],
             effects: [
@@ -545,7 +542,7 @@ export class SkillsService {
             sprite_posleft: -1109,
             maxlevel: 5,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              [{ type: 'gold', quantity: 10_000 }]
             ],
             requires: ['Cowgirl'],
             effects: [
@@ -563,7 +560,7 @@ export class SkillsService {
             sprite_posleft: -1154,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              [{ type: 'gold', quantity: 10_000 }]
             ],
             requires: ['Reverse Cowgirl'],
             effects: [
@@ -584,7 +581,7 @@ export class SkillsService {
             sprite_posleft: -1064,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 }
+              [{ type: 'gold', quantity: 10_000 }]
             ],
             requires: ['Mouthist'],
             effects: [
@@ -593,6 +590,39 @@ export class SkillsService {
             ],
           })
         ];
+
+        skillTier3.skills = [
+          new Skill({
+            name: 'Endurance',
+            description: 'Self-control improvement leads to boner conservation',
+            sprite_postop: -95,
+            sprite_posleft: -1017,
+            maxlevel: 8,
+            unlockPrice: [
+              [{ type: 'gold', quantity: 40_000 }],
+              [{ type: 'gold', quantity: 80_000 }],
+              [{ type: 'gold', quantity: 130_000 }],
+              [{ type: 'gold', quantity: 190_000 }],
+              [{ type: 'gold', quantity: 260_000 }],
+              [{ type: 'gold', quantity: 340_000 }],
+              [{ type: 'gold', quantity: 430_000 }],
+              [{ type: 'gold', quantity: 530_000 }],
+              [{ type: 'gold', quantity: 640_000 }],
+            ],
+            requires: ['Jumping jacks', 'Firm legs', 'Botox'],
+            effects: [
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+10%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+20%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+30%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+40%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+50%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+60%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+70%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+80%' }],
+            ]
+          }),
+        ];
+
         break;
 
       case 'battle':
@@ -604,7 +634,7 @@ export class SkillsService {
             sprite_posleft: -198,
             maxlevel: 1,
             unlockPrice: [
-              { type: 'basic_skill_gem', quantity: 1 }
+              [{ type: 'gold', quantity: 15_000 }]
             ]
           })
         ];
@@ -617,8 +647,8 @@ export class SkillsService {
             sprite_posleft: -198,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Competitor'],
             effects: [
@@ -633,8 +663,8 @@ export class SkillsService {
             sprite_posleft: -924,
             maxlevel: 2,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
-              { type: 'recordmonthly_badge', quantity: 2 },
+              [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
+              [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
             ],
             requires: ['Competitor'],
             effects: [
@@ -649,7 +679,7 @@ export class SkillsService {
             sprite_posleft: -54,
             maxlevel: 8,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
+              [{ type: 'gold', quantity: 10_000 }]
             ],
             requires: ['Competitor'],
             effects: [
@@ -673,7 +703,7 @@ export class SkillsService {
             sprite_posleft: -198,
             maxlevel: 8,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
+              [{ type: 'gold', quantity: 10_000 },]
             ],
             requires: ['Foreplay trainer'],
             effects: [
@@ -694,7 +724,7 @@ export class SkillsService {
             sprite_posleft: -101,
             maxlevel: 8,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
+              [{ type: 'gold', quantity: 10_000 },]
             ],
             requires: ['Foreplay trainer'],
             effects: [
@@ -712,21 +742,35 @@ export class SkillsService {
 
         skillTier3.skills = [
           new Skill({
-            name: 'Endurance',
+            name: 'Battle Endurance',
             description: 'Self-control improvement leads to boner conservation',
             sprite_postop: -95,
             sprite_posleft: -1017,
-            maxlevel: 2,
+            maxlevel: 8,
             unlockPrice: [
-              { type: 'gold', quantity: 15_000 },
+              [{ type: 'gold', quantity: 40_000 }],
+              [{ type: 'gold', quantity: 80_000 }],
+              [{ type: 'gold', quantity: 130_000 }],
+              [{ type: 'gold', quantity: 190_000 }],
+              [{ type: 'gold', quantity: 260_000 }],
+              [{ type: 'gold', quantity: 340_000 }],
+              [{ type: 'gold', quantity: 430_000 }],
+              [{ type: 'gold', quantity: 530_000 }],
+              [{ type: 'gold', quantity: 640_000 }],
             ],
             requires: ['Penetration trainer', 'Special trainer'],
             effects: [
               [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+10%' }],
               [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+20%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+30%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+40%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+50%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+60%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+70%' }],
+              [{ stat: 'boner', position: 'all_penetration', label: 'All penetration boner', value: '+80%' }],
             ]
           }),
-        ]
+        ];
     }
 
     skillTiers.push(skillTier0);

@@ -321,27 +321,27 @@ export class RecordComponent implements OnInit, OnDestroy {
     return {
       golds: Math.round(
         position.getGold(this.trendingMultiplier(position))
-        * this._skillModifier('golds', position)
+        + (position.getGold(this.trendingMultiplier(position)) * this._skillModifier('golds', position))
         * repeatedMultiplier
       ),
       xp: Math.round(
         position.getXp(this.trendingMultiplier(position))
-        * this._skillModifier('xp', position)
+        + (position.getXp(this.trendingMultiplier(position)) * this._skillModifier('xp', position))
         * repeatedMultiplier
       ),
       fans: Math.round(
         position.getFans(this.trendingMultiplier(position))
-        * this._skillModifier('fans', position)
+        + (position.getFans(this.trendingMultiplier(position)) * this._skillModifier('fans', position))
         * repeatedMultiplier
       ),
       boner: Math.round(
         position.boner
-        * this._skillModifier('boner', position)
+        + this._skillModifier('boner', position)
         * repeatedMultiplier
       ),
       orgasm: Math.round(
         position.getOrgasm(this.boner, this.trendingMultiplier(position))
-        * this._skillModifier('orgasm', position)
+        + (position.getOrgasm(this.boner, this.trendingMultiplier(position)) * this._skillModifier('orgasm', position))
       )
     }
   }
@@ -620,10 +620,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     let modifiersToApply = this.skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
     modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_foreplay' && (position.type === PositionType.FOREPLAY || position.type === PositionType.FOREPLAY_SKILL))];
-    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_penetration' && (position.type === PositionType.PENETRATION || position.type === PositionType.SKILL))];
+    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_penetration' && (position.type === PositionType.PENETRATION || position.type === PositionType.SKILL || position.type === PositionType.SPECIAL))];
     modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_special' && (position.type === PositionType.SPECIAL))];
 
-    let modifier = 100;
+    let modifier = statName === 'boner' ? 0 : 100;
     for (const modifierStat of modifiersToApply) {
       let modifierValue = parseInt(modifierStat.value.replaceAll('%', '').replaceAll('+', '').replaceAll('-', ''));
       if (!isNaN(modifierValue)) {
@@ -631,7 +631,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
     }
 
-    return modifier / 100;
+    return statName === 'boner' ? modifier : modifier / 100;
   }
 
   private _selectGirl(girl: Girl): void {

@@ -43,7 +43,7 @@ export class Skill {
   level: number = 0;
   maxlevel: number = 0;
 
-	unlockPrice: { type: string; quantity: number }[] = [];
+	unlockPrice: { type: string; quantity: number }[][] = [];
 
   effects: { stat: string, position: string, label: string, value: string }[][] = [];
   requires: string[] | undefined = undefined;

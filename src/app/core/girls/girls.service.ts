@@ -253,7 +253,7 @@ export class GirlsService {
               "name": "standing3",
               "label": "Standing 3",
               "corruption": 12,
-              "timeout": 3000,
+              "timeout": 10000,
 
               "type": PositionType.PENETRATION,
               "unlocker": new Position({

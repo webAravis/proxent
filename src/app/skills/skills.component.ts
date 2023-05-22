@@ -65,6 +65,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
     return total;
   }
 
+  skillPrice(skill: Skill): { type: string, quantity: number}[] {
+    return skill.unlockPrice[skill.level] ?? skill.unlockPrice[skill.unlockPrice.length - 1];
+  }
+
   canAfford(price: { type: string, quantity: number}): boolean {
     if (price.type === 'gold' && price.quantity >= this.golds) {
       return false;
@@ -75,6 +79,16 @@ export class SkillsComponent implements OnInit, OnDestroy {
       !this._inventoryService.hasItemByName(price.type, price.quantity)
     ) {
       return false;
+    }
+
+    return true;
+  }
+
+  canAffordSkill(skill: Skill): boolean {
+    for (const price of this.skillPrice(skill)) {
+      if (!this.canAfford(price)) {
+        return false;
+      }
     }
 
     return true;
@@ -93,10 +107,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
       return false;
     }
 
-    for (const price of skill.unlockPrice) {
-      if (!this.canAfford(price)) {
-          return false;
-      }
+    if (!this.canAffordSkill(skill)) {
+      return false;
     }
 
     if (skill.requires !== undefined && !this._skillService.hasSkills(skill.requires, this._girlService.currentGirl.getValue())) {

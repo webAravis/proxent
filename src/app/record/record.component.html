@@ -95,11 +95,11 @@
 		<div class="score">
 			<span>{{ score | number: '1.0-0' }}pts</span>
       <ng-container *ngIf="!isBattle">
-        <span class="with-icon">{{ goldsWon }}<img width="30" src="./assets/golds.png" /></span>
-        <span class="with-icon">{{ xpWon }}<img width="30" src="./assets/experience.png" /></span>
-        <span class="with-icon">{{ fansWon }}<img width="30" src="./assets/fans.png" /></span>
+        <span class="with-icon">{{ goldsWon | number : '1.0-0' }}<img width="30" src="./assets/golds.png" /></span>
+        <span class="with-icon">{{ xpWon | number : '1.0-0' }}<img width="30" src="./assets/experience.png" /></span>
+        <span class="with-icon">{{ fansWon | number : '1.0-0' }}<img width="30" src="./assets/fans.png" /></span>
       </ng-container>
-			<span class="with-icon">{{ orgasmCount }}<img width="30" src="./assets/items/cum.png"/></span>
+			<span class="with-icon">{{ orgasmCount | number : '1.0-0' }}<img width="30" src="./assets/items/cum.png"/></span>
 		</div>
 
 		<video id="video-record" controls class="video-background">
@@ -153,7 +153,7 @@
       <button class="btn" (click)="endRecord()">End recording</button>
     </div>
 
-		<div *ngIf="showSkipButton" class="skip-button">
+		<div *ngIf="showSkipButton" class="skip-button animate__animated" [class.animate__heartBeat]="comboDone">
 			<button class="btn" (click)="endScene()">{{comboDone ? 'Next' : 'Skip'}} scene</button>
 		</div>
 

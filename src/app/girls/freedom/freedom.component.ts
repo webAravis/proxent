@@ -25,6 +25,9 @@ export class FreedomComponent implements OnInit, OnDestroy {
 	];
 
 	itemsGrid: { itemName: string; quantity: number }[] = [
+		{ itemName: 'cum', quantity: 2 },
+		{ itemName: 'cum', quantity: 3 },
+		{ itemName: 'cum', quantity: 4 },
 		{ itemName: 'cum', quantity: 5 },
 		{ itemName: 'cum', quantity: 6 },
 		{ itemName: 'cum', quantity: 7 },
@@ -32,9 +35,6 @@ export class FreedomComponent implements OnInit, OnDestroy {
 		{ itemName: 'cum', quantity: 9 },
 		{ itemName: 'cum', quantity: 10 },
 		{ itemName: 'cum', quantity: 11 },
-		{ itemName: 'cum', quantity: 12 },
-		{ itemName: 'cum', quantity: 13 },
-		{ itemName: 'cum', quantity: 14 },
 	];
 
 	reasonDisabled = '';

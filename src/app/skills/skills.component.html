@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="price" *ngIf="skill.level < skill.maxlevel">
-                  <div [class.red]="!canAfford(unlockPrice)" class="with-icon" *ngFor="let unlockPrice of skill.unlockPrice">
+                  <div [class.red]="!canAffordSkill(skill)" class="with-icon" *ngFor="let unlockPrice of skillPrice(skill)">
                     {{ unlockPrice.quantity | number : '1.0-0' }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
                   </div>
                 </div>

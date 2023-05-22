@@ -9,7 +9,12 @@
       <div class="header-leader">
         {{ leader.name | titlecase }}
         <div class="subtitle">
-          <i>{{ leader.description }}</i>
+          <i>{{ leader.description }}</i><br/>
+          <div class="center with-icon">
+            <div>Rewards:</div>
+            {{ getRewards(leader.name).text }}
+            <img class="reward-item" *ngIf="getRewards(leader.name).item !== ''" src="./assets/items/{{getRewards(leader.name).item}}.png" alt="">
+          </div>
         </div>
       </div>
       <div class="bonus-malus">
