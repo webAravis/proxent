@@ -1,6 +1,6 @@
 {
 	"name": "proxent",
-	"version": "0.10.10",
+	"version": "0.10.11",
 	"scripts": {
 		"start": "ng serve",
 		"package": "npm version patch && ng build --configuration production --base-href ./ && npm run postbuild",
