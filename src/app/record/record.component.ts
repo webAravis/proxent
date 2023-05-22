@@ -42,6 +42,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 	vid: HTMLVideoElement = document.createElement('video');
   volume: number = 1;
 	timeoutscene: NodeJS.Timeout[] = [];
+  timeoutCum: NodeJS.Timeout | undefined;
 
 	record: Record = new Record();
 	girl: Girl = new Girl();
@@ -247,16 +248,8 @@ export class RecordComponent implements OnInit, OnDestroy {
     this.timeoutCombos = [];
     this.comboBtns = [];
 
-    // volume control
-    let intervalVolume = setInterval(() => {
-      if (this.volume >= 0.9) {
-        this.volume = 1;
-        clearInterval(intervalVolume);
-      } else if (this.volume + 0.1 < 1) {
-        this.volume += 0.1;
-      }
-      this.vid.volume = this.volume;
-    }, 50);
+    clearTimeout(this.timeoutCum);
+    this._fadeIn();
 
     let positionName = position.name;
     if (isCombo) {
@@ -347,17 +340,37 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
 	endScene(isCombo: boolean = false): void {
+    this._fadeOut();
 
-    // volume control
-    let intervalVolume = setInterval(() => {
-      if (this.volume <= 0.1) {
-        this.volume = 0;
-        clearInterval(intervalVolume);
-      } else if (this.volume - 0.1 > 0) {
-        this.volume -= 0.1;
+		if (this.girl.orgasmLevel >= 100 && !isCombo) {
+      const nbOrgasm = Math.trunc(this.girl.orgasmLevel / 100);
+
+			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
+			this.orgasmCount += nbOrgasm;
+
+			this.boner -= 50;
+
+      if (!this.isBattle) {
+        for (let i = 0; i < nbOrgasm; i++) {
+          this.itemsWon.push(
+            new Item({ name: 'cum', price: 100, quality: 'normal' })
+          );
+        }
       }
-      this.vid.volume = this.volume;
-    }, 50);
+
+      setTimeout(() => {
+        this._fadeIn();
+        this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
+
+        this.vid.load();
+        this.vid.play();
+
+        this.timeoutCum = setTimeout(() => {
+          this._fadeOut();
+        }, 3000);
+      }, 500);
+
+		}
 
     if (this.comboDone) {
       this.comboDone = false;
@@ -379,29 +392,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 		}
 		this.timeoutscene = [];
 		this.showSkipButton = false;
-
-		if (this.girl.orgasmLevel >= 100 && !isCombo) {
-			this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
-
-			this.vid.load();
-			this.vid.play();
-
-      const nbOrgasm = Math.trunc(this.girl.orgasmLevel / 100);
-
-			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
-			this.orgasmCount += nbOrgasm;
-
-			this.boner -= 50;
-
-      if (!this.isBattle) {
-        for (let i = 0; i < nbOrgasm; i++) {
-          this.itemsWon.push(
-            new Item({ name: 'cum', price: 100, quality: 'normal' })
-          );
-        }
-      }
-
-		}
 
     const positionStats = this.positionStats(this.currentPosition ?? new Position());
     if (!isCombo || positionStats.boner > 0) {
@@ -752,5 +742,31 @@ export class RecordComponent implements OnInit, OnDestroy {
     }
 
     this.leaderActivity = activity;
+  }
+
+  private _fadeOut(): void {
+    // volume control
+    let intervalVolume = setInterval(() => {
+      if (this.volume <= 0.1) {
+        this.volume = 0;
+        clearInterval(intervalVolume);
+      } else if (this.volume - 0.1 > 0) {
+        this.volume -= 0.1;
+      }
+      this.vid.volume = this.volume;
+    }, 50);
+  }
+
+  private _fadeIn(): void {
+    // volume control
+    let intervalVolume = setInterval(() => {
+      if (this.volume >= 0.9) {
+        this.volume = 1;
+        clearInterval(intervalVolume);
+      } else if (this.volume + 0.1 < 1) {
+        this.volume += 0.1;
+      }
+      this.vid.volume = this.volume;
+    }, 50);
   }
 }
