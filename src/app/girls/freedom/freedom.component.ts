@@ -127,7 +127,7 @@ export class FreedomComponent implements OnInit, OnDestroy {
 		);
 
 		this.girl.freedom -= 0.1;
-    if (this.girl.freedom < 0) {
+    if (this.girl.freedom < 0.1) {
       this.girl.freedom = 0;
     }
 		this._girlsService.updateGirl(this.girl);
