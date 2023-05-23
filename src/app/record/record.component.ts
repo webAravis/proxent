@@ -342,7 +342,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 	}
 
   positionStats(position: Position, nextPosition: boolean = false): {golds: number, xp: number, fans: number, boner: number, orgasm: number} {
-		let positionPlayedTimes = this.positionRepeated(position.name);
+    let positionPlayedTimes = this.positionRepeated(position.name);
     if (nextPosition) {
       positionPlayedTimes++;
     }
@@ -351,32 +351,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			repeatedMultiplier = repeatedMultiplier / 1.2;
 		}
 
-    return {
-      golds: Math.round(
-        (position.getGold(this.trendingMultiplier(position))
-        + (position.getGold(this.trendingMultiplier(position)) * this._skillModifier('golds', position))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_golds')
-      ),
-      xp: Math.round(
-        (position.getXp(this.trendingMultiplier(position))
-        + (position.getXp(this.trendingMultiplier(position)) * this._skillModifier('xp', position))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_xp')
-      ),
-      fans: Math.round(
-        (position.getFans(this.trendingMultiplier(position))
-        + (position.getFans(this.trendingMultiplier(position)) * this._skillModifier('fans', position))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_fans')
-      ),
-      boner: Math.round(
-        position.boner
-        + this._skillModifier('boner', position)
-        * repeatedMultiplier
-      ),
-      orgasm: Math.round(
-        (position.getOrgasm(this.boner, this.trendingMultiplier(position))
-        + (position.getOrgasm(this.boner, this.trendingMultiplier(position)) * this._skillModifier('orgasm', position))) * this._settingsService.getSetting('record_position_cum')
-      )
-    }
+    return this._recordService.positionStats(position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
   }
 
 	endScene(isCombo: boolean = false): void {
@@ -479,20 +454,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 		this.trendingPosition = positionsToPick[Math.floor(Math.random() * positionsToPick.length)];
 	}
-
-  trendingMultiplier(position: Position): number {
-    let multiplier = 0;
-    let positionName = position.name;
-    const comboPositionNumber = parseInt(positionName.charAt(positionName.length - 1));
-    if (!isNaN(comboPositionNumber)) {
-      positionName = positionName.substring(0, positionName.length -1 );
-      multiplier += comboPositionNumber;
-    }
-
-    multiplier += this.trendingPosition === positionName ? 4 : 1;
-
-    return multiplier;
-  }
 
 	positionRepeated(positionName: string): number {
 		return this.positionsPlayed.filter(
@@ -640,35 +601,6 @@ export class RecordComponent implements OnInit, OnDestroy {
       this.nbCombos = 2;
     }
 	}
-
-  private _skillModifier(statName: string, position: Position): number {
-    let positionName = position.name.toLowerCase();
-    const sceneRank = parseInt(positionName.charAt(positionName.length-1));
-
-    if (!isNaN(sceneRank)) {
-      positionName = positionName.slice(0, -1).toLowerCase();
-    }
-
-    let modifiersToApply = this.skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
-    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_foreplay' && (position.type === PositionType.FOREPLAY || position.type === PositionType.FOREPLAY_SKILL))];
-    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_penetration' && (position.type === PositionType.PENETRATION || position.type === PositionType.SKILL || position.type === PositionType.SPECIAL))];
-    modifiersToApply = [...modifiersToApply, ...this.skillStatsModifiers.filter(statModifier => statModifier.position === 'all_special' && (position.type === PositionType.SPECIAL))];
-
-    let modifier = statName === 'boner' ? 0 : 100;
-    for (const modifierStat of modifiersToApply) {
-      let modifierValue = parseInt(modifierStat.value.replaceAll('%', '').replaceAll('+', '').replaceAll('-', ''));
-      if (!isNaN(modifierValue)) {
-        modifier = modifier + (modifierValue * (modifierStat.value.charAt(0) === '+' ? 1 : -1));
-      }
-    }
-
-    if (statName === 'boner') {
-      // console.log('boner modifier', modifier);
-    }
-
-
-    return statName === 'boner' ? modifier : modifier / 100;
-  }
 
   private _selectGirl(girl: Girl): void {
     this.positions = [];

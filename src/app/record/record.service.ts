@@ -4,7 +4,7 @@ import { Record } from './record.model';
 import { Girl } from '../core/girls/girl.model';
 import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
-import { Position } from '../core/position.model';
+import { Position, PositionType } from '../core/position.model';
 import { Leader } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
 
@@ -78,34 +78,37 @@ export class RecordService {
       record.name = girl.name + ' - #' + (recordCount + 1);
 
       const positionsPlayed: PlayedPosition[] = [];
+      let oPositionsPool: Position[] = [];
+
+      if (allPositions) {
+        oPositionsPool = positions;
+      } else {
+        // converting pool to position objects
+        let positionsPool = girl.unlockedPositions;
+        for (const positionName of positionsPool) {
+          const oPosition: Position | undefined = positions.find(position => position.name === positionName);
+          if (oPosition !== undefined) {
+            oPositionsPool.push(oPosition);
+          }
+        }
+      }
+
       let trendingPositions = 0;
       let orgasmCount = 0;
 
       let trendingPosition = '';
       let orgasmLevel = 0;
+      let boner = 0;
       for (let index = 0; index < girl.corruption; index++) {
-        let positionsPool = girl.unlockedPositions;
-        if (allPositions) {
-          positionsPool = positions.map((oPosition) => oPosition.name);
-        }
 
-        const availablePositions = positionsPool.filter(
-          (position) => position !== trendingPosition
+        // picking trending
+        const availablePositions = oPositionsPool.filter(
+          (position) => position.name !== trendingPosition
         );
-        trendingPosition =
-          availablePositions[
-          Math.floor(Math.random() * availablePositions.length)
-          ];
+        trendingPosition = availablePositions.map(position => position.name)[Math.floor(Math.random() * availablePositions.length)];
 
         // pick a random position
-        const pickedPositionName: string =
-          positionsPool[Math.floor(Math.random() * positionsPool.length)];
-        const pickedPosition = positions.find(
-          (position) => position.name === pickedPositionName
-        );
-        if (pickedPosition === undefined) {
-          continue;
-        }
+        const pickedPosition: Position = oPositionsPool[Math.floor(Math.random() * oPositionsPool.length)];
 
         const positionPlayedTimes = positionsPlayed.filter(
           (positionPlayed) => pickedPosition.name === positionPlayed.position.name
@@ -115,24 +118,33 @@ export class RecordService {
           repeatedMultiplier = repeatedMultiplier / 1.2;
         }
 
-        let trendingMultiplier = 1;
         if (pickedPosition.name === trendingPosition) {
           trendingPositions++;
-          trendingMultiplier = 4;
         }
+
+        const positionStats = this.positionStats(
+          pickedPosition,
+          repeatedMultiplier,
+          boner,
+          trendingPosition,
+          []
+        );
 
         positionsPlayed.push({
           position: pickedPosition,
-          golds: Math.round(pickedPosition.getGold(trendingMultiplier) * repeatedMultiplier),
-          fans: Math.round(pickedPosition.getFans(trendingMultiplier) * repeatedMultiplier),
-          xp: Math.round(pickedPosition.getXp(trendingMultiplier) * repeatedMultiplier)
+          golds: positionStats.golds,
+          fans: positionStats.fans,
+          xp: positionStats.xp
         });
 
-        orgasmLevel += pickedPosition.getOrgasm(Math.floor(Math.random() * (100 - 0 + 1)) + 0, 1);
+        orgasmLevel += positionStats.orgasm;
         if (orgasmLevel >= 100) {
           orgasmCount++;
           orgasmLevel = 0;
+          boner -= 50;
         }
+
+        boner += positionStats.boner;
       }
 
       record.score = this.getScore(
@@ -154,6 +166,35 @@ export class RecordService {
     }
 
     return record;
+  }
+
+  positionStats(position: Position, repeatedMultiplier: number, boner: number, trendingPosition: string, skillStatsModifiers: { stat: string, position: string, label: string, value: string }[]): {golds: number, xp: number, fans: number, boner: number, orgasm: number} {
+		return {
+      golds: Math.round(
+        (position.getGold(this._trendingMultiplier(position, trendingPosition))
+        + (position.getGold(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('golds', position, skillStatsModifiers))
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_golds')
+      ),
+      xp: Math.round(
+        (position.getXp(this._trendingMultiplier(position, trendingPosition))
+        + (position.getXp(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('xp', position, skillStatsModifiers))
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_xp')
+      ),
+      fans: Math.round(
+        (position.getFans(this._trendingMultiplier(position, trendingPosition))
+        + (position.getFans(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('fans', position, skillStatsModifiers))
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_fans')
+      ),
+      boner: Math.round(
+        position.boner
+        + this._skillModifier('boner', position, skillStatsModifiers)
+        * repeatedMultiplier
+      ),
+      orgasm: Math.round(
+        (position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition))
+        + (position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('orgasm', position, skillStatsModifiers))) * this._settingsService.getSetting('record_position_cum')
+      )
+    }
   }
 
   getMoney(positionsPlayed: PlayedPosition[]): number {
@@ -231,5 +272,43 @@ export class RecordService {
     }
 
     return Math.round((score * positionsPlayed.length) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
+  }
+
+  private _skillModifier(statName: string, position: Position, skillStatsModifiers: { stat: string, position: string, label: string, value: string }[]): number {
+    let positionName = position.name.toLowerCase();
+    const sceneRank = parseInt(positionName.charAt(positionName.length-1));
+
+    if (!isNaN(sceneRank)) {
+      positionName = positionName.slice(0, -1).toLowerCase();
+    }
+
+    let modifiersToApply = skillStatsModifiers.filter(statModifier => statModifier.stat === statName && statModifier.position === positionName);
+    modifiersToApply = [...modifiersToApply, ...skillStatsModifiers.filter(statModifier => statModifier.position === 'all_foreplay' && (position.type === PositionType.FOREPLAY || position.type === PositionType.FOREPLAY_SKILL))];
+    modifiersToApply = [...modifiersToApply, ...skillStatsModifiers.filter(statModifier => statModifier.position === 'all_penetration' && (position.type === PositionType.PENETRATION || position.type === PositionType.SKILL || position.type === PositionType.SPECIAL))];
+    modifiersToApply = [...modifiersToApply, ...skillStatsModifiers.filter(statModifier => statModifier.position === 'all_special' && (position.type === PositionType.SPECIAL))];
+
+    let modifier = statName === 'boner' ? 0 : 100;
+    for (const modifierStat of modifiersToApply) {
+      let modifierValue = parseInt(modifierStat.value.replaceAll('%', '').replaceAll('+', '').replaceAll('-', ''));
+      if (!isNaN(modifierValue)) {
+        modifier = modifier + (modifierValue * (modifierStat.value.charAt(0) === '+' ? 1 : -1));
+      }
+    }
+
+    return statName === 'boner' ? modifier : modifier / 100;
+  }
+
+  private _trendingMultiplier(position: Position, trendingPosition: string): number {
+    let multiplier = 0;
+    let positionName = position.name;
+    const comboPositionNumber = parseInt(positionName.charAt(positionName.length - 1));
+    if (!isNaN(comboPositionNumber)) {
+      positionName = positionName.substring(0, positionName.length -1 );
+      multiplier += comboPositionNumber;
+    }
+
+    multiplier += trendingPosition === positionName ? 4 : 1;
+
+    return multiplier;
   }
 }
