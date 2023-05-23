@@ -266,6 +266,11 @@ img {
   }
 }
 
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
 @keyframes animate-arrow {
   0% {
       opacity: 0;

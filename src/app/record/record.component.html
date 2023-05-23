@@ -38,9 +38,15 @@
 			<img class="portrait" [src]="portrait" />
 		</div>
 
-		<div>
+		<div class="actions">
 			<button (click)="startRecord()" [disabled]="price > golds" class="btn">
 				Start Recording
+			</button>
+			<button *ngIf="!isBattle" (click)="simulateRecord()" [disabled]="price > golds || !hasSkill('actor')" class="btn" [class.has-tooltip]="!hasSkill('actor')">
+				Simulate Recording
+        <div class="tooltip" *ngIf="!hasSkill('actor')">
+          <div class="tooltip-wrapper">You need the Actor skill to simulate records</div>
+        </div>
 			</button>
 		</div>
 

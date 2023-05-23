@@ -6,6 +6,8 @@ export class Record {
 	score = 0;
 	money = 0;
 	fans = 0;
+  xp = 0;
+  orgasmCount = 0;
 	studioscore = 0;
 
 	studioName = '';

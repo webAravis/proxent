@@ -11,7 +11,8 @@ import { SettingsService } from '../core/settings.service';
 export interface PlayedPosition {
   position: Position,
   fans: number,
-  golds: number
+  golds: number,
+  xp: number
 }
 
 @Injectable({
@@ -66,10 +67,10 @@ export class RecordService {
     allPositions: boolean,
     studioQuality: number,
     recordCount: number
-  ): void {
+  ): Record {
+    const record = new Record();
     const positions = this._girlsService.getTimingRecord(girl);
     if (positions) {
-      const record = new Record();
       record.girl = girl;
       record.studioName = studioName;
       record.month = this._gameService.month;
@@ -123,7 +124,8 @@ export class RecordService {
         positionsPlayed.push({
           position: pickedPosition,
           golds: Math.round(pickedPosition.getGold(trendingMultiplier) * repeatedMultiplier),
-          fans: Math.round(pickedPosition.getFans(trendingMultiplier) * repeatedMultiplier)
+          fans: Math.round(pickedPosition.getFans(trendingMultiplier) * repeatedMultiplier),
+          xp: Math.round(pickedPosition.getXp(trendingMultiplier) * repeatedMultiplier)
         });
 
         orgasmLevel += pickedPosition.getOrgasm(Math.floor(Math.random() * (100 - 0 + 1)) + 0, 1);
@@ -145,9 +147,13 @@ export class RecordService {
       record.studioscore = this.getScoreStudio(studioQuality, (studioName === 'player'));
       record.money = this.getMoney(positionsPlayed);
       record.fans = this.getFans(positionsPlayed);
+      record.xp = this.getXp(positionsPlayed);
+      record.orgasmCount = orgasmCount;
 
       this.recordSimulated.next(record);
     }
+
+    return record;
   }
 
   getMoney(positionsPlayed: PlayedPosition[]): number {
@@ -156,6 +162,10 @@ export class RecordService {
 
   getFans(positionsPlayed: PlayedPosition[]): number {
     return positionsPlayed.length > 0 ? positionsPlayed.map((position: PlayedPosition) => position.fans).reduce((sum, current) => sum + current) : 0;
+  }
+
+  getXp(positionsPlayed: PlayedPosition[]): number {
+    return positionsPlayed.length > 0 ? positionsPlayed.map((position: PlayedPosition) => position.xp).reduce((sum, current) => sum + current) : 0;
   }
 
   getScore(

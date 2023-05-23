@@ -223,6 +223,42 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.doStartRecord();
 	}
 
+  hasSkill(skillname: string): boolean {
+    return this._skillService.hasSkill(skillname, this.girl);
+  }
+
+  simulateRecord(): void {
+    const simulated = this._recordService.simulateRecord(
+      this.girl,
+      'player',
+      false,
+      this._studioService.getStudioQuality(),
+      this.girl.recordCount + 1
+    );
+
+    this.fansWon = simulated.fans;
+    this.goldsWon = simulated.money;
+    this.xpWon = simulated.xp;
+    for (let index = 0; index < simulated.orgasmCount; index++) {
+      this.itemsWon.push(
+        new Item({ name: 'cum', price: 100, quality: 'normal' })
+      );
+    }
+
+    this._gameService.updateGolds(this.price * -1); // remove the record price
+
+    this.record = this._recordService.addRecord(
+      simulated.girl,
+      simulated.score,
+      simulated.studioscore,
+      simulated.money,
+      simulated.fans,
+      'player'
+    );
+
+    this.finish();
+  }
+
 	doStartRecord(): void {
 		this.vid = <HTMLVideoElement>document.querySelector('#video-record');
 		if (this.vid === null) {
@@ -300,7 +336,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.positionsPlayed.push({
       position: position,
       fans: positionStats.fans,
-      golds: positionStats.golds
+      golds: positionStats.golds,
+      xp: positionStats.xp
     });
 	}
 
