@@ -36,7 +36,10 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this._skillService.treeSkills
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === 0 || tree.girl.id === this._girlService.currentGirl.getValue().id);
+        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === this._girlService.currentGirl.getValue().id);
+        if (this._girlService.currentGirl.getValue().id === 1) { // disable battle tree for girlfriend
+          this.treeSkills = this.treeSkills.filter(tree => tree.name !== 'battle');
+        }
       });
 
     this._gameService.goldChanged
