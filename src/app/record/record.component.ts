@@ -42,6 +42,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
   volume: number = 1;
+  intervalVolume: NodeJS.Timer | undefined;
 	timeoutscene: NodeJS.Timeout[] = [];
   timeoutCum: NodeJS.Timeout | undefined;
 
@@ -748,11 +749,13 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _fadeOut(): void {
+    clearInterval(this.intervalVolume);
+
     // volume control
-    let intervalVolume = setInterval(() => {
+    this.intervalVolume = setInterval(() => {
       if (this.volume <= 0.1) {
         this.volume = 0;
-        clearInterval(intervalVolume);
+        clearInterval(this.intervalVolume);
       } else if (this.volume - 0.1 > 0) {
         this.volume -= 0.1;
       }
@@ -761,11 +764,13 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _fadeIn(): void {
+    clearInterval(this.intervalVolume);
+
     // volume control
-    let intervalVolume = setInterval(() => {
+    this.intervalVolume = setInterval(() => {
       if (this.volume >= 0.9) {
         this.volume = 1;
-        clearInterval(intervalVolume);
+        clearInterval(this.intervalVolume);
       } else if (this.volume + 0.1 < 1) {
         this.volume += 0.1;
       }
