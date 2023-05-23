@@ -127,6 +127,12 @@ body {
       background: linear-gradient(to bottom, #0003ce 5%, #1e1be5 100%);
       background-color: #0003ce;
     }
+
+    &.selected {
+      background: white;
+      border-color: #0003ce;
+      color: #0003ce;
+    }
   }
 
 	&.trending {

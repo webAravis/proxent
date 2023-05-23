@@ -6,6 +6,7 @@ import { DialogsService } from '../dialogs/dialogs.service';
 	providedIn: 'root',
 })
 export class GameService {
+  newGame: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   fapMode: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 	golds = 3000;

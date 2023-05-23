@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { GameService } from '../core/game.service';
-import { Router } from '@angular/router';
 import { SaveService } from '../core/save.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { SaveService } from '../core/save.service';
 export class StartComponent {
 	constructor(
 		private _gameService: GameService,
-		private _router: Router,
 		private _saveService: SaveService
 	) {}
 
@@ -24,8 +22,6 @@ export class StartComponent {
 	}
 
 	newGame(): void {
-		this._gameService.startGame(true);
-
-		this._router.navigate(['/girls']);
+    this._gameService.newGame.next(true);
 	}
 }

@@ -34,6 +34,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NewGameComponent } from './start/new-game/new-game.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { FormsModule } from '@angular/forms';
     LeaderBattleComponent,
     SkillsComponent,
     SettingsComponent,
+    NewGameComponent,
   ],
   imports: [
     BrowserModule,
