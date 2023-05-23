@@ -2020,21 +2020,12 @@ export class GirlsService {
 		ava.id = 3;
 		ava.name = 'Ava';
 		ava.freedom = 1;
-		ava.unlockPrice = [
-			{ type: 'gold', quantity: 15_000 },
-			{ type: 'recordmonthly_badge', quantity: 2 },
-		];
-
 		allGirls.push(ava);
 
 		const madison = new Girl();
 		madison.id = 4;
 		madison.name = 'Madison';
 		madison.freedom = 1;
-		madison.unlockPrice = [
-			{ type: 'gold', quantity: 15_000 },
-			{ type: 'fans_badge', quantity: 2 },
-		];
 
 		allGirls.push(madison);
 
@@ -2042,10 +2033,6 @@ export class GirlsService {
 		karma.id = 5;
 		karma.name = 'Karma';
 		karma.freedom = 1;
-		karma.unlockPrice = [
-			{ type: 'gold', quantity: 15_000 },
-			{ type: 'money_badge', quantity: 2 },
-		];
 
 		allGirls.push(karma);
 
@@ -2053,10 +2040,6 @@ export class GirlsService {
 		nikki.id = 6;
 		nikki.name = 'Nikki';
 		nikki.freedom = 1;
-		nikki.unlockPrice = [
-			{ type: 'gold', quantity: 15_000 },
-			{ type: 'recordyearly_badge', quantity: 2 },
-		];
 
 		allGirls.push(nikki);
 
@@ -2064,10 +2047,6 @@ export class GirlsService {
 		abella.id = 7;
 		abella.name = 'Abella';
 		abella.freedom = 1;
-		abella.unlockPrice = [
-			{ type: 'gold', quantity: 20_000 },
-			{ type: 'recordmonthly_badge', quantity: 3 },
-		];
 
 		allGirls.push(abella);
 
@@ -2085,18 +2064,39 @@ export class GirlsService {
           break;
         case 'Ava':
           girl.attributes = ['milf', 'brunette', 'dark eyes', 'euro'];
+          girl.unlockPrice = [
+            { type: 'gold', quantity: 15_000 },
+            { type: 'recordmonthly_badge', quantity: 2 },
+          ];
+
           break;
         case 'Madison':
           girl.attributes = ['blond', 'fit', 'flexible', 'dark eyes', 'small', 'euro'];
+          girl.unlockPrice = [
+            { type: 'gold', quantity: 15_000 },
+            { type: 'fans_badge', quantity: 2 },
+          ];
           break;
         case 'Karma':
           girl.attributes = ['blond', 'green eyes', 'tattoo', 'american'];
+          girl.unlockPrice = [
+            { type: 'gold', quantity: 15_000 },
+            { type: 'money_badge', quantity: 2 },
+          ];
           break;
         case 'Nikki':
           girl.attributes = ['blond', 'dark eyes', 'producer', 'euro'];
+          girl.unlockPrice = [
+            { type: 'gold', quantity: 15_000 },
+            { type: 'recordyearly_badge', quantity: 2 },
+          ];
           break;
         case 'Abella':
           girl.attributes = ['teen', 'brunette', 'dark eyes', 'natural boobs', 'american'];
+          girl.unlockPrice = [
+            { type: 'gold', quantity: 20_000 },
+            { type: 'recordmonthly_badge', quantity: 3 },
+          ];
           break;
       }
 

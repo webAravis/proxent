@@ -10,6 +10,7 @@ import { Item } from '../inventory/item.model';
 import { SafeUrl } from '@angular/platform-browser';
 import { CachingService } from '../core/caching.service';
 import { Position, PositionType } from '../core/position.model';
+import { SettingsService } from '../core/settings.service';
 
 @Component({
 	selector: 'app-corrupt',
@@ -101,7 +102,8 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		private _rewardService: RewardService,
 		private _router: Router,
 		private _inventoryService: InventoryService,
-		private _cachingService: CachingService
+		private _cachingService: CachingService,
+    private _settingsService: SettingsService
 	) {}
 
 	ngOnInit(): void {
@@ -150,9 +152,10 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	}
 
 	get price(): number {
-		return this.girl.corruption < this.priceGrid.length
+		return Math.round(
+      (this.girl.corruption < this.priceGrid.length
 			? this.priceGrid[this.girl.corruption]
-			: this.priceGrid[this.priceGrid.length - 1];
+			: this.priceGrid[this.priceGrid.length - 1]) * this._settingsService.getSetting('corruption_golds'));
 	}
 
 	get itemsRequired(): { itemName: string; quantity: number } {
@@ -160,9 +163,11 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			return { itemName: '', quantity: 0 };
 		}
 
-		return this.girl.corruption < this.itemsGrid.length
-			? this.itemsGrid[this.girl.corruption]
-			: this.itemsGrid[this.itemsGrid.length - 1];
+    const items = this.girl.corruption < this.itemsGrid.length
+    ? this.itemsGrid[this.girl.corruption]
+    : this.itemsGrid[this.itemsGrid.length - 1];
+
+		return {itemName: items.itemName, quantity: Math.round(items.quantity * this._settingsService.getSetting('corruption_cum'))}
 	}
 
 	doCorrupt(): void {
@@ -197,7 +202,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			0,
 			0,
 			[],
-			1,
+			Math.round(1 * this._settingsService.getSetting('corruption_positions')),
 			this.girl
 		);
 		this._girlsService.unlockPosition(this.selectedPosition.name, updatedGirl);

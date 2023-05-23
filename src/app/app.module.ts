@@ -29,6 +29,11 @@ import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillsComponent } from './skills/skills.component';
+import { SettingsComponent } from './settings/settings.component';
+
+import { MatSliderModule } from '@angular/material/slider';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,7 @@ import { SkillsComponent } from './skills/skills.component';
     LeadersComponent,
     LeaderBattleComponent,
     SkillsComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,9 @@ import { SkillsComponent } from './skills/skills.component';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxMasonryModule,
-
+    MatSliderModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

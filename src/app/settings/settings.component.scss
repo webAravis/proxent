@@ -1,0 +1,91 @@
+.header {
+	position: fixed;
+	top: 15px;
+	color: white;
+	left: 2vw;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 35px;
+	opacity: 0.8;
+	border-bottom: 1px solid;
+
+  @media screen and (max-width: 1280px) {
+    font-size: 25px;
+  }
+}
+
+.wrapper {
+  top: 70px;
+  height: calc(100vh - 100px);
+  width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	flex-wrap: wrap;
+  position: fixed;
+  flex-direction: column;
+}
+
+.settings-wrapper {
+  display: flex;
+  gap: 15px;
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: white;
+  }
+
+  .settings-list {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+  }
+
+  .setting-multiplier {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    font-size: 20px;
+
+    .name {
+      width: 100%;
+    }
+
+    mat-slider {
+      width: calc(60% - 17px);;
+    }
+
+    .values {
+      width: 40%;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: calc(100% - 5px);
+      }
+    }
+  }
+
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 892px;
+
+  .settings-preset {
+    display: flex;
+    gap: 5px;
+
+    .btn {
+      text-transform: capitalize;
+    }
+  }
+}

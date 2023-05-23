@@ -15,6 +15,7 @@ import { Position, PositionType } from '../core/position.model';
 import { SkillsService } from '../skills/skills.service';
 import { TreeSkills } from '../skills/treeskills.model';
 import { Leader } from '../leaders/leader.model';
+import { SettingsService } from '../core/settings.service';
 
 interface LeaderActivity {
   name: string;
@@ -104,6 +105,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		private _studioService: StudioService,
     private _skillService: SkillsService,
     private _girlService: GirlsService,
+    private _settingsService: SettingsService,
 		private _router: Router
 	) {}
 
@@ -157,7 +159,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	get price(): number {
 		return Math.round(
-			100 * (2.5 * this.girl.popularity) - 0.2 * this.girl.corruption
+			(100 * (2.5 * this.girl.popularity) - 0.2 * this.girl.corruption) * this._settingsService.getSetting('record_golds_cost')
 		);
 	}
 
@@ -313,19 +315,19 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     return {
       golds: Math.round(
-        position.getGold(this.trendingMultiplier(position))
+        (position.getGold(this.trendingMultiplier(position))
         + (position.getGold(this.trendingMultiplier(position)) * this._skillModifier('golds', position))
-        * repeatedMultiplier
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_golds')
       ),
       xp: Math.round(
-        position.getXp(this.trendingMultiplier(position))
+        (position.getXp(this.trendingMultiplier(position))
         + (position.getXp(this.trendingMultiplier(position)) * this._skillModifier('xp', position))
-        * repeatedMultiplier
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_xp')
       ),
       fans: Math.round(
-        position.getFans(this.trendingMultiplier(position))
+        (position.getFans(this.trendingMultiplier(position))
         + (position.getFans(this.trendingMultiplier(position)) * this._skillModifier('fans', position))
-        * repeatedMultiplier
+        * repeatedMultiplier) * this._settingsService.getSetting('record_position_fans')
       ),
       boner: Math.round(
         position.boner
@@ -333,8 +335,8 @@ export class RecordComponent implements OnInit, OnDestroy {
         * repeatedMultiplier
       ),
       orgasm: Math.round(
-        position.getOrgasm(this.boner, this.trendingMultiplier(position))
-        + (position.getOrgasm(this.boner, this.trendingMultiplier(position)) * this._skillModifier('orgasm', position))
+        (position.getOrgasm(this.boner, this.trendingMultiplier(position))
+        + (position.getOrgasm(this.boner, this.trendingMultiplier(position)) * this._skillModifier('orgasm', position))) * this._settingsService.getSetting('record_position_cum')
       )
     }
   }
@@ -471,15 +473,16 @@ export class RecordComponent implements OnInit, OnDestroy {
       this.leader
 		);
 		this.scorePositions = this._recordService.getScorePositions(
-			this.positionsPlayed
+			this.positionsPlayed, true
 		);
-		this.scoreGirl = this._recordService.getScoreGirl(this.girl);
+		this.scoreGirl = this._recordService.getScoreGirl(this.girl, true);
 		this.scoreStudio = this._recordService.getScoreStudio(
-			this._studioService.getStudioQuality()
+			this._studioService.getStudioQuality(), true
 		);
 		this.scoreExtra = this._recordService.getScoreExtra(
 			this.trendingPositions,
-			this.orgasmCount
+			this.orgasmCount,
+      true
 		);
 
     if (this.isBattle) {

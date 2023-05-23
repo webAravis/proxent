@@ -11,6 +11,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { LeadersComponent } from './leaders/leaders.component';
 import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 import { SkillsComponent } from './skills/skills.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
 	{
@@ -57,6 +58,10 @@ const routes: Routes = [
 	{
 		path: 'skills',
 		component: SkillsComponent,
+	},
+	{
+		path: 'settings',
+		component: SettingsComponent,
 	},
 	{
 		path: '**',

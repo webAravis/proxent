@@ -6,6 +6,7 @@ import { GameService } from 'src/app/core/game.service';
 import { InventoryService } from 'src/app/inventory/inventory.service';
 import { GirlsService } from 'src/app/core/girls/girls.service';
 import { Item } from 'src/app/inventory/item.model';
+import { SettingsService } from 'src/app/core/settings.service';
 
 @Component({
 	selector: 'app-freedom',
@@ -45,7 +46,8 @@ export class FreedomComponent implements OnInit, OnDestroy {
 		private _freedomService: FreedomService,
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
-		private _girlsService: GirlsService
+		private _girlsService: GirlsService,
+    private _settingsService: SettingsService
 	) {}
 
 	ngOnInit(): void {
@@ -75,11 +77,14 @@ export class FreedomComponent implements OnInit, OnDestroy {
 	}
 
 	get price(): number {
-		return this.priceGrid[this.indexPricing] ?? this.priceGrid[this.priceGrid.length - 1];
+		return Math.round( (this.priceGrid[this.indexPricing] ?? this.priceGrid[this.priceGrid.length - 1]) * this._settingsService.getSetting('girl_freedom_golds_cost') );
 	}
 
 	get itemsRequired(): { itemName: string; quantity: number } {
-		return this.itemsGrid[this.indexPricing] ?? this.itemsGrid[this.itemsGrid.length - 1];
+
+    const items = this.itemsGrid[this.indexPricing] ?? this.itemsGrid[this.itemsGrid.length - 1];
+
+		return {itemName: items.itemName, quantity: Math.round(items.quantity * this._settingsService.getSetting('girl_freedom_item_cost'))}
 	}
 
 	close(): void {

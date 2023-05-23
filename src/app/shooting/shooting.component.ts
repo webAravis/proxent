@@ -9,6 +9,7 @@ import { CachingService } from '../core/caching.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { ShootingService } from './shooting.service';
 import { NgxMasonryOptions } from 'ngx-masonry';
+import { SettingsService } from '../core/settings.service';
 
 export class PhotoShooting {
   name = '';
@@ -74,7 +75,8 @@ export class ShootingComponent implements OnInit, OnDestroy {
     private _rewardService: RewardService,
     private _gameService: GameService,
     private _cachingService: CachingService,
-    private _shootingService: ShootingService
+    private _shootingService: ShootingService,
+    private _settingsService: SettingsService
   ) { }
 
   ngOnInit(): void {
@@ -108,15 +110,15 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   get goldsWon(): number {
-    return this.playedPhotos.map((photo: PhotoShooting) => photo.golds).reduce((acc, current) => acc + current, 0) * this.combo;
+    return Math.round(this.playedPhotos.map((photo: PhotoShooting) => photo.golds).reduce((acc, current) => acc + current, 0) * this.combo);
   }
 
   get fansWon(): number {
-    return this.playedPhotos.map((photo: PhotoShooting) => photo.fans).reduce((acc, current) => acc + current, 0) * this.combo;
+    return Math.round(this.playedPhotos.map((photo: PhotoShooting) => photo.fans).reduce((acc, current) => acc + current, 0) * this.combo);
   }
 
   get xpWon(): number {
-    return this.playedPhotos.length > 0 ? (50 + (25 * this.girl.popularity) + (25 * this.girl.level)) * this.combo : 0;
+    return this.playedPhotos.length > 0 ? Math.round((50 + (25 * this.girl.popularity) + (25 * this.girl.level)) * this.combo * this._settingsService.getSetting('shooting_xp_reward')) : 0;
   }
 
   isLocked(photo: PhotoShooting): boolean {
@@ -262,19 +264,23 @@ export class ShootingComponent implements OnInit, OnDestroy {
 
   private _getGolds(photo: PhotoShooting): number {
     return Math.round(
-      (600 * this._getLewdnessModifier(photo)) +
-      (500 / this._getAttributeFrequency(photo, 'place')) +
-      (400 / this._getAttributeFrequency(photo, 'outfit')) +
-      (100 / this._getAttributeFrequency(photo, 'format'))
+      (
+        (600 * this._getLewdnessModifier(photo)) +
+        (500 / this._getAttributeFrequency(photo, 'place')) +
+        (400 / this._getAttributeFrequency(photo, 'outfit')) +
+        (100 / this._getAttributeFrequency(photo, 'format'))
+      ) * this._settingsService.getSetting('shooting_golds_reward')
     );
   }
 
   private _getFans(photo: PhotoShooting): number {
     return Math.round(
-      (1000 * this._getLewdnessModifier(photo)) +
-      (100 / this._getAttributeFrequency(photo, 'place')) +
-      (100 / this._getAttributeFrequency(photo, 'outfit')) +
-      (100 / this._getAttributeFrequency(photo, 'format'))
+      (
+        (1000 * this._getLewdnessModifier(photo)) +
+        (100 / this._getAttributeFrequency(photo, 'place')) +
+        (100 / this._getAttributeFrequency(photo, 'outfit')) +
+        (100 / this._getAttributeFrequency(photo, 'format'))
+      ) * this._settingsService.getSetting('shooting_fans_reward')
     );
   }
 
@@ -289,7 +295,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   private _getPrice(photo: PhotoShooting): number {
-    return Math.round((200 * photo.attributes.body.length) + (2400 * this._getLewdnessModifier(photo)));
+    return Math.round( ((200 * photo.attributes.body.length) + (2400 * this._getLewdnessModifier(photo))) * this._settingsService.getSetting('shooting_golds_cost') );
   }
 
   private _getLewdnessModifier(photo: PhotoShooting): number {

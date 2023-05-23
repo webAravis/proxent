@@ -18,6 +18,7 @@ import { ShootingService } from '../shooting/shooting.service';
 import { PhotoShooting } from '../shooting/shooting.component';
 import { SkillsService } from '../skills/skills.service';
 import { TreeSkills } from '../skills/treeskills.model';
+import { Setting, SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,7 @@ export class SaveService {
     private _leadersService: LeadersService,
     private _otherStudiosService: OtherStudiosService,
     private _shootingService: ShootingService,
+    private _settingsService: SettingsService,
     private _skillService: SkillsService
   ) {
     this._gameService.dayChanged.subscribe((day) =>
@@ -136,6 +138,8 @@ export class SaveService {
 
     const skills = this._skillService.treeSkills.getValue();
 
+    const settings = this._settingsService.settings.getValue();
+
     const toSave = {
       game: gameParameters,
       girls: girls,
@@ -147,6 +151,7 @@ export class SaveService {
       leaders: leaders,
       playerPhotos: playerPhotos,
       skills: skills,
+      settings: settings,
       lastSaved: new Date(),
       version: '0.10.0'
     };
@@ -263,6 +268,15 @@ export class SaveService {
       }
 
       this._skillService.updateTrees(treeSkills);
+    }
+
+    if (savedGame.settings && Array.isArray(savedGame.settings)) {
+      const settings: Setting[] = [];
+      for (const savedSetting of savedGame.settings) {
+        settings.push(savedSetting);
+      }
+
+      this._settingsService.updateSettings(settings);
     }
 
     this.saved.next(new Date(savedGame.lastSaved));

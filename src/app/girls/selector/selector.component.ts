@@ -11,6 +11,7 @@ import { SafeUrl } from '@angular/platform-browser';
 import { Subject, takeUntil } from 'rxjs';
 import { GameService } from 'src/app/core/game.service';
 import { Girl } from 'src/app/core/girls/girl.model';
+import { SettingsService } from 'src/app/core/settings.service';
 import { InventoryService } from 'src/app/inventory/inventory.service';
 
 @Component({
@@ -36,7 +37,8 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 
 	constructor(
 		private _inventoryService: InventoryService,
-		private _gameService: GameService
+		private _gameService: GameService,
+    private _settingsService: SettingsService
 	) {}
 
   ngOnInit(): void {
@@ -116,13 +118,13 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 		}
 
 		for (const price of girl.unlockPrice) {
-			if (price.type === 'gold' && price.quantity >= this.golds) {
+			if (price.type === 'gold' && this.getPrice(price) >= this.golds) {
 				return false;
 			}
 
 			if (
 				price.type !== 'gold' &&
-				!this._inventoryService.hasItemByName(price.type, price.quantity)
+				!this._inventoryService.hasItemByName(price.type, this.getPrice(price))
 			) {
 				return false;
 			}
@@ -131,13 +133,25 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 		return true;
 	}
 
+  getPrice(unlockPrice: {type: string, quantity: number}): number {
+    let price = unlockPrice.quantity;
+
+    if (unlockPrice.type === 'gold') {
+      price = Math.round(price * this._settingsService.getSetting('girl_unlock_golds'));
+    } else {
+      price = Math.round(price * this._settingsService.getSetting('girl_unlock_items'));
+    }
+
+    return price;
+  }
+
 	private _unlockGirl(girl: Girl): void {
 
 		for (const price of girl.unlockPrice) {
 			if (price.type === 'gold') {
-				this._gameService.updateGolds(price.quantity * -1);
+				this._gameService.updateGolds(this.getPrice(price) * -1);
 			} else {
-				this._inventoryService.removeItemByName(price.type, price.quantity);
+				this._inventoryService.removeItemByName(price.type, this.getPrice(price));
 			}
 		}
 

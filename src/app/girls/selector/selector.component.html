@@ -28,7 +28,7 @@
               class="red with-icon"
               *ngFor="let unlockPrice of girl.unlockPrice"
             >
-              {{ unlockPrice.quantity | number : '1.0-0' }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
+              {{ getPrice(unlockPrice) | number : '1.0-0' }}<img [src]="'./assets/items/' + unlockPrice.type + '.png'" />
             </div>
           </ng-container>
 				</div>

@@ -41,6 +41,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
   }
 
 	ngOnInit(): void {
+    console.log('init!');
 		this._gameService.goldChanged
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((golds) => (this.golds = golds));

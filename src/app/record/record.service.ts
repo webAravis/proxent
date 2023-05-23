@@ -6,6 +6,7 @@ import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { Position } from '../core/position.model';
 import { Leader } from '../leaders/leader.model';
+import { SettingsService } from '../core/settings.service';
 
 export interface PlayedPosition {
   position: Position,
@@ -22,7 +23,8 @@ export class RecordService {
 
   constructor(
     private _girlsService: GirlsService,
-    private _gameService: GameService
+    private _gameService: GameService,
+    private _settingsService: SettingsService
   ) {}
 
   addRecord(
@@ -140,7 +142,7 @@ export class RecordService {
         new Leader(),
         false
       );
-      record.studioscore = this.getScoreStudio(studioQuality);
+      record.studioscore = this.getScoreStudio(studioQuality, (studioName === 'player'));
       record.money = this.getMoney(positionsPlayed);
       record.fans = this.getFans(positionsPlayed);
 
@@ -169,10 +171,10 @@ export class RecordService {
 
     // score
     score =
-      this.getScorePositions(positionsPlayed) +
-      this.getScoreGirl(girl) +
-      this.getScoreStudio(studioQuality) +
-      this.getScoreExtra(trendingPositions, orgasmCount);
+      this.getScorePositions(positionsPlayed, isPlayer) +
+      this.getScoreGirl(girl, isPlayer) +
+      this.getScoreStudio(studioQuality, isPlayer) +
+      this.getScoreExtra(trendingPositions, orgasmCount, isPlayer);
 
     if (isPlayer) {
       score = score * (1 - girl.freedom);
@@ -197,27 +199,27 @@ export class RecordService {
     return Math.round(score);
   }
 
-  getScoreExtra(trending: number, orgasm: number): number {
-    return (
+  getScoreExtra(trending: number, orgasm: number, isPlayer: boolean): number {
+    return Math.round((
       Math.max(trending * 400, 1) * Math.max(orgasm, 1)
-    );
+    ) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
   }
 
-  getScoreStudio(studioQuality: number): number {
-    return 1000 * studioQuality;
+  getScoreStudio(studioQuality: number, isPlayer: boolean): number {
+    return Math.round((1000 * studioQuality) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
   }
 
-  getScoreGirl(girl: Girl): number {
-    return Math.max(girl.popularity, 1) * Math.max(girl.level, 1);
+  getScoreGirl(girl: Girl, isPlayer: boolean): number {
+    return Math.round((Math.max(girl.popularity, 1) * Math.max(girl.level, 1)) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
   }
 
-  getScorePositions(positionsPlayed: PlayedPosition[]): number {
+  getScorePositions(positionsPlayed: PlayedPosition[], isPlayer: boolean): number {
     let score = 0;
 
     for (const position of positionsPlayed) {
       score += position.fans;
     }
 
-    return score * positionsPlayed.length;
+    return Math.round((score * positionsPlayed.length) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
   }
 }
