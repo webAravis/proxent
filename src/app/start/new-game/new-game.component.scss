@@ -35,15 +35,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 7.5px;
 }
 
 .settings-difficulty {
   display: flex;
-  margin: 15px;
   justify-content: center;
   gap: 5px;
 
   .btn {
     text-transform: capitalize;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 }
