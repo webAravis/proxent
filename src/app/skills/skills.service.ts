@@ -433,7 +433,7 @@ export class SkillsService {
             description: 'One is not enough',
             sprite_postop: -286,
             sprite_posleft: -3,
-            maxlevel: 5,
+            maxlevel: 4,
             unlockPrice: [
               [{ type: 'gold', quantity: 30_000 }, { type: 'basic_skill_gem', quantity: 1 }],
               [{ type: 'gold', quantity: 45_000 }, { type: 'advanced_skill_gem', quantity: 1 }],
@@ -443,6 +443,7 @@ export class SkillsService {
               [{ stat: 'scene', label: 'New scene', value: 'Double' }],
               [{ stat: 'scene', label: 'New scene', value: 'Double 2' }],
               [{ stat: 'scene', label: 'New scene', value: 'Double 3' }],
+              [{ stat: 'scene', label: 'New scene', value: 'Double 4' }],
             ]
           }),
         ]
