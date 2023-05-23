@@ -759,7 +759,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       } else if (this.volume - 0.1 > 0) {
         this.volume -= 0.1;
       }
-      this.vid.volume = this.volume;
+      this.vid.volume = this.volume * this._settingsService.getSetting('game_sound');
     }, 50);
   }
 
@@ -774,7 +774,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       } else if (this.volume + 0.1 < 1) {
         this.volume += 0.1;
       }
-      this.vid.volume = this.volume;
+      this.vid.volume = this.volume * this._settingsService.getSetting('game_sound');
     }, 50);
   }
 }

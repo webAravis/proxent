@@ -8,6 +8,24 @@
 
     <div class="settings-list">
       <div class="title">
+        Game
+      </div>
+
+      <div class="setting-multiplier" *ngFor="let setting of gameSettings">
+        <div class="name">{{ setting.label }}</div>
+        <mat-slider min="0" max="100" step="0.5" discrete="true">
+          <input matSliderThumb [value]="setting.value" (valueChange)="setting.value = $event">
+        </mat-slider>
+
+        <div class="values">
+          <input matInput type="number" readonly required [(ngModel)]="setting.value" />%
+        </div>
+
+      </div>
+    </div>
+
+    <div class="settings-list">
+      <div class="title">
         Costs
       </div>
 

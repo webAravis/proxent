@@ -45,6 +45,10 @@ export class NewGameComponent {
     return this.settings.filter(setting => setting.type === SettingType.reward);
   }
 
+  get difficultySettings(): Setting[] {
+    return this.settings.filter(setting => setting.type === SettingType.reward || setting.type === SettingType.cost);
+  }
+
   setDifficulty(difficulty: string): void {
     this.selectedDifficulty = difficulty;
 
@@ -58,7 +62,7 @@ export class NewGameComponent {
         }
         break;
       case 'normal':
-        for (const setting of this.settings) {
+        for (const setting of this.difficultySettings) {
           setting.value = 100;
         }
         break;

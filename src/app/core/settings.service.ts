@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 
 export enum SettingType {
   cost = 1,
-  reward = 2
+  reward = 2,
+  sound = 3
 }
 
 export interface Setting {
@@ -26,6 +27,8 @@ export class SettingsService {
 
   initSettings(): void {
     const settings: Setting[] = [
+      { name: 'game_sound', label: 'General sound level', value: 100, type: SettingType.sound },
+
       { name: 'corruption_golds', label: 'Corruption Gold cost', value: 100, type: SettingType.cost },
       { name: 'corruption_cum', label: 'Corruption Cum cost', value: 100, type: SettingType.cost },
       { name: 'corruption_positions', label: 'Corruption Level reward', value: 100, type: SettingType.reward },

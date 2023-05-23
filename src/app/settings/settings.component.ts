@@ -45,6 +45,14 @@ export class SettingsComponent implements OnInit, OnDestroy {
     return this.settings.filter(setting => setting.type === SettingType.reward);
   }
 
+  get difficultySettings(): Setting[] {
+    return this.settings.filter(setting => setting.type === SettingType.reward || setting.type === SettingType.cost);
+  }
+
+  get gameSettings(): Setting[] {
+    return this.settings.filter(setting => setting.type === SettingType.sound);
+  }
+
   setDifficulty(difficulty: string): void {
     switch (difficulty) {
       case 'easy':
@@ -56,7 +64,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         }
         break;
       case 'normal':
-        for (const setting of this.settings) {
+        for (const setting of this.difficultySettings) {
           setting.value = 100;
         }
         break;
