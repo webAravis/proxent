@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { StudioService } from '../studio/studio.service';
 import { Subject, takeUntil } from 'rxjs';
 import { GameService } from '../core/game.service';
+import { BootController } from 'src/boot-control';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-navigation',
@@ -16,7 +18,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
 	constructor(
     private _studioService: StudioService,
-		private _gameService: GameService
+		private _gameService: GameService,
+    private _ngZone: NgZone,
+    private _router: Router
   ) {}
 
 	ngOnInit(): void {
@@ -34,5 +38,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   toggleFapMode(): void {
     this._gameService.fapMode.next(!this.fapMode);
+  }
+
+  goToMenu(): void {
+    this._ngZone.runOutsideAngular(() => BootController.getbootControl().restart());
+    this._router.navigate(['/']);
   }
 }

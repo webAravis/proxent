@@ -2,7 +2,16 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
+import { BootController } from './boot-control';
 
-platformBrowserDynamic()
-	.bootstrapModule(AppModule)
-	.catch((error) => console.error(error));
+const init = () => {
+  platformBrowserDynamic().bootstrapModule(AppModule)
+  .then(() => (<any>window).appBootstrap && (<any>window).appBootstrap())
+  .catch(err => console.error('NG Bootstrap Error =>', err));
+}
+
+// Init on first load
+init();
+
+// Init on reboot request
+const boot = BootController.getbootControl().watchReboot().subscribe(() => init());
