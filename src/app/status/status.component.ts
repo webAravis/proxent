@@ -65,4 +65,8 @@ export class StatusComponent implements OnInit, OnDestroy {
   itemQuantity(itemName: string): number {
     return this._inventoryService.quantity(itemName);
   }
+
+  saveGame(): void {
+    this._saveService.saveGame();
+  }
 }

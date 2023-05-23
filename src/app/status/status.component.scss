@@ -49,6 +49,21 @@
       height: 25px;
     }
   }
+
+  .last-save {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .not-saved {
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
 }
 
 @media screen and (max-width: 1279px) {

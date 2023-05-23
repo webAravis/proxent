@@ -20,5 +20,5 @@
 			{{ itemQuantity('cum') }}<img [src]="'./assets/items/cum.png'" />
   </div>
 
-  <div class="last-save">Last save: {{ secondsSave }}s ago</div>
+  <div class="last-save" (click)="saveGame()" [class.not-saved]="secondsSave > 5"><img src="./assets/save.png" /></div>
 </div>
