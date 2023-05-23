@@ -29,7 +29,7 @@ export class Position {
   }
 
   getXp(trending: number = 0): number {
-    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 10 + this.type * 150) * trending);
+    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 5 + this.type * 100) * trending);
   }
 
   getOrgasm(currentBoner: number = 0, trending: number = 1): number {
