@@ -1059,7 +1059,15 @@ export class GirlsService {
               "corruption": 8,
               "timeout": 40000,
 
-              "type": PositionType.SPECIAL
+              "type": PositionType.SPECIAL,
+              "unlocker": new Position({
+                "name": "double4",
+                "label": "Double 4",
+                "corruption": 9,
+                "timeout": 40000,
+
+                "type": PositionType.SPECIAL
+              })
             })
           })
         }),
