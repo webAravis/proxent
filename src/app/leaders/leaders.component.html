@@ -20,15 +20,36 @@
       <div class="bonus-malus">
         <div class="bonus green">
           <div class="header-perk">Bonus</div>
-          <span *ngFor="let bonus of leader.bonus">{{ bonus | titlecase }}</span>
+          <span class="has-tooltip" *ngFor="let bonus of leader.bonus">
+            {{ bonus | titlecase }}
+            <div class="tooltip">
+              <div class="tooltip-wrapper">
+                <div>{{ getGirlWithAttribute(bonus) }}</div>
+              </div>
+            </div>
+          </span>
         </div>
         <div class="malus red">
           <div class="header-perk">Malus</div>
-          <span *ngFor="let malus of leader.malus">{{ malus | titlecase }}</span>
+          <span class="has-tooltip" *ngFor="let malus of leader.malus">
+            {{ malus | titlecase }}
+            <div class="tooltip">
+              <div class="tooltip-wrapper">
+                <div>{{ getGirlWithAttribute(malus) }}</div>
+              </div>
+            </div>
+          </span>
         </div>
         <div class="fetish purple">
           <div class="header-perk">Fetish</div>
-          <span *ngFor="let fetish of leader.fetish">{{ fetish | titlecase }}</span>
+          <span class="has-tooltip" *ngFor="let fetish of leader.fetish">
+            {{ fetish | titlecase }}
+            <div class="tooltip">
+              <div class="tooltip-wrapper">
+                <div>{{ getGirlWithPosition(fetish) }}</div>
+              </div>
+            </div>
+          </span>
         </div>
       </div>
 

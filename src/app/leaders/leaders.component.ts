@@ -5,6 +5,10 @@ import { Leader } from './leader.model';
 import { GameService } from '../core/game.service';
 import { InventoryService } from '../inventory/inventory.service';
 import { Router } from '@angular/router';
+import { GirlsService } from '../core/girls/girls.service';
+import { Girl } from '../core/girls/girl.model';
+import { SkillsService } from '../skills/skills.service';
+import { TreeSkills } from '../skills/treeskills.model';
 
 @Component({
   selector: 'app-leaders',
@@ -16,13 +20,18 @@ export class LeadersComponent implements OnInit, OnDestroy {
   leaders: Leader[] = [];
 	golds = 0;
 
+  girls: Girl[] = [];
+  treeskills: TreeSkills[] = [];
+
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
   constructor(
     private _leaderService: LeadersService,
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
-    private _router: Router
+    private _router: Router,
+    private _girlService: GirlsService,
+    private _skillsService: SkillsService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +41,9 @@ export class LeadersComponent implements OnInit, OnDestroy {
 			.subscribe((golds: number) => (this.golds = golds));
 
 		this.golds = this._gameService.golds;
+
+    this._girlService.playerGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe(girls => this.girls = girls);
+    this._skillsService.treeSkills.pipe(takeUntil(this._unsubscribeAll)).subscribe(treeskills => this.treeskills = treeskills);
   }
 
   ngOnDestroy(): void {
@@ -96,6 +108,19 @@ export class LeadersComponent implements OnInit, OnDestroy {
     }
 
     return rewards;
+  }
+
+  getGirlWithAttribute(attribute: string): string {
+    const matching = this.girls.filter(girl => girl.attributes.includes(attribute)).map(girl => girl.name).join(', ');
+    return matching !== '' ? matching : 'No girl match';
+  }
+
+  getGirlWithPosition(position: string): string {
+    const matchingPositions = this.girls.filter(girl => girl.unlockedPositions.includes(position)).map(girl => girl.name);
+    const matchingSkills = this.treeskills.filter(treeskill => treeskill.skillTiers.filter(skilltier => skilltier.skills.filter(skill => skill.effects[skill.level] !== undefined && skill.effects[skill.level].map(skilleffect => skilleffect.stat).includes('scene') && skill.effects[skill.level].map(skilleffect => skilleffect.value.toLowerCase()).includes(position.toLowerCase()) ).length > 0).length > 0).map(treeskill => treeskill.girl.name);
+
+    const matching = matchingPositions.filter(matchingGirl => !matchingSkills.includes(matchingGirl)).join(', ');
+    return matching !== '' ? matching : 'No girl match';
   }
 
 }
