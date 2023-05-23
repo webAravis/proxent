@@ -133,11 +133,11 @@ export class LeadersService {
   }
 
   getMetaScore(leader: Leader) : number {
-    return (1000 * leader.lvl) + Math.round((this._getAllLeadersLevel() / 0.07) ** 2);
+    return Math.round(0.9 * ( (leader.lvl / 0.01) ** 2 ) + 0.1 * Math.round((this._getAllLeadersLevel() / 0.04) ** 2) );
   }
 
   getMetaCum(leader: Leader) : number {
-    return Math.round( (1 * leader.lvl) + Math.round((this._getAllLeadersLevel() / 0.9) ** 2) / 75 ) ;
+    return Math.round( (0.9 * ( (leader.lvl / 0.8) ** 2) + 0.1 * Math.round((this._getAllLeadersLevel() / 0.9) ** 2) / 75 ) );
   }
 
   nextLevel(toLevel: Leader) : void {
