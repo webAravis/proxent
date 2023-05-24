@@ -14,7 +14,6 @@ import { SafeUrl } from '@angular/platform-browser';
 	styleUrls: ['./girls.component.scss'],
 })
 export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
-	girls: Girl[] = [];
 	allGirls: Girl[] = [];
 	portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
 
@@ -50,40 +49,28 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 
 		combineLatest([
 			this._girlsService.gameGirls,
-			this._girlsService.playerGirls,
 			this._girlsService.currentGirl,
 		])
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((value: unknown[]) => {
-				if (value.length === 3) {
+				if (value.length === 2) {
 					let gameGirls: Girl[] = <Girl[]>value[0];
-					gameGirls = gameGirls.sort((a: Girl, b: Girl) => a.id - b.id);
-
-					let savedGirls: Girl[] = <Girl[]>value[1];
-					savedGirls = savedGirls.sort((a: Girl, b: Girl) => a.id - b.id);
+					gameGirls = gameGirls.sort((a: Girl, b: Girl) => a.id.localeCompare(b.id));
 
 					// setting girl's portraits
 					const girlPortraits = [];
 					for (const girl of gameGirls) {
-						const savedGirl = savedGirls.find(
-							(inSave: Girl) => inSave.id === girl.id
-						);
-						if (savedGirl) {
-							girlPortraits.push(savedGirl);
-						} else {
 							girlPortraits.push(girl);
-						}
 					}
 
 					for (const girl of girlPortraits) {
 						this.portraits.set(
 							girl.name,
-							this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName)
+							this._cachingService.getPhoto(girl, '1_' + girl.corruptionName)
 						);
 					}
 
-					this.girls = savedGirls;
-					const currentGirl = <Girl>value[2];
+					const currentGirl = <Girl>value[1];
 					if (currentGirl.name !== '') {
 						this.girl = currentGirl;
 					}
@@ -98,9 +85,12 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 		this._unsubscribeAll.complete();
 	}
 
+  get unlockedGirlsCount(): number {
+    return this.allGirls.filter(girl => !girl.locked).length;
+  }
+
 	selectGirl(girl: Girl): void {
-		this.girl =
-			this.girls.find((myGirl: Girl) => myGirl.id === girl.id) ?? girl;
+		this.girl = girl;
 		this._girlsService.currentGirl.next(this.girl);
 	}
 
@@ -109,13 +99,13 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 	}
 
   girlFreeable(): boolean {
-    return this.girl.id !== 1 && this.girl.unlockPrice.length > 0;
+    return this.girl.id !== "1" && this.girl.unlockPrice.length > 0;
   }
 
   cancelContract(): void {
     if (confirm('Are you sure you want to cancel this contract?')) {
       this._girlsService.removeGirl(this.girl);
-      this.selectGirl(this.girls[0]);
+      this.selectGirl(this.allGirls.filter(girl => !girl.locked)[0]);
     }
   }
 

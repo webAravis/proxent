@@ -65,15 +65,7 @@ export class OtherStudiosService {
 				studioToAdd.records.push(record);
 
 				const girlRecorded = record.girl;
-				const playerGirls = this._girlsService.playerGirls.getValue();
-
-				const girlToSave = playerGirls.find(
-					(playerGirl: Girl) => playerGirl.id === girlRecorded.id
-				);
-				if (girlToSave) {
-					girlToSave.recordCount++;
-					this._girlsService.updateGirl(girlToSave);
-				}
+        girlRecorded.recordCount++;
 
 				this._updateStudio(studioToAdd);
 			}
@@ -85,7 +77,6 @@ export class OtherStudiosService {
 			return;
 		}
 		let girls = this._girlsService.gameGirls.getValue();
-		const playerGirls = this._girlsService.playerGirls.getValue();
 
 		const studios = this.studios.getValue();
 		if (studios.length === 0) {
@@ -94,7 +85,7 @@ export class OtherStudiosService {
 
 		for (const studio of studios) {
 			if (this._willRecord(studio)) {
-				const girlToRecord = this._getGirlToRecord(studio, girls, playerGirls);
+				const girlToRecord = this._getGirlToRecord(studio, girls);
 				if (girlToRecord === undefined) {
 					continue;
 				} else {
@@ -104,15 +95,7 @@ export class OtherStudiosService {
 					// update girl's stats
 					const multiplierFans = 1; // TODO: Get multiplier from current league
 					const multiplierXp = 1; // TODO: Get multiplier from current league
-					girlToRecord.recordCount = playerGirls.some(
-						(playerGirl: Girl) => playerGirl.id === girlToRecord.id
-					)
-						? playerGirls.find(
-								(playerGirl: Girl) => playerGirl.id === girlToRecord.id
-						  )?.recordCount ?? 1
-						: 1;
-					girlToRecord.fans =
-						girlToRecord.fans + studio.basefans * multiplierFans;
+					girlToRecord.fans = girlToRecord.fans + studio.basefans * multiplierFans;
 					girlToRecord.xp = girlToRecord.xp + studio.basexp * multiplierXp;
 
 					this._recordService.simulateRecord(
@@ -139,15 +122,13 @@ export class OtherStudiosService {
 
 	private _getGirlToRecord(
 		studio: Studio,
-		girls: Girl[],
-		playerGirls: Girl[]
+		girls: Girl[]
 	): Girl | undefined {
-    let availableGirls = [...girls.filter((girl: Girl) => !playerGirls.some((playerGirl: Girl) => girl.id === playerGirl.id)), ...playerGirls];
 		const girlsAccepted: Girl[] = [];
-		for (const girl of availableGirls) {
+		for (const girl of girls) {
 			if (
 				this._willAccept(studio) &&
-				this._girlIsIndependant(girl, playerGirls)
+				this._girlIsIndependant(girl)
 			) {
 				girlsAccepted.push(girl);
 			}
@@ -160,12 +141,8 @@ export class OtherStudiosService {
 		return girlsAccepted[Math.floor(Math.random() * girlsAccepted.length)];
 	}
 
-	private _girlIsIndependant(girl: Girl, playerGirls: Girl[]): boolean {
-		return playerGirls.some((playerGirl: Girl) => playerGirl.id === girl.id)
-			? Math.random() <
-					(playerGirls.find((playerGirl: Girl) => playerGirl.id === girl.id)
-						?.freedom ?? 1)
-			: true;
+	private _girlIsIndependant(girl: Girl): boolean {
+		return Math.random() < girl.freedom;
 	}
 
 	private _willAccept(studio: Studio): boolean {

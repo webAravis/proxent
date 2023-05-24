@@ -21,7 +21,6 @@ export class LeadersComponent implements OnInit, OnDestroy {
 	golds = 0;
 
   girls: Girl[] = [];
-  treeskills: TreeSkills[] = [];
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
@@ -42,8 +41,7 @@ export class LeadersComponent implements OnInit, OnDestroy {
 
 		this.golds = this._gameService.golds;
 
-    this._girlService.playerGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe(girls => this.girls = girls);
-    this._skillsService.treeSkills.pipe(takeUntil(this._unsubscribeAll)).subscribe(treeskills => this.treeskills = treeskills);
+    this._girlService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe(girls => this.girls = girls.filter(girl => !girl.locked));
   }
 
   ngOnDestroy(): void {
@@ -116,10 +114,15 @@ export class LeadersComponent implements OnInit, OnDestroy {
   }
 
   getGirlWithPosition(position: string): string {
-    const matchingPositions = this.girls.filter(girl => girl.unlockedPositions.includes(position)).map(girl => girl.name);
-    const matchingSkills = this.treeskills.filter(treeskill => treeskill.skillTiers.filter(skilltier => skilltier.skills.filter(skill => skill.effects[skill.level] !== undefined && skill.effects[skill.level].map(skilleffect => skilleffect.stat).includes('scene') && skill.effects[skill.level].map(skilleffect => skilleffect.value.toLowerCase()).includes(position.toLowerCase()) ).length > 0).length > 0).map(treeskill => treeskill.girl.name);
+    const matching = this.girls
+      .filter(
+        girl =>
+          girl.unlockedPositions.includes(position) ||
+          girl.skills.filter(treeskill => treeskill.skillTiers.filter(skilltier => skilltier.skills.filter(skill => skill.effects[skill.level] !== undefined && skill.effects[skill.level].map(skilleffect => skilleffect.stat).includes('scene') && skill.effects[skill.level].map(skilleffect => skilleffect.value.toLowerCase()).includes(position.toLowerCase()) ).length > 0).length > 0)
+      )
+      .map(girl => girl.name).join(', ');
 
-    const matching = matchingPositions.filter(matchingGirl => !matchingSkills.includes(matchingGirl)).join(', ');
+    // const matching = matchingPositions.filter(matchingGirl => !matchingSkills.includes(matchingGirl)).join(', ');
     return matching !== '' ? matching : 'No girl match';
   }
 

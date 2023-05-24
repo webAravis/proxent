@@ -3,7 +3,7 @@
 <div class="header">Character selection</div>
 
 <div class="wrapper">
-	<div class="girl" *ngIf="girl.id !== 0">
+	<div class="girl" *ngIf="girl.id !== '0'">
     <div class="header-wrapper">
       <div class="name">
         <div>
@@ -78,13 +78,12 @@
 	class="selector"
 	[golds]="golds"
 	[allGirls]="allGirls"
-	[girls]="girls"
 	[selectedGirl]="girl"
 	[portraits]="portraits"
 	(selected)="selectGirl($event)"
 	(girlUnlocked)="addGirl($event)"
 ></app-selector>
 
-<div class="girl-limit" [class.red]="(girls.length-1) === girlLimit">{{ girls.length-1 }} / {{ girlLimit }} girls</div>
+<div class="girl-limit" [class.red]="(unlockedGirlsCount-1) === girlLimit">{{ unlockedGirlsCount-1 }} / {{ girlLimit }} girls</div>
 
 <app-freedom></app-freedom>

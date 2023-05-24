@@ -135,8 +135,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.golds = this._gameService.golds;
 
     if (this.isBattle) {
-      this._girlService.playerGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((playerGirls: Girl[]) => {
-        this.playerGirls = playerGirls.filter(girl => girl.id !== 1); // Yiny doesn't compete!
+      this._girlService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((gameGirls: Girl[]) => {
+        this.playerGirls = gameGirls.filter(girl => !girl.locked && girl.id !== "1"); // Yiny doesn't compete!
         this._selectGirl(this.playerGirls[this.girlIndex]);
       });
     } else {
@@ -302,7 +302,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.showPositions = false;
 		this.currentPosition = position;
 
-		this.recordUrl = this._cachingService.getVideo(this.girl.name, position.name);
+		this.recordUrl = this._cachingService.getVideo(this.girl, position.name);
 
 		this.vid.load();
 		this.vid.play().then(() => {
@@ -375,7 +375,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
       setTimeout(() => {
         this._fadeIn();
-        this.recordUrl = this._cachingService.getVideo(this.girl.name, 'orgasm');
+        this.recordUrl = this._cachingService.getVideo(this.girl, 'orgasm');
 
         this.vid.load();
         this.vid.play();
@@ -616,47 +616,43 @@ export class RecordComponent implements OnInit, OnDestroy {
     }
 
     this.name = girl.name;
-    this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
+    this.portrait = this._cachingService.getPhoto(girl, '1_' + girl.corruptionName);
 
-    const positions = this._girlsService.getTimingRecord(girl);
+    const positions = girl.positions;
     if (positions) {
       this.positions = [...this.positions, ...positions];
     }
 
-    this._skillService.treeSkills
-      .pipe(take(1))
-      .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === girl.id && (tree.name === 'special' || (this.isBattle ? tree.name === 'battle' : tree.name === 'recording')));
+    this.treeSkills = girl.skills.filter((tree: TreeSkills) => (tree.name === 'special' || (this.isBattle ? tree.name === 'battle' : tree.name === 'recording')));
 
-        for (const treeSkill of this.treeSkills) {
-          for (const skillTiers of treeSkill.skillTiers) {
-            for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
-              if (skill.effects.length >= skill.level) {
-                for (const effects of skill.effects[skill.level-1]) {
-                  switch (effects.stat) {
-                    case 'scene':
-                      const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
+    for (const treeSkill of this.treeSkills) {
+      for (const skillTiers of treeSkill.skillTiers) {
+        for (const skill of skillTiers.skills.filter(skill => skill.level > 0)) {
+          if (skill.effects.length >= skill.level) {
+            for (const effects of skill.effects[skill.level-1]) {
+              switch (effects.stat) {
+                case 'scene':
+                  const sceneRank = parseInt(effects.value.charAt(effects.value.length-1));
 
-                      if (!isNaN(sceneRank)) {
-                        const sceneName = effects.value.slice(0, -2).toLowerCase().replaceAll(' ', '');
-                        for (let index = sceneRank; index > 1; index--) {
-                          this.sceneSkills.push(sceneName + index);
-                        }
-                        this.sceneSkills.push(sceneName);
-                      } else {
-                        this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
-                      }
-                      break;
-                    default:
-                      this.skillStatsModifiers.push(effects);
-                      break;
+                  if (!isNaN(sceneRank)) {
+                    const sceneName = effects.value.slice(0, -2).toLowerCase().replaceAll(' ', '');
+                    for (let index = sceneRank; index > 1; index--) {
+                      this.sceneSkills.push(sceneName + index);
+                    }
+                    this.sceneSkills.push(sceneName);
+                  } else {
+                    this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
                   }
-                }
+                  break;
+                default:
+                  this.skillStatsModifiers.push(effects);
+                  break;
               }
             }
           }
         }
-      });
+      }
+    }
   }
 
   private _initLeaderActivity(): void {

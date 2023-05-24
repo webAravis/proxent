@@ -112,9 +112,9 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			.subscribe((girl: Girl) => {
 				this.girl = girl;
 
-				this.portrait = this._cachingService.getPhoto(girl.name, '1_' + girl.corruptionName);
+				this.portrait = this._cachingService.getPhoto(girl, '1_' + girl.corruptionName);
 
-        const positions = this._girlsService.getTimingRecord(girl);
+        const positions = girl.positions;
         if (positions) {
           this.positionsDef = positions.filter(position => !this._prohibitedType(position));
 
@@ -181,7 +181,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 		if (this.positionRequirementsMet(position)) {
 			this.selectedPosition = position;
 
-			this.corrupt = this._cachingService.getVideo(this.girl.name, this.selectedPosition.name);
+			this.corrupt = this._cachingService.getVideo(this.girl, this.selectedPosition.name);
 
 			const vid = <HTMLVideoElement>document.querySelector('#video-position');
 

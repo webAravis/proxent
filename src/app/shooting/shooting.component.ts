@@ -25,11 +25,10 @@ export class PhotoShooting {
   golds = 0;
   fans = 0
   corruptionLevel = 0;
-  girl: Girl = new Girl();
+  locked = true;
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
-    this.girl = new Girl(this.girl);
 	}
 }
 
@@ -46,7 +45,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
   photoDef: PhotoShooting[] = [];
   playedPhotos: PhotoShooting[] = [];
 
-  playerPhotos: PhotoShooting[] = [];
   played = false;
 
   place = false;
@@ -94,11 +92,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
       });
 
     this._gameService.pauseGame();
-
-    this._shootingService.playerPhotos.pipe(takeUntil(this._unsubscribeAll)).subscribe((photos: PhotoShooting[]) => {
-      this.playerPhotos = photos.filter(photo => photo.girl.id === this.girl.id);
-      this.playerPhotos.sort((a, b) => a.corruptionLevel - b.corruptionLevel);
-    });
   }
 
   ngOnDestroy(): void {
@@ -122,7 +115,7 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   isLocked(photo: PhotoShooting): boolean {
-    return !this.playerPhotos.some((playerPhoto: PhotoShooting) => playerPhoto.name === photo.name);
+    return photo.locked
   }
 
   canAfford(photo: PhotoShooting): boolean {
@@ -186,8 +179,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
   buyPhoto(photo: PhotoShooting): void {
     if (this.canAfford(photo) && photo.corruptionLevel <= this.girl.corruption) {
       this._gameService.updateGolds(photo.price * -1);
-
-      photo.girl = this.girl;
       this._shootingService.addPhoto(photo);
     } else {
       this.shakePhoto = photo.name;
@@ -198,9 +189,8 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   availablePhotos(): number {
-    return this.playerPhotos
-      .map((photo: PhotoShooting) => photo.name)
-      .filter((photoName: string) => !this.playedPhotos.map((playedPhoto: PhotoShooting) => playedPhoto.name).includes(photoName)).length;
+    return this.photos
+      .filter(photo => !photo.locked && !this.playedPhotos.map((playedPhoto: PhotoShooting) => playedPhoto.name).includes(photo.name)).length;
   }
 
   private _computeCombo(photo: PhotoShooting): void {
@@ -248,10 +238,10 @@ export class ShootingComponent implements OnInit, OnDestroy {
   }
 
   private async _initializePhotos(): Promise<void> {
-    const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(this.girl);
+    const photoDef: PhotoShooting[] = this.girl.photos;
     this.photoDef = photoDef;
     for (const photo of photoDef) {
-      photo.url = this._cachingService.getPhoto(this.girl.name, photo.name);
+      photo.url = this._cachingService.getPhoto(this.girl, photo.name);
       photo.price = this._getPrice(photo);
       photo.golds = this._getGolds(photo);
       photo.fans = this._getFans(photo);

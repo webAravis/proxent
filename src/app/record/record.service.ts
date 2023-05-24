@@ -56,7 +56,6 @@ export class RecordService {
     this.records.next(all);
 
     girl.recordCount++;
-    this._girlsService.updateGirl(girl);
 
     return newRecord;
   }
@@ -69,7 +68,7 @@ export class RecordService {
     recordCount: number
   ): Record {
     const record = new Record();
-    const positions = this._girlsService.getTimingRecord(girl);
+    const positions = girl.positions;
     if (positions) {
       record.girl = girl;
       record.studioName = studioName;

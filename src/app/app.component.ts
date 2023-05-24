@@ -3,6 +3,7 @@ import { CachingService } from './core/caching.service';
 import { Router } from '@angular/router';
 import { GameService } from './core/game.service';
 import { Subject, takeUntil } from 'rxjs';
+
 import packageJson from '../../package.json';
 
 @Component({

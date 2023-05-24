@@ -1,8 +1,7 @@
 import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { GameService } from './game.service';
-import { GirlsService } from './girls/girls.service';
-import { Girl } from './girls/girl.model';
+import { GirlsService, SavedGirl } from './girls/girls.service';
 import { DialogsService } from '../dialogs/dialogs.service';
 import { StudioService } from '../studio/studio.service';
 import { InventoryService } from '../inventory/inventory.service';
@@ -15,9 +14,8 @@ import { Studio } from './studio.model';
 import { LeadersService } from '../leaders/leaders.service';
 import { Leader } from '../leaders/leader.model';
 import { ShootingService } from '../shooting/shooting.service';
-import { PhotoShooting } from '../shooting/shooting.component';
 import { SkillsService } from '../skills/skills.service';
-import { TreeSkills } from '../skills/treeskills.model';
+import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
 
 @Injectable({
@@ -60,6 +58,7 @@ export class SaveService {
 
     const savesObject = JSON.parse(allSaves);
     this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
+    this.saves = this._fixOldSaves(this.saves);
     this.saveIndex = this.saves.length;
   }
 
@@ -112,7 +111,8 @@ export class SaveService {
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
 
-    const girls = this._girlsService.playerGirls.getValue();
+    // const girls = this._girlsService.playerGirls.getValue();
+    const girls: SavedGirl[] = [];
     // prevent save if girlfriend's fans is 0 as it's not correctly saved
     if (girls[0] !== undefined && girls[0].fans === 0) {
       return;
@@ -129,15 +129,8 @@ export class SaveService {
     };
 
     const records = this._recordService.records.getValue();
-
     const otherStudios = this._otherStudiosService.studios.getValue();
-
     const leaders = this._leadersService.leaders.getValue();
-
-    const playerPhotos = this._shootingService.playerPhotos.getValue();
-
-    const skills = this._skillService.treeSkills.getValue();
-
     const settings = this._settingsService.settings.getValue();
 
     const toSave = {
@@ -149,8 +142,6 @@ export class SaveService {
       records: records,
       otherStudios: otherStudios,
       leaders: leaders,
-      playerPhotos: playerPhotos,
-      skills: skills,
       settings: settings,
       lastSaved: new Date(),
       version: '0.10.0'
@@ -161,7 +152,7 @@ export class SaveService {
     savedGames[this.saveIndex] = toSave;
 
     const saved = btoa(JSON.stringify(savedGames));
-    localStorage.setItem('saveGame', saved);
+    // localStorage.setItem('saveGame', saved);
 
     this.saves = savedGames;
     this.saved.next(new Date());
@@ -189,12 +180,8 @@ export class SaveService {
 
     this._dialogsService.dialogsStarted = savedGame.dialogsStarted;
 
-    const girlsToLoad = [];
-    for (const savedGirl of savedGame.girls) {
-      girlsToLoad.push(new Girl(savedGirl));
-    }
+    this._girlsService.loadGirls(savedGame.girls);
 
-    this._girlsService.playerGirls.next(this._girlsService.initAttributes(girlsToLoad));
     savedGame.game.girlLimit && !Number.isNaN(savedGame.game.girlLimit) ? this._gameService.girlLimit.next(savedGame.game.girlLimit) : undefined;
 
     savedGame.studio.studioUnlocked === undefined
@@ -253,21 +240,7 @@ export class SaveService {
     }
 
     if (savedGame.playerPhotos) {
-      const playerPhotos: PhotoShooting[] = [];
-      for (const savedPhoto of savedGame.playerPhotos) {
-        playerPhotos.push(new PhotoShooting(savedPhoto));
-      }
-
-      this._shootingService.playerPhotos.next(playerPhotos);
-    }
-
-    if (savedGame.skills && Array.isArray(savedGame.skills) && savedGame.skills.length > 0) {
-      const treeSkills: TreeSkills[] = [];
-      for (const savedTreeSkill of savedGame.skills) {
-        treeSkills.push(new TreeSkills(savedTreeSkill));
-      }
-
-      this._skillService.updateTrees(treeSkills);
+      this._shootingService.playerPhotos.next(savedGame.playerPhotos);
     }
 
     if (savedGame.settings && Array.isArray(savedGame.settings)) {
@@ -294,5 +267,54 @@ export class SaveService {
       return false;
     }
     return true;
+  }
+
+  private _fixOldSaves(saves: any[]): any {
+    for (const save of saves) {
+      console.log('saved', save);
+
+      let fixedGirls: SavedGirl[] = [];
+      if (save.girls && save.playerPhotos && save.skills) {
+        for (const girl of save.girls) {
+          let photos: string[] = [];
+          if (save.playerPhotos && Array.isArray(save.playerPhotos)) {
+            photos = save.playerPhotos.filter((photo:any) => photo.girl.id == girl.id).map((photo:any) => photo.name);
+          }
+
+          let skills: { name: string; level: number; }[] = [];
+          if (save.skills && Array.isArray(save.skills)) {
+            const girlSkills: Skill[] = [];
+            for (const treeSkill of save.skills.filter((tree: any) => tree.girl.id == girl.id)) {
+              for (const skillTier of treeSkill.skillTiers) {
+                for (const skill of skillTier.skills) {
+                  if (skill.level > 0) {
+                    girlSkills.push(new Skill(skill));
+                  }
+                }
+              }
+            }
+            skills = girlSkills.map((skill: Skill) => ({name: skill.name, level: skill.level}));
+          }
+
+          const fixedGirl: SavedGirl = {
+            corruption: girl.corruption,
+            xp: girl.xp,
+            fans: girl.fans,
+            freedom: girl.freedom,
+            id: girl.id,
+            recordCount: girl.recordCount,
+            shootingCount: girl.shootingCount,
+            unlockedPositions: girl.unlockedPositions,
+            skillsobject: skills,
+            photos: photos
+          };
+
+          fixedGirls.push(fixedGirl);
+        }
+      }
+      save.girls = fixedGirls;
+    }
+
+    return saves;
   }
 }

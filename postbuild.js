@@ -17,7 +17,7 @@ fs.readFile(indexFile, 'utf8', function (err,data) {
 
     console.log('compressing full version');
     var zipper = require('zip-local');
-    zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
+    // zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
 
     console.log('removing medias');
     let rimrafSync = require("rimraf");

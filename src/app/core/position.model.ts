@@ -1,10 +1,10 @@
 export enum PositionType {
-  INTRO = 0,
-  FOREPLAY = 1,
-  FOREPLAY_SKILL = 2,
-  PENETRATION = 10,
-  SKILL = 15,
-  SPECIAL = 20,
+  INTRO = "INTRO",
+  FOREPLAY = "FOREPLAY",
+  FOREPLAY_SKILL = "FOREPLAY_SKILL",
+  PENETRATION = "PENETRATION",
+  SKILL = "SKILL",
+  SPECIAL = "SPECIAL",
 }
 
 export class Position {
@@ -13,7 +13,7 @@ export class Position {
   corruption = 0;
 	timeout = 0;
 
-  type: PositionType = 1;
+  type: PositionType = PositionType.INTRO;
   unlocker: Position | undefined = undefined;
 
 	constructor(values: object = {}) {
@@ -21,19 +21,46 @@ export class Position {
 	}
 
   getFans(trending: number = 0): number {
-    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 50 + this.type * 200) * trending);
+    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 50 + this.getMultiplierType(this.type) * 200) * trending);
   }
 
   getGold(trending: number = 0): number {
-    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 10 + this.type * 150) * trending);
+    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 10 + this.getMultiplierType(this.type) * 150) * trending);
   }
 
   getXp(trending: number = 0): number {
-    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 5 + this.type * 100) * trending);
+    return Math.round(this.multiplierDuration * ((this.corruption + 1) * 5 + this.getMultiplierType(this.type) * 100) * trending);
   }
 
   getOrgasm(currentBoner: number = 0, trending: number = 1): number {
     return Math.round(this.multiplierDuration * (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (40 + this.corruption * 10) * (currentBoner / 100)) * (trending / 2));
+  }
+
+  getMultiplierType(type: string): number {
+    let multiplier = 0;
+
+    switch (type.toLowerCase()) {
+      case "intro":
+        multiplier = 0;
+        break;
+      case "FOREPLAY":
+        multiplier = 1;
+        break;
+      case "FOREPLAY_SKILL":
+        multiplier = 2;
+        break;
+      case "PENETRATION":
+        multiplier = 10;
+        break;
+      case "SKILL":
+        multiplier = 15;
+        break;
+      case "SPECIAL":
+        multiplier = 20;
+        break;
+    }
+
+    return multiplier;
   }
 
   get boner(): number {

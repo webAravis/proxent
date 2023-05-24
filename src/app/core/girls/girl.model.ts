@@ -1,20 +1,17 @@
+import { PhotoShooting } from "src/app/shooting/shooting.component";
+import { Position } from "../position.model";
+import { TreeSkills } from "src/app/skills/treeskills.model";
+
 export class Girl {
-	id = 0;
+	id = '0';
 	name = '';
 
 	xp = 0;
 	fans = 0;
 
-	hp = 1;
 	corruption = 1;
 
-	orgasmLevel = 0;
-
-	lust = 1;
-	charm = 1;
-	beauty = 1;
-	skill = 1;
-	fitness = 1;
+  orgasmLevel = 0;
 
 	unlockedPositions: string[] = ['tease'];
   attributes: string[] = [];
@@ -30,9 +27,38 @@ export class Girl {
   cumModifier = 1;
   pointsModifier = 1;
 
+  positions: Position[] = [];
+  photos: PhotoShooting[] = [];
+  skills: TreeSkills[] = [];
+
+  locked = true;
+
 	constructor(values: object = {}) {
 		Object.assign(this, values);
+
+    const positions: Position[] = [];
+    for (const position of this.positions) {
+      positions.push(new Position(position));
+    }
+    this.positions = positions;
+
+    const photos: PhotoShooting[] = [];
+    for (const photo of this.photos) {
+      photos.push(new PhotoShooting(photo));
+    }
+    this.photos = photos;
+
+    const skills: TreeSkills[] = [];
+    for (const skill of this.skills) {
+      skills.push(new TreeSkills(skill));
+    }
+    this.skills = skills;
 	}
+
+  get girlFolder(): string {
+    const splitted = this.id.split('-');
+    return (splitted[1] ?? 'legacy') + '/' + splitted[0]
+  }
 
   getNextLevelXp(level: number): number {
     return (level/0.07) ** 2;

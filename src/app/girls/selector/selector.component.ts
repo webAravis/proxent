@@ -20,7 +20,6 @@ import { InventoryService } from 'src/app/inventory/inventory.service';
 	styleUrls: ['./selector.component.scss'],
 })
 export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
-	@Input() girls: Girl[] = [];
 	@Input() allGirls: Girl[] = [];
 	@Input() selectedGirl: Girl = new Girl();
 	@Input() portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
@@ -29,7 +28,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 	@Output() selected = new EventEmitter<Girl>();
 	@Output() girlUnlocked = new EventEmitter<Girl>();
 
-	clickAgain = 0;
+	clickAgain = "0";
   girlLimit = 0;
 
 	private _scroller: HTMLElement = document.createElement('div');
@@ -59,14 +58,14 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 		}
 
 		if (this.selectedGirl.name === '') {
-			this.selectGirl(this.girls[0]);
+			this.selectGirl(this.allGirls.filter(girl => !girl.locked)[0]);
 		} else {
 			this.selectGirl(this.selectedGirl);
 		}
 	}
 
   get girlLimitReached(): boolean {
-    return this.girls.length-1 >= this.girlLimit;
+    return this.allGirls.filter(girl => !girl.locked).length-1 >= this.girlLimit;
   }
 
 	onWheel(event: WheelEvent): void {
@@ -107,9 +106,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	isLocked(girl: Girl): boolean {
-		return !this.girls.some(
-			(unlockedGirl: Girl) => unlockedGirl.id === girl.id
-		);
+		return girl.locked
 	}
 
 	canAfford(girl: Girl): boolean {
@@ -155,7 +152,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 			}
 		}
 
-		this.clickAgain = 0;
+		this.clickAgain = "0";
 		this.girlUnlocked.emit(girl);
 
 	}

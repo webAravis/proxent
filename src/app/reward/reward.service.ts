@@ -66,7 +66,6 @@ export class RewardService {
       this._dialogsService.startDialog(6);
     }
 
-    this._girlService.updateGirl(girl);
     this._gameService.updateGolds(moneyWon);
     for (const item of itemsWon) {
       this._inventoryService.addItem(item);
@@ -104,14 +103,6 @@ export class RewardService {
       girl.xp += xpWon;
       if (girl.level !== oldLevel) {
         hasLevelup = true;
-
-        // update when levelup
-        girl.lust += 1;
-        girl.charm += 1;
-        girl.beauty += 1;
-        girl.skill += 1;
-        girl.fitness += 1;
-        girl.hp += 100;
       }
 
       if (girl.skillPoints !== oldSkillPoints) {

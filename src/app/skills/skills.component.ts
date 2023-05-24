@@ -33,21 +33,18 @@ export class SkillsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this._skillService.treeSkills
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((treeSkills: TreeSkills[]) => {
-        this.treeSkills = treeSkills.filter((tree: TreeSkills) => tree.girl.id === this._girlService.currentGirl.getValue().id);
-        if (this._girlService.currentGirl.getValue().id === 1) { // disable battle tree for girlfriend
-          this.treeSkills = this.treeSkills.filter(tree => tree.name !== 'battle');
-        }
-      });
-
     this._gameService.goldChanged
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((golds) => (this.golds = golds));
     this.golds = this._gameService.golds;
 
-    this._girlService.currentGirl.pipe(takeUntil(this._unsubscribeAll)).subscribe(girl => this.girl = girl);
+    this._girlService.currentGirl.pipe(takeUntil(this._unsubscribeAll)).subscribe(girl => {
+      this.girl = girl;
+      this.treeSkills = this.girl.skills;
+      if (this.girl.id === "1") { // disable battle tree for girlfriend
+        this.treeSkills = this.treeSkills.filter(tree => tree.name !== 'battle');
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -169,13 +166,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
   resetAll(): void {
     if (this.canReset() && confirm('Are you sure you want to reset all skills? NO REFUND FOR SPENT MATERIALS!')) {
 
-      // for (const price of this.resetPrice) {
-      //   if (price.type === 'gold') {
-      //     this._gameService.updateGolds(price.quantity * -1);
-      //   } else {
-      //     this._inventoryService.removeItemByName(price.type, price.quantity);
-      //   }
-      // }
+      for (const price of this.resetPrice) {
+        if (price.type === 'gold') {
+          this._gameService.updateGolds(price.quantity * -1);
+        } else {
+          this._inventoryService.removeItemByName(price.type, price.quantity);
+        }
+      }
 
       for (const treeSkills of this.treeSkills) {
         for (const skillTier of treeSkills.skillTiers) {

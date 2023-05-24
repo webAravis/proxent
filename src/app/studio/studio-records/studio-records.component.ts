@@ -84,7 +84,7 @@ export class StudioRecordsComponent implements OnInit, OnDestroy {
 	}
 
 	getBestActress(): void {
-		const girlEarning: Map<number, number> = new Map();
+		const girlEarning: Map<string, number> = new Map();
 
 		for (const record of this.allRecords) {
 			let earning = record.money;

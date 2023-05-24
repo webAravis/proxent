@@ -58,12 +58,12 @@ export class CachingService {
     return percent;
   }
 
-  getPhoto(girlname: string, name: string): SafeUrl {
+  getPhoto(girl: Girl, name: string): SafeUrl {
     let objectURL =
-      this.mediasExist ? './assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' :
-        this.isOnline ? 'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/photos/' + name + '.jpg' : '';
+      this.mediasExist ? './assets/mods/' + girl.girlFolder + '/photos/' + name + '.jpg' :
+        this.isOnline ? 'https://proxentgame.com/assets/mods/' + girl.girlFolder + '/photos/' + name + '.jpg' : '';
 
-    const girlMedia = this.medias.find((media) => media.girlname === girlname);
+    const girlMedia = this.medias.find((media) => media.girlname === girl.name.toLowerCase());
     if (girlMedia !== undefined) {
       const girlPhoto = girlMedia.photos.find((photoMedia) => photoMedia.name === name)?.data;
       if (girlPhoto !== undefined) {
@@ -74,10 +74,10 @@ export class CachingService {
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
-  getVideo(girlname: string, name: string): SafeUrl {
+  getVideo(girl: Girl, name: string): SafeUrl {
     const objectURL =
-      this.mediasExist ? './assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' :
-        this.isOnline ? 'https://proxentgame.com/assets/medias/' + girlname.toLowerCase() + '/videos/record/' + name + '.webm' : '';
+      this.mediasExist ? './assets/mods/' + girl.girlFolder + '/videos/record/' + name + '.webm' :
+        this.isOnline ? 'https://proxentgame.com/assets/mods/' + girl.girlFolder + '/videos/record/' + name + '.webm' : '';
 
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
   }
@@ -178,10 +178,10 @@ export class CachingService {
       return;
     }
 
-    const photoDef: PhotoShooting[] = this._shootingService.getPhotoDefinitions(girl);
+    const photoDef: PhotoShooting[] = girl.photos;
     for (const photo of photoDef) {
-      const url = 'https://proxentgame.com/assets/medias/' +
-        girl.name.toLowerCase() +
+      const url = 'https://proxentgame.com/assets/mods/' +
+        girl.girlFolder +
         '/photos/' +
         photo.name +
         '.jpg?v=0.10.1';
