@@ -17,11 +17,14 @@ fs.readFile(indexFile, 'utf8', function (err,data) {
 
     console.log('compressing full version');
     var zipper = require('zip-local');
-    // zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
+    zipper.sync.zip("./dist/proxent").compress().save("./dist/proxent_"+pjson.version+"_full.zip");
 
-    console.log('removing medias');
+    console.log('extracting legacy mod');
+    zipper.sync.zip("./dist/proxent/assets/mods/legacy").compress().save("./dist/mod_proxent_legacy_"+pjson.version+".zip");
+
+    console.log('removing mods');
     let rimrafSync = require("rimraf");
-    rimrafSync("./dist/proxent/assets/medias", () => {
+    rimrafSync("./dist/proxent/assets/mods/legacy", () => {
       console.log("done removing medias");
 
       console.log('compressing light version');

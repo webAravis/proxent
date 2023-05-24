@@ -4377,7 +4377,7 @@ modsConfig.push({
         {
           "name": "missionary",
           "label": "Missionary",
-          "corruption": 6,
+          "corruption": 5,
           "timeout": 10000,
 
           "type": "PENETRATION"
@@ -4442,7 +4442,7 @@ modsConfig.push({
         {
           "name": "cowgirl",
           "label": "Cowgirl",
-          "corruption": 6,
+          "corruption": 5,
           "timeout": 10000,
 
           "type": "PENETRATION",
