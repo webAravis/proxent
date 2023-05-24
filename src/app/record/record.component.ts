@@ -442,6 +442,9 @@ export class RecordComponent implements OnInit, OnDestroy {
 		);
     availablePositions = [...availablePositions, ...this.sceneSkills.filter(scene => isNaN(parseInt(scene.charAt(scene.length - 1))))];
 
+    // removing duplicates
+    availablePositions = [...new Set(availablePositions)];
+
     const positionsWithCount: {position: string, count: number}[] = [];
     for (const position of availablePositions) {
       positionsWithCount.push({position: position, count: this.positionRepeated(position)});

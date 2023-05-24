@@ -59,7 +59,7 @@ export class SkillsService {
               // let skillsUpdated: Skill[] = [];
               for (const skillInTier of skillTierParameter.skills) {
                 if (skill.name === skillInTier.name) {
-                  const skillUpdated = new Skill({name: skillInTier.name, level: skillInTier.level});
+                  const skillUpdated = new Skill({name: skillInTier.name, level: (skillInTier.level <= skill.maxlevel ? skillInTier.level : skill.maxlevel)});
 
                   skillUpdated.description = skill.description;
                   skillUpdated.sprite_postop = skill.sprite_postop;
@@ -454,12 +454,11 @@ export class SkillsService {
             description: 'Two is not enough?',
             sprite_postop: -286,
             sprite_posleft: -3,
-            maxlevel: 5,
+            maxlevel: 1,
             unlockPrice: [
               [{ type: 'gold', quantity: 45_000 }, { type: 'basic_skill_gem', quantity: 2 }],
-              [{ type: 'gold', quantity: 60_000 }, { type: 'advanced_skill_gem', quantity: 2 }],
             ],
-            requires: ['Fetishist'],
+            requires: ['Double'],
             effects: [
               [{ stat: 'scene', label: 'New scene', value: 'Triple' }],
             ]
