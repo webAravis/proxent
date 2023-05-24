@@ -351,7 +351,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			repeatedMultiplier = repeatedMultiplier / 1.2;
 		}
 
-    return this._recordService.positionStats(position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
+    return this._recordService.positionStats(this.girl, position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
   }
 
 	endScene(isCombo: boolean = false): void {

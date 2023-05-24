@@ -24,6 +24,12 @@ export class Girl {
 
 	unlockPrice: { type: string; quantity: number }[] = [];
 
+  fansModifier = 1;
+  xpModifier = 1;
+  goldsModifier = 1;
+  cumModifier = 1;
+  pointsModifier = 1;
+
 	constructor(values: object = {}) {
 		Object.assign(this, values);
 	}

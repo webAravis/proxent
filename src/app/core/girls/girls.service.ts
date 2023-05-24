@@ -2069,9 +2069,11 @@ export class GirlsService {
       switch (girl.name) {
         case 'Peta':
           girl.attributes = ['brunette', 'tattoo', 'fit', 'dark eyes', 'american'];
+          girl.goldsModifier = 1.5;
           break;
         case 'Ava':
           girl.attributes = ['milf', 'brunette', 'dark eyes', 'euro'];
+          girl.xpModifier = 1.5;
           girl.unlockPrice = [
             { type: 'gold', quantity: 15_000 },
             { type: 'recordmonthly_badge', quantity: 2 },
@@ -2080,6 +2082,7 @@ export class GirlsService {
           break;
         case 'Madison':
           girl.attributes = ['blond', 'fit', 'flexible', 'dark eyes', 'small', 'euro'];
+          girl.fansModifier = 1.5;
           girl.unlockPrice = [
             { type: 'gold', quantity: 15_000 },
             { type: 'fans_badge', quantity: 2 },
@@ -2087,6 +2090,7 @@ export class GirlsService {
           break;
         case 'Karma':
           girl.attributes = ['blond', 'green eyes', 'tattoo', 'american'];
+          girl.cumModifier = 1.5;
           girl.unlockPrice = [
             { type: 'gold', quantity: 15_000 },
             { type: 'money_badge', quantity: 2 },
@@ -2094,6 +2098,7 @@ export class GirlsService {
           break;
         case 'Nikki':
           girl.attributes = ['blond', 'dark eyes', 'producer', 'euro'];
+          girl.goldsModifier = 1.5;
           girl.unlockPrice = [
             { type: 'gold', quantity: 15_000 },
             { type: 'recordyearly_badge', quantity: 2 },
@@ -2101,6 +2106,7 @@ export class GirlsService {
           break;
         case 'Abella':
           girl.attributes = ['teen', 'brunette', 'dark eyes', 'natural boobs', 'american'];
+          girl.xpModifier = 1.5;
           girl.unlockPrice = [
             { type: 'gold', quantity: 20_000 },
             { type: 'recordmonthly_badge', quantity: 3 },

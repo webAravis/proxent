@@ -123,6 +123,7 @@ export class RecordService {
         }
 
         const positionStats = this.positionStats(
+          girl,
           pickedPosition,
           repeatedMultiplier,
           boner,
@@ -168,22 +169,34 @@ export class RecordService {
     return record;
   }
 
-  positionStats(position: Position, repeatedMultiplier: number, boner: number, trendingPosition: string, skillStatsModifiers: { stat: string, position: string, label: string, value: string }[]): {golds: number, xp: number, fans: number, boner: number, orgasm: number} {
+  positionStats(girl: Girl, position: Position, repeatedMultiplier: number, boner: number, trendingPosition: string, skillStatsModifiers: { stat: string, position: string, label: string, value: string }[]): {golds: number, xp: number, fans: number, boner: number, orgasm: number} {
 		return {
       golds: Math.round(
-        (position.getGold(this._trendingMultiplier(position, trendingPosition))
+        (
+          position.getGold(this._trendingMultiplier(position, trendingPosition))
         + (position.getGold(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('golds', position, skillStatsModifiers))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_golds')
+        * repeatedMultiplier
+        )
+        * girl.goldsModifier
+        * this._settingsService.getSetting('record_position_golds')
       ),
       xp: Math.round(
-        (position.getXp(this._trendingMultiplier(position, trendingPosition))
+        (
+          position.getXp(this._trendingMultiplier(position, trendingPosition))
         + (position.getXp(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('xp', position, skillStatsModifiers))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_xp')
+        * repeatedMultiplier
+        )
+        * girl.xpModifier
+        * this._settingsService.getSetting('record_position_xp')
       ),
       fans: Math.round(
-        (position.getFans(this._trendingMultiplier(position, trendingPosition))
+        (
+          position.getFans(this._trendingMultiplier(position, trendingPosition))
         + (position.getFans(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('fans', position, skillStatsModifiers))
-        * repeatedMultiplier) * this._settingsService.getSetting('record_position_fans')
+        * repeatedMultiplier
+        )
+        * girl.fansModifier
+        * this._settingsService.getSetting('record_position_fans')
       ),
       boner: Math.round(
         position.boner
@@ -191,8 +204,13 @@ export class RecordService {
         * repeatedMultiplier
       ),
       orgasm: Math.round(
-        (position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition))
-        + (position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('orgasm', position, skillStatsModifiers))) * this._settingsService.getSetting('record_position_cum')
+        (
+          position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition))
+        + (position.getOrgasm(boner, this._trendingMultiplier(position, trendingPosition))
+        * this._skillModifier('orgasm', position, skillStatsModifiers))
+        )
+        * girl.cumModifier
+        * this._settingsService.getSetting('record_position_cum')
       )
     }
   }

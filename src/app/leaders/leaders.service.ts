@@ -2,6 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Leader } from './leader.model';
 import { ModifierLevelCost } from '../studio/studiomodifier.model';
+import { OtherStudiosService } from '../core/other-studios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class LeadersService {
   leaders: BehaviorSubject<Leader[]> = new BehaviorSubject<Leader[]>([]);
   leaderBattle: BehaviorSubject<Leader> = new BehaviorSubject<Leader>(new Leader());
 
-  constructor() {
+  constructor(
+    private _otherStudioService: OtherStudiosService
+  ) {
     this.initLeaders();
   }
 
@@ -142,6 +145,13 @@ export class LeadersService {
 
   nextLevel(toLevel: Leader) : void {
     toLevel.lvl++;
+
+    // increasing other studios quality
+    const otherStudios = this._otherStudioService.studios.getValue();
+    for (const studio of otherStudios) {
+      studio.quality = studio.quality * 1.1;
+    }
+    this._otherStudioService.studios.next(otherStudios);
   }
 
   private _getAllLeadersLevel() : number {
