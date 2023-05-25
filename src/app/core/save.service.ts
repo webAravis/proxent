@@ -17,12 +17,15 @@ import { ShootingService } from '../shooting/shooting.service';
 import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
 
+import packageJson from '../../../package.json';
+
 @Injectable({
   providedIn: 'root',
 })
 export class SaveService {
 
   saveIndex = 0;
+  version = packageJson.version;
 
   showSaveChooser: Subject<boolean> = new Subject();
   saves: any[] = [];
@@ -186,7 +189,7 @@ export class SaveService {
       leaders: leaders,
       settings: settings,
       lastSaved: new Date(),
-      version: '0.10.0'
+      version: this.version
     };
 
     let savedGames = this.saves;
@@ -314,13 +317,15 @@ export class SaveService {
   }
 
   private _fixOldSaves(saves: any[]): any {
+    console.log('saves', saves);
     for (const save of saves) {
-      if (save.playerPhotos === undefined) {
+      if (save.version.includes('0.11')) {
+        console.log('skipping');
         continue;
       }
 
       let fixedGirls: SavedGirl[] = [];
-      if (save.girls && save.playerPhotos) {
+      if (save.girls) {
         for (const girl of save.girls) {
           let photos: string[] = [];
           if (save.playerPhotos && Array.isArray(save.playerPhotos)) {
