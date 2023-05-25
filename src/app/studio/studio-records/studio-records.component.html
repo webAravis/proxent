@@ -3,7 +3,7 @@
 		<div class="header">Best Record</div>
 		<div class="infos">
 			<div class="name">{{ bestRecord.name }}</div>
-			<div class="subname">{{ bestRecord.girl.name }}</div>
+			<div class="subname">{{ getRecordGirl(bestRecord.girlId).name }}</div>
 		</div>
 		<div class="value">{{ bestRecord.score | number : '1.0-0' }} pts</div>
 	</div>
@@ -34,7 +34,7 @@
 	</div>
 	<div class="record" *ngFor="let record of records">
 		<div class="name">{{ record.name }}</div>
-		<div class="actress">{{ record.girl.name }}</div>
+		<div class="actress">{{ getRecordGirl(record.girlId).name }}</div>
 		<div class="score">{{ record.score | number : '1.0-0' }}</div>
 		<div class="golds">
 			{{ record.money | number : '1.0-0' }}<img src="./assets/golds.png" />

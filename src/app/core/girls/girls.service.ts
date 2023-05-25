@@ -5,6 +5,7 @@ import { DialogsService } from 'src/app/dialogs/dialogs.service';
 
 export interface SavedGirl {
   id: string;
+  fullId: string;
   xp: number;
   fans: number;
   corruption: number;
@@ -25,14 +26,12 @@ export class GirlsService {
 	gameGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 
   girlsConfig: any[] = [];
+  loading = true;
 
 	constructor(
     private _dialogsService: DialogsService
   ) {
-    setTimeout(() => {
-      this._initMods();
-      this._initGirls();
-    }, 200);
+    this._initMods();
 	}
 
 	addGirl(girl: Girl): void {
@@ -55,7 +54,7 @@ export class GirlsService {
     const gameGirls = this.gameGirls.getValue();
 
     for (const girl of girls) {
-      const gameGirl = gameGirls.find(gameGirl => gameGirl.id == girl.id);
+      const gameGirl = gameGirls.find(gameGirl => gameGirl.fullId == girl.fullId);
       if (gameGirl === undefined) {
         continue;
       }
@@ -91,27 +90,35 @@ export class GirlsService {
 
       }
     }
-
-    console.log('girls loaded', this.gameGirls.getValue());
   }
 
   private _initMods(): void {
+    if (modsConfig.length === 0) {
+      setTimeout(() => {
+        this._initMods();
+      }, 30);
+
+      return;
+    }
+
     for (const mod of modsConfig) {
       if (mod.girls) {
+        for (const girl of mod.girls) {
+          girl.mod = mod.modName;
+        }
         this.girlsConfig = [...this.girlsConfig, ...mod.girls];
       }
     }
+    this._initGirls();
   }
 
 	private _initGirls(): void {
-    console.log('girls', this.girlsConfig);
-
     const girlsArray: Girl[] = [];
     for (const girl of this.girlsConfig) {
       girlsArray.push(new Girl(girl));
     }
 
-    console.log('initialized girls', girlsArray);
 		this.gameGirls.next(girlsArray);
+    this.loading = false;
 	}
 }

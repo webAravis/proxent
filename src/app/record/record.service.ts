@@ -38,7 +38,7 @@ export class RecordService {
   ): Record {
     const newRecord = new Record();
 
-    newRecord.girl = girl;
+    newRecord.girlId = girl.fullId;
 
     newRecord.name = girl.name + ' - #' + (girl.recordCount + 1);
     newRecord.studioName = studioName;
@@ -70,7 +70,7 @@ export class RecordService {
     const record = new Record();
     const positions = girl.positions;
     if (positions) {
-      record.girl = girl;
+      record.girlId = girl.fullId;
       record.studioName = studioName;
       record.month = this._gameService.month;
       record.year = this._gameService.year;

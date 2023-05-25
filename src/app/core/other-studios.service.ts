@@ -1,4 +1,4 @@
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Studio } from './studio.model';
 import { GirlsService } from './girls/girls.service';
@@ -13,6 +13,10 @@ import { GameService } from './game.service';
 export class OtherStudiosService {
 	studios: BehaviorSubject<Studio[]> = new BehaviorSubject<Studio[]>([]);
 	newRecordEvent: Subject<Record> = new Subject<Record>();
+
+  girls: Girl[] = [];
+
+  private _unsubscribeAll: Subject<boolean> = new Subject();
 
 	constructor(
 		private _girlsService: GirlsService,
@@ -64,12 +68,13 @@ export class OtherStudiosService {
 
 				studioToAdd.records.push(record);
 
-				const girlRecorded = record.girl;
+				const girlRecorded = this.getRecordGirl(record.girlId);
         girlRecorded.recordCount++;
 
 				this._updateStudio(studioToAdd);
 			}
 		});
+    this._girlsService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe(girls => this.girls = girls);
 	}
 
 	tryRecording(): void {
@@ -109,6 +114,10 @@ export class OtherStudiosService {
 			}
 		}
 	}
+
+  getRecordGirl(girlId: string): Girl {
+    return this.girls.find(girl => girl.fullId === girlId) ?? new Girl();
+  }
 
 	private _updateStudio(studio: Studio): void {
 		const filteredStudios = this.studios

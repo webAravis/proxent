@@ -1,9 +1,9 @@
 <div id="scroller" (wheel)="onWheel($event)" class="scrollview">
 	<div class="wrapper">
 		<div
-			id="girl-{{ girl.id }}"
+			id="girl-{{ girl.fullId }}"
 			class="girl"
-			[class.selected]="selectedGirl.id === girl.id"
+			[class.selected]="selectedGirl.fullId === girl.fullId"
 			*ngFor="let girl of allGirls"
 		>
 			<div
@@ -12,7 +12,7 @@
 				[class.unlockable]="canAfford(girl)"
 				(click)="selectGirl(girl)"
 			>
-				<div class="clickagain" *ngIf="clickAgain === girl.id">
+				<div class="clickagain" *ngIf="clickAgain === girl.fullId">
 					Click again to unlock {{ girl.name }}
 				</div>
 

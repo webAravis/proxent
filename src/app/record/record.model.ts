@@ -1,8 +1,6 @@
-import { Girl } from '../core/girls/girl.model';
-
 export class Record {
 	name = '';
-	girl: Girl = new Girl();
+	girlId = '';
 	score = 0;
 	money = 0;
 	fans = 0;
@@ -18,7 +16,6 @@ export class Record {
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
-    this.girl = new Girl(this.girl);
     this.creationtime = new Date(this.creationtime);
 	}
 }

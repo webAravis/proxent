@@ -1,11 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Record } from 'src/app/record/record.model';
-import { StudioService } from '../studio.service';
 import { OtherStudiosService } from 'src/app/core/other-studios.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { RecordService } from 'src/app/record/record.service';
 import { Girl } from 'src/app/core/girls/girl.model';
 import { Studio } from 'src/app/core/studio.model';
+import { GirlsService } from 'src/app/core/girls/girls.service';
 
 @Component({
 	selector: 'app-studio-records',
@@ -24,41 +24,40 @@ export class StudioRecordsComponent implements OnInit, OnDestroy {
 		earnings: 0,
 	};
 
+  girls: Girl[] = [];
+
 	private _unsubscribeAll: Subject<boolean> = new Subject();
 
 	constructor(
-		private _studioService: StudioService,
+		private _girlService: GirlsService,
 		private _recordService: RecordService,
 		private _otherStudioService: OtherStudiosService
 	) {}
 
 	ngOnInit(): void {
-		if (this.studio === 'player') {
-			this._recordService.records
-				.pipe(takeUntil(this._unsubscribeAll))
-				.subscribe((records: Record[]) => {
-					this.allRecords = records;
+    combineLatest([
+      this._girlService.gameGirls,
+      this._recordService.records,
+      this._otherStudioService.studios
+    ]).pipe(takeUntil(this._unsubscribeAll))
+    .subscribe((values: [girl: Girl[], records: Record[], studios: Studio[]]) => {
+      this.girls = values[0];
 
-					this.getLastRecords();
-					this.getBestRecord();
-					this.getBestActress();
-				});
-		} else {
-			this._otherStudioService.studios
-				.pipe(takeUntil(this._unsubscribeAll))
-				.subscribe((studios: Studio[]) => {
-					const studio = studios.find(
-						(savedStudio: Studio) => savedStudio.name === this.studio
-					);
-					if (studio) {
-						this.allRecords = studio.records;
+      if (this.studio === 'player') {
+        this.allRecords = values[1];
+      } else {
+        const studio = values[2].find(
+          (savedStudio: Studio) => savedStudio.name === this.studio
+        );
+        if (studio) {
+          this.allRecords = studio.records;
+        }
+      }
 
-						this.getLastRecords();
-						this.getBestRecord();
-						this.getBestActress();
-					}
-				});
-		}
+      this.getLastRecords();
+      this.getBestRecord();
+      this.getBestActress();
+    });
 	}
 
 	ngOnDestroy(): void {
@@ -88,9 +87,9 @@ export class StudioRecordsComponent implements OnInit, OnDestroy {
 
 		for (const record of this.allRecords) {
 			let earning = record.money;
-			earning += girlEarning.get(record.girl.id) ?? 0;
+			earning += girlEarning.get(record.girlId) ?? 0;
 
-			girlEarning.set(record.girl.id, earning);
+			girlEarning.set(record.girlId, earning);
 		}
 
 		const girlArray = [...girlEarning].map(([girlId, value]) => ({
@@ -99,15 +98,16 @@ export class StudioRecordsComponent implements OnInit, OnDestroy {
 		}));
 		girlArray.sort((a, b) => a.value - b.value).reverse();
 
-		this.bestActress = {
-			girl:
-				this.allRecords
-					.map((record: Record) => record.girl)
-					.find(
-						(girl) =>
-							girl.id === girlArray.map((mappedGirl) => mappedGirl.girlId)[0]
-					) ?? new Girl(),
-			earnings: girlArray[0]?.value ?? 0,
-		};
+    const bestActress = girlArray[0];
+    if (bestActress) {
+      this.bestActress = {
+        girl: this.getRecordGirl(bestActress.girlId),
+        earnings: bestActress.value
+      }
+    }
 	}
+
+  getRecordGirl(girlId: string): Girl {
+    return this.girls.find(girl => girl.fullId === girlId) ?? new Girl();
+  }
 }

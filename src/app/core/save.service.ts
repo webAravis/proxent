@@ -14,7 +14,6 @@ import { Studio } from './studio.model';
 import { LeadersService } from '../leaders/leaders.service';
 import { Leader } from '../leaders/leader.model';
 import { ShootingService } from '../shooting/shooting.service';
-import { SkillsService } from '../skills/skills.service';
 import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
 
@@ -40,8 +39,7 @@ export class SaveService {
     private _leadersService: LeadersService,
     private _otherStudiosService: OtherStudiosService,
     private _shootingService: ShootingService,
-    private _settingsService: SettingsService,
-    private _skillService: SkillsService
+    private _settingsService: SettingsService
   ) {
     this._gameService.dayChanged.subscribe((day) =>
       day > 1 ? this.saveGame() : undefined
@@ -75,10 +73,11 @@ export class SaveService {
 
     // fix wrong property names
     save = save.replaceAll('unlockedPostions', 'unlockedPositions');
-    const savedGame = JSON.parse(save);
+    let savedGame = JSON.parse(save);
     if (!(typeof savedGame === 'object') || !Object.keys(savedGame).includes('game')) {
       return false;
     }
+    savedGame = this._fixOldSaves([savedGame])[0];
 
     this.saves.push(savedGame);
     this.saveIndex = this.saves.length - 1;
@@ -110,12 +109,42 @@ export class SaveService {
     };
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
-
-    // const girls = this._girlsService.playerGirls.getValue();
-    const girls: SavedGirl[] = [];
+    const gameGirls = this._girlsService.gameGirls.getValue();
     // prevent save if girlfriend's fans is 0 as it's not correctly saved
-    if (girls[0] !== undefined && girls[0].fans === 0) {
+    if (gameGirls[0] !== undefined && gameGirls[0].fans === 0) {
       return;
+    }
+
+    const girls: SavedGirl[] = [];
+    for (const girl of gameGirls) {
+      let skills: { name: string; level: number; }[] = [];
+      if (girl.skills && Array.isArray(girl.skills)) {
+        const girlSkills: Skill[] = [];
+        for (const treeSkill of girl.skills) {
+          for (const skillTier of treeSkill.skillTiers) {
+            for (const skill of skillTier.skills) {
+              if (skill.level > 0) {
+                girlSkills.push(new Skill(skill));
+              }
+            }
+          }
+        }
+        skills = girlSkills.map((skill: Skill) => ({name: skill.name, level: skill.level}));
+      }
+
+      girls.push({
+        corruption: girl.corruption,
+        fans: girl.fans,
+        freedom: girl.freedom,
+        fullId: girl.fullId,
+        id: girl.id,
+        photos: girl.photos.filter(photo => !photo.locked).map(photo => photo.name),
+        recordCount: girl.recordCount,
+        shootingCount: girl.shootingCount,
+        skillsobject: skills,
+        unlockedPositions: girl.unlockedPositions,
+        xp: girl.xp
+      });
     }
 
     const studio = {
@@ -124,8 +153,17 @@ export class SaveService {
       modifiers: this._studioService.modifiers.getValue(),
     };
 
+    const items: {name: string, quantity: number}[] = [];
+    for (const item of this._inventoryService.items.getValue()) {
+      const inSave = items.find(savedItem => savedItem.name === item.name);
+      if (inSave) {
+        inSave.quantity++;
+      } else {
+        items.push({name: item.name, quantity: 1});
+      }
+    }
     const inventory = {
-      items: this._inventoryService.items.getValue(),
+      items: items,
     };
 
     const records = this._recordService.records.getValue();
@@ -152,7 +190,7 @@ export class SaveService {
     savedGames[this.saveIndex] = toSave;
 
     const saved = btoa(JSON.stringify(savedGames));
-    // localStorage.setItem('saveGame', saved);
+    localStorage.setItem('saveGame', saved);
 
     this.saves = savedGames;
     this.saved.next(new Date());
@@ -207,7 +245,9 @@ export class SaveService {
     if (savedGame.inventory.items) {
       const items: Item[] = [];
       for (const savedItem of savedGame.inventory.items) {
-        items.push(new Item(savedItem));
+        for (let index = 0; index < savedItem.quantity; index++) {
+          items.push(new Item(savedItem));
+        }
       }
       this._inventoryService.items.next(items);
     }
@@ -271,10 +311,12 @@ export class SaveService {
 
   private _fixOldSaves(saves: any[]): any {
     for (const save of saves) {
-      console.log('saved', save);
+      if (save.playerPhotos === undefined) {
+        continue;
+      }
 
       let fixedGirls: SavedGirl[] = [];
-      if (save.girls && save.playerPhotos && save.skills) {
+      if (save.girls && save.playerPhotos) {
         for (const girl of save.girls) {
           let photos: string[] = [];
           if (save.playerPhotos && Array.isArray(save.playerPhotos)) {
@@ -302,6 +344,7 @@ export class SaveService {
             fans: girl.fans,
             freedom: girl.freedom,
             id: girl.id,
+            fullId: girl.id + '-' + 'legacy',
             recordCount: girl.recordCount,
             shootingCount: girl.shootingCount,
             unlockedPositions: girl.unlockedPositions,
@@ -313,6 +356,39 @@ export class SaveService {
         }
       }
       save.girls = fixedGirls;
+
+      if (save.records && Array.isArray(save.records)) {
+        for (const record of save.records) {
+          record.girlId = record.girl.id + '-legacy';
+          delete record['girl'];
+        }
+      }
+
+      if (save.otherStudios && Array.isArray(save.otherStudios)) {
+        for (const studio of save.otherStudios) {
+          for (const record of studio.records) {
+            if (record.girl) {
+              record.girlId = record.girl.id + '-legacy';
+              delete record['girl'];
+            }
+          }
+        }
+      }
+
+      if (save.inventory && save.inventory.items && Array.isArray(save.inventory.items)) {
+        const saveItems: {name: string, quantity: number}[] = [];
+
+        for (const item of save.inventory.items) {
+          const inSave = saveItems.find(savedItem => savedItem.name === item.name);
+          if (inSave) {
+            inSave.quantity++;
+          } else {
+            saveItems.push({name: item.name, quantity: 1});
+          }
+        }
+
+        save.inventory.items = saveItems;
+      }
     }
 
     return saves;

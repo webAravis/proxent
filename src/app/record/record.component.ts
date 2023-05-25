@@ -136,7 +136,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     if (this.isBattle) {
       this._girlService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((gameGirls: Girl[]) => {
-        this.playerGirls = gameGirls.filter(girl => !girl.locked && girl.id !== "1"); // Yiny doesn't compete!
+        this.playerGirls = gameGirls.filter(girl => !girl.locked && girl.fullId !== "1"); // Yiny doesn't compete!
         this._selectGirl(this.playerGirls[this.girlIndex]);
       });
     } else {
@@ -248,7 +248,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     this._gameService.updateGolds(this.price * -1); // remove the record price
 
     this.record = this._recordService.addRecord(
-      simulated.girl,
+      this.girl,
       simulated.score,
       simulated.studioscore,
       simulated.money,
@@ -313,7 +313,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.timeoutscene.push(
 				setTimeout(() => {
 					this.endScene();
-				}, position.timeout - 500)
+				}, (this.vid.duration*1000 - 500))
 			);
 		});
 
@@ -597,7 +597,7 @@ export class RecordComponent implements OnInit, OnDestroy {
             coordX: Math.random() * (75 - 25) + 25 + 'vw',
             coordY: Math.random() * (75 - 25) + 25 + 'vh',
           });
-        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (position.timeout - 1000))));
+        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (this.vid.duration*1000 - 1000))));
       }
 
     } else {

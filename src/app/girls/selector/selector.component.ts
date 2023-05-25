@@ -78,7 +78,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     }
 
-		if (this.clickAgain === girl.id) {
+		if (this.clickAgain === girl.fullId) {
 			this._unlockGirl(girl);
 		}
 
@@ -87,7 +87,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 			this.selected.emit(girl);
 
 			setTimeout(() => {
-				const element = document.querySelector('#girl-' + girl.id);
+				const element = document.querySelector('#girl-' + girl.fullId);
 				if (element !== null) {
 					element.scrollIntoView({
 						behavior: 'smooth',
@@ -97,7 +97,7 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
 				}
 			}, 201);
 		} else if (this.canAfford(girl)) {
-			this.clickAgain = girl.id;
+			this.clickAgain = girl.fullId;
 		}
 	}
 

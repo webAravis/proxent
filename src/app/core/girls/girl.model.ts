@@ -4,6 +4,9 @@ import { TreeSkills } from "src/app/skills/treeskills.model";
 
 export class Girl {
 	id = '0';
+  fullId = '';
+	mod = '';
+  girlFolder = '';
 	name = '';
 
 	xp = 0;
@@ -36,6 +39,9 @@ export class Girl {
 	constructor(values: object = {}) {
 		Object.assign(this, values);
 
+    this.fullId = this.id + '-' + this.mod;
+    this.girlFolder = this.mod + '/' + this.id;
+
     const positions: Position[] = [];
     for (const position of this.positions) {
       positions.push(new Position(position));
@@ -54,11 +60,6 @@ export class Girl {
     }
     this.skills = skills;
 	}
-
-  get girlFolder(): string {
-    const splitted = this.id.split('-');
-    return (splitted[1] ?? 'legacy') + '/' + splitted[0]
-  }
 
   getNextLevelXp(level: number): number {
     return (level/0.07) ** 2;

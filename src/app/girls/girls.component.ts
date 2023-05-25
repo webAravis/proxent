@@ -55,7 +55,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 			.subscribe((value: unknown[]) => {
 				if (value.length === 2) {
 					let gameGirls: Girl[] = <Girl[]>value[0];
-					gameGirls = gameGirls.sort((a: Girl, b: Girl) => a.id.localeCompare(b.id));
+					gameGirls = gameGirls.sort((a: Girl, b: Girl) => a.fullId.localeCompare(b.fullId));
 
 					// setting girl's portraits
 					const girlPortraits = [];
@@ -99,7 +99,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
 	}
 
   girlFreeable(): boolean {
-    return this.girl.id !== "1" && this.girl.unlockPrice.length > 0;
+    return this.girl.fullId !== "1" && this.girl.unlockPrice.length > 0;
   }
 
   cancelContract(): void {
