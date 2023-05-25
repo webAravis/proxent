@@ -4,7 +4,6 @@ modsConfig.push({
     {
        "id":"1",
        "name":"Yiny",
-       "freedom":1,
        "attributes":[
           "latina",
           "brunette",
@@ -18,7 +17,7 @@ modsConfig.push({
              "quantity":15000
           },
           {
-             "type":"recordmonthlybadge",
+             "type":"recordmonthly_badge",
              "quantity":2
           }
        ],
@@ -374,7 +373,7 @@ modsConfig.push({
                 "place":"gym",
                 "outfit":"sports",
                 "body":[
-                   "underboobs",
+                   "boobs",
                    "legs"
                 ],
                 "format":"portrait"
@@ -472,7 +471,7 @@ modsConfig.push({
                    "legs",
                    "feet"
                 ],
-                "format":"4:3"
+                "format":"portrait"
              }
           },
           {
@@ -609,10 +608,11 @@ modsConfig.push({
              "attributes":{
                 "type":"slutty",
                 "place":"bathroom",
-                "outfit":"lingerie",
+                "outfit":"naked",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -675,7 +675,7 @@ modsConfig.push({
                    "legs",
                    "feet"
                 ],
-                "format":"4:3"
+                "format":"portrait"
              }
           },
           {
@@ -734,8 +734,6 @@ modsConfig.push({
                       {
                          "name":"Fetishist",
                          "description":"Unlocks Yiny\"s special scenes",
-                         "sprite_postop":-95,
-                         "sprite_posleft":-5,
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -754,8 +752,6 @@ modsConfig.push({
                       {
                          "name":"Anal",
                          "description":"Unlocks or upgrades anal scenes",
-                         "sprite_postop":-5,
-                         "sprite_posleft":-102,
                          "maxlevel":5,
                          "unlockPrice":[
                             [
@@ -823,8 +819,6 @@ modsConfig.push({
                       {
                          "name":"Footjob",
                          "description":"Unlocks or upgrades footjob scenes",
-                         "sprite_postop":-378,
-                         "sprite_posleft":-47,
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -869,8 +863,6 @@ modsConfig.push({
                       {
                          "name":"Anal Enlargement",
                          "description":"Yiny has now more experience with anal, improving thoses scenes rewards",
-                         "sprite_postop":-239,
-                         "sprite_posleft":-374,
                          "maxlevel":3,
                          "unlockPrice":[
                             [
@@ -931,8 +923,6 @@ modsConfig.push({
                       {
                          "name":"Anal Lubricant",
                          "description":"Usage of lubricant increases pleasure",
-                         "sprite_postop":-422,
-                         "sprite_posleft":-186,
                          "maxlevel":2,
                          "unlockPrice":[
                             [
@@ -972,8 +962,6 @@ modsConfig.push({
                       {
                          "name":"Anal Stretching",
                          "description":"Yiny is capable of stretching her anus",
-                         "sprite_postop":-422,
-                         "sprite_posleft":-374,
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -1000,8 +988,6 @@ modsConfig.push({
                       {
                          "name":"Natural excitation",
                          "description":"More excitation means better lubrication",
-                         "sprite_postop":-332,
-                         "sprite_posleft":-186,
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -1069,7 +1055,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -1079,7 +1065,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -1117,7 +1103,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -1127,7 +1113,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -1165,7 +1151,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -1175,7 +1161,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -1576,7 +1562,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -1586,7 +1572,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -1624,7 +1610,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -1634,7 +1620,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -2063,7 +2049,6 @@ modsConfig.push({
     {
        "id":"2",
        "name":"Peta",
-       "freedom":1,
        "attributes":[
           "brunette",
           "tattoo",
@@ -2072,14 +2057,14 @@ modsConfig.push({
           "american"
        ],
        "goldsModifier":1.5,
-       "xpModifier": 0.8,
+       "xpModifier":0.8,
        "unlockPrice":[
           {
              "type":"gold",
              "quantity":15000
           },
           {
-             "type":"recordmonthlybadge",
+             "type":"recordmonthly_badge",
              "quantity":2
           }
        ],
@@ -2510,7 +2495,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "butt"
+                   "butt",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -2692,15 +2678,14 @@ modsConfig.push({
              "corruptionLevel":4,
              "attributes":{
                 "type":"slutty",
-                "place":"bedroom",
+                "place":"living",
                 "outfit":"lingerie",
                 "body":[
                    "face",
                    "boobs",
                    "tits",
                    "legs",
-                   "butt",
-                   "feet"
+                   "butt"
                 ],
                 "format":"portrait"
              }
@@ -2714,7 +2699,10 @@ modsConfig.push({
                 "outfit":"naked",
                 "body":[
                    "face",
+                   "boobs",
+                   "tits",
                    "butt",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -2730,9 +2718,11 @@ modsConfig.push({
                 "outfit":"naked",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "tits",
+                   "legs"
                 ],
-                "format":"portrait"
+                "format":"4:3"
              }
           },
           {
@@ -2764,7 +2754,7 @@ modsConfig.push({
                    "legs",
                    "feet"
                 ],
-                "format":"portrait"
+                "format":"4:3"
              }
           },
           {
@@ -2811,7 +2801,7 @@ modsConfig.push({
                    "tits",
                    "legs"
                 ],
-                "format":"portrait"
+                "format":"4:3"
              }
           },
           {
@@ -2912,8 +2902,6 @@ modsConfig.push({
                       {
                          "name":"Fetishist",
                          "description":"Unlocks Peta\"s special scenes",
-                         "sprite_postop":-95,
-                         "sprite_posleft":-5,
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -2932,8 +2920,6 @@ modsConfig.push({
                       {
                          "name":"Piledriving",
                          "description":"Flexibility and agility",
-                         "sprite_postop":-422,
-                         "sprite_posleft":-283,
                          "maxlevel":2,
                          "unlockPrice":[
                             [
@@ -2980,8 +2966,6 @@ modsConfig.push({
                       {
                          "name":"Sidefuck",
                          "description":"No more place for relaxation",
-                         "sprite_postop":-238,
-                         "sprite_posleft":-926,
                          "maxlevel":5,
                          "unlockPrice":[
                             [
@@ -3049,8 +3033,6 @@ modsConfig.push({
                       {
                          "name":"Cosplay",
                          "description":"She likes to disguise",
-                         "sprite_postop":-286,
-                         "sprite_posleft":-3,
                          "maxlevel":5,
                          "unlockPrice":[
                             [
@@ -3159,7 +3141,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -3169,7 +3151,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -3207,7 +3189,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -3217,7 +3199,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -3255,7 +3237,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -3265,7 +3247,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -3666,7 +3648,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -3676,7 +3658,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -3714,7 +3696,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -3724,7 +3706,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -4153,7 +4135,6 @@ modsConfig.push({
     {
        "id":"3",
        "name":"Ava",
-       "freedom":1,
        "attributes":[
           "milf",
           "brunette",
@@ -4167,7 +4148,7 @@ modsConfig.push({
              "quantity":15000
           },
           {
-             "type":"recordmonthlybadge",
+             "type":"recordmonthly_badge",
              "quantity":2
           }
        ],
@@ -4547,8 +4528,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "butt",
                    "legs",
-                   "butt"
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -4588,7 +4570,7 @@ modsConfig.push({
              "corruptionLevel":2,
              "attributes":{
                 "type":"sexy",
-                "place":"living",
+                "place":"outdoor",
                 "outfit":"casual",
                 "body":[
                    "face",
@@ -4765,7 +4747,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"portrait"
              }
@@ -4797,7 +4780,7 @@ modsConfig.push({
                    "boobs",
                    "legs"
                 ],
-                "format":"4:3"
+                "format":"portrait"
              }
           },
           {
@@ -4941,6 +4924,20 @@ modsConfig.push({
                    "legs",
                    "feet"
                 ],
+                "format":"4:3"
+             }
+          },
+          {
+             "name":"11_slutty",
+             "corruptionLevel":4,
+             "attributes":{
+                "type":"slutty",
+                "place":"school",
+                "outfit":"naked",
+                "body":[
+                   "face",
+                   "boobs"
+                ],
                 "format":"portrait"
              }
           },
@@ -4952,22 +4949,8 @@ modsConfig.push({
                 "place":"living",
                 "outfit":"lingerie",
                 "body":[
-                   "butt"
-                ],
-                "format":"portrait"
-             }
-          },
-          {
-             "name":"11_slutty",
-             "corruptionLevel":4,
-             "attributes":{
-                "type":"slutty",
-                "place":"living",
-                "outfit":"lingerie",
-                "body":[
-                   "face",
-                   "boobs",
-                   "tits"
+                   "butt",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -5014,7 +4997,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5024,7 +5007,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5069,7 +5052,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5079,7 +5062,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5131,7 +5114,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5141,7 +5124,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5198,7 +5181,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":2
                                }
                             ]
@@ -5260,7 +5243,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5270,7 +5253,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5308,7 +5291,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5318,7 +5301,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5356,7 +5339,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5366,7 +5349,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5767,7 +5750,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5777,7 +5760,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -5815,7 +5798,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -5825,7 +5808,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -6254,7 +6237,6 @@ modsConfig.push({
     {
        "id":"4",
        "name":"Madison",
-       "freedom":1,
        "attributes":[
           "blond",
           "fit",
@@ -7026,7 +7008,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -7036,7 +7018,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -7074,7 +7056,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -7084,7 +7066,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -7122,7 +7104,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -7132,7 +7114,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -7533,7 +7515,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -7543,7 +7525,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -7581,7 +7563,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -7591,7 +7573,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -8020,7 +8002,6 @@ modsConfig.push({
     {
        "id":"5",
        "name":"Karma",
-       "freedom":1,
        "attributes":[
           "blond",
           "green eyes",
@@ -8814,7 +8795,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -8824,7 +8805,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -8862,7 +8843,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -8872,7 +8853,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -8910,7 +8891,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -8920,7 +8901,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -9321,7 +9302,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -9331,7 +9312,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -9369,7 +9350,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -9379,7 +9360,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -9808,7 +9789,6 @@ modsConfig.push({
     {
        "id":"6",
        "name":"Nikki",
-       "freedom":1,
        "attributes":[
           "blond",
           "dark eyes",
@@ -10550,7 +10530,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -10560,7 +10540,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -10598,7 +10578,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -10608,7 +10588,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -10646,7 +10626,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -10656,7 +10636,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -11057,7 +11037,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -11067,7 +11047,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -11105,7 +11085,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -11115,7 +11095,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -11544,7 +11524,6 @@ modsConfig.push({
     {
        "id":"7",
        "name":"Abella",
-       "freedom":1,
        "attributes":[
           "teen",
           "brunette",
@@ -12316,7 +12295,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -12326,7 +12305,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -12364,7 +12343,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -12374,7 +12353,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -12412,7 +12391,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -12422,7 +12401,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -12823,7 +12802,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -12833,7 +12812,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]
@@ -12871,7 +12850,7 @@ modsConfig.push({
                                   "quantity":30000
                                },
                                {
-                                  "type":"basicskillgem",
+                                  "type":"basic_skill_gem",
                                   "quantity":1
                                }
                             ],
@@ -12881,7 +12860,7 @@ modsConfig.push({
                                   "quantity":45000
                                },
                                {
-                                  "type":"advancedskillgem",
+                                  "type":"advanced_skill_gem",
                                   "quantity":1
                                }
                             ]

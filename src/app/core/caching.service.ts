@@ -174,7 +174,7 @@ export class CachingService {
   }
 
   async cachePhotos(girl: Girl): Promise<void> {
-    if (!this.isOnline) {
+    if (!this.isOnline || this.mediasExist) {
       return;
     }
 

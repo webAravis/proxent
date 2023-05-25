@@ -118,8 +118,11 @@
           position: relative;
 
           img {
-            width: 1250px;
+            width: calc(100% + 2px);
             position: absolute;
+            top: -1px;
+            left: -1px;
+            height: calc(100% + 2px);
           }
         }
 

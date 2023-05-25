@@ -50,14 +50,21 @@
 
     .save {
       width: 400px;
-      gap: 15px;
+      gap: 5px;
       justify-content: space-between;
       font-weight: bold;
       border: 1px solid #ec0100;
       padding: 7.5px 15px;
+      flex-wrap: wrap;
 
       @media screen and (max-width: 1279px) {
         width: 100%;
+      }
+
+      .modList {
+        width: 100%;
+        font-weight: normal;
+        font-size: 11px;
       }
 
       .stats {

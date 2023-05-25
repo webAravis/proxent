@@ -3,10 +3,13 @@
 <div class="wrapper">
 	<img src="./assets/logo.png" alt="" srcset="" />
 
-	<button (click)="continue()" class="btn">
-		Load Game
+	<button (click)="continue()" [disabled]="saves.length === 0" class="btn">
+		Continue
 	</button>
 	<a (click)="newGame()" class="btn">New Game</a>
+	<button (click)="load()" class="btn">
+		Load Game
+	</button>
 </div>
 
 <app-save-chooser></app-save-chooser>

@@ -105,6 +105,21 @@ export class GirlsService {
       if (mod.girls) {
         for (const girl of mod.girls) {
           girl.mod = mod.modName;
+
+          if (girl.skills) {
+            for (const tree of girl.skills) {
+              if (tree.skillTiers) {
+                for (const skillTier of tree.skillTiers) {
+                  if (skillTier.skills) {
+                    for (const skill of skillTier.skills) {
+                      skill.mod = mod.modName + '/' + girl.id;
+                      skill.picture = skill.name.toLowerCase().replaceAll(' ', '-');
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         this.girlsConfig = [...this.girlsConfig, ...mod.girls];
       }

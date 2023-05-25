@@ -20,6 +20,7 @@
         <div class="date">{{ save.lastSaved ? (save.lastSaved|date:'short') : 'unknown date' }}</div>
         <div class="version">{{ save.version ? save.version : 'unknown version' }}</div>
       </div>
+      <div class="modList">Mods: {{ save.modList ?? '-' }}</div>
     </div>
   </div>
 

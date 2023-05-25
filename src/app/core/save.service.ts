@@ -18,6 +18,7 @@ import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
 
 import packageJson from '../../../package.json';
+declare var modsConfig: any;
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,9 @@ export class SaveService {
     const savesObject = JSON.parse(allSaves);
     this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
     this.saves = this._fixOldSaves(this.saves);
+
+    // order save by most recent
+    this.saves.sort((a, b) => new Date(b.lastSaved).getTime() - new Date(a.lastSaved).getTime());
     this.saveIndex = this.saves.length;
   }
 
@@ -102,6 +106,8 @@ export class SaveService {
   }
 
   saveGame(): void {
+    const modsList = (modsConfig && Array.isArray(modsConfig) ? modsConfig.map(mod => mod.modName ?? '').join(', ') : '');
+
     if (this._gameService.day <= 1) {
       return;
     }
@@ -189,11 +195,15 @@ export class SaveService {
       leaders: leaders,
       settings: settings,
       lastSaved: new Date(),
+      modList: modsList,
       version: this.version
     };
 
     let savedGames = this.saves;
 
+    if (savedGames[this.saveIndex].modList !== modsList) {
+      this.saveIndex = this.saves.length;
+    }
     savedGames[this.saveIndex] = toSave;
 
     const saved = btoa(JSON.stringify(savedGames));
@@ -317,10 +327,8 @@ export class SaveService {
   }
 
   private _fixOldSaves(saves: any[]): any {
-    console.log('saves', saves);
     for (const save of saves) {
       if (save.version.includes('0.11')) {
-        console.log('skipping');
         continue;
       }
 
@@ -400,6 +408,8 @@ export class SaveService {
 
         save.inventory.items = saveItems;
       }
+
+      save.modList = 'legacy';
     }
 
     return saves;

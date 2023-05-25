@@ -37,8 +37,8 @@ export class Skill {
   name: string = '';
   description: string = '';
 
-  sprite_postop = 0;
-  sprite_posleft = 0;
+  mod: string = '';
+  picture: string = '';
 
   level: number = 0;
   maxlevel: number = 0;
