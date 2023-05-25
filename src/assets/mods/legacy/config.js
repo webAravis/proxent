@@ -2072,6 +2072,7 @@ modsConfig.push({
           "american"
        ],
        "goldsModifier":1.5,
+       "xpModifier": 0.8,
        "unlockPrice":[
           {
              "type":"gold",

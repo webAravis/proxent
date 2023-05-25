@@ -12,6 +12,15 @@
 				[class.unlockable]="canAfford(girl)"
 				(click)="selectGirl(girl)"
 			>
+        <div class="multipliers">
+          <div class="multiplier" *ngFor="let multiplier of getMultipliers(girl)">
+            <div>{{multiplier.percent}}%</div>
+            <ng-container *ngIf="multiplier.stat !== 'pts'">
+              <img [src]="'./assets/' + multiplier.stat + '.png'" alt="" srcset="">
+            </ng-container>
+            <ng-container *ngIf="multiplier.stat === 'pts'">{{multiplier.stat}}</ng-container>
+          </div>
+        </div>
 				<div class="clickagain" *ngIf="clickAgain === girl.fullId">
 					Click again to unlock {{ girl.name }}
 				</div>
