@@ -90,8 +90,12 @@ export class SaveService {
   delete(saveIndex: number): void {
     this.saves.splice(saveIndex, 1);
 
-    const saved = btoa(JSON.stringify(this.saves));
-    localStorage.setItem('saveGame', saved);
+    if (this.saves.length === 0) {
+      localStorage.removeItem('saveGame');
+    } else {
+      const saved = btoa(JSON.stringify(this.saves));
+      localStorage.setItem('saveGame', saved);
+    }
   }
 
   saveGame(): void {
@@ -109,7 +113,7 @@ export class SaveService {
     };
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
-    const gameGirls = this._girlsService.gameGirls.getValue();
+    const gameGirls = this._girlsService.gameGirls.getValue().filter(girl => !girl.locked);
     // prevent save if girlfriend's fans is 0 as it's not correctly saved
     if (gameGirls[0] !== undefined && gameGirls[0].fans === 0) {
       return;
@@ -359,8 +363,10 @@ export class SaveService {
 
       if (save.records && Array.isArray(save.records)) {
         for (const record of save.records) {
-          record.girlId = record.girl.id + '-legacy';
-          delete record['girl'];
+          if (record.girl) {
+            record.girlId = record.girl.id + '-legacy';
+            delete record['girl'];
+          }
         }
       }
 
