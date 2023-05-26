@@ -18,6 +18,8 @@ import { SettingsService } from '../core/settings.service';
 	styleUrls: ['./corrupt.component.scss'],
 })
 export class CorruptComponent implements OnInit, OnDestroy {
+	vid: HTMLVideoElement = document.createElement('video');
+
 	girl: Girl = new Girl();
 	golds = 0;
 	items: Item[] = [];
@@ -107,6 +109,8 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+    this._initVideoObject();
+
 		this._girlsService.currentGirl
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((girl: Girl) => {
@@ -267,5 +271,18 @@ export class CorruptComponent implements OnInit, OnDestroy {
 
   private _prohibitedType(position: Position): boolean {
     return position.type === PositionType.INTRO || position.type === PositionType.SKILL || position.type === PositionType.FOREPLAY_SKILL || position.type === PositionType.SPECIAL
+  }
+
+  private _initVideoObject(): void {
+		this.vid = <HTMLVideoElement>document.querySelector('#video-record');
+		if (this.vid === null) {
+			setTimeout(() => {
+				// prevent to much attempts
+				this._initVideoObject();
+			}, 10);
+			return;
+		}
+
+    this.vid.volume = this._settingsService.getSetting('game_sound');
   }
 }
