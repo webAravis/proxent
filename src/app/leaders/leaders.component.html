@@ -12,8 +12,17 @@
           <i>{{ leader.description }}</i><br/>
           <div class="center with-icon">
             <div>Rewards:</div>
-            {{ getRewards(leader.name).text }}
-            <img class="reward-item" *ngIf="getRewards(leader.name).item !== ''" src="./assets/items/{{getRewards(leader.name).item}}.png" alt="">
+            <div class="reward" *ngFor="let reward of leader.rewards">
+              <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>
+              <div class="value">
+                <ng-container *ngIf="reward.type === 'extension'">
+                  <div>Girl capacity</div>
+                </ng-container>
+                <ng-container *ngIf="reward.type !== 'extension'">
+                  <img class="reward-item" src="./assets/items/{{reward.type}}.png" alt="">
+                </ng-container>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,11 +72,13 @@
           Battle!
           <div class="tooltip">
             <div class="tooltip-wrapper">
-              <div class="red with-icon" *ngIf="leader.nextLvlCost.type === 'gold'">
-                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img src="./assets/golds.png" />
-              </div>
-              <div class="red with-icon" *ngIf="leader.nextLvlCost.type !== 'gold'">
-                -{{ leader.nextLvlCost.value(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.nextLvlCost.type + '.png'" />
+              <div class="cost">
+                <div class="red with-icon" *ngIf="leader.costItem === 'gold'">
+                  -{{ leader.costCurve(leader.lvl) | number : '1.0-0' }}<img src="./assets/golds.png" />
+                </div>
+                <div class="red with-icon" *ngIf="leader.costItem !== 'gold'">
+                  -{{ leader.costCurve(leader.lvl) | number : '1.0-0' }}<img [src]="'./assets/items/' + leader.costItem + '.png'" />
+                </div>
               </div>
 
               <div class="score">

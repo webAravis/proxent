@@ -17,25 +17,28 @@ export class Position {
 
 	constructor(values: object = {}) {
 		Object.assign(this, values);
+    if (this.unlocker !== undefined) {
+      this.unlocker = new Position(this.unlocker);
+    }
 	}
 
-  getFans(trending: number = 0): number {
+  getFans = (trending: number = 0): number => {
     return Math.round( ((this.corruption + 1) * 50 + this.getMultiplierType(this.type) * 200) * trending );
   }
 
-  getGold(trending: number = 0): number {
+  getGold = (trending: number = 0): number => {
     return Math.round( ((this.corruption + 1) * 10 + this.getMultiplierType(this.type) * 150) * trending );
   }
 
-  getXp(trending: number = 0): number {
+  getXp = (trending: number = 0): number => {
     return Math.round( ((this.corruption + 1) * 5 + this.getMultiplierType(this.type) * 100) * trending );
   }
 
-  getOrgasm(currentBoner: number = 0, trending: number = 1): number {
+  getOrgasm = (currentBoner: number = 0, trending: number = 1): number => {
     return Math.round( (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (40 + this.corruption * 10) * (currentBoner / 100)) * (trending / 2) );
   }
 
-  getMultiplierType(type: string): number {
+  getMultiplierType = (type: string): number => {
     let multiplier = 0;
 
     switch (type.toLowerCase()) {

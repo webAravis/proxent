@@ -20,4 +20,8 @@ export class ModifierLevelCost {
 	value(level: number): number {
 		return 0;
 	}
+
+	constructor(values: object = {}) {
+		Object.assign(this, values);
+	}
 }

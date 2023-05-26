@@ -55,8 +55,16 @@
           font-size: 14px;
         }
 
-        .reward-item {
-          width: 30px;
+        .reward {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2px;
+
+          .reward-item {
+            height: 25px;
+            margin-left: -2px;
+          }
         }
 			}
 
@@ -108,6 +116,10 @@
             height: 20px;
           }
         }
+      }
+
+      .cost {
+        justify-content: center !important;
       }
 		}
 	}

@@ -1,5 +1,5 @@
 modsConfig.push({
-  modName: 'legacy',
+  name: 'legacy',
   girls: [
     {
        "id":"1",
@@ -13286,5 +13286,298 @@ modsConfig.push({
           }
        ]
     }
+ ],
+ leaders: [
+  {
+    "name":"expandor",
+    "description":"Logistic specialist. Beat him to increase girl capacity",
+    "bonus":[
+      "small",
+      "brunette"
+    ],
+    "malus":[
+      "milf",
+      "euro"
+    ],
+    "costItem": "gold",
+    "costCurve": (level) => { return (level / 0.07) ** 2 },
+    "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+    "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+    "rewards": [
+      {
+         "type":"gold",
+         "quantity":15000
+      },
+      {
+         "type":"extension",
+         "quantity":1
+      }
+    ],
+    "activityProb": (level) => { return 0.13 + (level * 0.01) },
+    "activities": [
+      {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+      {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+      {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+      {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+      {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+      {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+      {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+      {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+      {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+      {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+      {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+      {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+      {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+      {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+      {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+    ]
+  },
+  {
+      "name":"skillus",
+      "description":"Skill specialist. Beat him to grab basic skill material",
+      "bonus":[
+        "milf",
+        "dark eyes"
+      ],
+      "malus":[
+        "american",
+        "blond"
+      ],
+      "costItem": "gold",
+      "costCurve": (level) => { return (level / 0.07) ** 2 },
+      "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+      "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+      "rewards": [
+        {
+           "type":"recordmonthly_badge",
+           "quantity":2
+        },
+        {
+           "type":"basic_skill_gem",
+           "quantity":1
+        }
+      ],
+      "activityProb": (level) => { return 0.13 + (level * 0.01) },
+      "activities": [
+        {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+        {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+        {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+        {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+        {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+        {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+        {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+        {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+        {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+        {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+        {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+        {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+        {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+        {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+        {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+      ]
+  },
+  {
+      "name":"aniter",
+      "description":"Anal fetishist. Beat him to grab advanced skill material",
+      "fetish":[
+        "tease",
+        "handjob",
+        "boobjob",
+        "blowjob",
+        "anal"
+      ],
+      "costItem": "recordmonthly_badge",
+      "costCurve": (level) => { return (level / 0.9) ** 2 },
+      "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+      "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+      "rewards": [
+        {
+           "type":"recordmonthly_badge",
+           "quantity":2
+        },
+        {
+           "type":"advanced_skill_gem",
+           "quantity":1
+        }
+      ],
+      "activityProb": (level) => { return 0.13 + (level * 0.01) },
+      "activities": [
+        {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+        {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+        {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+        {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+        {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+        {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+        {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+        {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+        {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+        {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+        {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+        {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+        {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+        {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+        {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+      ]
+  },
+  {
+      "name":"multiplor",
+      "description":"Multiple fetishist. Beat him to grab advanced skill material",
+      "fetish":[
+        "tease",
+        "handjob",
+        "boobjob",
+        "blowjob",
+        "gangbang",
+        "double",
+        "triple"
+      ],
+      "costItem": "recordmonthly_badge",
+      "costCurve": (level) => { return (level / 0.9) ** 2 },
+      "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+      "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+      "rewards": [
+        {
+           "type":"recordmonthly_badge",
+           "quantity":2
+        },
+        {
+           "type":"advanced_skill_gem",
+           "quantity":1
+        }
+      ],
+      "activityProb": (level) => { return 0.13 + (level * 0.01) },
+      "activities": [
+        {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+        {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+        {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+        {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+        {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+        {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+        {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+        {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+        {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+        {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+        {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+        {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+        {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+        {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+        {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+      ]
+  },
+  {
+      "name":"blows",
+      "description":"Mouth fetishist. Beat him to grab advanced skill material",
+      "fetish":[
+        "blowjob",
+        "deepthroat",
+        "mouthfuck"
+      ],
+      "costItem": "recordmonthly_badge",
+      "costCurve": (level) => { return (level / 0.9) ** 2 },
+      "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+      "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+      "rewards": [
+        {
+           "type":"recordmonthly_badge",
+           "quantity":2
+        },
+        {
+           "type":"advanced_skill_gem",
+           "quantity":1
+        }
+      ],
+      "activityProb": (level) => { return 0.13 + (level * 0.01) },
+      "activities": [
+        {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+        {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+        {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+        {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+        {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+        {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+        {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+        {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+        {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+        {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+        {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+        {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+        {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+        {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+        {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+      ]
+  },
+  {
+      "name":"savager",
+      "description":"Rough fetishist. Beat him to grab advanced skill material",
+      "fetish":[
+        "tease",
+        "handjob",
+        "boobjob",
+        "blowjob",
+        "gangbang",
+        "bdsm"
+      ],
+      "costItem": "recordmonthly_badge",
+      "costCurve": (level) => { return (level / 0.9) ** 2 },
+      "pointsCurve": (level) => { return (level / 0.01) ** 2 },
+      "cumCurves": (level) => { return ((level / 0.08) ** 2) / 75 },
+      "rewards": [
+        {
+           "type":"recordmonthly_badge",
+           "quantity":2
+        },
+        {
+           "type":"advanced_skill_gem",
+           "quantity":1
+        }
+      ],
+      "activityProb": (level) => { return 0.13 + (level * 0.01) },
+      "activities": [
+        {"name": 'boner reduction', "effect": 'boner', "value": -10, "minLevel": 0, "maxLevel": 5},
+        {"name": 'boner reduction advanced', "effect": 'boner', "value": -50, "minLevel": 5, "maxLevel": 10},
+        {"name": 'boner reduction ultimate', "effect": 'boner', "value": -100, "minLevel": 10},
+
+        {"duration": 10000, "name": 'position inhibition', "effect": 'position', "value": 1, "minLevel": 3},
+        {"duration": 15000, "name": 'position inhibition advanced', "effect": 'position', "value": 2, "minLevel": 8},
+        {"duration": 20000, "name": 'position inhibition ultimate', "effect": 'position', "value": 4, "minLevel": 12},
+
+        {"duration": 10000, "name": 'boner failures', "effect": 'boner gains', "value": 10, "minLevel": 5},
+        {"duration": 20000, "name": 'boner failures advanced', "effect": 'boner gains', "value": 40, "minLevel": 17},
+
+        {"name": 'random picking', "effect": 'pick', "minLevel": 5},
+
+        {"duration": 10000, "name": 'golden prohibition', "effect": 'trending', "minLevel": 4},
+        {"duration": 15000, "name": 'golden prohibition advanced', "effect": 'trending', "minLevel": 6},
+        {"duration": 20000, "name": 'golden prohibition ultimate', "effect": 'trending', "minLevel": 8},
+
+        {"name": 'cum spoil', "effect": 'cum', "value": -1, "minLevel": 4},
+        {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
+        {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
+      ]
+  }
  ]
 });

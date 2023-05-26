@@ -9,7 +9,7 @@
 
 	<hr />
 
-  <div class="rewards">
+  <div class="results">
     <div class="title">Recording results</div>
     <div>
       <div [class.red]="!metaScoreDone" [class.green]="metaScoreDone">{{ resultScore | number: '1.0-0' }}/{{ metaScore | number: '1.0-0' }}pts</div>
@@ -17,9 +17,24 @@
     </div>
   </div>
 
-  <div class="center with-icon">
-    {{ rewardText }}
-    <img *ngIf="rewardItem !== ''" src="./assets/items/{{rewardItem}}.png" alt="">
+  <div class="battle-results center with-icon">
+    <ng-container *ngIf="metaCumDone && metaScoreDone">
+      <div class="title">Rewards</div>
+      <div class="rewards">
+        <div class="reward" *ngFor="let reward of leader.rewards">
+          <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>
+          <div class="value">
+            <ng-container *ngIf="reward.type === 'extension'">girl capacity</ng-container>
+            <ng-container *ngIf="reward.type !== 'extension'">
+              <img class="reward-item" src="./assets/items/{{reward.type}}.png" alt="">
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!metaCumDone || !metaScoreDone">
+      You didn't beat leader, train harder and come back!
+    </ng-container>
   </div>
 
 	<div class="center">

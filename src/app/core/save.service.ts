@@ -11,8 +11,7 @@ import { StudioModifier } from '../studio/studiomodifier.model';
 import { Item } from '../inventory/item.model';
 import { Record } from '../record/record.model';
 import { Studio } from './studio.model';
-import { LeadersService } from '../leaders/leaders.service';
-import { Leader } from '../leaders/leader.model';
+import { LeadersService, SavedLeader } from '../leaders/leaders.service';
 import { ShootingService } from '../shooting/shooting.service';
 import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
@@ -106,7 +105,7 @@ export class SaveService {
   }
 
   saveGame(): void {
-    const modsList = (modsConfig && Array.isArray(modsConfig) ? modsConfig.map(mod => mod.modName ?? '').join(', ') : '');
+    const modsList = (modsConfig && Array.isArray(modsConfig) ? modsConfig.map((mod: any) => mod.name ?? '').join(', ') : '');
 
     if (this._gameService.day <= 1) {
       return;
@@ -169,7 +168,7 @@ export class SaveService {
     const items: {name: string, quantity: number}[] = [];
     for (const item of this._inventoryService.items.getValue()) {
       const inSave = items.find(savedItem => savedItem.name === item.name);
-      if (inSave) {
+      if (inSave !== undefined) {
         inSave.quantity++;
       } else {
         items.push({name: item.name, quantity: 1});
@@ -182,6 +181,14 @@ export class SaveService {
     const records = this._recordService.records.getValue();
     const otherStudios = this._otherStudiosService.studios.getValue();
     const leaders = this._leadersService.leaders.getValue();
+    const savedLeaders: SavedLeader[] = [];
+    for (const leader of leaders) {
+      savedLeaders.push({
+        name: leader.name,
+        mod: leader.mod,
+        level: leader.lvl
+      });
+    }
     const settings = this._settingsService.settings.getValue();
 
     const toSave = {
@@ -192,7 +199,7 @@ export class SaveService {
       inventory: inventory,
       records: records,
       otherStudios: otherStudios,
-      leaders: leaders,
+      leaders: savedLeaders,
       settings: settings,
       lastSaved: new Date(),
       modList: modsList,
@@ -285,15 +292,8 @@ export class SaveService {
       this._otherStudiosService.studios.next(otherStudios);
     }
 
-    if (savedGame.leaders) {
-      const leaders: Leader[] = [];
-      for (const savedLeader of savedGame.leaders) {
-        leaders.push(new Leader(savedLeader));
-      }
-
-      this._leadersService.leaders.next(
-        this._leadersService.initLeadersMethods(leaders)
-      );
+    if (savedGame.leaders && Array.isArray(savedGame.leaders)) {
+      this._leadersService.loadLeaders(savedGame.leaders);
     }
 
     if (savedGame.playerPhotos) {
@@ -328,7 +328,7 @@ export class SaveService {
 
   private _fixOldSaves(saves: any[]): any {
     for (const save of saves) {
-      if (save.version.includes('0.11')) {
+      if (save.version === packageJson.version) {
         continue;
       }
 
@@ -407,6 +407,20 @@ export class SaveService {
         }
 
         save.inventory.items = saveItems;
+      }
+
+      if (save.leaders && Array.isArray(save.leaders)) {
+        const savedLeaders: SavedLeader[] = [];
+
+        for (const leader of save.leaders) {
+          savedLeaders.push({
+            name: leader.name,
+            mod: 'legacy',
+            level: leader.lvl
+          });
+        }
+
+        save.leaders = savedLeaders;
       }
 
       save.modList = 'legacy';

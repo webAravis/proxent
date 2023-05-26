@@ -24,9 +24,6 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
   metaScoreDone: boolean = false;
   metaCumDone: boolean = false;
 
-  rewardText: string = 'You didn\'t beat leader, train harder and come back!';
-  rewardItem: string = '';
-
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
   constructor(
@@ -64,25 +61,6 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     if (results.cum >= this.metaCum) {
       this.metaCumDone = true;
     }
-
-    if (this.metaCumDone && this.metaScoreDone) {
-      switch (this.leader.name.toLowerCase()) {
-        case 'expandor':
-          this.rewardText = 'Girl limit increased!';
-          break;
-        case 'skillus':
-          this.rewardText = '+1';
-          this.rewardItem = 'basic_skill_gem';
-          break;
-        case 'aniter':
-        case 'multiplor':
-        case 'blows':
-        case 'savager':
-          this.rewardText = '+1';
-          this.rewardItem = 'advanced_skill_gem';
-          break;
-      }
-    }
   }
 
   endBattle(): void {
@@ -97,19 +75,16 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
   private _giveRewards() : void {
     this._leaderService.nextLevel(this.leader);
 
-    switch (this.leader.name.toLowerCase()) {
-      case 'expandor':
+    for (const reward of this.leader.rewards) {
+      if (reward.type.toLowerCase() === 'gold') {
+        this._gameService.updateGolds(reward.quantity);
+      } else if (reward.type.toLowerCase() === 'extension') {
         this._gameService.girlLimit.next(this._gameService.girlLimit.getValue()+1);
-        break;
-      case 'skillus':
-        this._inventoryService.addItem(new Item({name: 'basic_skill_gem'}));
-        break;
-      case 'aniter':
-      case 'multiplor':
-      case 'blows':
-      case 'savager':
-        this._inventoryService.addItem(new Item({name: 'advanced_skill_gem'}));
-        break;
+      } else {
+        for (let index = 0; index < reward.quantity; index++) {
+          this._inventoryService.addItem(new Item({name: reward.type}));
+        }
+      }
     }
   }
 

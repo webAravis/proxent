@@ -4,7 +4,7 @@ import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { RewardService } from '../reward/reward.service';
 import { Router } from '@angular/router';
-import { Subject, take, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Item } from '../inventory/item.model';
 import { PlayedPosition, RecordService } from './record.service';
 import { Record } from './record.model';
@@ -14,14 +14,8 @@ import { StudioService } from '../studio/studio.service';
 import { Position, PositionType } from '../core/position.model';
 import { SkillsService } from '../skills/skills.service';
 import { TreeSkills } from '../skills/treeskills.model';
-import { Leader } from '../leaders/leader.model';
+import { Leader, LeaderActivity } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
-
-interface LeaderActivity {
-  name: string;
-  effect: string;
-  value: number;
-}
 
 @Component({
 	selector: 'app-record',
@@ -33,8 +27,13 @@ export class RecordComponent implements OnInit, OnDestroy {
   @Input() isBattle: boolean = false;
   @Input() leader: Leader = new Leader();
   @Output() recordResults: EventEmitter<{score: number, cum: number}> = new EventEmitter();
-  leaderActivity: LeaderActivity | undefined;
+  leaderActivities: {id: number, activity: LeaderActivity}[] = [];
   leaderDisabledPositions: string[] = [];
+  bonerMultiplier = 1;
+  pickScene = false;
+  trendingDisabled = false;
+
+  intervalPause: NodeJS.Timer | undefined;
 
   playerGirls: Girl[] = [];
   girlIndex: number = 0;
@@ -147,10 +146,12 @@ export class RecordComponent implements OnInit, OnDestroy {
       });
     }
 
-		this._gameService.pauseGame();
+    this.intervalPause = setInterval(() => this._gameService.pauseGame(), 500);
 	}
 
 	ngOnDestroy(): void {
+    clearInterval(this.intervalPause);
+
 		// Unsubscribe from all subscriptions
 		this._unsubscribeAll.next(true);
 		this._unsubscribeAll.complete();
@@ -351,7 +352,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 			repeatedMultiplier = repeatedMultiplier / 1.2;
 		}
 
-    return this._recordService.positionStats(this.girl, position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
+    const stats = this._recordService.positionStats(this.girl, position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
+    stats.boner = stats.boner * this.bonerMultiplier;
+
+    return stats;
   }
 
 	endScene(isCombo: boolean = false): void {
@@ -421,7 +425,15 @@ export class RecordComponent implements OnInit, OnDestroy {
         this.endRecord();
       } else {
         this.showPositions = true;
-        this.pickTrendingPosition();
+
+        if (!this.trendingDisabled) {
+          this.pickTrendingPosition();
+        }
+
+        if (this.pickScene) {
+          this.pickScene = false;
+          this.startScene(this.pickPosition(), false);
+        }
       }
     }
 
@@ -435,6 +447,19 @@ export class RecordComponent implements OnInit, OnDestroy {
 		);
 
 	}
+
+  pickPosition(): Position {
+    let availablePositions = this.girl.unlockedPositions.filter(
+			(position) => position !== this.trendingPosition && position !== 'intro' && isNaN(parseInt(position.charAt(position.length - 1)))
+		);
+    availablePositions = [...availablePositions, ...this.sceneSkills.filter(scene => isNaN(parseInt(scene.charAt(scene.length - 1))))];
+
+    // removing duplicates
+    availablePositions = [...new Set(availablePositions)];
+
+    const picked = availablePositions[Math.floor(Math.random() * availablePositions.length)];
+    return this.positions.find(position => position.name === picked) ?? new Position()
+  }
 
 	pickTrendingPosition(): void {
 		let availablePositions = this.girl.unlockedPositions.filter(
@@ -453,7 +478,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     positionsWithCount.sort((a, b) => a.count - b.count);
 
     const lowestCount = positionsWithCount[0].count;
-    const positionsToPick: string[] = positionsWithCount.filter(position => position.count === lowestCount).map(position => position.position);
+    const positionsToPick: string[] = positionsWithCount.filter(position => position.count === lowestCount && position.position !== '').map(position => position.position);
 
 		this.trendingPosition = positionsToPick[Math.floor(Math.random() * positionsToPick.length)];
 	}
@@ -660,32 +685,45 @@ export class RecordComponent implements OnInit, OnDestroy {
       if (this._leaderWillAct()) {
         this._pickLeaderActivity();
       }
-    }, 3000);
+    }, 2000);
   }
 
   private _leaderWillAct(): boolean {
-		return Math.random() < this.leader.activityProb;
+		return Math.random() < this.leader.activityProb(this.leader.lvl);
   }
 
   private _pickLeaderActivity(): void {
-    this.leaderDisabledPositions = [];
+    const activities = this.leader.activities.filter(activity =>
+      !this.leaderActivities.map(activeActivity => activeActivity.activity.effect).includes(activity.effect)
+      && (this.leader.lvl >= activity.minLevel && this.leader.lvl <= activity.maxLevel)
+    );
+    if (activities.length === 0) {
+      return;
+    }
 
-    const activities: LeaderActivity[] = [
-      {name: 'boner reduction', effect: 'boner', value: -10},
-      {name: 'boner reduction advanced', effect: 'boner', value: -50},
-      {name: 'boner reduction ultimate', effect: 'boner', value: -100},
-
-      {name: 'position inhibition', effect: 'position', value: 1},
-      {name: 'position inhibition advanced', effect: 'position', value: 2},
-      {name: 'position inhibition ultimate', effect: 'position', value: 4},
-
-      {name: 'cum spoil', effect: 'cum', value: -1},
-      {name: 'cum spoil advanced', effect: 'cum', value: -5},
-      {name: 'cum ultimate', effect: 'cum', value: -10},
-    ];
     const activity = activities[Math.floor(Math.random() * activities.length)];
-
     switch (activity.effect) {
+      case 'trending':
+        this.trendingDisabled = true;
+        this.trendingPosition = '';
+
+        if (activity.duration !== 0) {
+          setTimeout(() => {
+            this.trendingDisabled = false;
+          }, activity.duration);
+        }
+        break;
+      case 'pick':
+        this.pickScene = true;
+        break;
+      case 'boner gains':
+        this.bonerMultiplier = (100 - activity.value) / 100;
+        if (activity.duration !== 0) {
+          setTimeout(() => {
+            this.bonerMultiplier = 1;
+          }, activity.duration);
+        }
+        break;
       case 'boner':
         this.boner += activity.value;
         this.boner < 0 ? this.boner = 0 : undefined;
@@ -703,6 +741,12 @@ export class RecordComponent implements OnInit, OnDestroy {
             allPositions = allPositions.filter(positionName => positionName !== positionToDisable);
           }
         }
+
+        if (activity.duration !== 0) {
+          setTimeout(() => {
+            this.leaderDisabledPositions = [];
+          }, activity.duration);
+        }
         break;
       case 'cum':
         this.orgasmCount += activity.value;
@@ -713,7 +757,12 @@ export class RecordComponent implements OnInit, OnDestroy {
         break;
     }
 
-    this.leaderActivity = activity;
+    const activityId = new Date().getTime();
+    this.leaderActivities.push({id: activityId, activity: activity});
+    const durationActivity = activity.duration > 0 ? activity.duration : 2000;
+    setTimeout(() => {
+      this.leaderActivities = this.leaderActivities.filter(leaderActivity => leaderActivity.id !== activityId);
+    }, durationActivity);
   }
 
   private _fadeOut(): void {

@@ -7,8 +7,6 @@ import { InventoryService } from '../inventory/inventory.service';
 import { Router } from '@angular/router';
 import { GirlsService } from '../core/girls/girls.service';
 import { Girl } from '../core/girls/girl.model';
-import { SkillsService } from '../skills/skills.service';
-import { TreeSkills } from '../skills/treeskills.model';
 
 @Component({
   selector: 'app-leaders',
@@ -29,8 +27,7 @@ export class LeadersComponent implements OnInit, OnDestroy {
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
     private _router: Router,
-    private _girlService: GirlsService,
-    private _skillsService: SkillsService
+    private _girlService: GirlsService
   ) {}
 
   ngOnInit(): void {
@@ -59,11 +56,11 @@ export class LeadersComponent implements OnInit, OnDestroy {
 
   canBattle(leader: Leader): boolean {
 		return !!(
-			(leader.nextLvlCost.type === 'gold' &&
-      leader.nextLvlCost.value(leader.lvl) <= this.golds) ||
+			(leader.costItem === 'gold' &&
+      leader.costCurve(leader.lvl) <= this.golds) ||
 			this._inventoryService.hasItemByName(
-				leader.nextLvlCost.type,
-				leader.nextLvlCost.value(leader.lvl)
+				leader.costItem,
+				leader.costCurve(leader.lvl)
 			)
 		);
   }
@@ -71,14 +68,14 @@ export class LeadersComponent implements OnInit, OnDestroy {
   battle(leader: Leader): void {
     if (this.canBattle(leader)) {
 
-      if (leader.nextLvlCost.type === 'gold') {
+      if (leader.costItem === 'gold') {
         this._gameService.updateGolds(
-          leader.nextLvlCost.value(leader.lvl) * -1
+          leader.costCurve(leader.lvl) * -1
         );
       } else {
         this._inventoryService.removeItemByName(
-          leader.nextLvlCost.type,
-          leader.nextLvlCost.value(leader.lvl)
+          leader.costItem,
+          leader.costCurve(leader.lvl)
         );
       }
 
@@ -86,26 +83,6 @@ export class LeadersComponent implements OnInit, OnDestroy {
       this._router.navigate(['battle']);
 
     }
-  }
-
-  getRewards(name: string): {text: string, item: string} {
-    let rewards: {text: string, item: string} = {text: '', item: ''};
-    switch (name.toLowerCase()) {
-      case 'expandor':
-        rewards = {text: 'Girl limit increased!', item: ''};
-        break;
-      case 'skillus':
-        rewards = {text: '+1', item: 'basic_skill_gem'};
-        break;
-      case 'aniter':
-      case 'multiplor':
-      case 'blows':
-      case 'savager':
-        rewards = {text: '+1', item: 'advanced_skill_gem'};
-        break;
-    }
-
-    return rewards;
   }
 
   getGirlWithAttribute(attribute: string): string {
@@ -122,7 +99,6 @@ export class LeadersComponent implements OnInit, OnDestroy {
       )
       .map(girl => girl.name).join(', ');
 
-    // const matching = matchingPositions.filter(matchingGirl => !matchingSkills.includes(matchingGirl)).join(', ');
     return matching !== '' ? matching : 'No girl match';
   }
 

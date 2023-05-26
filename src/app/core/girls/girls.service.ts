@@ -104,7 +104,7 @@ export class GirlsService {
     for (const mod of modsConfig) {
       if (mod.girls) {
         for (const girl of mod.girls) {
-          girl.mod = mod.modName;
+          girl.mod = mod.name;
 
           if (girl.skills) {
             for (const tree of girl.skills) {
@@ -112,7 +112,7 @@ export class GirlsService {
                 for (const skillTier of tree.skillTiers) {
                   if (skillTier.skills) {
                     for (const skill of skillTier.skills) {
-                      skill.mod = mod.modName + '/' + girl.id;
+                      skill.mod = mod.name + '/' + girl.id;
                       skill.picture = skill.name.toLowerCase().replaceAll(' ', '-');
                     }
                   }
@@ -134,6 +134,7 @@ export class GirlsService {
     }
 
 		this.gameGirls.next(girlsArray);
+
     this.loading = false;
 	}
 }
