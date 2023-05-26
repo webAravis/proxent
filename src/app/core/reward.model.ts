@@ -10,7 +10,7 @@ export class Reward {
   msg: string;
 
 	levelup: boolean;
-	gainedSkillPoint: boolean;
+	gainedSkillPoint: number;
 	hardCapCorruption: boolean;
 
 	girl: Girl;
@@ -22,7 +22,7 @@ export class Reward {
 		items: Item[] = [],
 		corruption = 0,
 		levelup = false,
-		gainedSkillPoint = false,
+		gainedSkillPoint = 0,
 		hardCapCorruption = false,
 		girl: Girl = new Girl(),
     msg: string = ""

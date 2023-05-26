@@ -89,9 +89,9 @@ export class RewardService {
   private _levelupGirl(
     girl: Girl,
     xpWon: number
-  ): { girl: Girl, hasLevelup: boolean, gainedSkillPoint: boolean, hardCapCorruption: boolean } {
+  ): { girl: Girl, hasLevelup: boolean, gainedSkillPoint: number, hardCapCorruption: boolean } {
     let hasLevelup = false;
-    let gainedSkillPoint = false;
+    let gainedSkillPoint = 0;
     let hardCapCorruption = false;
 
     // hard caps from corruption level
@@ -106,7 +106,7 @@ export class RewardService {
       }
 
       if (girl.skillPoints !== oldSkillPoints) {
-        gainedSkillPoint = true;
+        gainedSkillPoint = (girl.skillPoints - oldSkillPoints);
       }
     } else {
       hardCapCorruption = true;
@@ -151,7 +151,7 @@ export class RewardService {
     itemsWon: Item[],
     corruptionWon: number,
     hasLevelup: boolean,
-    gainedSkillPoint: boolean,
+    gainedSkillPoint: number,
     hardCapCorruption: boolean,
     girl: Girl
   ): void {

@@ -51,9 +51,9 @@
 		</div>
 	</div>
 
-	<div class="levelup-wrapper" *ngIf="reward.gainedSkillPoint">
+	<div class="levelup-wrapper" *ngIf="reward.gainedSkillPoint !== 0">
 		<div class="header">
-			+1 skill point for {{ reward.girl.name }}!
+			+{{ reward.gainedSkillPoint }} skill point for {{ reward.girl.name }}!
 		</div>
 	</div>
 
