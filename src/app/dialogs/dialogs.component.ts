@@ -37,9 +37,6 @@ export class DialogsComponent implements OnInit, OnDestroy {
         this.girlfriend = this._girlService.gameGirls.getValue().find(girl => girl.fullId === this._gameService.girlfriend) ?? new Girl();
         this.girlFriendPortrait = './assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
 
-        console.log('girlfriend', this.girlfriend);
-        console.log('girlFriendPortrait', this.girlFriendPortrait);
-
 				this.shown = shown;
 				this.step = 0;
 

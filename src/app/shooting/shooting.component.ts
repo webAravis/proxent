@@ -10,6 +10,8 @@ import { SafeUrl } from '@angular/platform-browser';
 import { ShootingService } from './shooting.service';
 import { NgxMasonryOptions } from 'ngx-masonry';
 import { SettingsService } from '../core/settings.service';
+import { ContractsService } from '../contracts/contracts.service';
+import { Contract } from '../contracts/contract.model';
 
 export class PhotoShooting {
   name = '';
@@ -74,7 +76,8 @@ export class ShootingComponent implements OnInit, OnDestroy {
     private _gameService: GameService,
     private _cachingService: CachingService,
     private _shootingService: ShootingService,
-    private _settingsService: SettingsService
+    private _settingsService: SettingsService,
+    private _contractService: ContractsService
   ) { }
 
   ngOnInit(): void {
@@ -142,6 +145,32 @@ export class ShootingComponent implements OnInit, OnDestroy {
   endShooting(): void {
     this.girl.shootingCount++;
     this._rewardService.giveReward(this.fansWon, this.xpWon, this.goldsWon, [], 0, this.girl);
+
+    // check if we completed a contract
+    const contracts = this._contractService.contracts.getValue().filter((contract: Contract) => contract.picked && contract.activity === 'shooting');
+    for (const contract of contracts) {
+      for (const attribute of contract.girlAttributes) {
+        if (!this.girl.attributes.includes(attribute)) {
+          continue;
+        }
+      }
+
+      if (contract.requires) {
+        if (contract.requires.requirement === 'place' && !this.playedPhotos.map(photo => photo.attributes.place).includes(contract.requires.value)) {
+          continue;
+        }
+
+        if (contract.requires.requirement === 'outfit' && !this.playedPhotos.map(photo => photo.attributes.outfit).includes(contract.requires.value)) {
+          continue;
+        }
+
+        if (contract.requires.requirement === 'body' && !this.playedPhotos.map(photo => photo.attributes.body.toString()).includes(contract.requires.value)) {
+          continue;
+        }
+      }
+
+      this._contractService.completeContract(contract);
+    }
 
     this._gameService.resumeGame();
     this._router.navigate(['girls']);

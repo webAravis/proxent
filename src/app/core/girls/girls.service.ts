@@ -50,6 +50,49 @@ export class GirlsService {
 		girl.unlockedPositions.push(position);
 	}
 
+  getAllGirlsAttributes(attributeCount: number): string[][] {
+    let allGirlsAttributes = this.gameGirls.getValue().map(girl => girl.attributes).filter(attributes => attributes.length >= attributeCount);
+
+    if (allGirlsAttributes.length === 0) {
+      allGirlsAttributes = this.gameGirls.getValue().map(girl => girl.attributes).filter(attributes => attributes.length >= attributeCount-1);
+    }
+    if (allGirlsAttributes.length === 0) {
+      allGirlsAttributes = this.gameGirls.getValue().map(girl => girl.attributes).filter(attributes => attributes.length >= attributeCount-2);
+    }
+
+    const toReturn: string[][] = [];
+    for (const attributes of allGirlsAttributes) {
+      toReturn.push(this._getMultipleRandom(attributes, attributeCount))
+    }
+
+    return toReturn;
+  }
+
+  getAllPhotoAttributes(attibuteType: string): string[] {
+    const allPhotoAttributes = this.gameGirls.getValue().map(girl => girl.photos.map(photo => photo.attributes[attibuteType as keyof typeof photo.attributes].toString()));
+    let toReturn: string[] = [];
+
+    for (let photoAttributes of allPhotoAttributes) {
+      for (const attributes of photoAttributes) {
+        if (attributes.includes(',')) {
+          toReturn = [...toReturn, ...attributes.split(',')];
+        } else {
+          toReturn.push(attributes);
+        }
+      }
+    }
+
+    return toReturn;
+  }
+
+  getMaxGirlLevel(): number {
+    return Math.max(...this.gameGirls.getValue().map(girl => girl.level));
+  }
+
+  getMaxGirlFans(): number {
+    return Math.max(...this.gameGirls.getValue().map(girl => girl.fans));
+  }
+
   loadGirls(girls: SavedGirl[]): void {
     const gameGirls = this.gameGirls.getValue();
 
@@ -137,4 +180,10 @@ export class GirlsService {
 
     this.loading = false;
 	}
+
+  private _getMultipleRandom(arr: any[], num: number) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, num);
+  }
 }

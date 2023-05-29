@@ -1,5 +1,9 @@
 <img class="img-hidden" src="./assets/mods/legacy/tester.png" (error)="mediasNotExit()">
 
+<div class="notifications-wrapper">
+  <app-contract-notifier [contractNotification]="contractNotification" *ngFor="let contractNotification of contractNotifications"></app-contract-notifier>
+</div>
+
 <ng-container *ngIf="ready">
 	<app-dialogs></app-dialogs>
 	<router-outlet></router-outlet>

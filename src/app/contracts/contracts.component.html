@@ -1,0 +1,96 @@
+<app-background class="background"></app-background>
+
+<div class="header">Contracts</div>
+
+<div class="wrapper">
+
+  <div class="available">
+    <div class="title">Available contracts</div>
+    <div class="contracts-wrapper">
+      <div class="item headers">
+        <div class="id">#</div>
+        <div class="activity">Activity</div>
+        <div class="girl-attributes">Attributes</div>
+        <div class="requirements">Requires</div>
+        <div class="rewards">Rewards</div>
+        <div class="expiration">Expiration</div>
+      </div>
+
+      <div class="item" *ngFor="let contract of availableContracts">
+        <div class="id">{{ contract.id }}</div>
+        <div class="activity">{{ contract.activity }}</div>
+        <div class="girl-attributes">{{ contract.girlAttributes.join(', ') }}</div>
+        <div class="requirements">
+          <ng-container *ngIf="contract.requires">
+            {{ contract.requires.requirement }}:
+            <ng-container *ngIf="isNumeric(contract.requires.value)">
+              {{ contract.requires.value | number: '1.0-0' }}
+            </ng-container>
+            <ng-container *ngIf="!isNumeric(contract.requires.value)">
+              {{ contract.requires.value }}
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="contract.requires === undefined">
+            None
+          </ng-container>
+        </div>
+        <div class="rewards">
+          <div class="reward" *ngFor="let reward of contract.rewards">
+            <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>
+            <div class="value">
+              <img class="reward-item" src="./assets/items/{{reward.type}}.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="expiration">{{ contract.expirationDate.month | number : '2.0-0' }}/{{ 2022 + contract.expirationDate.year }}</div>
+        <div class="picker"><button class="btn" (click)="pickContract(contract)">Pick</button></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="picked">
+    <div class="title">Picked contracts</div>
+    <div class="contracts-wrapper">
+      <div class="item headers">
+        <div class="id">#</div>
+        <div class="activity">Activity</div>
+        <div class="girl-attributes">Attributes</div>
+        <div class="requirements">Requires</div>
+        <div class="rewards">Rewards</div>
+        <div class="expiration">Expiration</div>
+        <div></div>
+      </div>
+
+      <div class="item" *ngFor="let contract of pickedContracts">
+        <div class="id">{{ contract.id }}</div>
+        <div class="activity">{{ contract.activity }}</div>
+        <div class="girl-attributes">{{ contract.girlAttributes.join(', ') }}</div>
+        <div class="requirements">
+          <ng-container *ngIf="contract.requires">
+            {{ contract.requires.requirement }}:
+            <ng-container *ngIf="isNumeric(contract.requires.value)">
+              {{ contract.requires.value | number: '1.0-0' }}
+            </ng-container>
+            <ng-container *ngIf="!isNumeric(contract.requires.value)">
+              {{ contract.requires.value }}
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="contract.requires === undefined">
+            None
+          </ng-container>
+        </div>
+        <div class="rewards">
+          <div class="reward" *ngFor="let reward of contract.rewards">
+            <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>
+            <div class="value">
+              <img class="reward-item" src="./assets/items/{{reward.type}}.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="expiration">{{ contract.expirationDate.month | number : '2.0-0' }}/{{ 2022 + contract.expirationDate.year }}</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

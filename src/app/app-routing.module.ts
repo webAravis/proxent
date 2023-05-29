@@ -12,6 +12,7 @@ import { LeadersComponent } from './leaders/leaders.component';
 import { LeaderBattleComponent } from './leader-battle/leader-battle.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ContractsComponent } from './contracts/contracts.component';
 
 const routes: Routes = [
 	{
@@ -62,6 +63,10 @@ const routes: Routes = [
 	{
 		path: 'settings',
 		component: SettingsComponent,
+	},
+	{
+		path: 'contracts',
+		component: ContractsComponent,
 	},
 	{
 		path: '**',

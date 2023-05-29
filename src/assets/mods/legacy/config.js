@@ -12242,7 +12242,7 @@ modsConfig.push({
              "corruptionLevel":4,
              "attributes":{
                 "type":"slutty",
-                "place":"office",
+                "place":"hospital",
                 "outfit":"lingerie",
                 "body":[
                    "face",

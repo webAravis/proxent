@@ -5,6 +5,8 @@ import { GameService } from './core/game.service';
 import { Subject, takeUntil } from 'rxjs';
 
 import packageJson from '../../package.json';
+import { ContractsService } from './contracts/contracts.service';
+import { Contract } from './contracts/contract.model';
 
 @Component({
 	selector: 'app-root',
@@ -19,15 +21,19 @@ export class AppComponent implements OnInit, OnDestroy {
   gamePaused = true;
   version = packageJson.version;
 
+  contractNotifications: {contract: Contract, completed: boolean, expired: boolean}[] = [];
+
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
 	constructor(
 		private _router: Router,
 		private _cachingService: CachingService,
-    private _gameService: GameService
+    private _gameService: GameService,
+    private _contractService: ContractsService
 	) { }
 
   ngOnInit(): void {
+    this._contractService.contractNotifications.pipe(takeUntil(this._unsubscribeAll)).subscribe(notifications => this.contractNotifications = notifications);
     this._gameService.gameState.pipe(takeUntil(this._unsubscribeAll)).subscribe((state) => this.gamePaused = state);
 
 		this._router.navigate(['/']);

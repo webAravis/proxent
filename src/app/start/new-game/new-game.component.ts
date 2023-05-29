@@ -127,7 +127,6 @@ export class NewGameComponent {
 
   selectGirlfriend(girl: Girl): void {
     this.girlfriend = girl;
-    console.log(girl);
   }
 
 	getPortrait(girl: Girl): SafeUrl | undefined {
@@ -141,6 +140,8 @@ export class NewGameComponent {
   startGame(): void {
     if (this.girlfriend.name !== '') {
       this._gameService.girlfriend = this.girlfriend.fullId;
+
+      this.girlfriend.freedom = 0;
       this._girlService.addGirl(this.girlfriend);
 
       this.show = false;

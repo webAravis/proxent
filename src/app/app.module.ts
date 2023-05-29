@@ -35,6 +35,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { NewGameComponent } from './start/new-game/new-game.component';
+import { ContractsComponent } from './contracts/contracts.component';
+import { ContractNotifierComponent } from './contract-notifier/contract-notifier.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { NewGameComponent } from './start/new-game/new-game.component';
     SkillsComponent,
     SettingsComponent,
     NewGameComponent,
+    ContractsComponent,
+    ContractNotifierComponent,
   ],
   imports: [
     BrowserModule,

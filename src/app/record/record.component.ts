@@ -16,6 +16,8 @@ import { SkillsService } from '../skills/skills.service';
 import { TreeSkills } from '../skills/treeskills.model';
 import { Leader, LeaderActivity } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
+import { ContractsService } from '../contracts/contracts.service';
+import { Contract } from '../contracts/contract.model';
 
 @Component({
 	selector: 'app-record',
@@ -106,6 +108,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     private _skillService: SkillsService,
     private _girlService: GirlsService,
     private _settingsService: SettingsService,
+    private _contractService: ContractsService,
 		private _router: Router
 	) {}
 
@@ -534,7 +537,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     }
 	}
 
-	get grade(): string {
+	getGrade(): string {
 		// grades S, A, B, C, D
 		let grade = 0;
 
@@ -557,6 +560,51 @@ export class RecordComponent implements OnInit, OnDestroy {
 			0,
 			this.girl
 		);
+
+    // check if we completed a contract
+    const contracts = this._contractService.contracts.getValue().filter((contract: Contract) => contract.picked && contract.activity === 'recording');
+    for (const contract of contracts) {
+      for (const attribute of contract.girlAttributes) {
+        if (!this.girl.attributes.includes(attribute)) {
+          continue;
+        }
+      }
+
+      if (contract.requires) {
+        if (contract.requires.requirement === 'girl level' && this.girl.level < parseInt(contract.requires.value)) {
+          continue;
+        }
+
+        if (contract.requires.requirement === 'girl fans' && this.girl.fans < parseInt(contract.requires.value)) {
+          continue;
+        }
+
+        if (contract.requires.requirement === 'orgasms' && this.orgasmCount < parseInt(contract.requires.value)) {
+          continue;
+        }
+
+        if (contract.requires.requirement === 'record rank') {
+          let allowedRanks: string[] = [];
+          switch (contract.requires.value) {
+            case 'S':
+              allowedRanks = ['S'];
+              break;
+            case 'A':
+              allowedRanks = ['A', 'S'];
+              break;
+            case 'B':
+              allowedRanks = ['B', 'A', 'S'];
+              break;
+          }
+
+          if (!allowedRanks.includes(this.getGrade())) {
+            continue;
+          }
+        }
+      }
+
+      this._contractService.completeContract(contract);
+    }
 
 		this._gameService.resumeGame();
 		this._router.navigate(['girls']);

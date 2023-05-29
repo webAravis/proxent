@@ -17,6 +17,7 @@ import { Skill } from '../skills/treeskills.model';
 import { Setting, SettingsService } from './settings.service';
 
 import packageJson from '../../../package.json';
+import { ContractsService } from '../contracts/contracts.service';
 declare var modsConfig: any;
 
 @Injectable({
@@ -42,7 +43,8 @@ export class SaveService {
     private _leadersService: LeadersService,
     private _otherStudiosService: OtherStudiosService,
     private _shootingService: ShootingService,
-    private _settingsService: SettingsService
+    private _settingsService: SettingsService,
+    private _contractService: ContractsService
   ) {
     this._gameService.dayChanged.subscribe((day) =>
       day > 1 ? this.saveGame() : undefined
@@ -190,6 +192,7 @@ export class SaveService {
       });
     }
     const settings = this._settingsService.settings.getValue();
+    const contracts = this._contractService.contracts.getValue();
 
     const toSave = {
       game: gameParameters,
@@ -201,6 +204,7 @@ export class SaveService {
       otherStudios: otherStudios,
       leaders: savedLeaders,
       settings: settings,
+      contracts: contracts,
       lastSaved: new Date(),
       modList: modsList,
       version: this.version
@@ -298,6 +302,10 @@ export class SaveService {
 
     if (savedGame.playerPhotos) {
       this._shootingService.playerPhotos.next(savedGame.playerPhotos);
+    }
+
+    if (savedGame.contracts) {
+      this._contractService.contracts.next(savedGame.contracts);
     }
 
     if (savedGame.settings && Array.isArray(savedGame.settings)) {

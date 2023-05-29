@@ -1,0 +1,19 @@
+<div [class.animate__fadeOutUp]="fadeOut" class="wrapper animate__animated animate__fadeInUp">
+
+  <ng-container *ngIf="contractNotification">
+    <div class="title">
+      <ng-container *ngIf="contractNotification.expired">Oh no! A contract has expired</ng-container>
+      <ng-container *ngIf="contractNotification.completed">You completed a contract!</ng-container>
+    </div>
+
+    <div class="rewards" [class.green]="contractNotification.completed" [class.red]="contractNotification.expired">
+      <div class="reward" *ngFor="let reward of contractNotification.contract.rewards">
+        <div class="quantity">{{ contractNotification.completed ? '+' : '-' }}{{ reward.quantity | number : '1.0-0' }}</div>
+        <div class="value">
+          <img class="reward-item" src="./assets/items/{{reward.type}}.png" alt="">
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

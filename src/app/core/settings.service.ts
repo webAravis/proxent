@@ -49,6 +49,9 @@ export class SettingsService {
       { name: 'record_position_fans', label: 'Record Fans reward', value: 100, type: SettingType.reward },
       { name: 'record_position_cum', label: 'Record Cum reward', value: 100, type: SettingType.reward },
       { name: 'record_points', label: 'Record Points reward', value: 100, type: SettingType.reward },
+
+      { name: 'contract_golds', label: 'Contract Golds reward', value: 100, type: SettingType.reward },
+      { name: 'contract_items', label: 'Contract Items reward', value: 100, type: SettingType.reward },
     ];
 
     this.settings.next(settings);
