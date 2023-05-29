@@ -114,7 +114,7 @@ export class RewardService {
       if (
         this._dialogsService.dialogsStarted[1] === false &&
         girl.level === 1 &&
-        girl.name === 'Yiny'
+        girl.fullId === this._gameService.girlfriend
       ) {
         this._dialogsService.startDialog(1);
       }
@@ -122,7 +122,7 @@ export class RewardService {
       if (
         this._dialogsService.dialogsStarted[2] === false &&
         girl.level >= 2 &&
-        girl.name === 'Yiny'
+        girl.fullId === this._gameService.girlfriend
       ) {
         this._dialogsService.startDialog(2);
       }

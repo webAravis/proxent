@@ -135,7 +135,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     if (this.isBattle) {
       this._girlService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((gameGirls: Girl[]) => {
-        this.playerGirls = gameGirls.filter(girl => !girl.locked && girl.fullId !== "1"); // Yiny doesn't compete!
+        this.playerGirls = gameGirls.filter(girl => !girl.locked && girl.fullId !== this._gameService.girlfriend); // Girlfriend doesn't compete!
         this._selectGirl(this.playerGirls[this.girlIndex]);
       });
     } else {

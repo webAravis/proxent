@@ -28,6 +28,7 @@ export class GameService {
   gameState: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   girlLimit: BehaviorSubject<number> = new BehaviorSubject<number>(2);
+  girlfriend: string = '';
 
 	constructor(private _dialogsService: DialogsService) {}
 

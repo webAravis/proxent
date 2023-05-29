@@ -3,7 +3,7 @@
 
 	<hr />
 
-  <div>Before entering this new world, you can adjust your preference</div>
+  <div class="title">Before entering this new world, you can adjust your preference</div>
 
   <div>
     <div class="title">Game difficulty</div>
@@ -12,9 +12,31 @@
     </div>
   </div>
 
+  <div>
+    <div class="title">Your girlfriend</div>
+    <div class="center">Choose wisely, your girlfriend won't compete for rewards and battles</div>
+    <div class="girls-wrapper">
+      <div class="scroller">
+        <div [class.selected]="girlfriend.fullId === girl.fullId" (click)="selectGirlfriend(girl)" class="girl" *ngFor="let girl of girls">
+          <img [src]="getPortrait(girl)" alt="" class="portrait">
+          <div class="name">{{ girl.name | titlecase }}</div>
+          <div class="multipliers">
+            <div class="multiplier" *ngFor="let multiplier of getMultipliers(girl)">
+              <div>{{multiplier.percent}}%</div>
+              <ng-container *ngIf="multiplier.stat !== 'pts'">
+                <img [src]="'./assets/' + multiplier.stat + '.png'" alt="" srcset="">
+              </ng-container>
+              <ng-container *ngIf="multiplier.stat === 'pts'">{{multiplier.stat}}</ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <button class="btn" (click)="cancel()">Cancel</button>
-    <button class="btn" (click)="startGame()">Start a new game!</button>
+    <button [disabled]="girlfriend.name === ''" class="btn" (click)="startGame()">Start a new game!</button>
   </div>
 
 </div>

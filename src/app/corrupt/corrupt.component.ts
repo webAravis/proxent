@@ -163,7 +163,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
 	}
 
 	get itemsRequired(): { itemName: string; quantity: number } {
-		if (this.girl.name === 'Yiny') {
+		if (this.girl.fullId === this._gameService.girlfriend) {
 			return { itemName: '', quantity: 0 };
 		}
 

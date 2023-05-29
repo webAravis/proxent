@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/core/game.service';
 import { Setting, SettingType, SettingsService } from 'src/app/core/settings.service';
+import { Girl } from 'src/app/core/girls/girl.model';
+import { GirlsService } from 'src/app/core/girls/girls.service';
+import { SafeUrl } from '@angular/platform-browser';
+import { CachingService } from 'src/app/core/caching.service';
 
 @Component({
   selector: 'app-new-game',
@@ -11,17 +15,24 @@ import { Setting, SettingType, SettingsService } from 'src/app/core/settings.ser
 })
 export class NewGameComponent {
 
-  show = false;
+  show = true;
   settings: Setting[] = [];
   difficultyPreset: string[] = ['easy', 'normal', 'hard'];
   selectedDifficulty = 'normal';
+
+  girls: Girl[] = [];
+	portraits: Map<string, SafeUrl> = new Map<string, SafeUrl>();
+
+  girlfriend: Girl = new Girl();
 
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
   constructor(
     private _settingsService: SettingsService,
     private _gameService: GameService,
-    private _router: Router
+    private _girlService: GirlsService,
+    private _router: Router,
+    private _cachingService: CachingService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +41,17 @@ export class NewGameComponent {
     });
 
     this._gameService.newGame.pipe(takeUntil(this._unsubscribeAll)).subscribe(show => this.show = show);
+
+    this._girlService.gameGirls.pipe(takeUntil(this._unsubscribeAll)).subscribe((girls: Girl[]) => {
+      this.girls = girls;
+
+      for (const girl of this.girls) {
+        this.portraits.set(
+          girl.name,
+          this._cachingService.getPhoto(girl, '1_normal')
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -77,15 +99,55 @@ export class NewGameComponent {
     }
   }
 
+  getMultipliers(girl: Girl): {percent: number, stat: string}[] {
+    const multipliers: {percent: number, stat: string}[] = [];
+
+    if (girl.xpModifier !== 1) {
+      multipliers.push({percent: girl.xpModifier*100, stat: 'experience'});
+    }
+
+    if (girl.cumModifier !== 1) {
+      multipliers.push({percent: girl.cumModifier*100, stat: 'cum'});
+    }
+
+    if (girl.fansModifier !== 1) {
+      multipliers.push({percent: girl.fansModifier*100, stat: 'fans'});
+    }
+
+    if (girl.goldsModifier !== 1) {
+      multipliers.push({percent: girl.goldsModifier*100, stat: 'golds'});
+    }
+
+    if (girl.pointsModifier !== 1) {
+      multipliers.push({percent: girl.pointsModifier*100, stat: 'pts'});
+    }
+
+    return multipliers;
+  }
+
+  selectGirlfriend(girl: Girl): void {
+    this.girlfriend = girl;
+    console.log(girl);
+  }
+
+	getPortrait(girl: Girl): SafeUrl | undefined {
+		return this.portraits.get(girl.name);
+	}
+
   cancel(): void {
     this.show = false;
   }
 
   startGame(): void {
-    this.show = false;
-		this._gameService.startGame(true);
+    if (this.girlfriend.name !== '') {
+      this._gameService.girlfriend = this.girlfriend.fullId;
+      this._girlService.addGirl(this.girlfriend);
 
-		this._router.navigate(['/girls']);
+      this.show = false;
+      this._gameService.startGame(true);
+
+      this._router.navigate(['/girls']);
+    }
   }
 
 

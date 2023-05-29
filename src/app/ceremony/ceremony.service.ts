@@ -58,7 +58,7 @@ export class CeremonyService {
 				(record: Record) =>
 					record.month === month &&
 					record.year === year &&
-					this.getRecordGirl(record.girlId).name !== 'Yiny'
+					this.getRecordGirl(record.girlId).fullId !== this._gameService.girlfriend
 			)
     ];
 
@@ -82,7 +82,7 @@ export class CeremonyService {
 		let recordsToPrime: Record[] = this._recordService.records
 			.getValue()
 			.filter(
-				(record: Record) => record.year === year && this.getRecordGirl(record.girlId).name !== 'Yiny'
+				(record: Record) => record.year === year && this.getRecordGirl(record.girlId).fullId !== this._gameService.girlfriend
 			);
 
 		for (const studio of this._otherStudioService.studios.getValue()) {
