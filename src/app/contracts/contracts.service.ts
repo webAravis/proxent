@@ -175,7 +175,7 @@ export class ContractsService {
     const contracts = this.contracts.getValue().filter(contract => contract.picked);
     for (const contract of contracts) {
       if (this._gameService.year > contract.expirationDate.year || (contract.expirationDate.year === this._gameService.year && this._gameService.month > contract.expirationDate.month)) {
-        // this.contractExpired(contract);
+        this.contractExpired(contract);
       }
     }
   }
