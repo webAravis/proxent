@@ -1531,7 +1531,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -3617,7 +3617,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -4198,22 +4198,22 @@ modsConfig.push({
                 "name":"blowjob2",
                 "label":"Blowjob 2",
                 "corruption":4,
-                "type":"FOREPLAYSKILL",
+                "type":"FOREPLAY_SKILL",
                 "unlocker":{
                    "name":"blowjob3",
                    "label":"Blowjob 3",
                    "corruption":5,
-                   "type":"FOREPLAYSKILL",
+                   "type":"FOREPLAY_SKILL",
                    "unlocker":{
                       "name":"blowjob4",
                       "label":"Blowjob 4",
                       "corruption":6,
-                      "type":"FOREPLAYSKILL",
+                      "type":"FOREPLAY_SKILL",
                       "unlocker":{
                          "name":"blowjob5",
                          "label":"Blowjob 5",
                          "corruption":7,
-                         "type":"FOREPLAYSKILL"
+                         "type":"FOREPLAY_SKILL"
                       }
                    }
                 }
@@ -5719,7 +5719,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -7484,7 +7484,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -9271,7 +9271,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -11006,7 +11006,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,
@@ -12771,7 +12771,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Competitor",
-                         "description":"Competitor training, Unlocks recording habilities",
+                         "description":"Competitor training, Unlocks battle habilities",
                          "spritepostop":-186,
                          "spriteposleft":-198,
                          "maxlevel":1,

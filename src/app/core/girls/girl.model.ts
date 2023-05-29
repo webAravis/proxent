@@ -78,9 +78,9 @@ export class Girl {
 	}
 
 	get corruptionName(): string {
-		return this.corruption - 1 > 4
+		return this.corruption - 1 > 8
 			? 'slutty'
-			: ['normal', 'normal', 'sexy', 'sexy', 'sexy'][this.corruption - 1];
+			: ['normal', 'normal', 'normal', 'normal', 'sexy', 'sexy', 'sexy', 'sexy'][this.corruption - 1];
 	}
 
   get skillPoints(): number {

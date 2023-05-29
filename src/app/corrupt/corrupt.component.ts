@@ -179,6 +179,12 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			return;
 		}
 		this.corrupting = true;
+
+    if (this.newPositions.length === 0) {
+      this.endCorrupt();
+    } else {
+      this.selectPosition(this.newPositions[0]);
+    }
 	}
 
 	selectPosition(position: Position): void {
@@ -274,7 +280,7 @@ export class CorruptComponent implements OnInit, OnDestroy {
   }
 
   private _initVideoObject(): void {
-		this.vid = <HTMLVideoElement>document.querySelector('#video-record');
+		this.vid = <HTMLVideoElement>document.querySelector('#video-position');
 		if (this.vid === null) {
 			setTimeout(() => {
 				// prevent to much attempts
