@@ -192,11 +192,14 @@ export class CorruptComponent implements OnInit, OnDestroy {
 			this.selectedPosition = position;
 
 			this.corrupt = this._cachingService.getVideo(this.girl, this.selectedPosition.name);
-
-			const vid = <HTMLVideoElement>document.querySelector('#video-position');
-
-			vid.load();
-			vid.play();
+      if (this.vid === null) {
+        setTimeout(() => {
+          this.selectPosition(position);
+        }, 50);
+      } else {
+        this.vid.load();
+			  this.vid.play();
+      }
 		}
 	}
 

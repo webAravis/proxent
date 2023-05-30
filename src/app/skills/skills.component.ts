@@ -41,7 +41,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this._girlService.currentGirl.pipe(takeUntil(this._unsubscribeAll)).subscribe(girl => {
       this.girl = girl;
       this.treeSkills = this.girl.skills;
-      if (this.girl.fullId === "1") { // disable battle tree for girlfriend
+      if (this.girl.fullId === this._gameService.girlfriend) { // disable battle tree for girlfriend
         this.treeSkills = this.treeSkills.filter(tree => tree.name !== 'battle');
       }
     });

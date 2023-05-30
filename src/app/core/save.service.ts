@@ -61,7 +61,7 @@ export class SaveService {
 
     const savesObject = JSON.parse(allSaves);
     this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
-    this.saves = this._fixOldSaves(this.saves);
+    this.saves = this._fixOldSaves(this.saves.filter(save => save !== null));
 
     // order save by most recent
     this.saves.sort((a, b) => new Date(b.lastSaved).getTime() - new Date(a.lastSaved).getTime());
@@ -160,6 +160,9 @@ export class SaveService {
         unlockedPositions: girl.unlockedPositions,
         xp: girl.xp
       });
+    }
+    if (girls.length === 0) {
+      return;
     }
 
     const studio = {

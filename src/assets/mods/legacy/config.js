@@ -13295,10 +13295,6 @@ modsConfig.push({
       "small",
       "brunette"
     ],
-    "malus":[
-      "milf",
-      "euro"
-    ],
     "costItem": "gold",
     "costCurve": (level) => { return (level / 0.07) ** 2 },
     "pointsCurve": (level) => { return (level / 0.02) ** 2 },

@@ -289,7 +289,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       clearTimeout(timeout);
     }
     this.timeoutCombos = [];
-    this.comboBtns = [];
+    this.comboBtns.length = 0;
 
     clearTimeout(this.timeoutCum);
     this._fadeIn();
@@ -335,6 +335,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     if (!isCombo) {
       this.nbScenes++;
+      console.log('applying boner', positionStats.boner);
+      this.boner += positionStats.boner;
+      this.boner = Math.max(this.boner, 0);
+      this.boner = Math.min(this.boner, 100);
     }
 
 		this.positionsPlayed.push({
@@ -369,8 +373,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 			this.girl.orgasmLevel = this.girl.orgasmLevel % 100;
 			this.orgasmCount += nbOrgasm;
-
-			this.boner -= 50;
 
       if (!this.isBattle) {
         for (let i = 0; i < nbOrgasm; i++) {
@@ -413,14 +415,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 			}
 		}
 		this.timeoutscene = [];
+    this.comboBtns.length = 0;
 		this.showSkipButton = false;
-
-    const positionStats = this.positionStats(this.currentPosition ?? new Position());
-    if (!isCombo || positionStats.boner > 0) {
-      this.boner += positionStats.boner;
-      this.boner = Math.max(this.boner, 0);
-      this.boner = Math.min(this.boner, 100);
-    }
 
     if (!isCombo) {
       // time to change position or end of recording based on corruption!
@@ -664,7 +660,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
 	private _initCombos(position: Position): void {
-    this.comboBtns = [];
+    this.comboBtns.length = 0;
     this.hitted = 0;
 
     if (position.unlocker !== undefined && this.isAllowed(position.unlocker.name)) {
@@ -675,7 +671,7 @@ export class RecordComponent implements OnInit, OnDestroy {
             coordX: Math.random() * (75 - 25) + 25 + 'vw',
             coordY: Math.random() * (75 - 25) + 25 + 'vh',
           });
-        }, Math.min(index * (Math.random() * (1500 - 500) + 500), (this.vid.duration*1000 - 1000))));
+        }, 10));
       }
 
     } else {

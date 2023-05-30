@@ -160,7 +160,7 @@
     </div>
 
 		<div *ngIf="showSkipButton" class="skip-button animate__animated" [class.animate__heartBeat]="comboDone">
-			<button [class.trending]="comboDone" class="btn" (click)="endScene()">{{comboDone ? 'Next' : 'Skip'}} scene</button>
+			<button [class.trending]="comboDone" class="btn" (click)="endScene(comboDone)">{{comboDone ? 'Next' : 'Skip'}} scene</button>
 		</div>
 
     <ng-container *ngIf="!showPositions">

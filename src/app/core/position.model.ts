@@ -69,8 +69,8 @@ export class Position {
     let boner = Math.round(
       (
         this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ?
-          (this.corruption + 1) * 8 :
-          this.corruption * 3
+          (this.corruption + 1) * 6 :
+          this.corruption * 1.5
       )
     );
     boner = Math.min(boner, 100);
