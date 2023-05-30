@@ -119,7 +119,8 @@ export class SaveService {
       year: this._gameService.year,
       golds: this._gameService.golds,
       girlLimit: this._gameService.girlLimit.getValue(),
-      fapMode: this._gameService.fapMode.getValue()
+      fapMode: this._gameService.fapMode.getValue(),
+      girlfriend: this._gameService.girlfriend
     };
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
@@ -212,7 +213,7 @@ export class SaveService {
 
     let savedGames = this.saves;
 
-    if (savedGames[this.saveIndex].modList !== modsList) {
+    if (savedGames[this.saveIndex] && savedGames[this.saveIndex].modList !== modsList) {
       this.saveIndex = this.saves.length;
     }
     savedGames[this.saveIndex] = toSave;
@@ -243,6 +244,7 @@ export class SaveService {
     this._gameService.dayChanged.next(savedGame.game.day);
     this._gameService.goldChanged.next(savedGame.game.golds);
     this._gameService.fapMode.next(savedGame.game.fapMode ?? false);
+    this._gameService.girlfriend = savedGame.game.girlfriend ?? '1-legacy';
 
     this._dialogsService.dialogsStarted = savedGame.dialogsStarted;
 

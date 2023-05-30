@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameService } from '../core/game.service';
 import { SaveService } from '../core/save.service';
 import { Router } from '@angular/router';
@@ -8,12 +8,16 @@ import { Router } from '@angular/router';
 	templateUrl: './start.component.html',
 	styleUrls: ['./start.component.scss'],
 })
-export class StartComponent {
+export class StartComponent implements OnInit {
 	constructor(
 		private _gameService: GameService,
 		private _saveService: SaveService,
     private _router: Router
 	) {}
+
+  ngOnInit(): void {
+    this._gameService.pauseGame();
+  }
 
 	get hasSave(): boolean {
 		return this._saveService.hasSave();

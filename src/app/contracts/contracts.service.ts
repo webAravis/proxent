@@ -39,15 +39,17 @@ export class ContractsService {
   }
 
   contractExpired(expired: Contract): void {
-    let notifs = this.contractNotifications.getValue();
-    notifs.push({contract: expired, completed: false, expired: true});
-    this.contractNotifications.next(notifs);
+    if (expired.picked) {
+      let notifs = this.contractNotifications.getValue();
+      notifs.push({contract: expired, completed: false, expired: true});
+      this.contractNotifications.next(notifs);
 
-    for (const reward of expired.rewards) {
-      if (reward.type.toLowerCase() === 'gold') {
-        this._gameService.updateGolds((reward.quantity) * -1);
-      } else {
-        this._inventoryService.removeItemByName(reward.type, (reward.quantity * -1));
+      for (const reward of expired.rewards) {
+        if (reward.type.toLowerCase() === 'gold') {
+          this._gameService.updateGolds((reward.quantity) * -1);
+        } else {
+          this._inventoryService.removeItemByName(reward.type, (reward.quantity * -1));
+        }
       }
     }
 
@@ -99,9 +101,12 @@ export class ContractsService {
       const difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
 
       const attributes = this._girlService.getAllGirlsAttributes(difficulty);
+      if (attributes.length === 0) {
+        return;
+      }
       contract.girlAttributes = attributes[Math.floor(Math.random() * attributes.length)];
 
-      const goldQuantity = (300000*0.1 * difficulty*Math.random()) * this._settingService.getSetting('contract_golds');
+      const goldQuantity = (300000*0.1 * difficulty*Math.random()) * (contract.activity === 'recording' ? 1.5 : 0.8) * this._settingService.getSetting('contract_golds');
       contract.rewards.push({type: 'gold', quantity: goldQuantity});
       if (goldQuantity < 1000) {
         return;
@@ -141,7 +146,7 @@ export class ContractsService {
       if (difficulty >= 3) {
         const itemsToWin = ['advanced_skill_gem', 'basic_skill_gem', 'fans_badge', 'money_badge', 'recordmonthly_badge', 'recordyearly_badge', 'studiomonthly_badge', 'studioyearly_badge'];
         const itemName = itemsToWin[Math.floor(Math.random() * itemsToWin.length)];
-        contract.rewards.push({type: itemName, quantity: Math.round(1 * this._settingService.getSetting('contract_items'))});
+        contract.rewards.push({type: itemName, quantity: Math.round(1 + (difficulty/2) * this._settingService.getSetting('contract_items'))});
       }
 
       const expirationToAdd = Math.round(2 + Math.random()*4);
@@ -156,25 +161,18 @@ export class ContractsService {
       }
       contract.expirationDate = {month: month, year: year};
 
-      if (contracts.length >= 5) {
-        // removing first not picked
-        const toDelete = contracts.findIndex(contract => !contract.picked);
-        if (toDelete !== -1) {
-          contracts.splice(toDelete, 1);
-        }
-      }
-
-      if (contracts.length < 5) {
-        contracts.push(contract);
-      }
+      contracts.push(contract);
       this.contracts.next(contracts);
     });
   }
 
   private _checkExpired(): void {
-    const contracts = this.contracts.getValue().filter(contract => contract.picked);
+    const contracts = this.contracts.getValue();
+    const currentDate = new Date(this._gameService.year, this._gameService.month);
+
     for (const contract of contracts) {
-      if (this._gameService.year > contract.expirationDate.year || (contract.expirationDate.year === this._gameService.year && this._gameService.month > contract.expirationDate.month)) {
+      const expirationDate = new Date(contract.expirationDate.year, contract.expirationDate.month);
+      if (expirationDate < currentDate) {
         this.contractExpired(contract);
       }
     }

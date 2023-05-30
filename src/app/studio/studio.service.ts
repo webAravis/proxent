@@ -27,14 +27,10 @@ export class StudioService {
 		private _inventoryService: InventoryService
 	) {}
 
-	open(price: number): void {
+	open(price: number, pickedGirl: Girl): void {
 		this._dialogsService.startDialog(4);
 
-		const allGirls = this._girlService.gameGirls.getValue();
-		const peta =
-			allGirls.find((girl: Girl) => girl.name === 'Peta') ?? new Girl();
-
-		this._girlService.addGirl(peta);
+    this._girlService.addGirl(pickedGirl);
 		this.opened.next(true);
 		this._gameService.updateGolds(price * -1);
 

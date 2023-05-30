@@ -21,6 +21,9 @@ export class ContractsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._contractService.contracts.pipe(takeUntil(this._unsubscribeAll)).subscribe((contracts: Contract[]) => {
+      contracts.sort((a: Contract, b: Contract) => {
+        return new Date(b.expirationDate.year, b.expirationDate.month).getTime() - new Date(a.expirationDate.year, a.expirationDate.month).getTime()
+      });
       this.availableContracts = contracts.filter(contract => !contract.picked);
       this.pickedContracts = contracts.filter(contract => contract.picked);
     });

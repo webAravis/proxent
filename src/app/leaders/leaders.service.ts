@@ -49,7 +49,7 @@ export class LeadersService {
   loadLeaders(leaders: SavedLeader[]): void {
     for (const savedLeader of leaders) {
       const leader = this.leaders.getValue().find((loadedLeader: Leader) => loadedLeader.mod === savedLeader.mod && loadedLeader.name === savedLeader.name);
-      if (leader !== undefined) {
+      if (leader !== undefined && savedLeader.level !== undefined) {
         leader.lvl = savedLeader.level;
       }
     }

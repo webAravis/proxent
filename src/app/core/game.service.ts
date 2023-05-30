@@ -30,7 +30,9 @@ export class GameService {
   girlLimit: BehaviorSubject<number> = new BehaviorSubject<number>(2);
   girlfriend: string = '';
 
-	constructor(private _dialogsService: DialogsService) {}
+	constructor(private _dialogsService: DialogsService) {
+    this._dialogsService.dialogShown.subscribe((shown) => shown ? this.pauseGame() : this.resumeGame());
+  }
 
 	startGame(newgame = false): void {
 		if (newgame) {
@@ -78,6 +80,8 @@ export class GameService {
 
 	updateGolds(amount: number): void {
 		this.golds += amount;
+    this.golds = Math.max(this.golds, 0);
+
 		this.goldChanged.next(this.golds);
 	}
 }

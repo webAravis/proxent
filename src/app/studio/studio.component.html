@@ -4,11 +4,31 @@
 	<ng-container *ngIf="!opened">
 		<div class="quality">Studio is actually closed!</div>
 
-		<div>
-			<button (click)="open()" [disabled]="price > golds" class="btn with-icon">
-				Open studio for {{ price }}<img src="./assets/golds.png" width="30" /> -
-				Adds Peta!
+		<div class="open-studio-wrapper">
+			<button (click)="open()" [disabled]="price > golds || pickedGirl.name === ''" class="btn with-icon">
+				Open studio for {{ price }}<img src="./assets/golds.png" width="30" /> - Choose a collaborator!
 			</button>
+
+      <div>
+        <div class="center white">She is the first girl that wants to work with you</div>
+        <div class="girls-wrapper">
+          <div class="scroller">
+            <div [class.selected]="pickedGirl.fullId === girl.fullId" (click)="pickGirl(girl)" class="girl" *ngFor="let girl of girls">
+              <img [src]="getPortrait(girl)" alt="" class="portrait">
+              <div class="name">{{ girl.name | titlecase }}</div>
+              <div class="multipliers">
+                <div class="multiplier" *ngFor="let multiplier of getMultipliers(girl)">
+                  <div>{{multiplier.percent}}%</div>
+                  <ng-container *ngIf="multiplier.stat !== 'pts'">
+                    <img [src]="'./assets/' + multiplier.stat + '.png'" alt="" srcset="">
+                  </ng-container>
+                  <ng-container *ngIf="multiplier.stat === 'pts'">{{multiplier.stat}}</ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 		</div>
 	</ng-container>
 

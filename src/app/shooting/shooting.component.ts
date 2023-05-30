@@ -133,6 +133,35 @@ export class ShootingComponent implements OnInit, OnDestroy {
     this.usePhoto = photo.name;
     this.played = false;
 
+    // check if we completed a contract
+    const contracts = this._contractService.contracts.getValue().filter((contract: Contract) => contract.picked && contract.activity === 'shooting');
+    for (const contract of contracts) {
+      let completed = true;
+      for (const attribute of contract.girlAttributes) {
+        if (!this.girl.attributes.includes(attribute)) {
+          completed = false;
+        }
+      }
+
+      if (contract.requires) {
+        if (contract.requires.requirement === 'place' && !photo.attributes.place.includes(contract.requires.value)) {
+          completed = false;
+        }
+
+        if (contract.requires.requirement === 'outfit' && !photo.attributes.outfit.includes(contract.requires.value)) {
+          completed = false;
+        }
+
+        if (contract.requires.requirement === 'body' && !photo.attributes.body.includes(contract.requires.value)) {
+          completed = false;
+        }
+      }
+
+      if (completed) {
+        this._contractService.completeContract(contract);
+      }
+    }
+
     setTimeout(() => {
       this.playedPhotos.push(photo);
       this.photos = this.photos.filter(availablePhoto => photo.name !== availablePhoto.name);
@@ -145,32 +174,6 @@ export class ShootingComponent implements OnInit, OnDestroy {
   endShooting(): void {
     this.girl.shootingCount++;
     this._rewardService.giveReward(this.fansWon, this.xpWon, this.goldsWon, [], 0, this.girl);
-
-    // check if we completed a contract
-    const contracts = this._contractService.contracts.getValue().filter((contract: Contract) => contract.picked && contract.activity === 'shooting');
-    for (const contract of contracts) {
-      for (const attribute of contract.girlAttributes) {
-        if (!this.girl.attributes.includes(attribute)) {
-          continue;
-        }
-      }
-
-      if (contract.requires) {
-        if (contract.requires.requirement === 'place' && !this.playedPhotos.map(photo => photo.attributes.place).includes(contract.requires.value)) {
-          continue;
-        }
-
-        if (contract.requires.requirement === 'outfit' && !this.playedPhotos.map(photo => photo.attributes.outfit).includes(contract.requires.value)) {
-          continue;
-        }
-
-        if (contract.requires.requirement === 'body' && !this.playedPhotos.map(photo => photo.attributes.body.toString()).includes(contract.requires.value)) {
-          continue;
-        }
-      }
-
-      this._contractService.completeContract(contract);
-    }
 
     this._gameService.resumeGame();
     this._router.navigate(['girls']);

@@ -475,7 +475,9 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     const positionsWithCount: {position: string, count: number}[] = [];
     for (const position of availablePositions) {
-      positionsWithCount.push({position: position, count: this.positionRepeated(position)});
+      if (position !== '') {
+        positionsWithCount.push({position: position, count: this.positionRepeated(position)});
+      }
     }
 
     positionsWithCount.sort((a, b) => a.count - b.count);
@@ -564,23 +566,24 @@ export class RecordComponent implements OnInit, OnDestroy {
     // check if we completed a contract
     const contracts = this._contractService.contracts.getValue().filter((contract: Contract) => contract.picked && contract.activity === 'recording');
     for (const contract of contracts) {
+      let completed = true;
       for (const attribute of contract.girlAttributes) {
         if (!this.girl.attributes.includes(attribute)) {
-          continue;
+          completed = false;
         }
       }
 
       if (contract.requires) {
         if (contract.requires.requirement === 'girl level' && this.girl.level < parseInt(contract.requires.value)) {
-          continue;
+          completed = false;
         }
 
         if (contract.requires.requirement === 'girl fans' && this.girl.fans < parseInt(contract.requires.value)) {
-          continue;
+          completed = false;
         }
 
         if (contract.requires.requirement === 'orgasms' && this.orgasmCount < parseInt(contract.requires.value)) {
-          continue;
+          completed = false;
         }
 
         if (contract.requires.requirement === 'record rank') {
@@ -598,12 +601,14 @@ export class RecordComponent implements OnInit, OnDestroy {
           }
 
           if (!allowedRanks.includes(this.getGrade())) {
-            continue;
+            completed = false;
           }
         }
       }
 
-      this._contractService.completeContract(contract);
+      if (completed) {
+        this._contractService.completeContract(contract);
+      }
     }
 
 		this._gameService.resumeGame();
