@@ -22,16 +22,16 @@ export class Position {
     }
 	}
 
-  getFans = (trending: number = 0): number => {
-    return Math.round( ((this.corruption + 1) * 50 + this.getMultiplierType(this.type) * 200) * trending );
+  getFans = (trending: number = 0, level: number): number => {
+    return Math.round( ((this.corruption + 1) * (50 * level) + this.getMultiplierType(this.type) * 200) * trending );
   }
 
-  getGold = (trending: number = 0): number => {
-    return Math.round( ((this.corruption + 1) * 10 + this.getMultiplierType(this.type) * 150) * trending );
+  getGold = (trending: number = 0, level: number, popularity: number): number => {
+    return Math.round( ((this.corruption + 1) * (10 * level) + this.getMultiplierType(this.type) * (150 * popularity)) * trending );
   }
 
-  getXp = (trending: number = 0): number => {
-    return Math.round( ((this.corruption + 1) * 5 + this.getMultiplierType(this.type) * 100) * trending );
+  getXp = (trending: number = 0, level: number): number => {
+    return Math.round( ((this.corruption + 1) * (5 * level) + this.getMultiplierType(this.type) * 100) * trending );
   }
 
   getOrgasm = (currentBoner: number = 0, trending: number = 1): number => {

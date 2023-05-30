@@ -172,8 +172,8 @@ export class RecordService {
 		return {
       golds: Math.round(
         (
-          position.getGold(this._trendingMultiplier(position, trendingPosition))
-        + (position.getGold(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('golds', position, skillStatsModifiers))
+          position.getGold(this._trendingMultiplier(position, trendingPosition), girl.level, girl.popularity)
+        + (position.getGold(this._trendingMultiplier(position, trendingPosition), girl.level, girl.popularity) * this._skillModifier('golds', position, skillStatsModifiers))
         * repeatedMultiplier
         )
         * girl.goldsModifier
@@ -181,8 +181,8 @@ export class RecordService {
       ),
       xp: Math.round(
         (
-          position.getXp(this._trendingMultiplier(position, trendingPosition))
-        + (position.getXp(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('xp', position, skillStatsModifiers))
+          position.getXp(this._trendingMultiplier(position, trendingPosition), girl.level)
+        + (position.getXp(this._trendingMultiplier(position, trendingPosition), girl.level) * this._skillModifier('xp', position, skillStatsModifiers))
         * repeatedMultiplier
         )
         * girl.xpModifier
@@ -190,8 +190,8 @@ export class RecordService {
       ),
       fans: Math.round(
         (
-          position.getFans(this._trendingMultiplier(position, trendingPosition))
-        + (position.getFans(this._trendingMultiplier(position, trendingPosition)) * this._skillModifier('fans', position, skillStatsModifiers))
+          position.getFans(this._trendingMultiplier(position, trendingPosition), girl.level)
+        + (position.getFans(this._trendingMultiplier(position, trendingPosition), girl.level) * this._skillModifier('fans', position, skillStatsModifiers))
         * repeatedMultiplier
         )
         * girl.fansModifier

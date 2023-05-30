@@ -628,18 +628,19 @@ export class RecordComponent implements OnInit, OnDestroy {
         targetElement = targetElement.closest('.combo-btn') ?? <HTMLElement> event.target;
       }
 
-      targetElement.classList.add("animate__bounceOut");
-      targetElement.outerHTML = targetElement.outerHTML;
+      if (!targetElement.classList.contains("animate__bounceOut")) {
+        targetElement.classList.add("animate__bounceOut");
+        this.hitted++;
 
-      this.hitted++;
-      if (this.hitted === this.nbCombos && this.currentPosition !== undefined && this.currentPosition.unlocker !== undefined) {
-        this.nbCombos++;
+        if (this.hitted === this.nbCombos && this.currentPosition !== undefined && this.currentPosition.unlocker !== undefined) {
+          this.nbCombos++;
 
-        this.comboMessage = true;
-        this.comboDone = true;
-        setTimeout(() => {
-          this.comboMessage = false;
-        }, 500);
+          this.comboMessage = true;
+          this.comboDone = true;
+          setTimeout(() => {
+            this.comboMessage = false;
+          }, 500);
+        }
       }
     }
 

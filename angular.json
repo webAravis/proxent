@@ -24,7 +24,7 @@
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["./node_modules/animate.css/animate.min.css", "src/styles.scss"],
+						"styles": ["./node_modules/animate.css/animate.min.css", "node_modules/shepherd.js/dist/css/shepherd.css", "src/styles.scss"],
 						"scripts": []
 					},
 					"configurations": {
@@ -67,7 +67,7 @@
 						"tsConfig": "tsconfig.spec.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["./node_modules/animate.css/animate.min.css", "src/styles.scss"],
+						"styles": ["./node_modules/animate.css/animate.min.css", "node_modules/shepherd.js/dist/css/shepherd.css", "src/styles.scss"],
 						"scripts": []
 					}
 				}

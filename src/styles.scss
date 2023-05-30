@@ -253,3 +253,16 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.tutorial {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  bottom: -30px;
+
+  img {
+    height: 22px;
+  }
+}

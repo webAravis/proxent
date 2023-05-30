@@ -1,6 +1,12 @@
 <app-background class="background"></app-background>
 
-<div class="header">Character selection</div>
+<div class="header">
+  Character selection
+  <div class="tutorial" (click)="startTutorial()">
+    <img src="./assets/tutorial.png">
+    <span>Tutorial</span>
+  </div>
+</div>
 
 <div class="wrapper">
 	<div class="girl" *ngIf="girl.fullId !== '0'">
@@ -38,11 +44,11 @@
 		<hr />
 
 		<div class="stats">
-			<div class="row">
+			<div class="row" id="independency">
 				<div class="label">Indep</div>
 				<div class="value">{{ girl.freedom * 100 | number : '1.0-2' }}%</div>
 			</div>
-			<div class="row">
+			<div class="row" id="fans">
 				<div class="label">Fans</div>
 				<div class="value">{{ girl.fans | number : '1.0-0' }}</div>
 			</div>
@@ -58,7 +64,7 @@
 
 		<div class="actions">
 			<a (click)="shooting()" class="btn">Shooting</a>
-			<button [disabled]="girl.corruption < 3" (click)="record()" class="btn">
+			<button [disabled]="girl.corruption <= 3" (click)="record()" class="btn">
 				Record
 			</button>
 			<a (click)="corrupt()" class="btn">Corrupt</a>

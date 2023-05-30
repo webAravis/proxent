@@ -120,7 +120,8 @@ export class SaveService {
       golds: this._gameService.golds,
       girlLimit: this._gameService.girlLimit.getValue(),
       fapMode: this._gameService.fapMode.getValue(),
-      girlfriend: this._gameService.girlfriend
+      girlfriend: this._gameService.girlfriend,
+      tutorials: this._gameService.tutorials
     };
 
     const dialogsStarted = this._dialogsService.dialogsStarted;
@@ -248,6 +249,9 @@ export class SaveService {
     this._gameService.goldChanged.next(savedGame.game.golds);
     this._gameService.fapMode.next(savedGame.game.fapMode ?? false);
     this._gameService.girlfriend = savedGame.game.girlfriend ?? '1-legacy';
+    if (savedGame.game.tutorials) {
+      this._gameService.tutorials = savedGame.game.tutorials;
+    }
 
     this._dialogsService.dialogsStarted = savedGame.dialogsStarted;
 
