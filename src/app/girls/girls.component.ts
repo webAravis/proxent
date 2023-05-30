@@ -107,7 +107,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked {
   }
 
   girlFreeable(): boolean {
-    return this.girl.fullId !== "1" && this.girl.unlockPrice.length > 0;
+    return this.girl.fullId !== this._gameService.girlfriend && this.girl.unlockPrice.length > 0;
   }
 
   cancelContract(): void {
