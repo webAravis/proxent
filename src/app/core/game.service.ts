@@ -9,7 +9,8 @@ export class GameService {
   tutorials = {
     girlScreenDone: false,
     shootingScreenDone: false,
-    recordScreenDone: false
+    recordScreenDone: false,
+    leaderScreenDone: false
   };
 
   newGame: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

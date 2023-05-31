@@ -1,6 +1,12 @@
 <app-background class="background"></app-background>
 
-<div class="header">Leaders</div>
+<div class="header">
+  Leaders
+  <div class="tutorial" (click)="startTutorial()">
+    <img src="./assets/tutorial.png">
+    <span>Tutorial</span>
+  </div>
+</div>
 
 <div class="wrapper">
 
@@ -10,7 +16,7 @@
         {{ leader.name | titlecase }}
         <div class="subtitle">
           <i>{{ leader.description }}</i><br/>
-          <div class="center with-icon">
+          <div class="center with-icon leader-rewards">
             <div>Rewards:</div>
             <div class="reward" *ngFor="let reward of leader.rewards">
               <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>

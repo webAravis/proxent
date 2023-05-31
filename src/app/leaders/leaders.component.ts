@@ -1,5 +1,6 @@
+import { ShepherdService } from 'angular-shepherd';
 import { Subject, takeUntil } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { LeadersService } from './leaders.service';
 import { Leader } from './leader.model';
 import { GameService } from '../core/game.service';
@@ -13,7 +14,7 @@ import { Girl } from '../core/girls/girl.model';
   templateUrl: './leaders.component.html',
   styleUrls: ['./leaders.component.scss']
 })
-export class LeadersComponent implements OnInit, OnDestroy {
+export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
 
   leaders: Leader[] = [];
 	golds = 0;
@@ -27,8 +28,16 @@ export class LeadersComponent implements OnInit, OnDestroy {
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
     private _router: Router,
+    private _shepherdService: ShepherdService,
     private _girlService: GirlsService
   ) {}
+
+  ngAfterViewInit(): void {
+    if (!this._gameService.tutorials.leaderScreenDone) {
+      this.startTutorial();
+      this._gameService.tutorials.leaderScreenDone = true;
+    }
+  }
 
   ngOnInit(): void {
     this._leaderService.leaders.pipe(takeUntil(this._unsubscribeAll)).subscribe((leaders: Leader[]) => this.leaders = leaders);
@@ -100,6 +109,118 @@ export class LeadersComponent implements OnInit, OnDestroy {
       .map(girl => girl.name).join(', ');
 
     return matching !== '' ? matching : 'No girl match';
+  }
+
+  startTutorial(): void {
+    this._gameService.pauseGame();
+    this._shepherdService.defaultStepOptions = {
+      scrollTo: true,
+      cancelIcon: {
+        enabled: true
+      },
+      buttons: [
+        {
+          action: function() { this.back() },
+          label: 'prev',
+          text: 'Prev'
+        },
+        {
+          action: function() { this.next() },
+          label: 'next',
+          text: 'Next'
+        },
+      ],
+    };
+    this._shepherdService.modal = true;
+    this._shepherdService.confirmCancel = false;
+    this._shepherdService.onTourFinish = () => {this._gameService.resumeGame()};
+    this._shepherdService.addSteps([
+      {
+        title: 'Leader tutorial',
+        text: ['Are you new to the game?'],
+        buttons: [
+          {
+            action: function() { this.cancel(); },
+            label: 'prev',
+            text: 'No, I already know the mechanics'
+          },
+          {
+            action: function() { this.next() },
+            label: 'next',
+            text: 'Yes, take me for a tour!'
+          },
+        ]
+      },
+      {
+        title: 'Intro',
+        text: 'This is the leaders screen. You will find all leaders and be able to start a battle with them to earn their rewards'
+      },
+      {
+        attachTo: {
+          element: '.leader',
+          on: 'top',
+        },
+        title: 'Leader',
+        text: ['Here is a leader, they are all different in their requirements and rewards'],
+      },
+      {
+        attachTo: {
+          element: '.leader-rewards',
+          on: 'top',
+        },
+        title: 'Leader rewards',
+        text: ['When beating a leader, you will earn all listed rewards here'],
+      },
+      {
+        attachTo: {
+          element: '.bonus-malus',
+          on: 'top',
+        },
+        title: 'Bonus - Malus - Fetish',
+        text: ['Leaders can have bonus, malus and fetish. Be careful with them as they will have a big impact on the battle'],
+      },
+      {
+        attachTo: {
+          element: '.bonus',
+          on: 'top',
+        },
+        title: 'Bonus',
+        text: ['This is the bonus list. Bonus are linked to girl attributes, meaning you should choose wisely who will participate in battle. Each matching bonus attribute grants 150% points in battle'],
+      },
+      {
+        attachTo: {
+          element: '.malus',
+          on: 'top',
+        },
+        title: 'Malus',
+        text: ['This is the malus list. Like bonus, they are link to girl attributes. Be really careful as each matching <b>malus</b> results in battle points reduced to 10% of their value'],
+      },
+      {
+        attachTo: {
+          element: '.fetish',
+          on: 'top',
+        },
+        title: 'Fetish',
+        text: ['Leaders can have fetish. When a leader has fetish, they will only allow these scenes in battle, disabling all the rest therefore a girl not doing his fetish won\'t be allowed to do anything in battle'],
+      },
+      {
+        attachTo: {
+          element: '.lvl',
+          on: 'top',
+        },
+        title: 'Leader level',
+        text: ['Leaders have levels. When you beat a leader, his level is increased. When a leader\'s level raises, he becomes harder to beat by raising his requirements'],
+      },
+      {
+        title: 'Leaders and other studios',
+        text: ['Leaders and other studios have a special connection. When you beat a leader, other studios will have their value increased by 10%'],
+      },
+      {
+        title: 'Summary',
+        text: ['Now you know everything about leaders. Try to beat them for their rewards and advance in game!'],
+      }
+    ]);
+    this._shepherdService.start();
   }
 
 }
