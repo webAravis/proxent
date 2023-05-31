@@ -22,7 +22,7 @@ export class FreedomComponent implements OnInit, OnDestroy {
 	indexPricing = 0;
 
 	priceGrid: number[] = [
-		100, 500, 2000, 4500, 6000, 8000, 12_000, 15_000, 19_000, 25_000,
+		100, 500, 2000, 4500, 8000, 13_000, 19_000, 26_000, 34_000, 45_000,
 	];
 
 	itemsGrid: { itemName: string; quantity: number }[] = [

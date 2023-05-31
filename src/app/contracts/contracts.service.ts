@@ -144,9 +144,9 @@ export class ContractsService {
       }
 
       if (difficulty >= 3) {
-        const itemsToWin = ['advanced_skill_gem', 'basic_skill_gem', 'fans_badge', 'money_badge', 'recordmonthly_badge', 'recordyearly_badge', 'studiomonthly_badge', 'studioyearly_badge'];
+        const itemsToWin = ['cum', 'cum', 'cum', 'cum', 'advanced_skill_gem', 'basic_skill_gem', 'fans_badge', 'money_badge', 'recordmonthly_badge', 'recordyearly_badge', 'studiomonthly_badge', 'studioyearly_badge'];
         const itemName = itemsToWin[Math.floor(Math.random() * itemsToWin.length)];
-        contract.rewards.push({type: itemName, quantity: Math.round(1 + (difficulty/2) * this._settingService.getSetting('contract_items'))});
+        contract.rewards.push({type: itemName, quantity: (itemName === 'cum' ? Math.round(10 + difficulty) : Math.round(1 + (difficulty/2)) * this._settingService.getSetting('contract_items'))});
       }
 
       const expirationToAdd = Math.round(2 + Math.random()*4);

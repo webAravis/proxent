@@ -77,10 +77,10 @@ export class NewGameComponent {
     switch (difficulty) {
       case 'easy':
         for (const setting of this.costs) {
-          setting.value = 50;
+          setting.value = 25;
         }
         for (const setting of this.rewards) {
-          setting.value = 150;
+          setting.value = 250;
         }
         break;
       case 'normal':

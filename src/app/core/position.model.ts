@@ -27,7 +27,7 @@ export class Position {
   }
 
   getGold = (trending: number = 0, level: number, popularity: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/1.75) + this.getMultiplierType(this.type) * (150 * popularity)) * trending );
+    return Math.round( ((this.corruption + 1) * (level/2) + this.getMultiplierType(this.type) * (130 * popularity)) * trending );
   }
 
   getXp = (trending: number = 0, level: number): number => {
