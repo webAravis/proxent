@@ -1,3 +1,4 @@
+import { ShepherdService } from 'angular-shepherd';
 import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Girl } from '../core/girls/girl.model';
 import { GirlsService } from '../core/girls/girls.service';
@@ -109,6 +110,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     private _girlService: GirlsService,
     private _settingsService: SettingsService,
     private _contractService: ContractsService,
+    private _shepherdService: ShepherdService,
 		private _router: Router
 	) {}
 
@@ -176,7 +178,128 @@ export class RecordComponent implements OnInit, OnDestroy {
     this._selectGirl(this.playerGirls[this.girlIndex]);
   }
 
+  startTutorial(): void {
+    this._gameService.pauseGame();
+    this._shepherdService.defaultStepOptions = {
+      scrollTo: true,
+      cancelIcon: {
+        enabled: true
+      },
+      buttons: [
+        {
+          action: function() { this.back() },
+          label: 'prev',
+          text: 'Prev'
+        },
+        {
+          action: function() { this.next() },
+          label: 'next',
+          text: 'Next'
+        },
+      ],
+    };
+    this._shepherdService.modal = true;
+    this._shepherdService.confirmCancel = false;
+    this._shepherdService.onTourFinish = () => {this._gameService.resumeGame()};
+    this._shepherdService.addSteps([
+      {
+        title: 'Record activity tutorial',
+        text: ['Are you new to the game?'],
+        buttons: [
+          {
+            action: function() { this.cancel(); },
+            label: 'prev',
+            text: 'No, I already know the mechanics'
+          },
+          {
+            action: function() { this.next() },
+            label: 'next',
+            text: 'Yes, take me for a tour!'
+          },
+        ]
+      },
+      {
+        title: 'General informations and goals',
+        text: 'Recording is an activity where your goal is to do the best record you can. By using scenes in the right moment, you will increase your record value measured in points. A record can be ended at any time, or when you cannot record more scenes. Record scenes count are limited by the selected girl\'s corruption level. Each time you increase her corruption, you will be allowed to record one more scene'
+      },
+      {
+        attachTo: {
+          element: '.stats',
+          on: 'top',
+        },
+        title: 'Stats bars',
+        text: ['Here are you stats, keep an eye on it to manage your record'],
+      },
+      {
+        attachTo: {
+          element: '.orgasm',
+          on: 'top',
+        },
+        title: 'Orgasm metter',
+        text: ['This is the orgasm metter, fill it to get <i>Cum</i>'],
+      },
+      {
+        attachTo: {
+          element: '.stamina',
+          on: 'top',
+        },
+        title: 'Boner metter',
+        text: ['This is the boner metter, foreplay will increase it while other scenes will consume it. Scene\'s rewards are affected by the boner metter. Try to keep it high when going deep!'],
+      },
+      {
+        attachTo: {
+          element: '.pos',
+          on: 'top',
+        },
+        title: 'Positions',
+        text: ['This is the position metter. It indicates how many scenes are left for this record. When filled, record will automatically end'],
+      },
+      {
+        attachTo: {
+          element: '.score',
+          on: 'top',
+        },
+        title: 'Score bar',
+        text: ['Here is the general record value. When playing a scene, its output will summup with record\'s value. You will get rewards when ending the record'],
+      },
+      {
+        attachTo: {
+          element: '.positions-wrapper',
+          on: 'top',
+        },
+        title: 'Scenes picker',
+        text: ['This is the scene picker. You can choose a scene by clicking it. A scene can be disabled if current boner level is not high enough'],
+      },
+      {
+        attachTo: {
+          element: '.trending',
+          on: 'top',
+        },
+        title: 'Trending scene',
+        text: ['The trending scene! This indicates the current trending scene, it will give you x2 on all scene rewards! You should try to pick it when possible, be careful as a trending scene may be unavailable due to boner state. Trending scene management is the key to a good performance'],
+      },
+      {
+        title: 'Advanced scenes',
+        text: ['Scenes can have more advanced versions, unlocked by corruption or skills. When an advanced position is available, you will see popping buttons that you have to click before the end of the scene to advance to next scene\'s level. Advanced scenes will not consume more boner nor count as a new scene so it\'s like a free scene with bigger rewards. FAP Mode in settings will automatically pop bubbles to let you concentrate on your business'],
+      },
+      {
+        title: 'End of record',
+        text: ['When you end a record, a scoring screen will appear. You will see the record rating, which is based on what could potentially be done by this girl'],
+      },
+      {
+        title: 'Summary',
+        text: ['That\'s it! You know the basics of recording. Boner management and trending scenes are what makes the difference here'],
+      }
+    ]);
+    this._shepherdService.start();
+  }
+
 	startRecord(): void {
+    if (!this._gameService.tutorials.recordScreenDone) {
+      this.startTutorial();
+      this._gameService.tutorials.recordScreenDone = true;
+    }
+
 		this.girl.orgasmLevel = 0;
 		this.state = 'recording';
 
