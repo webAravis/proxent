@@ -1,5 +1,6 @@
+import { ShepherdService } from 'angular-shepherd';
 import { GirlsService } from './../core/girls/girls.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Girl } from '../core/girls/girl.model';
 import { RewardService } from '../reward/reward.service';
@@ -39,7 +40,7 @@ export class PhotoShooting {
   templateUrl: './shooting.component.html',
   styleUrls: ['./shooting.component.scss']
 })
-export class ShootingComponent implements OnInit, OnDestroy {
+export class ShootingComponent implements OnInit, OnDestroy, AfterViewInit {
 
   girl = new Girl();
 
@@ -77,8 +78,16 @@ export class ShootingComponent implements OnInit, OnDestroy {
     private _cachingService: CachingService,
     private _shootingService: ShootingService,
     private _settingsService: SettingsService,
+    private _shepherdService: ShepherdService,
     private _contractService: ContractsService
   ) { }
+
+  ngAfterViewInit(): void {
+    if (!this._gameService.tutorials.shootingScreenDone) {
+      this.startTutorial();
+      this._gameService.tutorials.shootingScreenDone = true;
+    }
+  }
 
   ngOnInit(): void {
     this._gameService.goldChanged
@@ -223,6 +232,90 @@ export class ShootingComponent implements OnInit, OnDestroy {
   availablePhotos(): number {
     return this.photos
       .filter(photo => !photo.locked && !this.playedPhotos.map((playedPhoto: PhotoShooting) => playedPhoto.name).includes(photo.name)).length;
+  }
+
+  startTutorial(): void {
+    this._gameService.pauseGame();
+    this._shepherdService.defaultStepOptions = {
+      scrollTo: true,
+      cancelIcon: {
+        enabled: true
+      },
+      buttons: [
+        {
+          action: function() { this.back() },
+          label: 'prev',
+          text: 'Prev'
+        },
+        {
+          action: function() { this.next() },
+          label: 'next',
+          text: 'Next'
+        },
+      ],
+    };
+    this._shepherdService.modal = true;
+    this._shepherdService.confirmCancel = false;
+    this._shepherdService.onTourFinish = () => {this._gameService.resumeGame()};
+    this._shepherdService.addSteps([
+      {
+        title: 'Shooting activity tutorial',
+        text: ['Are you new to the game?'],
+        buttons: [
+          {
+            action: function() { this.cancel(); },
+            label: 'prev',
+            text: 'No, I already know the mechanics'
+          },
+          {
+            action: function() { this.next() },
+            label: 'next',
+            text: 'Yes, take me for a tour!'
+          },
+        ]
+      },
+      {
+        title: 'General informations and goals',
+        text: 'A shooting is an activity where a girl will respond on customer requests. The more appropriate photos you will use, the better will be the overall output of a shooting.'
+      },
+      {
+        attachTo: {
+          element: '.customer-request',
+          on: 'top',
+        },
+        title: 'Customer request',
+        text: ['This is the customer request panel. It will provide all details about the current customer request. You should try to match the request the better you can when selecting a photo in the deck.'],
+      },
+      {
+        attachTo: {
+          element: '.combo-value',
+          on: 'top',
+        },
+        title: 'Combo',
+        text: ['This is the current combo value. Every matching attribute will increase its value by 0.3 for format and body part, 0.5 for place and 0.8 for outfit. Be careful, unmatching a request will result in a combo decrease. If none of the customer request\'s attributes match, combo multiplier will be thrown to 0.01, no matter how high it was before.<br/><i>Sometimes it\'s better to end session to keep a high combo than risk it all with a new and potentially impossible customer request</i>'],
+      },
+      {
+        attachTo: {
+          element: '.score',
+          on: 'top',
+        },
+        title: 'Rewards',
+        text: ['These are the overall rewards of the shooting session. To increase it, you should fullfill customer requests by using photos. It is directly modified by your combo multiplier, meaning this is exactly what you will earn'],
+      },
+      {
+        attachTo: {
+          element: '.masonry',
+          on: 'top',
+        },
+        title: 'Photos',
+        text: ['Here you will find girl photos. To unlock a photo, simply click on it and if requirements are met you will have it forever. Choose wisely which photo you will use for a request as then it won\'t be available for the rest of photoshoot'],
+      },
+      {
+        title: 'Summary',
+        text: ['That\'s it! You know the basics of photoshoots. Remember that you want to fullfill customer requests, and that you\'d prefer end photoshoot early to keep a high combo!'],
+      }
+    ]);
+    this._shepherdService.start();
   }
 
   private _computeCombo(photo: PhotoShooting): void {

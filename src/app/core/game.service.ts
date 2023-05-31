@@ -7,7 +7,8 @@ import { DialogsService } from '../dialogs/dialogs.service';
 })
 export class GameService {
   tutorials = {
-    girlScreenDone: false
+    girlScreenDone: false,
+    shootingScreenDone: false
   };
 
   newGame: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

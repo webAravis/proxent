@@ -1,6 +1,12 @@
 <app-background class="background"></app-background>
 
-<div class="header">Shooting for {{ girl.name }}</div>
+<div class="header">
+  Shooting for {{ girl.name }}
+  <div class="tutorial" (click)="startTutorial()">
+    <img src="./assets/tutorial.png">
+    <span>Tutorial</span>
+  </div>
+</div>
 
 <div class="wrapper">
   <div class="masonry">
@@ -61,13 +67,6 @@
       </div>
     </ngx-masonry>
   </div>
-
-
-  <!-- <div class="deck">
-
-
-
-  </div> -->
 
   <div class="request">
     <div class="customer-request">
