@@ -324,7 +324,7 @@ export class RecordService {
       multiplier += comboPositionNumber;
     }
 
-    multiplier += trendingPosition === positionName ? 4 : 1;
+    multiplier += trendingPosition === positionName ? 2 : 1;
 
     return multiplier;
   }

@@ -19,6 +19,8 @@ export class LeadersService {
   leaders: BehaviorSubject<Leader[]> = new BehaviorSubject<Leader[]>([]);
   leaderBattle: BehaviorSubject<Leader> = new BehaviorSubject<Leader>(new Leader());
 
+  loaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   private _leadersConfig: any[] = [];
 
   constructor(
@@ -56,6 +58,7 @@ export class LeadersService {
   }
 
   private _initMods(): void {
+    this.loaded.next(false);
     if (modsConfig.length === 0) {
       setTimeout(() => {
         this._initMods();
@@ -83,5 +86,6 @@ export class LeadersService {
     }
 
 		this.leaders.next(leadersArray);
+    this.loaded.next(true);
   }
 }

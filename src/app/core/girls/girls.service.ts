@@ -26,7 +26,7 @@ export class GirlsService {
 	gameGirls: BehaviorSubject<Girl[]> = new BehaviorSubject<Girl[]>([]);
 
   girlsConfig: any[] = [];
-  loading = true;
+  loaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 	constructor(
     private _dialogsService: DialogsService
@@ -136,6 +136,8 @@ export class GirlsService {
   }
 
   private _initMods(): void {
+    this.loaded.next(false);
+
     if (modsConfig.length === 0) {
       setTimeout(() => {
         this._initMods();
@@ -177,8 +179,7 @@ export class GirlsService {
     }
 
 		this.gameGirls.next(girlsArray);
-
-    this.loading = false;
+    this.loaded.next(true);
 	}
 
   private _getMultipleRandom(arr: any[], num: number) {

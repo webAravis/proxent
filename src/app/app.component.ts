@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CachingService } from './core/caching.service';
 import { Router } from '@angular/router';
 import { GameService } from './core/game.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
 
 import packageJson from '../../package.json';
 import { ContractsService } from './contracts/contracts.service';
 import { Contract } from './contracts/contract.model';
+import { GirlsService } from './core/girls/girls.service';
+import { LeadersService } from './leaders/leaders.service';
 
 @Component({
 	selector: 'app-root',
@@ -29,6 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
 		private _router: Router,
 		private _cachingService: CachingService,
     private _gameService: GameService,
+    private _girlService: GirlsService,
+    private _leaderService: LeadersService,
     private _contractService: ContractsService
 	) { }
 
@@ -38,16 +42,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
 		this._router.navigate(['/']);
 
-		this._cachingService.loadedPercent.subscribe((percent: number) => {
-			this.loadProgress = percent;
-			if (this.loadProgress === 100) {
+    combineLatest([
+      this._cachingService.loadedPercent,
+      this._girlService.loaded,
+      this._leaderService.loaded
+    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, girlsLoaded: boolean, leadersLoaded: boolean]) => {
+      this.loadProgress = status[0];
+			if ((this.loadProgress === 100 || this._cachingService.isOnline) && status[1] && status[2]) {
 				setTimeout(() => {
 					this.ready = true;
 				}, 500);
 			}
-		});
-
-    this.ready = !this._cachingService.isOnline;
+    });
   }
 
   ngOnDestroy(): void {
