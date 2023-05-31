@@ -248,6 +248,10 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked, A
         title: 'Girl limit',
         text: ['This is your girl limit. Your girlfriend doesn\'t count in this limit! <b>You can increase it by beating Expandor, the logistic leader</b>'],
       },
+      {
+        title: 'Badges',
+        text: ['During the game, you will need badges to unlock game content. You\'ll earn them automatically with monthly and yearly ceremonies based on your records for expired period. Note that your girlfriend is not an employee therefore she won\'t compete for rewards!'],
+      },
     ]);
     this._shepherdService.start();
   }

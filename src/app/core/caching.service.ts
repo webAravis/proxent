@@ -30,14 +30,18 @@ export class CachingService {
   isOnline: boolean = false;
   mediasExist: boolean = true;
 
+  online: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  hasMedias: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   constructor(
     private _girlService: GirlsService,
     private _httpClient: HttpClient,
-    private _shootingService: ShootingService,
     private _sanitizer: DomSanitizer
   ) {
     isOnline().then((isOnline: boolean) => {
       this.isOnline = isOnline;
+      this.online.next(true);
+
       this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
     });
   }

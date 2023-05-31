@@ -53,8 +53,17 @@ export class SaveService {
       golds > 0 ? this.saveGame() : undefined
     );
 
-    let allSaves = localStorage.getItem('saveGame') ?? btoa('[]');
-    allSaves = atob(allSaves);
+    let allSaves = btoa('[]');
+    if (localStorage.getItem('saveGame')) {
+      allSaves = localStorage.getItem('saveGame') ?? btoa('[]');
+      allSaves = atob(allSaves);
+      localStorage.removeItem('saveGame');
+    }
+
+    if (localStorage.getItem('proxent-savegame')) {
+      allSaves = localStorage.getItem('proxent-savegame') ?? btoa('[]');
+      allSaves = atob(allSaves);
+    }
 
     // fix wrong property names
     allSaves = allSaves.replaceAll('unlockedPostions', 'unlockedPositions');
@@ -99,10 +108,10 @@ export class SaveService {
     this.saves.splice(saveIndex, 1);
 
     if (this.saves.length === 0) {
-      localStorage.removeItem('saveGame');
+      localStorage.removeItem('proxent-savegame');
     } else {
       const saved = btoa(JSON.stringify(this.saves));
-      localStorage.setItem('saveGame', saved);
+      localStorage.setItem('proxent-savegame', saved);
     }
   }
 
@@ -223,7 +232,7 @@ export class SaveService {
     savedGames[this.saveIndex] = toSave;
 
     const saved = btoa(JSON.stringify(savedGames));
-    localStorage.setItem('saveGame', saved);
+    localStorage.setItem('proxent-savegame', saved);
 
     this.saves = savedGames;
     this.saved.next(new Date());
@@ -331,7 +340,7 @@ export class SaveService {
   }
 
   hasSave(): boolean {
-    return localStorage.getItem('saveGame') !== null;
+    return localStorage.getItem('saveGame') !== null || localStorage.getItem('proxent-savegame') !== null;
   }
 
   private _isJsonString(str: string): boolean {

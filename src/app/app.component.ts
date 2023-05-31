@@ -45,13 +45,15 @@ export class AppComponent implements OnInit, OnDestroy {
     combineLatest([
       this._cachingService.loadedPercent,
       this._girlService.loaded,
-      this._leaderService.loaded
-    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, girlsLoaded: boolean, leadersLoaded: boolean]) => {
+      this._leaderService.loaded,
+      this._cachingService.online,
+      this._cachingService.hasMedias,
+    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, isOnline: boolean, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean]) => {
+      console.log('load progress', status);
+
       this.loadProgress = status[0];
-			if ((this.loadProgress === 100 || this._cachingService.isOnline) && status[1] && status[2]) {
-				setTimeout(() => {
-					this.ready = true;
-				}, 500);
+			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2]) {
+        this.ready = true;
 			}
     });
   }
@@ -63,5 +65,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   mediasNotExit(): void {
     this._cachingService.mediasExist = false;
+    this._cachingService.hasMedias.next(true);
   }
 }
