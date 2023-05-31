@@ -456,12 +456,14 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.fansWon += positionStats.fans;
 		this.girl.orgasmLevel += positionStats.orgasm;
 
-    if (!isCombo) {
-      this.nbScenes++;
-      console.log('applying boner', positionStats.boner);
+    if (!isCombo || positionStats.boner > 0) {
       this.boner += positionStats.boner;
       this.boner = Math.max(this.boner, 0);
       this.boner = Math.min(this.boner, 100);
+    }
+
+    if (!isCombo) {
+      this.nbScenes++;
     }
 
 		this.positionsPlayed.push({

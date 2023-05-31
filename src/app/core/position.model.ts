@@ -27,7 +27,7 @@ export class Position {
   }
 
   getGold = (trending: number = 0, level: number, popularity: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/2) + this.getMultiplierType(this.type) * (130 * popularity)) * trending );
+    return Math.round( ((this.corruption + 1) * (level/2.2) + this.getMultiplierType(this.type) * (100 * popularity)) * trending );
   }
 
   getXp = (trending: number = 0, level: number): number => {
@@ -69,7 +69,7 @@ export class Position {
     let boner = Math.round(
       (
         this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ?
-          (this.corruption + 1) * 6 :
+          (this.corruption + 1) * 4 :
           this.corruption * 1.5
       )
     );
