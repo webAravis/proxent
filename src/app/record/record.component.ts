@@ -220,7 +220,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       },
       {
         title: 'General informations and goals',
-        text: 'Recording is an activity where your goal is to do the best record you can. By using scenes in the right moment, you will increase your record value measured in points. A record can be ended at any time, or when you cannot record more scenes. Record scenes count are limited by the selected girl\'s corruption level. Each time you increase her corruption, you will be allowed to record one more scene'
+        text: 'Recording is an activity where your goal is to do the best record you can. By using scenes in the right moment, you will increase your record value measured in points. A record can be ended at any time, or when you cannot record more scenes. Record scenes count are limited by the selected girl\'s corruption level. By increasing her corruption level, you increase the number of scenes for each records'
       },
       {
         attachTo: {
@@ -235,16 +235,16 @@ export class RecordComponent implements OnInit, OnDestroy {
           element: '.orgasm',
           on: 'top',
         },
-        title: 'Orgasm metter',
-        text: ['This is the orgasm metter, fill it to get <i>Cum</i>'],
+        title: 'Orgasm meter',
+        text: ['This is the orgasm meter, fill it to get <i>Cum</i>'],
       },
       {
         attachTo: {
           element: '.stamina',
           on: 'top',
         },
-        title: 'Boner metter',
-        text: ['This is the boner metter, foreplay will increase it while other scenes will consume it. Scene\'s rewards are affected by the boner metter. Try to keep it high when going deep!'],
+        title: 'Boner meter',
+        text: ['This is the boner meter, foreplay will increase it while other scenes will consume it. Scene\'s rewards are affected by the boner meter. Try to keep it high when going deep!'],
       },
       {
         attachTo: {
@@ -252,7 +252,7 @@ export class RecordComponent implements OnInit, OnDestroy {
           on: 'top',
         },
         title: 'Positions',
-        text: ['This is the position metter. It indicates how many scenes are left for this record. When filled, record will automatically end'],
+        text: ['This is the position meter. It indicates how many scenes are left for this record. When filled, record will automatically end'],
       },
       {
         attachTo: {
@@ -284,7 +284,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       },
       {
         title: 'End of record',
-        text: ['When you end a record, a scoring screen will appear. You will see the record rating, which is based on what could potentially be done by this girl'],
+        text: ['When you end a record, a results screen will appear. You will see the record rating, which is based on what could potentially be done by this girl'],
       },
       {
         title: 'Summary',

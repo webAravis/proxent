@@ -1,4 +1,4 @@
-<div *ngIf="shown" (click)="nextStep()" class="overlay">
+<div *ngIf="shown && dialog[step]" (click)="nextStep()" class="overlay">
 	<div *ngIf="dialog[step].character === 'player'" class="character player">
 		<img
 			[src]="'./assets/' + dialog[step].character + '.png'"
