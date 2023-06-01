@@ -95,7 +95,6 @@ export class SelectorComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
 	onWheel(event: WheelEvent): void {
-		event.preventDefault();
 		this._scroller.scrollLeft += event.deltaY;
 	}
 

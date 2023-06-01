@@ -147,7 +147,7 @@ export class NewGameComponent {
       this.show = false;
       this._gameService.startGame(true);
 
-      this._router.navigate(['/girls']);
+      this._router.navigate(['/dash']);
     }
   }
 

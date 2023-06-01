@@ -1,13 +1,1 @@
-<div class="bg">
-	<img *ngIf="!isBgVideo" [src]="background" class="image-background" />
-	<video
-		*ngIf="isBgVideo"
-		controls
-		autoplay
-		muted
-		loop
-		class="video-background"
-	>
-		<source [src]="background" type="video/mp4" />
-	</video>
-</div>
+<app-background></app-background>

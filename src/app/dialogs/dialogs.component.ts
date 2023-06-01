@@ -48,12 +48,14 @@ export class DialogsComponent implements OnInit, OnDestroy {
 		this._dialogService.dialog
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((dialog: { character: string; text: string }[]) =>{
-          for (const entry of dialog) {
-            if (entry.character !== 'player') {
-              entry.text = entry.text.replace('girlfriend_name', this.girlfriend.name);
-            }
-          }
-					this.dialog = dialog;
+        // retrieving girlfriend's datas
+        this.girlfriend = this._girlService.gameGirls.getValue().find(girl => girl.fullId === this._gameService.girlfriend) ?? new Girl();
+        this.girlFriendPortrait = './assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
+
+        for (const entry of dialog) {
+          entry.text = entry.text.replaceAll('girlfriend_name', this.girlfriend.name);
+        }
+        this.dialog = dialog;
 			});
 	}
 

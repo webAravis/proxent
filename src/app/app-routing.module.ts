@@ -21,7 +21,7 @@ const routes: Routes = [
 		component: StartComponent,
 	},
 	{
-		path: 'main',
+		path: 'dash',
 		component: DashComponent,
 	},
 	{

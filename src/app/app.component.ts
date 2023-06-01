@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CachingService } from './core/caching.service';
 import { Router } from '@angular/router';
 import { GameService } from './core/game.service';
@@ -33,12 +33,16 @@ export class AppComponent implements OnInit, OnDestroy {
     private _gameService: GameService,
     private _girlService: GirlsService,
     private _leaderService: LeadersService,
-    private _contractService: ContractsService
+    private _contractService: ContractsService,
+    private _cdr: ChangeDetectorRef
 	) { }
 
   ngOnInit(): void {
     this._contractService.contractNotifications.pipe(takeUntil(this._unsubscribeAll)).subscribe(notifications => this.contractNotifications = notifications);
-    this._gameService.gameState.pipe(takeUntil(this._unsubscribeAll)).subscribe((state) => this.gamePaused = state);
+    this._gameService.gameState.pipe(takeUntil(this._unsubscribeAll)).subscribe((state) => {
+      this.gamePaused = state;
+      this._cdr.detectChanges();
+    });
 
 		this._router.navigate(['/']);
 
@@ -49,8 +53,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this._cachingService.online,
       this._cachingService.hasMedias,
     ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, isOnline: boolean, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean]) => {
-      console.log('load progress', status);
-
       this.loadProgress = status[0];
 			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2]) {
         this.ready = true;

@@ -62,11 +62,12 @@ export class Girl {
 	}
 
   getNextLevelXp(level: number): number {
-    return (level/0.07) ** 2;
+    // return 100*(1+0.1) ** level;
+    return  (level/0.6) ** 3;
   }
 
 	get level(): number {
-		return Math.trunc(0.07 * Math.sqrt(this.xp)) + 1;
+		return Math.trunc(0.6 * Math.cbrt(this.xp)) + 1;
 	}
 
 	get popularity(): number {

@@ -3,7 +3,7 @@
 
 	<hr />
 
-  <div class="red center" *ngIf="reward.girl.freedom > 0.1">
+  <div class="red center" *ngIf="reward.girl.freedom > 0.1 && items.length > 0">
     Rewards have been reduced by {{ (reward.girl.freedom * 100) | number : '1.0-0' }}% due to girl independency!
   </div>
 
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 
-	<div class="hardcap center" *ngIf="reward.hardCapCorruption">
+	<div class="hardcap center" *ngIf="reward.hardCapCorruption && reward.corruption === 0">
 		You hit the max level for actual corruption of {{ reward.girl.name }}! You
 		should train her to progress further!
 	</div>
