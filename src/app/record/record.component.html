@@ -65,6 +65,39 @@
 	<ng-container *ngIf="state === 'recording'">
 		<div class="overlay" [style.opacity]="(1 - volume)"></div>
 
+    <div class="skills-wrapper">
+      <div class="skill has-tooltip" *ngFor="let skill of appliedSkills">
+        <div class="skill-icon">
+          <img [src]="'./assets/mods/'+skill.mod+'/skills/'+skill.picture+'.jpg'" alt="">
+        </div>
+        <div class="skill-level">
+          <span [class.bigger]="skill.level > 0">{{ skill.level }}</span>/{{ skill.maxlevel }}
+        </div>
+        <div class="tooltip">
+          <div class="tooltip-wrapper">
+            <div class="name">{{ skill.name }}</div>
+
+            <div class="description">{{ skill.description }}</div>
+
+            <div class="effects-wrapper" *ngIf="skill.effects.length > 0">
+              <div class="effects" *ngFor="let effect of skill.effects[skill.level-1]">
+                <div class="position">
+                  {{ effect.position }}
+                </div>
+                <div class="stat">
+                  {{ effect.stat }}
+                </div>
+                <div class="value">
+                  {{ effect.value }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 		<div class="stats">
 			<div class="orgasm">
 				<div class="label with-icon">

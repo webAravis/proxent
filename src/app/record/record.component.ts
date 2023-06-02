@@ -14,7 +14,7 @@ import { CachingService } from '../core/caching.service';
 import { StudioService } from '../studio/studio.service';
 import { Position, PositionType } from '../core/position.model';
 import { SkillsService } from '../skills/skills.service';
-import { TreeSkills } from '../skills/treeskills.model';
+import { Skill, TreeSkills } from '../skills/treeskills.model';
 import { Leader, LeaderActivity } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
 import { ContractsService } from '../contracts/contracts.service';
@@ -95,6 +95,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   treeSkills: TreeSkills[] = [];
   sceneSkills: string[] = [];
   skillStatsModifiers: { stat: string, position: string, label: string, value: string }[] = [];
+  appliedSkills: Skill[] = [];
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
   private _fapInterval: NodeJS.Timer | undefined = undefined;
@@ -809,6 +810,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     this.positions = [];
     this.sceneSkills = [];
     this.skillStatsModifiers = [];
+    this.appliedSkills = [];
 
     this.girl = girl;
     if (this.girl.name === '') {
@@ -849,6 +851,8 @@ export class RecordComponent implements OnInit, OnDestroy {
                   break;
               }
             }
+
+            this.appliedSkills.push(skill);
           }
         }
       }

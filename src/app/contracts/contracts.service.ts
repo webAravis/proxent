@@ -80,7 +80,7 @@ export class ContractsService {
     this._gameService.dayChanged.subscribe((day: number) => {
       this._checkExpired();
 
-      if (day % 2 === 0 || Math.random() < 0.3) {
+      if (day % 2 === 0 || Math.random() < 0.75) {
         return;
       }
 
@@ -106,7 +106,7 @@ export class ContractsService {
       }
       contract.girlAttributes = attributes[Math.floor(Math.random() * attributes.length)];
 
-      const goldQuantity = (300000*0.1 * difficulty*Math.random()) * (contract.activity === 'recording' ? 1.5 : 0.8) * this._settingService.getSetting('contract_golds');
+      const goldQuantity = (350000*0.1 * difficulty*Math.random()) * (contract.activity === 'recording' ? 2 : 0.8) * this._settingService.getSetting('contract_golds');
       contract.rewards.push({type: 'gold', quantity: goldQuantity});
       if (goldQuantity < 1000) {
         return;
@@ -129,7 +129,7 @@ export class ContractsService {
             requires.value = ranks[Math.floor(Math.random() * ranks.length)];
             break;
           case 'orgasms':
-            requires.value = Math.round(Math.random() * 50).toString();
+            requires.value = Math.round(Math.random() * 20).toString();
             break;
         }
         contract.requires = requires;
@@ -146,7 +146,7 @@ export class ContractsService {
       if (difficulty >= 3) {
         const itemsToWin = ['cum', 'cum', 'cum', 'cum', 'advanced_skill_gem', 'basic_skill_gem', 'fans_badge', 'money_badge', 'recordmonthly_badge', 'recordyearly_badge', 'studiomonthly_badge', 'studioyearly_badge'];
         const itemName = itemsToWin[Math.floor(Math.random() * itemsToWin.length)];
-        contract.rewards.push({type: itemName, quantity: (itemName === 'cum' ? Math.round(10 + difficulty) : Math.round(1 + (difficulty/2)) * this._settingService.getSetting('contract_items'))});
+        contract.rewards.push({type: itemName, quantity: (itemName === 'cum' ? Math.round(10 + difficulty) : Math.round(1 + (difficulty/3)) * this._settingService.getSetting('contract_items'))});
       }
 
       const expirationToAdd = Math.round(2 + Math.random()*4);

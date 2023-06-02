@@ -23,19 +23,19 @@ export class Position {
 	}
 
   getFans = (trending: number = 0, level: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/1.3) + this.getMultiplierType(this.type) * 200) * trending );
+    return Math.round( ((this.corruption + 1) * (level/1.1) + this.getMultiplierType(this.type) * 250) * trending );
   }
 
   getGold = (trending: number = 0, level: number, popularity: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/2.2) + this.getMultiplierType(this.type) * (100 * popularity)) * trending );
+    return Math.round( ((this.corruption + 1) * (level/1.5) + this.getMultiplierType(this.type) * (150 * popularity)) * trending );
   }
 
   getXp = (trending: number = 0, level: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/15) + this.getMultiplierType(this.type) * 50) * trending );
+    return Math.round( ((this.corruption + 1) * (level/10) + this.getMultiplierType(this.type) * 75) * trending );
   }
 
   getOrgasm = (currentBoner: number = 0, trending: number = 1): number => {
-    return Math.round( (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (5 + this.corruption * 5) * (currentBoner / 100)) * (trending / 2) );
+    return Math.round( (this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ? 0 : (10 + this.corruption * 8) * (currentBoner / 100)) * (trending / 2) );
   }
 
   getMultiplierType = (type: string): number => {

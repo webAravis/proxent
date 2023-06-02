@@ -10,7 +10,7 @@ modsConfig.push({
           "dark eyes",
           "american"
        ],
-       "xpModifier":1.5,
+       "xpModifier":2.5,
        "unlockPrice":[
           {
              "type":"gold",
@@ -2056,8 +2056,8 @@ modsConfig.push({
           "dark eyes",
           "american"
        ],
-       "goldsModifier":1.5,
-       "xpModifier":0.8,
+       "goldsModifier":2.5,
+       "xpModifier":0.7,
        "unlockPrice":[
           {
              "type":"gold",
@@ -4141,7 +4141,7 @@ modsConfig.push({
           "dark eyes",
           "euro"
        ],
-       "xpModifier":1.5,
+       "xpModifier":2,
        "unlockPrice":[
           {
              "type":"gold",
@@ -4778,6 +4778,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs"
                 ],
                 "format":"portrait"
@@ -4792,7 +4793,8 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "nipples"
                 ],
                 "format":"4:3"
              }
@@ -4824,6 +4826,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs",
                    "feet"
                 ],
@@ -4840,6 +4843,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs",
                    "butt",
                    "feet"
@@ -4873,6 +4877,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs"
                 ],
                 "format":"4:3"
@@ -4888,6 +4893,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs"
                 ],
                 "format":"4:3"
@@ -4903,6 +4909,7 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "legs",
                    "butt",
                    "feet"
@@ -4936,7 +4943,8 @@ modsConfig.push({
                 "outfit":"naked",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "nipples"
                 ],
                 "format":"portrait"
              }
@@ -6245,7 +6253,7 @@ modsConfig.push({
           "small",
           "euro"
        ],
-       "fansModifier":1.5,
+       "fansModifier":3,
        "unlockPrice":[
           {
              "type":"gold",
@@ -8008,7 +8016,8 @@ modsConfig.push({
           "tattoo",
           "american"
        ],
-       "cumModifier":1.5,
+       "cumModifier":5,
+       "goldsModifier":0.2,
        "unlockPrice":[
           {
              "type":"gold",
@@ -9796,6 +9805,7 @@ modsConfig.push({
           "euro"
        ],
        "goldsModifier":1.5,
+       "fansModifier":1.5,
        "unlockPrice":[
           {
              "type":"gold",
@@ -11531,7 +11541,9 @@ modsConfig.push({
           "natural boobs",
           "american"
        ],
-       "xpModifier":1.5,
+       "xpModifier":1.2,
+       "goldsModifier":2,
+       "cumModifier":0.5,
        "unlockPrice":[
           {
              "type":"gold",

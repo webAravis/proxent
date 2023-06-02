@@ -67,12 +67,14 @@ export class GameService {
 
 		clearInterval(this.dayTicker);
 
+    let monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 		this.dayTicker = setInterval(() => {
 			this.day++;
-			if (this.day >= 31) {
+			if (this.day > monthLengths[this.month-1]) {
 				this.day = 1;
 				this.month++;
-				this.month === 13 ? undefined : this.monthChanged.next(this.month);
+				this.month === 13 ? this.monthChanged.next(1) : this.monthChanged.next(this.month);
 			}
 
 			if (this.month >= 13) {
