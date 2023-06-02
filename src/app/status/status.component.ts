@@ -3,6 +3,8 @@ import { GameService } from 'src/app/core/game.service';
 import { Subject, takeUntil } from 'rxjs';
 import { InventoryService } from '../inventory/inventory.service';
 import { SaveService } from '../core/save.service';
+import { League } from '../leaders/league.model';
+import { MastersService } from '../leaders/masters.service';
 
 @Component({
 	selector: 'app-status',
@@ -25,11 +27,14 @@ export class StatusComponent implements OnInit, OnDestroy {
 		'fans',
 	];
 
+  league: League = new League();
+
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
+    private _masterService: MastersService,
     private _saveService: SaveService
 	) {}
 
@@ -44,6 +49,8 @@ export class StatusComponent implements OnInit, OnDestroy {
 				this.month = this._gameService.month;
 				this.year = this._gameService.year;
 			});
+
+    this._masterService.leagues.pipe(takeUntil(this._unsubscribeAll)).subscribe(leagues => this.league = leagues.find(league => league.isCurrentLeague) ?? new League());
 
     setInterval(() => this.secondsSave = Math.round(Math.abs((this._saveService.saved.getValue().getTime() - new Date().getTime()) / 1000)), 1000);
 	}

@@ -49,11 +49,11 @@ const routes: Routes = [
 		component: InventoryComponent,
 	},
 	{
-		path: 'leaders',
+		path: 'battle',
 		component: LeadersComponent,
 	},
 	{
-		path: 'battle',
+		path: 'leader-battle',
 		component: LeaderBattleComponent,
 	},
 	{

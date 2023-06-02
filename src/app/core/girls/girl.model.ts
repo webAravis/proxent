@@ -66,6 +66,10 @@ export class Girl {
     return  (level/0.6) ** 3;
   }
 
+  setLevel(level: number): void {
+    this.xp = this.getNextLevelXp(level);
+  }
+
 	get level(): number {
 		return Math.trunc(0.6 * Math.cbrt(this.xp)) + 1;
 	}

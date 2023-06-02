@@ -12,6 +12,7 @@ export class Reward {
 	levelup: boolean;
 	gainedSkillPoint: number;
 	hardCapCorruption: boolean;
+	hardCapLeague: boolean;
 
 	girl: Girl;
 
@@ -24,6 +25,7 @@ export class Reward {
 		levelup = false,
 		gainedSkillPoint = 0,
 		hardCapCorruption = false,
+		hardCapLeague = false,
 		girl: Girl = new Girl(),
     msg: string = ""
 	) {
@@ -35,6 +37,7 @@ export class Reward {
 		this.levelup = levelup;
 		this.gainedSkillPoint = gainedSkillPoint;
 		this.hardCapCorruption = hardCapCorruption;
+		this.hardCapLeague = hardCapLeague;
     this.msg = msg;
 
 		this.girl = girl;

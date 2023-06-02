@@ -34,6 +34,15 @@ export class GirlsService {
     this._initMods();
 	}
 
+  downgradeLevels(levelCap: number): void {
+    const girls = this.gameGirls.getValue().filter(girl => girl.locked = false);
+    for (const girl of girls) {
+      if (girl.level > levelCap) {
+        girl.setLevel(levelCap);
+      }
+    }
+  }
+
 	addGirl(girl: Girl): void {
 		girl.locked = false;
 

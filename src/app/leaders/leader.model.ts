@@ -3,9 +3,16 @@ export class Leader {
   mod = '';
   description = '';
   lvl = 1;
+
+  nbBonus = 0;
   bonus: string[] = [];
+
+  nbMalus = 0;
   malus: string[] = [];
+
+  nbFetish = 0;
   fetish: string[] = [];
+
 	costItem = '';
 
   activityProb = (level: number): number => { return level };

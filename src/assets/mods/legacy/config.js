@@ -13303,10 +13303,7 @@ modsConfig.push({
   {
     "name":"expandor",
     "description":"Logistic specialist. Beat him to increase girl capacity",
-    "bonus":[
-      "small",
-      "brunette"
-    ],
+    "nbBonus": 3,
     "costItem": "gold",
     "costCurve": (level) => { return (level / 0.07) ** 2 },
     "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13348,14 +13345,8 @@ modsConfig.push({
   {
       "name":"skillus",
       "description":"Skill specialist. Beat him to grab basic skill material",
-      "bonus":[
-        "milf",
-        "dark eyes"
-      ],
-      "malus":[
-        "american",
-        "blond"
-      ],
+      "nbBonus": 3,
+      "nbMalus": 2,
       "costItem": "gold",
       "costCurve": (level) => { return (level / 0.07) ** 2 },
       "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13397,13 +13388,8 @@ modsConfig.push({
   {
       "name":"aniter",
       "description":"Anal fetishist. Beat him to grab advanced skill material",
-      "fetish":[
-        "tease",
-        "handjob",
-        "boobjob",
-        "blowjob",
-        "anal"
-      ],
+      "nbBonus": 3,
+      "nbFetish": 6,
       "costItem": "recordmonthly_badge",
       "costCurve": (level) => { return (level / 0.9) ** 2 },
       "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13445,15 +13431,8 @@ modsConfig.push({
   {
       "name":"multiplor",
       "description":"Multiple fetishist. Beat him to grab advanced skill material",
-      "fetish":[
-        "tease",
-        "handjob",
-        "boobjob",
-        "blowjob",
-        "gangbang",
-        "double",
-        "triple"
-      ],
+      "nbBonus": 3,
+      "nbFetish": 6,
       "costItem": "recordmonthly_badge",
       "costCurve": (level) => { return (level / 0.9) ** 2 },
       "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13495,11 +13474,8 @@ modsConfig.push({
   {
       "name":"blows",
       "description":"Mouth fetishist. Beat him to grab advanced skill material",
-      "fetish":[
-        "blowjob",
-        "deepthroat",
-        "mouthfuck"
-      ],
+      "nbBonus": 3,
+      "nbFetish": 6,
       "costItem": "recordmonthly_badge",
       "costCurve": (level) => { return (level / 0.9) ** 2 },
       "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13541,14 +13517,8 @@ modsConfig.push({
   {
       "name":"savager",
       "description":"Rough fetishist. Beat him to grab advanced skill material",
-      "fetish":[
-        "tease",
-        "handjob",
-        "boobjob",
-        "blowjob",
-        "gangbang",
-        "bdsm"
-      ],
+      "nbMalus": 2,
+      "nbFetish": 6,
       "costItem": "recordmonthly_badge",
       "costCurve": (level) => { return (level / 0.9) ** 2 },
       "pointsCurve": (level) => { return (level / 0.02) ** 2 },
@@ -13586,6 +13556,1183 @@ modsConfig.push({
         {"name": 'cum spoil advanced', "effect": 'cum', "value": -5, "minLevel": 8},
         {"name": 'cum ultimate', "effect": 'cum', "value": -10, "minLevel": 12}
       ]
+  }
+ ],
+ leagues: [
+  {
+     "id":"1",
+     "name":"Stone I",
+     "nbBonus":4,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":25,
+     "maintenanceCost":0,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":15000
+        },
+        {
+           "type":"cum",
+           "quantity":1
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"cum",
+           "quantity":1
+        }
+     ],
+     "isCurrentLeague":true,
+     "unlocker":"legacy-2"
+  },
+  {
+     "id":"2",
+     "name":"Stone II",
+     "nbBonus":3,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":35,
+     "maintenanceCost":10000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":30000
+        },
+        {
+           "type":"cum",
+           "quantity":3
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"cum",
+           "quantity":50
+        }
+     ],
+     "unlocker":"legacy-3"
+  },
+  {
+     "id":"3",
+     "name":"Bronze I",
+     "nbBonus":2,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":60,
+     "maintenanceCost":25000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":50000
+        },
+        {
+           "type":"cum",
+           "quantity":6
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordmontly_badge",
+           "quantity":1
+        },
+        {
+           "type":"cum",
+           "quantity":50
+        }
+     ],
+     "unlocker":"legacy-4"
+  },
+  {
+     "id":"4",
+     "name":"Bronze II",
+     "nbBonus":2,
+     "nbMalus":2,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":80,
+     "maintenanceCost":50000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":250000
+        },
+        {
+           "type":"cum",
+           "quantity":15
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":1
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":1
+        },
+        {
+           "type":"cum",
+           "quantity":75
+        }
+     ],
+     "unlocker":"legacy-5"
+  },
+  {
+     "id":"5",
+     "name":"Silver I",
+     "nbBonus":1,
+     "nbMalus":3,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":100,
+     "maintenanceCost":75000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":640000
+        },
+        {
+           "type":"cum",
+           "quantity":25
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":1
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":1
+        }
+     ],
+     "unlocker":"legacy-6"
+  },
+  {
+     "id":"6",
+     "name":"Silver II",
+     "nbBonus":1,
+     "nbMalus":3,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":130,
+     "maintenanceCost":140000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":1000000
+        },
+        {
+           "type":"cum",
+           "quantity":30
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":1
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":1
+        },
+        {
+           "type":"fans_badge",
+           "quantity":1
+        }
+     ],
+     "isCurrentLeague":true,
+     "unlocker":"legacy-7"
+  },
+  {
+     "id":"7",
+     "name":"Gold I",
+     "nbMalus":4,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":160,
+     "maintenanceCost":200000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":1500000
+        },
+        {
+           "type":"cum",
+           "quantity":38
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":1
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":1
+        },
+        {
+           "type":"fans_badge",
+           "quantity":1
+        },
+        {
+           "type":"studiomonthly_badge",
+           "quantity":1
+        }
+     ],
+     "unlocker":"legacy-8"
+  },
+  {
+     "id":"8",
+     "name":"Gold II",
+     "nbMalus":4,
+     "nbFetish":6,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":200,
+     "maintenanceCost":800000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":4000000
+        },
+        {
+           "type":"cum",
+           "quantity":68
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":1
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":1
+        },
+        {
+           "type":"fans_badge",
+           "quantity":1
+        },
+        {
+           "type":"studiomonthly_badge",
+           "quantity":1
+        },
+        {
+           "type":"studioyearly_badge",
+           "quantity":1
+        }
+     ],
+     "unlocker":"legacy-9"
+  },
+  {
+     "id":"9",
+     "name":"Diamond",
+     "nbMalus":5,
+     "nbFetish":4,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":250,
+     "maintenanceCost":1000000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":15000000
+        },
+        {
+           "type":"cum",
+           "quantity":128
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":5
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":5
+        },
+        {
+           "type":"fans_badge",
+           "quantity":5
+        },
+        {
+           "type":"studiomonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"studioyearly_badge",
+           "quantity":5
+        }
+     ],
+     "unlocker":"legacy-10"
+  },
+  {
+     "id":"10",
+     "name":"Diamond X",
+     "nbMalus":6,
+     "nbFetish":3,
+     "activityProb":0.13,
+     "activities":[
+        {
+           "name":"boner reduction",
+           "effect":"boner",
+           "value":-10
+        },
+        {
+           "name":"boner reduction advanced",
+           "effect":"boner",
+           "value":-50
+        },
+        {
+           "name":"boner reduction ultimate",
+           "effect":"boner",
+           "value":-100
+        },
+        {
+           "duration":10000,
+           "name":"position inhibition",
+           "effect":"position",
+           "value":1
+        },
+        {
+           "duration":15000,
+           "name":"position inhibition advanced",
+           "effect":"position",
+           "value":2
+        },
+        {
+           "duration":20000,
+           "name":"position inhibition ultimate",
+           "effect":"position",
+           "value":4
+        },
+        {
+           "duration":10000,
+           "name":"boner failures",
+           "effect":"boner gains",
+           "value":10
+        },
+        {
+           "duration":20000,
+           "name":"boner failures advanced",
+           "effect":"boner gains",
+           "value":40
+        },
+        {
+           "name":"random picking",
+           "effect":"pick"
+        },
+        {
+           "duration":10000,
+           "name":"golden prohibition",
+           "effect":"trending"
+        },
+        {
+           "duration":15000,
+           "name":"golden prohibition advanced",
+           "effect":"trending"
+        },
+        {
+           "duration":20000,
+           "name":"golden prohibition ultimate",
+           "effect":"trending"
+        },
+        {
+           "name":"cum spoil",
+           "effect":"cum",
+           "value":-1
+        },
+        {
+           "name":"cum spoil advanced",
+           "effect":"cum",
+           "value":-5
+        },
+        {
+           "name":"cum ultimate",
+           "effect":"cum",
+           "value":-10
+        }
+     ],
+     "levelCap":400,
+     "maintenanceCost":10000000,
+     "beatingConditions":[
+        {
+           "type":"points",
+           "quantity":60000000
+        },
+        {
+           "type":"cum",
+           "quantity":199
+        }
+     ],
+     "battleCost":[
+        {
+           "type":"recordyearly_badge",
+           "quantity":5
+        },
+        {
+           "type":"recordmonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"money_badge",
+           "quantity":5
+        },
+        {
+           "type":"fans_badge",
+           "quantity":5
+        },
+        {
+           "type":"studiomonthly_badge",
+           "quantity":5
+        },
+        {
+           "type":"studioyearly_badge",
+           "quantity":5
+        }
+     ]
   }
  ]
 });

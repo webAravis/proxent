@@ -19,6 +19,7 @@ import { Leader, LeaderActivity } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
 import { ContractsService } from '../contracts/contracts.service';
 import { Contract } from '../contracts/contract.model';
+import { League } from '../leaders/league.model';
 
 @Component({
 	selector: 'app-record',
@@ -28,7 +29,7 @@ import { Contract } from '../contracts/contract.model';
 export class RecordComponent implements OnInit, OnDestroy {
   // BATTLE
   @Input() isBattle: boolean = false;
-  @Input() leader: Leader = new Leader();
+  @Input() toBattle: Leader | League | undefined;
   @Output() recordResults: EventEmitter<{score: number, cum: number}> = new EventEmitter();
   leaderActivities: {id: number, activity: LeaderActivity}[] = [];
   leaderDisabledPositions: string[] = [];
@@ -568,7 +569,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.trendingPositions,
 			this.orgasmCount,
 			this._studioService.getStudioQuality(),
-      this.leader
+      this.toBattle
 		);
 
 	}
@@ -624,7 +625,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 			this.trendingPositions,
 			this.orgasmCount,
 			this._studioService.getStudioQuality(),
-      this.leader
+      this.toBattle
 		);
 		this.scorePositions = this._recordService.getScorePositions(
 			this.positionsPlayed, true
@@ -743,7 +744,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   isLeaderPositionDisabled(positionName: string): boolean {
     return this.leaderDisabledPositions.includes(positionName)
-      || (this.leader.fetish.length > 0 && !this.leader.fetish.map(fetish => fetish.toLowerCase()).includes(positionName));
+      || (this.toBattle !== undefined && this.toBattle.fetish.length > 0 && !this.toBattle.fetish.map(fetish => fetish.toLowerCase()).includes(positionName));
   }
 
 	comboHit(event: MouseEvent): void {
@@ -868,14 +869,34 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _leaderWillAct(): boolean {
-		return Math.random() < this.leader.activityProb(this.leader.lvl);
+    if (this.toBattle instanceof Leader) {
+      return Math.random() < this.toBattle.activityProb(this.toBattle.lvl);
+    }
+
+    if (this.toBattle instanceof League) {
+      return Math.random() < this.toBattle.activityProb;
+    }
+
+    return false;
   }
 
   private _pickLeaderActivity(): void {
-    const activities = this.leader.activities.filter(activity =>
-      !this.leaderActivities.map(activeActivity => activeActivity.activity.effect).includes(activity.effect)
-      && (this.leader.lvl >= activity.minLevel && this.leader.lvl <= activity.maxLevel)
-    );
+    let activities: LeaderActivity[] = [];
+
+    if (this.toBattle instanceof Leader) {
+      const toCheck: Leader = this.toBattle;
+      activities = this.toBattle.activities.filter(activity =>
+        !this.leaderActivities.map(activeActivity => activeActivity.activity.effect).includes(activity.effect)
+        && (toCheck.lvl >= activity.minLevel && toCheck.lvl <= activity.maxLevel)
+      );
+    }
+
+    if (this.toBattle instanceof League) {
+      activities = this.toBattle.activities.filter(activity =>
+        !this.leaderActivities.map(activeActivity => activeActivity.activity.effect).includes(activity.effect)
+      );
+    }
+
     if (activities.length === 0) {
       return;
     }

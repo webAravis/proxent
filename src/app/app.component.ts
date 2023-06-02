@@ -9,6 +9,7 @@ import { ContractsService } from './contracts/contracts.service';
 import { Contract } from './contracts/contract.model';
 import { GirlsService } from './core/girls/girls.service';
 import { LeadersService } from './leaders/leaders.service';
+import { MastersService } from './leaders/masters.service';
 
 @Component({
 	selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private _girlService: GirlsService,
     private _leaderService: LeadersService,
     private _contractService: ContractsService,
+    private _masterService: MastersService,
     private _cdr: ChangeDetectorRef
 	) { }
 
@@ -52,9 +54,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this._leaderService.loaded,
       this._cachingService.online,
       this._cachingService.hasMedias,
-    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, isOnline: boolean, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean]) => {
+      this._masterService.loaded
+    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, isOnline: boolean, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean, mastersLoaded: boolean]) => {
       this.loadProgress = status[0];
-			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2]) {
+			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2] && status[5]) {
         this.ready = true;
 			}
     });

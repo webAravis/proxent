@@ -279,7 +279,7 @@
     <div class="combo-message animate__animated animate__fadeOutUp animate__fadeInUp" *ngIf="comboMessage">Great!</div>
 
     <div class="leader-activity" *ngIf="isBattle">
-      <div class="header-activity">{{ leader.name | titlecase }} activity</div>
+      <div class="header-activity">{{ toBattle?.name | titlecase }} activity</div>
       <div class="activity-effect animate__animated animate__fadeInUp" *ngFor="let leaderActivity of leaderActivities">
         <div class="effect-name">{{ leaderActivity.activity.name | titlecase }}</div>
         <div class="effect-stat">

@@ -8,6 +8,8 @@ import { InventoryService } from '../inventory/inventory.service';
 import { Router } from '@angular/router';
 import { GirlsService } from '../core/girls/girls.service';
 import { Girl } from '../core/girls/girl.model';
+import { League } from './league.model';
+import { MastersService } from './masters.service';
 
 @Component({
   selector: 'app-leaders',
@@ -21,10 +23,13 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
 
   girls: Girl[] = [];
 
+  league: League = new League();
+
   private _unsubscribeAll: Subject<boolean> = new Subject();
 
   constructor(
     private _leaderService: LeadersService,
+    private _masterService: MastersService,
 		private _gameService: GameService,
 		private _inventoryService: InventoryService,
     private _router: Router,
@@ -41,6 +46,8 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this._leaderService.leaders.pipe(takeUntil(this._unsubscribeAll)).subscribe((leaders: Leader[]) => this.leaders = leaders);
+    this._masterService.leagues.pipe(takeUntil(this._unsubscribeAll)).subscribe((leagues: League[]) => this.league = leagues.find(league => league.isCurrentLeague) ?? new League());
+
 		this._gameService.goldChanged
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((golds: number) => (this.golds = golds));
@@ -63,33 +70,54 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
     return this._leaderService.getMetaCum(leader);
   }
 
-  canBattle(leader: Leader): boolean {
-		return !!(
-			(leader.costItem === 'gold' &&
-      leader.costCurve(leader.lvl) <= this.golds) ||
-			this._inventoryService.hasItemByName(
-				leader.costItem,
-				leader.costCurve(leader.lvl)
-			)
-		);
+  canBattle(toBattle: Leader | League): boolean {
+    let toReturn = true;
+    if (toBattle instanceof Leader) {
+      toReturn = !!(
+        (toBattle.costItem === 'gold' &&
+        toBattle.costCurve(toBattle.lvl) <= this.golds) ||
+        this._inventoryService.hasItemByName(
+          toBattle.costItem,
+          toBattle.costCurve(toBattle.lvl)
+        )
+      );
+    }
+
+    if (toBattle instanceof League) {
+      for (const battleCostItem of toBattle.battleCost) {
+        if (!this._inventoryService.hasItemByName(battleCostItem.type, battleCostItem.quantity)) {
+          return false;
+        }
+      }
+    }
+
+    return toReturn;
   }
 
-  battle(leader: Leader): void {
-    if (this.canBattle(leader)) {
+  battle(toBattle: Leader | League): void {
+    if (this.canBattle(toBattle)) {
 
-      if (leader.costItem === 'gold') {
-        this._gameService.updateGolds(
-          leader.costCurve(leader.lvl) * -1
-        );
-      } else {
-        this._inventoryService.removeItemByName(
-          leader.costItem,
-          leader.costCurve(leader.lvl)
-        );
+      if (toBattle instanceof Leader) {
+        if (toBattle.costItem === 'gold') {
+          this._gameService.updateGolds(
+            toBattle.costCurve(toBattle.lvl) * -1
+          );
+        } else {
+          this._inventoryService.removeItemByName(
+            toBattle.costItem,
+            toBattle.costCurve(toBattle.lvl)
+          );
+        }
       }
 
-      this._leaderService.leaderBattle.next(leader);
-      this._router.navigate(['battle']);
+      if (toBattle instanceof League) {
+        for (const battleCostItem of toBattle.battleCost) {
+          this._inventoryService.removeItemByName(battleCostItem.type, battleCostItem.quantity);
+        }
+      }
+
+      this._leaderService.leaderBattle.next(toBattle);
+      this._router.navigate(['leader-battle']);
 
     }
   }
@@ -104,7 +132,15 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
       .filter(
         girl =>
           girl.unlockedPositions.includes(position) ||
-          girl.skills.filter(treeskill => treeskill.skillTiers.filter(skilltier => skilltier.skills.filter(skill => skill.effects[skill.level] !== undefined && skill.effects[skill.level].map(skilleffect => skilleffect.stat).includes('scene') && skill.effects[skill.level].map(skilleffect => skilleffect.value.toLowerCase()).includes(position.toLowerCase()) ).length > 0).length > 0)
+          girl.skills.filter(treeskill =>
+            treeskill.skillTiers.filter(skilltier =>
+              skilltier.skills.filter(skill =>
+                skill.effects[skill.level] !== undefined &&
+                skill.effects[skill.level].map(skilleffect => skilleffect.stat).includes('scene') &&
+                skill.effects[skill.level].map(skilleffect => skilleffect.value.toLowerCase()).includes(position.toLowerCase())
+              ).length > 0
+            ).length > 0
+          ).length > 0
       )
       .map(girl => girl.name).join(', ');
 
@@ -136,7 +172,7 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
     this._shepherdService.onTourFinish = () => {this._gameService.resumeGame()};
     this._shepherdService.addSteps([
       {
-        title: 'Leader tutorial',
+        title: 'Battle tutorial',
         text: ['Are you new to the game?'],
         buttons: [
           {

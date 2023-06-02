@@ -2,7 +2,7 @@
   <img src="./assets/vs-background.jpg" alt="" class="background-battle">
 </div>
 
-<app-record [leader]="leader" [isBattle]="true" (recordResults)="recordResults($event)"></app-record>
+<app-record [toBattle]="toBattle" [isBattle]="true" (recordResults)="recordResults($event)"></app-record>
 
 <div class="modal" [class.show]="show">
 	<div class="modal-header">Battle completed, let's check this out</div>
@@ -20,8 +20,8 @@
   <div class="battle-results center with-icon">
     <ng-container *ngIf="metaCumDone && metaScoreDone">
       <div class="title">Rewards</div>
-      <div class="rewards">
-        <div class="reward" *ngFor="let reward of leader.rewards">
+      <div class="rewards" *ngIf="isLeader()">
+        <div class="reward" *ngFor="let reward of getRewards()">
           <div class="quantity">+{{ reward.quantity | number : '1.0-0' }}</div>
           <div class="value">
             <ng-container *ngIf="reward.type === 'extension'">girl capacity</ng-container>
@@ -30,6 +30,12 @@
             </ng-container>
           </div>
         </div>
+      </div>
+      <div *ngIf="!isLeader() && hasNewLeague()">
+        League level improved!
+      </div>
+      <div *ngIf="!isLeader() && !hasNewLeague()">
+        Congratulations! You are now the ultimate ProXent Master!
       </div>
     </ng-container>
     <ng-container *ngIf="!metaCumDone || !metaScoreDone">

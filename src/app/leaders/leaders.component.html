@@ -1,7 +1,7 @@
 <app-background class="background"></app-background>
 
 <div class="header">
-  Leaders
+  Battle
   <div class="tutorial" (click)="startTutorial()">
     <img src="./assets/tutorial.png">
     <span>Tutorial</span>
@@ -9,6 +9,82 @@
 </div>
 
 <div class="wrapper">
+
+  <div class="league leader">
+    <div class="header-leader">
+      <div class="name">{{ league.name }}</div>
+      <div class="subtitle">
+        <div class="levelcap">Level max: {{ league.levelCap }}</div>
+        <div class="cost">Maintenance: {{ league.maintenanceCost | number : '1.0-0' }}<img src="./assets/items/gold.png" alt="">/month</div>
+      </div>
+    </div>
+    <div class="bonus-malus">
+      <div class="bonus green">
+        <div class="header-perk">Bonus</div>
+        <span class="has-tooltip" *ngFor="let bonus of league.bonus">
+          {{ bonus | titlecase }}
+          <div class="tooltip">
+            <div class="tooltip-wrapper">
+              <div class="girls-positions">{{ getGirlWithAttribute(bonus) }}</div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="malus red">
+        <div class="header-perk">Malus</div>
+        <span class="has-tooltip" *ngFor="let malus of league.malus">
+          {{ malus | titlecase }}
+          <div class="tooltip">
+            <div class="tooltip-wrapper">
+              <div class="girls-positions">{{ getGirlWithAttribute(malus) }}</div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="fetish purple">
+        <div class="header-perk">Fetish</div>
+        <span class="has-tooltip" *ngFor="let fetish of league.fetish">
+          {{ fetish | titlecase }}
+          <div class="tooltip">
+            <div class="tooltip-wrapper">
+              <div class="girls-positions">{{ getGirlWithPosition(fetish) }}</div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div class="actions">
+      <button
+        [disabled]="!canBattle(league)"
+        (click)="battle(league)"
+        class="btn has-tooltip"
+      >
+        Battle!
+        <div class="tooltip">
+          <div class="tooltip-wrapper">
+            <div class="cost">
+              <div class="red with-icon" *ngFor="let cost of league.battleCost">
+                -{{ cost.quantity | number : '1.0-0' }}<img [src]="'./assets/items/' + cost.type + '.png'" />
+              </div>
+            </div>
+
+            <div class="score">
+              <div class="score-header">To beat</div>
+              <div class="with-icon" *ngFor="let meta of league.beatingConditions">
+                {{ meta.quantity | number: '1.0-0' }}
+                <ng-container *ngIf="meta.type === 'points'">
+                  <div>pts</div>
+                </ng-container>
+                <ng-container *ngIf="meta.type !== 'points'">
+                  <img src="./assets/items/{{meta.type}}.png" alt="">
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
 
   <div class="leaders-wrapper">
     <div class="leader" *ngFor="let leader of leaders">
@@ -39,7 +115,7 @@
             {{ bonus | titlecase }}
             <div class="tooltip">
               <div class="tooltip-wrapper">
-                <div>{{ getGirlWithAttribute(bonus) }}</div>
+                <div class="girls-positions">{{ getGirlWithAttribute(bonus) }}</div>
               </div>
             </div>
           </span>
@@ -50,7 +126,7 @@
             {{ malus | titlecase }}
             <div class="tooltip">
               <div class="tooltip-wrapper">
-                <div>{{ getGirlWithAttribute(malus) }}</div>
+                <div class="girls-positions">{{ getGirlWithAttribute(malus) }}</div>
               </div>
             </div>
           </span>

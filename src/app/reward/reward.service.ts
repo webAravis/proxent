@@ -1,13 +1,13 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Girl } from '../core/girls/girl.model';
-import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { Reward } from '../core/reward.model';
 import { DialogsService } from '../dialogs/dialogs.service';
 import { StudioService } from '../studio/studio.service';
 import { Item } from '../inventory/item.model';
 import { InventoryService } from '../inventory/inventory.service';
+import { MastersService } from '../leaders/masters.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,15 +21,15 @@ export class RewardService {
   ];
 
   constructor(
-    private _girlService: GirlsService,
     private _gameService: GameService,
     private _dialogsService: DialogsService,
     private _studioService: StudioService,
-    private _inventoryService: InventoryService
+    private _inventoryService: InventoryService,
+    private _masterService: MastersService
   ) { }
 
   rewardText(text: string): void {
-    this.show.next(new Reward(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, text));
+    this.show.next(new Reward(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, text));
   }
 
   giveReward(
@@ -80,6 +80,7 @@ export class RewardService {
       levelupResult.hasLevelup,
       levelupResult.gainedSkillPoint,
       levelupResult.hardCapCorruption,
+      levelupResult.hardCapLeague,
       girl
     );
 
@@ -89,51 +90,56 @@ export class RewardService {
   private _levelupGirl(
     girl: Girl,
     xpWon: number
-  ): { girl: Girl, hasLevelup: boolean, gainedSkillPoint: number, hardCapCorruption: boolean } {
+  ): { girl: Girl, hasLevelup: boolean, gainedSkillPoint: number, hardCapCorruption: boolean, hardCapLeague: boolean } {
     let hasLevelup = false;
     let gainedSkillPoint = 0;
     let hardCapCorruption = false;
+    let hardCapLeague = false;
 
     // hard caps from corruption level
     const maxXpCap = this.corruptionCaps[girl.corruption - 1];
-    if (maxXpCap === undefined || girl.xp + xpWon <= maxXpCap) {
-      const oldLevel = girl.level;
-      const oldSkillPoints = girl.skillPoints;
+    const maxLeagueXpCap = girl.getNextLevelXp(this._masterService.getLevelCap());
+    console.log('maxLeagueXpCap', maxLeagueXpCap);
 
+    const oldLevel = girl.level;
+    const oldSkillPoints = girl.skillPoints;
+
+    if ((maxXpCap === undefined || girl.xp + xpWon <= maxXpCap) && girl.xp + xpWon <= maxLeagueXpCap) {
       girl.xp += xpWon;
-      if (girl.level !== oldLevel) {
-        hasLevelup = true;
-      }
-
-      if (girl.skillPoints !== oldSkillPoints) {
-        gainedSkillPoint = (girl.skillPoints - oldSkillPoints);
-      }
-    } else {
+    } else if (maxXpCap && girl.xp + xpWon > maxXpCap) {
       hardCapCorruption = true;
+      girl.xp = maxXpCap-1;
 
       if (
         this._dialogsService.dialogsStarted[1] === false &&
-        girl.level === 1 &&
+        girl.level >= 1 &&
         girl.fullId === this._gameService.girlfriend
       ) {
         this._dialogsService.startDialog(1);
-      }
-
-      if (
+      } else if (
         this._dialogsService.dialogsStarted[2] === false &&
         girl.level >= 2 &&
         girl.fullId === this._gameService.girlfriend
       ) {
         this._dialogsService.startDialog(2);
-      }
-
-      if (
+      } else if (
         this._dialogsService.dialogsStarted[5] === false &&
         girl.level >= 2 &&
-        girl.name === 'Peta'
+        girl.fullId !== this._gameService.girlfriend
       ) {
         this._dialogsService.startDialog(5);
       }
+    } else if (maxLeagueXpCap && girl.xp + xpWon > maxLeagueXpCap) {
+      hardCapLeague = true;
+      girl.xp = maxLeagueXpCap-1;
+    }
+
+    if (girl.level !== oldLevel) {
+      hasLevelup = true;
+    }
+
+    if (girl.skillPoints !== oldSkillPoints) {
+      gainedSkillPoint = (girl.skillPoints - oldSkillPoints);
     }
 
     return {
@@ -141,6 +147,7 @@ export class RewardService {
       hasLevelup: hasLevelup,
       gainedSkillPoint: gainedSkillPoint,
       hardCapCorruption: hardCapCorruption,
+      hardCapLeague: hardCapLeague
     };
   }
 
@@ -153,6 +160,7 @@ export class RewardService {
     hasLevelup: boolean,
     gainedSkillPoint: number,
     hardCapCorruption: boolean,
+    hardCapLeague: boolean,
     girl: Girl
   ): void {
     const reward = new Reward(
@@ -164,6 +172,7 @@ export class RewardService {
       hasLevelup,
       gainedSkillPoint,
       hardCapCorruption,
+      hardCapLeague,
       girl
     );
     this.show.next(reward);

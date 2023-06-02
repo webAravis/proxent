@@ -6,6 +6,8 @@ import { Leader } from '../leaders/leader.model';
 import { GameService } from '../core/game.service';
 import { Item } from '../inventory/item.model';
 import { InventoryService } from '../inventory/inventory.service';
+import { League } from '../leaders/league.model';
+import { MastersService } from '../leaders/masters.service';
 
 @Component({
   selector: 'app-leader-battle',
@@ -14,7 +16,7 @@ import { InventoryService } from '../inventory/inventory.service';
 })
 export class LeaderBattleComponent implements OnInit, OnDestroy {
 
-  leader: Leader = new Leader();
+  toBattle: Leader | League | undefined;
   metaScore: number = 0;
   resultScore: number = 0;
   metaCum: number = 0;
@@ -30,15 +32,18 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     private _leaderService: LeadersService,
     private _gameService: GameService,
     private _inventoryService: InventoryService,
+    private _masterService: MastersService,
     private _router: Router
   ) { }
 
   ngOnInit(): void {
-    this._leaderService.leaderBattle.pipe(takeUntil(this._unsubscribeAll)).subscribe((leader: Leader) => {
-      this.leader = leader;
+    this._leaderService.leaderBattle.pipe(takeUntil(this._unsubscribeAll)).subscribe((toBattle: Leader | League | undefined) => {
+      if (toBattle !== undefined) {
+        this.toBattle = toBattle;
 
-      this.metaScore = this._leaderService.getMetaScore(this.leader);
-      this.metaCum = this._leaderService.getMetaCum(this.leader);
+        this.metaScore = this._leaderService.getMetaScore(this.toBattle);
+        this.metaCum = this._leaderService.getMetaCum(this.toBattle);
+      }
     });
     this._gameService.pauseGame();
   }
@@ -69,22 +74,40 @@ export class LeaderBattleComponent implements OnInit, OnDestroy {
     }
 
     this._gameService.resumeGame();
-    this._router.navigate(['leaders']);
+    this._router.navigate(['battle']);
+  }
+
+  isLeader(): boolean {
+    return this.toBattle instanceof Leader;
+  }
+
+  getRewards(): { type: string; quantity: number; }[] {
+    return this.toBattle instanceof Leader ? this.toBattle.rewards : []
+  }
+
+  hasNewLeague() {
+    return this.toBattle instanceof League && this.toBattle.unlocker !== undefined ? true : false;
   }
 
   private _giveRewards() : void {
-    this._leaderService.nextLevel(this.leader);
+    if (this.toBattle instanceof Leader) {
+      this._leaderService.nextLevel(this.toBattle);
 
-    for (const reward of this.leader.rewards) {
-      if (reward.type.toLowerCase() === 'gold') {
-        this._gameService.updateGolds(reward.quantity);
-      } else if (reward.type.toLowerCase() === 'extension') {
-        this._gameService.girlLimit.next(this._gameService.girlLimit.getValue()+1);
-      } else {
-        for (let index = 0; index < reward.quantity; index++) {
-          this._inventoryService.addItem(new Item({name: reward.type}));
+      for (const reward of this.toBattle.rewards) {
+        if (reward.type.toLowerCase() === 'gold') {
+          this._gameService.updateGolds(reward.quantity);
+        } else if (reward.type.toLowerCase() === 'extension') {
+          this._gameService.girlLimit.next(this._gameService.girlLimit.getValue()+1);
+        } else {
+          for (let index = 0; index < reward.quantity; index++) {
+            this._inventoryService.addItem(new Item({name: reward.type}));
+          }
         }
       }
+    }
+
+    if (this.toBattle instanceof League) {
+      this._masterService.beatLeague();
     }
   }
 

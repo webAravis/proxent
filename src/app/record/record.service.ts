@@ -7,6 +7,7 @@ import { GameService } from '../core/game.service';
 import { Position, PositionType } from '../core/position.model';
 import { Leader } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
+import { League } from '../leaders/league.model';
 
 export interface PlayedPosition {
   position: Position,
@@ -232,7 +233,7 @@ export class RecordService {
     trendingPositions: number,
     orgasmCount: number,
     studioQuality: number,
-    leader: Leader,
+    toBattle: Leader | League | undefined,
     isPlayer: boolean = true
   ): number {
     let score = 0;
@@ -248,18 +249,20 @@ export class RecordService {
       score = score * (1 - girl.freedom);
     }
 
-    if (leader.name !== '') {
-      score = score * 0.05;
+    if (toBattle !== undefined) {
+      if (toBattle.name !== '') {
+        score = score * 0.05;
 
-      // modifiers due to leader
-      for (const bonus of leader.bonus) {
-        if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(bonus.toLowerCase())) {
-          score = score * 1.5;
+        // modifiers due to leader
+        for (const bonus of toBattle.bonus) {
+          if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(bonus.toLowerCase())) {
+            score = score * 1.5;
+          }
         }
-      }
-      for (const malus of leader.malus) {
-        if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(malus.toLowerCase())) {
-          score = score * 0.01;
+        for (const malus of toBattle.malus) {
+          if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(malus.toLowerCase())) {
+            score = score * 0.01;
+          }
         }
       }
     }

@@ -18,6 +18,8 @@ import { Setting, SettingsService } from './settings.service';
 
 import packageJson from '../../../package.json';
 import { ContractsService } from '../contracts/contracts.service';
+import { MastersService } from '../leaders/masters.service';
+import { League } from '../leaders/league.model';
 declare var modsConfig: any;
 
 @Injectable({
@@ -44,6 +46,7 @@ export class SaveService {
     private _otherStudiosService: OtherStudiosService,
     private _shootingService: ShootingService,
     private _settingsService: SettingsService,
+    private _masterService: MastersService,
     private _contractService: ContractsService
   ) {
     this._gameService.dayChanged.subscribe((day) =>
@@ -67,6 +70,9 @@ export class SaveService {
 
     // fix wrong property names
     allSaves = allSaves.replaceAll('unlockedPostions', 'unlockedPositions');
+    if (!this._isJsonString(allSaves)) {
+      return;
+    }
 
     const savesObject = JSON.parse(allSaves);
     this.saves = Array.isArray(savesObject) ? savesObject : [savesObject];
@@ -207,6 +213,7 @@ export class SaveService {
     }
     const settings = this._settingsService.settings.getValue();
     const contracts = this._contractService.contracts.getValue();
+    const league = this._masterService.leagues.getValue().find(league => league.isCurrentLeague) ?? new League();
 
     const toSave = {
       game: gameParameters,
@@ -219,6 +226,7 @@ export class SaveService {
       leaders: savedLeaders,
       settings: settings,
       contracts: contracts,
+      league: {id: league.id, mod: league.mod},
       lastSaved: new Date(),
       modList: modsList,
       version: this.version
@@ -333,6 +341,10 @@ export class SaveService {
       }
 
       this._settingsService.updateSettings(settings);
+    }
+
+    if (savedGame.league && savedGame.league.id !== undefined && savedGame.league.id !== '') {
+      this._masterService.loadLeague(savedGame.league.id, savedGame.league.mod);
     }
 
     this.saved.next(new Date(savedGame.lastSaved));

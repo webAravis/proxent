@@ -9,7 +9,7 @@
 
 	<div class="rewards-wrapper">
 		<span
-			[class.striked]="reward.hardCapCorruption"
+			[class.striked]="reward.hardCapCorruption || reward.hardCapLeague"
 			*ngIf="reward.xp > 0"
 			class="with-icon"
 			><b
@@ -44,16 +44,20 @@
 		should train her to progress further!
 	</div>
 
+	<div class="hardcap center" *ngIf="reward.hardCapLeague">
+		You hit the max level for your league level. You should battle and beat the league's master to advance further!
+	</div>
+
 	<div class="levelup-wrapper" *ngIf="reward.levelup">
 		<div class="header">
-			{{ reward.girl.name }} has level up! She is now lvl
+			{{ reward.girl.name }}'s level has changed! She is now lvl
 			{{ reward.girl.level | number : '1.0-0' }}
 		</div>
 	</div>
 
 	<div class="levelup-wrapper" *ngIf="reward.gainedSkillPoint !== 0">
 		<div class="header">
-			+{{ reward.gainedSkillPoint }} skill point for {{ reward.girl.name }}!
+			{{ reward.gainedSkillPoint > 0 ? '+' : '' }}{{ reward.gainedSkillPoint }} skill point for {{ reward.girl.name }}!
 		</div>
 	</div>
 
