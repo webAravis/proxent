@@ -21,6 +21,17 @@ import { ContractsService } from '../contracts/contracts.service';
 import { Contract } from '../contracts/contract.model';
 import { League } from '../leaders/league.model';
 
+interface Trigger {
+  triggerEffect: string;
+  skillName: string;
+  skillPicture: string;
+  position: string;
+  label: string;
+  value: string;
+  duration: number;
+  chance: number;
+}
+
 @Component({
 	selector: 'app-record',
 	templateUrl: './record.component.html',
@@ -38,6 +49,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   trendingDisabled = false;
 
   intervalPause: NodeJS.Timer | undefined;
+  intervalTriggers: NodeJS.Timer | undefined;
 
   playerGirls: Girl[] = [];
   girlIndex: number = 0;
@@ -96,6 +108,8 @@ export class RecordComponent implements OnInit, OnDestroy {
   treeSkills: TreeSkills[] = [];
   sceneSkills: string[] = [];
   skillStatsModifiers: { stat: string, position: string, label: string, value: string }[] = [];
+  triggers: Trigger[] = [];
+  activeTriggers: { id: number, trigger: Trigger }[] = [];
   appliedSkills: Skill[] = [];
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
@@ -117,6 +131,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+    this.intervalTriggers = setInterval(() => {this._applyTriggers()}, 125);
+
     this._gameService.fapMode.pipe(takeUntil(this._unsubscribeAll)).subscribe((fapMode: boolean) => {
       if (this._fapInterval !== undefined) {
         clearInterval(this._fapInterval);
@@ -158,6 +174,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy(): void {
     clearInterval(this.intervalPause);
+    clearInterval(this.intervalTriggers);
 
 		// Unsubscribe from all subscriptions
 		this._unsubscribeAll.next(true);
@@ -494,6 +511,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	endScene(isCombo: boolean = false): void {
     this._fadeOut();
+    this._checkTriggers();
 
 		if (this.girl.orgasmLevel >= 100 && !isCombo) {
       const nbOrgasm = Math.trunc(this.girl.orgasmLevel / 100);
@@ -811,6 +829,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     this.positions = [];
     this.sceneSkills = [];
     this.skillStatsModifiers = [];
+    this.triggers = [];
     this.appliedSkills = [];
 
     this.girl = girl;
@@ -847,6 +866,18 @@ export class RecordComponent implements OnInit, OnDestroy {
                     this.sceneSkills.push(effects.value.toLowerCase().replaceAll(' ', ''));
                   }
                   break;
+                case 'trigger':
+                  this.triggers.push({
+                    chance: effects.chance,
+                    duration: effects.duration,
+                    label: effects.label,
+                    position: effects.position,
+                    triggerEffect: effects.triggerEffect,
+                    value: effects.value,
+                    skillName: skill.name,
+                    skillPicture: skill.picture
+                  });
+                  break;
                 default:
                   this.skillStatsModifiers.push(effects);
                   break;
@@ -858,6 +889,10 @@ export class RecordComponent implements OnInit, OnDestroy {
         }
       }
     }
+  }
+
+  getRemainingTime(trigger: {id: number, trigger: Trigger}): number {
+    return Math.round( ((trigger.id+trigger.trigger.duration) - new Date().getTime()) / 1000 );
   }
 
   private _initLeaderActivity(): void {
@@ -993,5 +1028,49 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
       this.vid.volume = this.volume * this._settingsService.getSetting('game_sound');
     }, 50);
+  }
+
+  private _checkTriggers(): void {
+    for (const trigger of this.triggers) {
+      const chance = trigger.chance ?? 1;
+      if (Math.random() <= chance) {
+        // applying trigger!
+        this._addTrigger(trigger);
+      }
+    }
+  }
+
+  private _addTrigger(trigger: Trigger): void {
+    // removing existing
+    this.activeTriggers = this.activeTriggers.filter(activeTrigger => activeTrigger.trigger.skillName !== trigger.skillName);
+
+    const triggerTicker = new Date().getTime();
+    this.activeTriggers.push({id: triggerTicker, trigger: trigger});
+
+    if (trigger.duration > 0) {
+      setTimeout(() => {
+        this.activeTriggers = this.activeTriggers.filter(activeTrigger => activeTrigger.id !== triggerTicker);
+      }, trigger.duration);
+    }
+  }
+
+  private _applyTriggers(): void {
+    for (const trigger of this.activeTriggers) {
+      switch (trigger.trigger.triggerEffect) {
+        case 'boner':
+          this.boner += parseInt(trigger.trigger.value) / 8;
+          break;
+        case 'orgasm':
+          this.girl.orgasmLevel += parseInt(trigger.trigger.value) / 8;
+          break;
+
+        default:
+          break;
+      }
+
+      if (trigger.trigger.duration === 0) {
+        this.activeTriggers = this.activeTriggers.filter(activeTrigger => activeTrigger.id !== trigger.id);
+      }
+    }
   }
 }

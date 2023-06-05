@@ -45,7 +45,7 @@ export class Skill {
 
 	unlockPrice: { type: string; quantity: number }[][] = [];
 
-  effects: { stat: string, position: string, label: string, value: string }[][] = [];
+  effects: { stat: string, position: string, label: string, value: string, triggerEffect: string, duration: number, chance: number }[][] = [];
   requires: string[] | undefined = undefined;
 
 	constructor(values: object = {}) {

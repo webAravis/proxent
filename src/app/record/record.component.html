@@ -81,18 +81,30 @@
 
             <div class="effects-wrapper" *ngIf="skill.effects.length > 0">
               <div class="effects" *ngFor="let effect of skill.effects[skill.level-1]">
-                <div class="position">
-                  {{ effect.position }}
-                </div>
-                <div class="stat">
-                  {{ effect.stat }}
-                </div>
-                <div class="value">
-                  {{ effect.value }}
+                <div>
+                  {{ effect.label }}
                 </div>
               </div>
             </div>
 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="triggers-wrapper">
+      <div class="skill has-tooltip" *ngFor="let trigger of activeTriggers">
+        <div class="skill-icon">
+          <img [src]="'./assets/mods/'+trigger.trigger.skillName+'/skills/'+trigger.trigger.skillPicture+'.jpg'" alt="">
+        </div>
+        <div class="skill-level">
+          {{ getRemainingTime(trigger) }}s
+        </div>
+        <div class="tooltip">
+          <div class="tooltip-wrapper">
+            <div class="name">{{ trigger.trigger.skillName }}</div>
+
+            <div class="description">{{ trigger.trigger.label }}</div>
           </div>
         </div>
       </div>

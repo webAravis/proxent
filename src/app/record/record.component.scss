@@ -287,6 +287,28 @@ img {
   position: fixed;
   bottom: 15px;
   left: 15px;
+
+  .tooltip {
+    left: calc(100% + 15px) !important;
+    bottom: 0;
+    transform-origin: left center !important;
+  }
+}
+
+.triggers-wrapper {
+  position: fixed;
+  bottom: 15px;
+  left: 95px;
+
+  .tooltip {
+    left: calc(100% + 15px) !important;
+    bottom: 0;
+    transform-origin: left center !important;
+  }
+
+  .skill {
+    animation: blink 3s linear infinite;
+  }
 }
 
 .skill {
@@ -377,6 +399,12 @@ img {
     .tooltip {
       transform: scale(1);
     }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: .2;
   }
 }
 

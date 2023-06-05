@@ -782,35 +782,35 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal",
                                   "value":"Anal"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 2",
                                   "value":"Anal 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 3",
                                   "value":"Anal 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 4",
                                   "value":"Anal 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 5",
                                   "value":"Anal 5"
                                }
                             ]
@@ -849,7 +849,7 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Footjob",
                                   "value":"Footjob"
                                }
                             ]
@@ -880,13 +880,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"anal",
-                                  "label":"Gold",
+                                  "label":"Anal +8% Gold",
                                   "value":"+8%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"anal",
-                                  "label":"Fans",
+                                  "label":"Anal +5% Fans",
                                   "value":"+5%"
                                }
                             ],
@@ -894,13 +894,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"anal",
-                                  "label":"Gold",
+                                  "label":"Anal +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"anal",
-                                  "label":"Fans",
+                                  "label":"Anal +7.5% Fans",
                                   "value":"+7.5%"
                                }
                             ],
@@ -908,13 +908,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"anal",
-                                  "label":"Gold",
+                                  "label":"Anal +12% Gold",
                                   "value":"+12%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"anal",
-                                  "label":"Fans",
+                                  "label":"Anal +10% Fans",
                                   "value":"+10%"
                                }
                             ]
@@ -940,7 +940,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"anal",
-                                  "label":"Orgasm",
+                                  "label":"Anal +5% Orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -948,7 +948,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"anal",
-                                  "label":"Orgasm",
+                                  "label":"Anal +10% Orgasm",
                                   "value":"+10%"
                                }
                             ]
@@ -979,7 +979,7 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"anal",
-                                  "label":"Gold",
+                                  "label":"Anal +25% Gold",
                                   "value":"+25%"
                                }
                             ]
@@ -1005,7 +1005,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"anal",
-                                  "label":"Orgasm",
+                                  "label":"Anal +25% Orgasm",
                                   "value":"+25%"
                                }
                             ]
@@ -1077,14 +1077,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -1125,14 +1125,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -1173,28 +1173,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -1227,13 +1227,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -1241,13 +1241,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -1255,13 +1255,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -1269,13 +1269,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -1283,13 +1283,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -1317,13 +1317,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -1331,13 +1331,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -1365,7 +1365,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -1373,7 +1373,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -1456,7 +1456,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -1464,7 +1464,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -1472,7 +1472,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -1480,7 +1480,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -1488,7 +1488,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -1496,7 +1496,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -1504,7 +1504,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -1512,7 +1512,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -1584,14 +1584,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -1632,14 +1632,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -1667,7 +1667,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -1675,7 +1675,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -1683,7 +1683,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -1691,7 +1691,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -1699,7 +1699,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -1707,7 +1707,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -1715,7 +1715,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -1723,7 +1723,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -1756,7 +1756,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -1764,7 +1764,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -1772,7 +1772,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -1780,7 +1780,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -1788,7 +1788,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -1796,7 +1796,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -1804,7 +1804,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -1812,7 +1812,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -1840,7 +1840,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -1848,7 +1848,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -1856,7 +1856,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -1864,7 +1864,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -1872,7 +1872,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -1880,7 +1880,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -1888,7 +1888,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -1896,7 +1896,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -1978,7 +1978,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -1986,7 +1986,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -1994,7 +1994,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -2002,7 +2002,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -2010,7 +2010,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -2018,7 +2018,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -2026,7 +2026,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -2034,7 +2034,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -2901,7 +2901,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Fetishist",
-                         "description":"Unlocks Peta\"s special scenes",
+                         "description":"Unlocks Peta's special scenes",
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -2915,7 +2915,7 @@ modsConfig.push({
                    ]
                 },
                 {
-                   "tier":0,
+                   "tier":1,
                    "skills":[
                       {
                          "name":"Piledriving",
@@ -2950,14 +2950,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Piledriving",
                                   "value":"Piledriving"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Piledriving 2",
                                   "value":"Piledriving 2"
                                }
                             ]
@@ -2996,35 +2996,35 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sidefuck",
                                   "value":"Sidefuck"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sidefuck 2",
                                   "value":"Sidefuck 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sidefuck 3",
                                   "value":"Sidefuck 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sidefuck 4",
                                   "value":"Sidefuck 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sidefuck 5",
                                   "value":"Sidefuck 5"
                                }
                             ]
@@ -3063,36 +3063,92 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cosplay",
                                   "value":"Cosplay"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cosplay 2",
                                   "value":"Cosplay 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cosplay 3",
                                   "value":"Cosplay 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cosplay 4",
                                   "value":"Cosplay 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cosplay 5",
                                   "value":"Cosplay 5"
+                               }
+                            ]
+                         ]
+                      }
+                   ]
+                },
+                {
+                   "tier":2,
+                   "skills":[
+                      {
+                         "name":"Boner management",
+                         "description":"She knows how to keep it",
+                         "maxlevel":2,
+                         "unlockPrice":[
+                            [
+                               {
+                                  "type":"gold",
+                                  "quantity":30000
+                               },
+                               {
+                                  "type":"advanced_skill_gem",
+                                  "quantity":1
+                               }
+                            ],
+                            [
+                               {
+                                  "type":"gold",
+                                  "quantity":45000
+                               },
+                               {
+                                  "type":"advanced_skill_gem",
+                                  "quantity":2
+                               }
+                            ]
+                         ],
+                         "requires":[
+                            "Piledriving",
+                            "Sidefuck",
+                            "Cosplay"
+                         ],
+                         "effects":[
+                            [
+                               {
+                                  "stat":"trigger",
+                                  "triggerEffect":"boner",
+                                  "label":"20% chance to get +5 boner/s for 15s",
+                                  "value":"+5",
+                                  "duration":15000,
+                                  "chance":0.2
+                               }
+                            ],
+                            [
+                               {
+                                  "stat":"scene",
+                                  "label":"New scene",
+                                  "value":"Piledriving 2"
                                }
                             ]
                          ]
@@ -3163,14 +3219,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -3211,14 +3267,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -3259,28 +3315,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -3313,13 +3369,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -3327,13 +3383,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -3341,13 +3397,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -3355,13 +3411,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -3369,13 +3425,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -3403,13 +3459,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -3417,13 +3473,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -3451,7 +3507,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -3459,7 +3515,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -3542,7 +3598,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -3550,7 +3606,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -3558,7 +3614,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -3566,7 +3622,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -3574,7 +3630,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -3582,7 +3638,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -3590,7 +3646,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -3598,7 +3654,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -3670,14 +3726,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -3718,14 +3774,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -3753,7 +3809,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -3761,7 +3817,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -3769,7 +3825,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -3777,7 +3833,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -3785,7 +3841,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -3793,7 +3849,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -3801,7 +3857,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -3809,7 +3865,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -3842,7 +3898,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -3850,7 +3906,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -3858,7 +3914,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -3866,7 +3922,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -3874,7 +3930,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -3882,7 +3938,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -3890,7 +3946,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -3898,7 +3954,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -3926,7 +3982,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -3934,7 +3990,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -3942,7 +3998,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -3950,7 +4006,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -3958,7 +4014,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -3966,7 +4022,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -3974,7 +4030,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -3982,7 +4038,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -4064,7 +4120,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -4072,7 +4128,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -4080,7 +4136,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -4088,7 +4144,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -4096,7 +4152,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -4104,7 +4160,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -4112,7 +4168,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -4120,7 +4176,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -5027,21 +5083,21 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Mouthfuck",
                                   "value":"Mouthfuck"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Mouthfuck 2",
                                   "value":"Mouthfuck 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Mouthfuck 3",
                                   "value":"Mouthfuck 3"
                                }
                             ]
@@ -5082,28 +5138,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal",
                                   "value":"Anal"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 2",
                                   "value":"Anal 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 3",
                                   "value":"Anal 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Anal 4",
                                   "value":"Anal 4"
                                }
                             ]
@@ -5144,28 +5200,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Double",
                                   "value":"Double"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Double 2",
                                   "value":"Double 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Double 3",
                                   "value":"Double 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Double 4",
                                   "value":"Double 4"
                                }
                             ]
@@ -5201,7 +5257,7 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Triple",
                                   "value":"Triple"
                                }
                             ]
@@ -5273,14 +5329,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -5321,14 +5377,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -5369,28 +5425,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -5423,13 +5479,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -5437,13 +5493,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -5451,13 +5507,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -5465,13 +5521,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -5479,13 +5535,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -5513,13 +5569,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -5527,13 +5583,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -5561,7 +5617,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -5569,7 +5625,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -5652,7 +5708,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -5660,7 +5716,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -5668,7 +5724,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -5676,7 +5732,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -5684,7 +5740,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -5692,7 +5748,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -5700,7 +5756,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -5708,7 +5764,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -5780,14 +5836,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -5828,14 +5884,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -5863,7 +5919,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -5871,7 +5927,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -5879,7 +5935,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -5887,7 +5943,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -5895,7 +5951,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -5903,7 +5959,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -5911,7 +5967,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -5919,7 +5975,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -5952,7 +6008,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -5960,7 +6016,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -5968,7 +6024,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -5976,7 +6032,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -5984,7 +6040,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -5992,7 +6048,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -6000,7 +6056,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -6008,7 +6064,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -6036,7 +6092,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -6044,7 +6100,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -6052,7 +6108,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -6060,7 +6116,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -6068,7 +6124,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -6076,7 +6132,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -6084,7 +6140,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -6092,7 +6148,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -6174,7 +6230,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -6182,7 +6238,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -6190,7 +6246,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -6198,7 +6254,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -6206,7 +6262,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -6214,7 +6270,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -6222,7 +6278,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -6230,7 +6286,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -7038,14 +7094,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -7086,14 +7142,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -7134,28 +7190,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -7188,13 +7244,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -7202,13 +7258,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -7216,13 +7272,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -7230,13 +7286,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -7244,13 +7300,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -7278,13 +7334,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -7292,13 +7348,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -7326,7 +7382,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -7334,7 +7390,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -7417,7 +7473,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -7425,7 +7481,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -7433,7 +7489,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -7441,7 +7497,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -7449,7 +7505,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -7457,7 +7513,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -7465,7 +7521,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -7473,7 +7529,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -7545,14 +7601,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -7593,14 +7649,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -7628,7 +7684,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -7636,7 +7692,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -7644,7 +7700,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -7652,7 +7708,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -7660,7 +7716,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -7668,7 +7724,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -7676,7 +7732,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -7684,7 +7740,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -7717,7 +7773,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -7725,7 +7781,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -7733,7 +7789,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -7741,7 +7797,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -7749,7 +7805,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -7757,7 +7813,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -7765,7 +7821,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -7773,7 +7829,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -7801,7 +7857,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -7809,7 +7865,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -7817,7 +7873,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -7825,7 +7881,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -7833,7 +7889,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -7841,7 +7897,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -7849,7 +7905,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -7857,7 +7913,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -7939,7 +7995,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -7947,7 +8003,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -7955,7 +8011,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -7963,7 +8019,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -7971,7 +8027,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -7979,7 +8035,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -7987,7 +8043,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -7995,7 +8051,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -8826,14 +8882,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -8874,14 +8930,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -8922,28 +8978,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -8976,13 +9032,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -8990,13 +9046,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -9004,13 +9060,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -9018,13 +9074,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -9032,13 +9088,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -9066,13 +9122,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -9080,13 +9136,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -9114,7 +9170,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -9122,7 +9178,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -9205,7 +9261,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -9213,7 +9269,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -9221,7 +9277,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -9229,7 +9285,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -9237,7 +9293,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -9245,7 +9301,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -9253,7 +9309,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -9261,7 +9317,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -9333,14 +9389,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -9381,14 +9437,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -9416,7 +9472,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -9424,7 +9480,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -9432,7 +9488,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -9440,7 +9496,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -9448,7 +9504,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -9456,7 +9512,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -9464,7 +9520,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -9472,7 +9528,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -9505,7 +9561,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -9513,7 +9569,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -9521,7 +9577,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -9529,7 +9585,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -9537,7 +9593,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -9545,7 +9601,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -9553,7 +9609,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -9561,7 +9617,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -9589,7 +9645,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -9597,7 +9653,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -9605,7 +9661,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -9613,7 +9669,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -9621,7 +9677,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -9629,7 +9685,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -9637,7 +9693,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -9645,7 +9701,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -9727,7 +9783,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -9735,7 +9791,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -9743,7 +9799,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -9751,7 +9807,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -9759,7 +9815,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -9767,7 +9823,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -9775,7 +9831,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -9783,7 +9839,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -10562,14 +10618,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -10610,14 +10666,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -10658,28 +10714,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -10712,13 +10768,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -10726,13 +10782,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -10740,13 +10796,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -10754,13 +10810,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -10768,13 +10824,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -10802,13 +10858,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -10816,13 +10872,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -10850,7 +10906,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -10858,7 +10914,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -10941,7 +10997,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -10949,7 +11005,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -10957,7 +11013,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -10965,7 +11021,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -10973,7 +11029,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -10981,7 +11037,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -10989,7 +11045,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -10997,7 +11053,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -11069,14 +11125,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -11117,14 +11173,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -11152,7 +11208,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -11160,7 +11216,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -11168,7 +11224,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -11176,7 +11232,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -11184,7 +11240,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -11192,7 +11248,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -11200,7 +11256,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -11208,7 +11264,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -11241,7 +11297,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -11249,7 +11305,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -11257,7 +11313,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -11265,7 +11321,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -11273,7 +11329,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -11281,7 +11337,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -11289,7 +11345,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -11297,7 +11353,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -11325,7 +11381,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -11333,7 +11389,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -11341,7 +11397,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -11349,7 +11405,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -11357,7 +11413,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -11365,7 +11421,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -11373,7 +11429,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -11381,7 +11437,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -11463,7 +11519,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -11471,7 +11527,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -11479,7 +11535,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -11487,7 +11543,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -11495,7 +11551,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -11503,7 +11559,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -11511,7 +11567,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -11519,7 +11575,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -12329,14 +12385,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 3",
                                   "value":"Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Cowgirl 4",
                                   "value":"Cowgirl 4"
                                }
                             ]
@@ -12377,14 +12433,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 3",
                                   "value":"Reverse Cowgirl 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Reverse Cowgirl 4",
                                   "value":"Reverse Cowgirl 4"
                                }
                             ]
@@ -12425,28 +12481,28 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 2",
                                   "value":"Blowjob 2"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 3",
                                   "value":"Blowjob 3"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 4",
                                   "value":"Blowjob 4"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Blowjob 5",
                                   "value":"Blowjob 5"
                                }
                             ]
@@ -12479,13 +12535,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +5% Gold",
                                   "value":"+5%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +1% Fans",
                                   "value":"+1%"
                                }
                             ],
@@ -12493,13 +12549,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +10% Gold",
                                   "value":"+10%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +2% Fans",
                                   "value":"+2%"
                                }
                             ],
@@ -12507,13 +12563,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +15% Gold",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +3% Fans",
                                   "value":"+3%"
                                }
                             ],
@@ -12521,13 +12577,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +20% Gold",
                                   "value":"+20%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +4% Fans",
                                   "value":"+4%"
                                }
                             ],
@@ -12535,13 +12591,13 @@ modsConfig.push({
                                {
                                   "stat":"golds",
                                   "position":"cowgirl",
-                                  "label":"Gold",
+                                  "label":"Cowgirl +25% Gold",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"fans",
                                   "position":"cowgirl",
-                                  "label":"Fans",
+                                  "label":"Cowgirl +5% Fans",
                                   "value":"+5%"
                                }
                             ]
@@ -12569,13 +12625,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +15% Boner",
                                   "value":"+15%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ],
@@ -12583,13 +12639,13 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"reversecowgirl",
-                                  "label":"Boner",
+                                  "label":"Reverse Cowgirl +25% Boner",
                                   "value":"+25%"
                                },
                                {
                                   "stat":"golds",
                                   "position":"reversecowgirl",
-                                  "label":"Gold",
+                                  "label":"Reverse Cowgirl -5% Gold",
                                   "value":"-5%"
                                }
                             ]
@@ -12617,7 +12673,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +25% Boner",
                                   "value":"+25%"
                                }
                             ],
@@ -12625,7 +12681,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"blowjob",
-                                  "label":"Boner",
+                                  "label":"Blowjob +50% Boner",
                                   "value":"+50%"
                                }
                             ]
@@ -12708,7 +12764,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -12716,7 +12772,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -12724,7 +12780,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -12732,7 +12788,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -12740,7 +12796,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -12748,7 +12804,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -12756,7 +12812,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -12764,7 +12820,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -12836,14 +12892,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted",
                                   "value":"Sitted"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Sitted 2",
                                   "value":"Sitted 2"
                                }
                             ]
@@ -12884,14 +12940,14 @@ modsConfig.push({
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor",
                                   "value":"Outdoor"
                                }
                             ],
                             [
                                {
                                   "stat":"scene",
-                                  "label":"New scene",
+                                  "label":"New scene: Outdoor 2",
                                   "value":"Outdoor 2"
                                }
                             ]
@@ -12919,7 +12975,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +1% boner",
                                   "value":"+1%"
                                }
                             ],
@@ -12927,7 +12983,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +2% boner",
                                   "value":"+2%"
                                }
                             ],
@@ -12935,7 +12991,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +3% boner",
                                   "value":"+3%"
                                }
                             ],
@@ -12943,7 +12999,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +4% boner",
                                   "value":"+4%"
                                }
                             ],
@@ -12951,7 +13007,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +5% boner",
                                   "value":"+5%"
                                }
                             ],
@@ -12959,7 +13015,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +6% boner",
                                   "value":"+6%"
                                }
                             ],
@@ -12967,7 +13023,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +7% boner",
                                   "value":"+7%"
                                }
                             ],
@@ -12975,7 +13031,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allforeplay",
-                                  "label":"All foreplay boner",
+                                  "label":"All foreplay +8% boner",
                                   "value":"+8%"
                                }
                             ]
@@ -13008,7 +13064,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -13016,7 +13072,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -13024,7 +13080,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -13032,7 +13088,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -13040,7 +13096,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -13048,7 +13104,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -13056,7 +13112,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -13064,7 +13120,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allpenetration",
-                                  "label":"All penetration orgasm",
+                                  "label":"All penetration +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -13092,7 +13148,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +1% orgasm",
                                   "value":"+1%"
                                }
                             ],
@@ -13100,7 +13156,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +2% orgasm",
                                   "value":"+2%"
                                }
                             ],
@@ -13108,7 +13164,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +3% orgasm",
                                   "value":"+3%"
                                }
                             ],
@@ -13116,7 +13172,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +4% orgasm",
                                   "value":"+4%"
                                }
                             ],
@@ -13124,7 +13180,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +5% orgasm",
                                   "value":"+5%"
                                }
                             ],
@@ -13132,7 +13188,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +6% orgasm",
                                   "value":"+6%"
                                }
                             ],
@@ -13140,7 +13196,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +7% orgasm",
                                   "value":"+7%"
                                }
                             ],
@@ -13148,7 +13204,7 @@ modsConfig.push({
                                {
                                   "stat":"orgasm",
                                   "position":"allspecial",
-                                  "label":"All special orgasm",
+                                  "label":"All special +8% orgasm",
                                   "value":"+8%"
                                }
                             ]
@@ -13230,7 +13286,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +10% boner",
                                   "value":"+10%"
                                }
                             ],
@@ -13238,7 +13294,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +20% boner",
                                   "value":"+20%"
                                }
                             ],
@@ -13246,7 +13302,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +30% boner",
                                   "value":"+30%"
                                }
                             ],
@@ -13254,7 +13310,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +40% boner",
                                   "value":"+40%"
                                }
                             ],
@@ -13262,7 +13318,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +50% boner",
                                   "value":"+50%"
                                }
                             ],
@@ -13270,7 +13326,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +60% boner",
                                   "value":"+60%"
                                }
                             ],
@@ -13278,7 +13334,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +70% boner",
                                   "value":"+70%"
                                }
                             ],
@@ -13286,7 +13342,7 @@ modsConfig.push({
                                {
                                   "stat":"boner",
                                   "position":"allpenetration",
-                                  "label":"All penetration boner",
+                                  "label":"All penetration +80% boner",
                                   "value":"+80%"
                                }
                             ]
@@ -13563,7 +13619,13 @@ modsConfig.push({
      "id":"1",
      "name":"Stone I",
      "nbBonus":4,
-     "contractsLevels": [1,1,2,2,3],
+     "contractsLevels":[
+        1,
+        1,
+        2,
+        2,
+        3
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -13609,7 +13671,13 @@ modsConfig.push({
      "id":"2",
      "name":"Stone II",
      "nbBonus":3,
-     "contractsLevels": [1,1,2,3,4],
+     "contractsLevels":[
+        1,
+        1,
+        2,
+        3,
+        4
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -13674,7 +13742,13 @@ modsConfig.push({
      "id":"3",
      "name":"Bronze I",
      "nbBonus":2,
-     "contractsLevels": [1,2,2,3,4],
+     "contractsLevels":[
+        1,
+        2,
+        2,
+        3,
+        4
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -13765,7 +13839,13 @@ modsConfig.push({
      "name":"Bronze II",
      "nbBonus":2,
      "nbMalus":2,
-     "contractsLevels": [2,2,3,3,4],
+     "contractsLevels":[
+        2,
+        2,
+        3,
+        3,
+        4
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -13881,7 +13961,13 @@ modsConfig.push({
      "name":"Silver I",
      "nbBonus":1,
      "nbMalus":3,
-     "contractsLevels": [2,2,3,3,4],
+     "contractsLevels":[
+        2,
+        2,
+        3,
+        3,
+        4
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -13981,7 +14067,13 @@ modsConfig.push({
      "name":"Silver II",
      "nbBonus":1,
      "nbMalus":3,
-     "contractsLevels": [2,3,3,3,4],
+     "contractsLevels":[
+        2,
+        3,
+        3,
+        3,
+        4
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -14063,7 +14155,13 @@ modsConfig.push({
      "id":"7",
      "name":"Gold I",
      "nbMalus":4,
-     "contractsLevels": [2,2,3,4,5],
+     "contractsLevels":[
+        2,
+        2,
+        3,
+        4,
+        5
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -14145,7 +14243,13 @@ modsConfig.push({
      "name":"Gold II",
      "nbMalus":4,
      "nbFetish":6,
-     "contractsLevels": [2,3,3,4,5],
+     "contractsLevels":[
+        2,
+        3,
+        3,
+        4,
+        5
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -14225,7 +14329,13 @@ modsConfig.push({
      "name":"Diamond",
      "nbMalus":5,
      "nbFetish":4,
-     "contractsLevels": [2,3,4,4,5],
+     "contractsLevels":[
+        2,
+        3,
+        4,
+        4,
+        5
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -14305,7 +14415,13 @@ modsConfig.push({
      "name":"Diamond X",
      "nbMalus":6,
      "nbFetish":3,
-     "contractsLevels": [2,3,4,5,5],
+     "contractsLevels":[
+        2,
+        3,
+        4,
+        5,
+        5
+     ],
      "activityProb":0.13,
      "activities":[
         {
@@ -14375,5 +14491,5 @@ modsConfig.push({
         }
      ]
   }
- ]
+]
 });

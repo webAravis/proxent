@@ -21,6 +21,7 @@ export class DialogsComponent implements OnInit, OnDestroy {
   girlFriendPortrait: SafeUrl | string = '';
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
+  private _pauseInterval: NodeJS.Timer | undefined;
 
 	constructor(
 		private _dialogService: DialogsService,
@@ -33,6 +34,8 @@ export class DialogsComponent implements OnInit, OnDestroy {
 		this._dialogService.dialogShown
 			.pipe(takeUntil(this._unsubscribeAll))
 			.subscribe((shown) => {
+        clearInterval(this._pauseInterval);
+
         // retrieving girlfriend's datas
         this.girlfriend = this._girlService.gameGirls.getValue().find(girl => girl.fullId === this._gameService.girlfriend) ?? new Girl();
         this.girlFriendPortrait = './assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
@@ -41,7 +44,11 @@ export class DialogsComponent implements OnInit, OnDestroy {
 				this.step = 0;
 
 				if (shown) {
-					this._gameService.pauseGame();
+          this._pauseInterval = setInterval(() => {
+            if (this.shown) {
+              this._gameService.pauseGame();
+            }
+          }, 500);
 				}
 			});
 
@@ -60,6 +67,8 @@ export class DialogsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
+    clearInterval(this._pauseInterval);
+
 		// Unsubscribe from all subscriptions
 		this._unsubscribeAll.next(true);
 		this._unsubscribeAll.complete();
