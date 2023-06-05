@@ -3146,13 +3146,68 @@ modsConfig.push({
                             ],
                             [
                                {
-                                  "stat":"scene",
-                                  "label":"New scene",
-                                  "value":"Piledriving 2"
+                                "stat":"trigger",
+                                "triggerEffect":"boner",
+                                "label":"30% chance to get +8 boner/s for 15s",
+                                "value":"+8",
+                                "duration":15000,
+                                "chance":0.3
                                }
                             ]
                          ]
-                      }
+                      },
+                      {
+                        "name":"Distraction",
+                        "description":"Leader is disturbed by her body moves",
+                        "maxlevel":2,
+                        "unlockPrice":[
+                           [
+                              {
+                                 "type":"gold",
+                                 "quantity":30000
+                              },
+                              {
+                                 "type":"advanced_skill_gem",
+                                 "quantity":1
+                              }
+                           ],
+                           [
+                              {
+                                 "type":"gold",
+                                 "quantity":45000
+                              },
+                              {
+                                 "type":"advanced_skill_gem",
+                                 "quantity":2
+                              }
+                           ]
+                        ],
+                        "requires":[
+                           "Piledriving",
+                           "Sidefuck",
+                           "Cosplay"
+                        ],
+                        "effects":[
+                           [
+                              {
+                                 "stat":"trigger",
+                                 "triggerEffect":"activities",
+                                 "label":"20% chance to prevent leader activity for 15s",
+                                 "duration":15000,
+                                 "chance":0.2
+                              }
+                           ],
+                           [
+                              {
+                                "stat":"trigger",
+                                "triggerEffect":"activities",
+                                "label":"40% chance to prevent leader activity for 15s",
+                                "duration":15000,
+                                "chance":0.4
+                              }
+                           ]
+                        ]
+                     }
                    ]
                 }
              ]

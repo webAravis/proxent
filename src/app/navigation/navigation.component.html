@@ -12,11 +12,9 @@
 	<a class="disabled" *ngIf="!studioUnlocked">Studio</a>
 
 	<a [routerLink]="'inventory'">Inventory</a>
-	<a [routerLink]="'battle'">Battle</a>
+	<a *ngIf="studioUnlocked" [routerLink]="'battle'">Battle</a>
 	<a [routerLink]="'contracts'">Contracts</a>
 	<a [routerLink]="'settings'">Settings</a>
 	<a href="#" (click)="goToMenu()">Menu</a>
-	<a href="https://patreon.com/ProXent" target="_blank"
-		><img src="./assets/support-patreon.png" width="150"
-	/></a>
+	<a href="https://patreon.com/ProXent" target="_blank"><img src="./assets/support-patreon.png" width="150" /></a>
 </div>

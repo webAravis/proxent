@@ -474,14 +474,28 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.xpWon += positionStats.xp;
 		this.fansWon += positionStats.fans;
 		this.girl.orgasmLevel += positionStats.orgasm;
+    if (this.activeTriggers.map(trigger => trigger.trigger.triggerEffect).includes('orgasmmultiplier')) {
+      const triggersMultiplier = this.activeTriggers.filter(trigger => trigger.trigger.triggerEffect === 'orgasmmultiplier');
+      for (const trigger of triggersMultiplier) {
+        this.girl.orgasmLevel += positionStats.orgasm * parseInt(trigger.trigger.value);
+      }
+    }
 
-    if (!isCombo || positionStats.boner > 0) {
-      this.boner += positionStats.boner;
+    let computedBoner = positionStats.boner;
+    if (this.activeTriggers.map(trigger => trigger.trigger.triggerEffect).includes('bonermultiplier')) {
+      const triggersMultiplier = this.activeTriggers.filter(trigger => trigger.trigger.triggerEffect === 'bonermultiplier');
+      for (const trigger of triggersMultiplier) {
+        computedBoner = computedBoner * parseInt(trigger.trigger.value);
+      }
+    }
+
+    if (!isCombo || computedBoner > 0) {
+      this.boner += computedBoner;
       this.boner = Math.max(this.boner, 0);
       this.boner = Math.min(this.boner, 100);
     }
 
-    if (!isCombo) {
+    if (!isCombo && !this.activeTriggers.map(trigger => trigger.trigger.triggerEffect).includes('freescenes')) {
       this.nbScenes++;
     }
 
@@ -917,6 +931,9 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   private _pickLeaderActivity(): void {
     let activities: LeaderActivity[] = [];
+    if (this.activeTriggers.map(trigger => trigger.trigger.triggerEffect).includes('activities')) {
+      return;
+    }
 
     if (this.toBattle instanceof Leader) {
       const toCheck: Leader = this.toBattle;
