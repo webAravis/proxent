@@ -6386,7 +6386,13 @@ modsConfig.push({
              "name":"tease",
              "label":"Tease",
              "corruption":0,
-             "type":"FOREPLAY"
+             "type":"FOREPLAY",
+             "unlocker": {
+                "name":"tease2",
+                "label":"Tease 2",
+                "corruption":1,
+                "type":"FOREPLAY"
+            }
           },
           {
              "name":"rub",
@@ -6446,7 +6452,13 @@ modsConfig.push({
              "name":"missionary",
              "label":"Missionary",
              "corruption":6,
-             "type":"PENETRATION"
+             "type":"PENETRATION",
+             "unlocker": {
+                "name":"missionary2",
+                "label":"Missionary 2",
+                "corruption":7,
+                "type":"PENETRATION"
+            }
           },
           {
              "name":"doggy",
@@ -6509,10 +6521,22 @@ modsConfig.push({
              }
           },
           {
-             "name":"standing",
-             "label":"Standing",
-             "corruption":10,
-             "type":"PENETRATION"
+            "name":"standing",
+            "label":"Standing",
+            "corruption":10,
+            "type":"PENETRATION",
+            "unlocker": {
+              "name":"standing2",
+              "label":"Standing 2",
+              "corruption":11,
+              "type":"PENETRATION",
+              "unlocker": {
+                "name":"standing3",
+                "label":"Standing 3",
+                "corruption":12,
+                "type":"PENETRATION"
+              }
+            }
           },
           {
              "name":"outdoor",
@@ -6537,7 +6561,79 @@ modsConfig.push({
                 "corruption":11,
                 "type":"SKILL"
              }
-          }
+          },
+          {
+             "name":"anal",
+             "label":"Anal",
+             "corruption":10,
+             "type":"SPECIAL",
+             "unlocker":{
+                "name":"anal2",
+                "label":"Anal 2",
+                "corruption":11,
+                "type":"SPECIAL",
+                "unlocker":{
+                  "name":"anal3",
+                  "label":"Anal 3",
+                  "corruption":12,
+                  "type":"SPECIAL"
+                }
+             }
+          },
+          {
+            "name":"sidefuck",
+            "label":"Sidefuck",
+            "corruption":10,
+            "type":"SPECIAL",
+            "unlocker":{
+               "name":"sidefuck2",
+               "label":"Sidefuck 2",
+               "corruption":11,
+               "type":"SPECIAL",
+               "unlocker":{
+                 "name":"sidefuck3",
+                 "label":"Sidefuck 3",
+                 "corruption":12,
+                 "type":"SPECIAL",
+                 "unlocker":{
+                    "name":"sidefuck4",
+                    "label":"Sidefuck 4",
+                    "corruption":13,
+                    "type":"SPECIAL"
+                  }
+               }
+            }
+         },
+          {
+            "name":"shakinglegs",
+            "label":"Shaking Legs",
+            "corruption":10,
+            "type":"SPECIAL",
+            "unlocker":{
+               "name":"shakinglegs2",
+               "label":"Shaking Legs 2",
+               "corruption":11,
+               "type":"SPECIAL",
+               "unlocker":{
+                 "name":"shakinglegs3",
+                 "label":"Shaking Legs 3",
+                 "corruption":12,
+                 "type":"SPECIAL",
+                 "unlocker":{
+                    "name":"shakinglegs4",
+                    "label":"Shaking Legs 4",
+                    "corruption":13,
+                    "type":"SPECIAL",
+                    "unlocker":{
+                      "name":"shakinglegs5",
+                      "label":"Shaking Legs 5",
+                      "corruption":14,
+                      "type":"SPECIAL"
+                    }
+                  }
+               }
+            }
+         },
        ],
        "photos":[
           {
@@ -7087,6 +7183,215 @@ modsConfig.push({
           }
        ],
        "skills":[
+        {
+          "name":"special",
+          "description":"Special skills and scenes",
+          "skillTiers":[
+             {
+                "tier":0,
+                "skills":[
+                   {
+                      "name":"Fetishist",
+                      "description":"Unlocks Madison's special scenes",
+                      "maxlevel":1,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":15000
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":1,
+                "skills":[
+                   {
+                      "name":"Shaking legs",
+                      "description":"Concentrate her efforts to maximize pleasure",
+                      "maxlevel":5,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Fetishist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Shaking legs",
+                               "value":"Shakinglegs"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Shaking legs 2",
+                               "value":"Shakinglegs 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Shaking legs 3",
+                               "value":"Shakinglegs 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Shaking legs 4",
+                               "value":"Shakinglegs 4"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Shaking legs 5",
+                               "value":"Shakinglegs 5"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Sidefuck",
+                      "description":"No more place for relaxation",
+                      "maxlevel":4,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Fetishist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sidefuck",
+                               "value":"Sidefuck"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sidefuck 2",
+                               "value":"Sidefuck 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sidefuck 3",
+                               "value":"Sidefuck 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sidefuck 4",
+                               "value":"Sidefuck 4"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                    "name":"Anal",
+                    "description":"Tighter hole for bigger pleasure",
+                    "maxlevel":3,
+                    "unlockPrice":[
+                       [
+                          {
+                             "type":"gold",
+                             "quantity":30000
+                          },
+                          {
+                             "type":"basic_skill_gem",
+                             "quantity":1
+                          }
+                       ],
+                       [
+                          {
+                             "type":"gold",
+                             "quantity":45000
+                          },
+                          {
+                             "type":"advanced_skill_gem",
+                             "quantity":1
+                          }
+                       ]
+                    ],
+                    "requires":[
+                       "Fetishist"
+                    ],
+                    "effects":[
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal",
+                             "value":"Anal"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal 2",
+                             "value":"Anal 2"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal 3",
+                             "value":"Anal 3"
+                          }
+                       ]
+                    ]
+                 },
+                ]
+             }
+          ]
+       },
           {
              "name":"recording",
              "description":"Improve recording advantages",
