@@ -70,7 +70,7 @@ export class Position {
       (
         this.type === PositionType.FOREPLAY || this.type === PositionType.FOREPLAY_SKILL ?
           (this.corruption + 1) * 4 :
-          this.corruption * 1.5
+          this.corruption * 2.5
       )
     );
     boner = Math.min(boner, 100);

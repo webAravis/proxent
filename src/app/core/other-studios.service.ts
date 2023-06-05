@@ -6,6 +6,7 @@ import { Girl } from './girls/girl.model';
 import { RecordService } from '../record/record.service';
 import { Record } from '../record/record.model';
 import { GameService } from './game.service';
+import { MastersService } from '../leaders/masters.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -21,6 +22,7 @@ export class OtherStudiosService {
 	constructor(
 		private _girlsService: GirlsService,
 		private _recordService: RecordService,
+    private _masterService: MastersService,
 		private _gameService: GameService
 	) {
 		setInterval(() => this.tryRecording(), 15_000);
@@ -98,10 +100,11 @@ export class OtherStudiosService {
 					girls = girls.filter((girl: Girl) => girl.name !== girlToRecord.name);
 
 					// update girl's stats
-					const multiplierFans = 1; // TODO: Get multiplier from current league
-					const multiplierXp = 1; // TODO: Get multiplier from current league
-					girlToRecord.fans = girlToRecord.fans + studio.basefans * multiplierFans;
-					girlToRecord.xp = girlToRecord.xp + studio.basexp * multiplierXp;
+					const multiplierFans = this._masterService.getFansMultiplier();
+          girlToRecord.fans = girlToRecord.fans + studio.basefans * multiplierFans;
+          if (girlToRecord.locked === true || girlToRecord.level < this._masterService.getLevelCap()) {
+            girlToRecord.xp = girlToRecord.xp + studio.basexp;
+          }
 
 					this._recordService.simulateRecord(
 						girlToRecord,

@@ -30,6 +30,24 @@ export class MastersService {
     });
   }
 
+  getContractsLevels(): number[] {
+    const league = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
+    if (league && league.contractsLevels.length > 0) {
+      return league.contractsLevels;
+    }
+
+    return [1,2,3,4,5];
+  }
+
+  getFansMultiplier(): number {
+    const league = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
+    if (league && league.contractsLevels.length > 0) {
+      return league.contractsLevels[Math.floor(Math.random() * league.contractsLevels.length)];
+    }
+
+    return 1;
+  }
+
   beatLeague(): void {
     const league = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
     if (league !== undefined) {
@@ -55,6 +73,13 @@ export class MastersService {
 
         this._girlService.downgradeLevels(previousLeague.levelCap);
       }
+    }
+  }
+
+  downgradeLevels(): void {
+    const league = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
+    if (league) {
+      this._girlService.downgradeLevels(league.levelCap);
     }
   }
 

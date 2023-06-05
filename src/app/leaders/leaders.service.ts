@@ -50,7 +50,7 @@ export class LeadersService {
     // increasing other studios quality
     const otherStudios = this._otherStudioService.studios.getValue();
     for (const studio of otherStudios) {
-      studio.quality = studio.quality * 1.1;
+      studio.quality = studio.quality * 1.2;
     }
     this._otherStudioService.studios.next(otherStudios);
   }

@@ -8,6 +8,7 @@ import { CachingService } from '../core/caching.service';
 import { GameService } from '../core/game.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { ShepherdService } from 'angular-shepherd';
+import { MastersService } from '../leaders/masters.service';
 
 @Component({
   selector: 'app-girls',
@@ -30,6 +31,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked, A
     private _freedomService: FreedomService,
     private _cachingService: CachingService,
     private _gameService: GameService,
+    private _masterService: MastersService,
     private _router: Router,
     private _shepherdService: ShepherdService,
     private _cdRef: ChangeDetectorRef
@@ -111,6 +113,7 @@ export class GirlsComponent implements OnInit, OnDestroy, AfterContentChecked, A
 
   addGirl(girl: Girl): void {
     this._girlsService.addGirl(girl);
+    this._masterService.downgradeLevels();
   }
 
   girlFreeable(): boolean {

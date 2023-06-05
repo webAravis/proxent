@@ -44,7 +44,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
-  volume: number = 1;
+  volume: number = 0;
   intervalVolume: NodeJS.Timer | undefined;
 	timeoutscene: NodeJS.Timeout[] = [];
   timeoutCum: NodeJS.Timeout | undefined;

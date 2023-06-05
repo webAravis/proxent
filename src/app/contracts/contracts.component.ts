@@ -107,6 +107,10 @@ export class ContractsComponent implements OnInit, OnDestroy, AfterViewInit {
       },
       {
         title: 'Summary',
+        text: ['Contract value and difficulty is linked to your current league, climb up your ranking to get more interesting contracts'],
+      },
+      {
+        title: 'Summary',
         text: ['You know the basics about contracts. Fullfill them and earn great prizes'],
       }
     ]);

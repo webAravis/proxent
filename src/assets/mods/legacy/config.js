@@ -13563,6 +13563,7 @@ modsConfig.push({
      "id":"1",
      "name":"Stone I",
      "nbBonus":4,
+     "contractsLevels": [1,1,2,2,3],
      "activityProb":0.13,
      "activities":[
         {
@@ -13571,78 +13572,16 @@ modsConfig.push({
            "value":-10
         },
         {
-           "name":"boner reduction advanced",
-           "effect":"boner",
-           "value":-50
-        },
-        {
-           "name":"boner reduction ultimate",
-           "effect":"boner",
-           "value":-100
-        },
-        {
            "duration":10000,
            "name":"position inhibition",
            "effect":"position",
            "value":1
         },
         {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
-        },
-        {
-           "duration":20000,
-           "name":"position inhibition ultimate",
-           "effect":"position",
-           "value":4
-        },
-        {
            "duration":10000,
            "name":"boner failures",
            "effect":"boner gains",
            "value":10
-        },
-        {
-           "duration":20000,
-           "name":"boner failures advanced",
-           "effect":"boner gains",
-           "value":40
-        },
-        {
-           "name":"random picking",
-           "effect":"pick"
-        },
-        {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
-           "duration":20000,
-           "name":"golden prohibition ultimate",
-           "effect":"trending"
-        },
-        {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
-        },
-        {
-           "name":"cum ultimate",
-           "effect":"cum",
-           "value":-10
         }
      ],
      "levelCap":25,
@@ -13670,6 +13609,7 @@ modsConfig.push({
      "id":"2",
      "name":"Stone II",
      "nbBonus":3,
+     "contractsLevels": [1,1,2,3,4],
      "activityProb":0.13,
      "activities":[
         {
@@ -13683,27 +13623,10 @@ modsConfig.push({
            "value":-50
         },
         {
-           "name":"boner reduction ultimate",
-           "effect":"boner",
-           "value":-100
-        },
-        {
            "duration":10000,
            "name":"position inhibition",
            "effect":"position",
            "value":1
-        },
-        {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
-        },
-        {
-           "duration":20000,
-           "name":"position inhibition ultimate",
-           "effect":"position",
-           "value":4
         },
         {
            "duration":10000,
@@ -13722,34 +13645,9 @@ modsConfig.push({
            "effect":"pick"
         },
         {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
-           "duration":20000,
-           "name":"golden prohibition ultimate",
-           "effect":"trending"
-        },
-        {
            "name":"cum spoil",
            "effect":"cum",
            "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
-        },
-        {
-           "name":"cum ultimate",
-           "effect":"cum",
-           "value":-10
         }
      ],
      "levelCap":35,
@@ -13776,6 +13674,7 @@ modsConfig.push({
      "id":"3",
      "name":"Bronze I",
      "nbBonus":2,
+     "contractsLevels": [1,2,2,3,4],
      "activityProb":0.13,
      "activities":[
         {
@@ -13806,12 +13705,6 @@ modsConfig.push({
            "value":2
         },
         {
-           "duration":20000,
-           "name":"position inhibition ultimate",
-           "effect":"position",
-           "value":4
-        },
-        {
            "duration":10000,
            "name":"boner failures",
            "effect":"boner gains",
@@ -13833,16 +13726,6 @@ modsConfig.push({
            "effect":"trending"
         },
         {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
-           "duration":20000,
-           "name":"golden prohibition ultimate",
-           "effect":"trending"
-        },
-        {
            "name":"cum spoil",
            "effect":"cum",
            "value":-1
@@ -13851,15 +13734,10 @@ modsConfig.push({
            "name":"cum spoil advanced",
            "effect":"cum",
            "value":-5
-        },
-        {
-           "name":"cum ultimate",
-           "effect":"cum",
-           "value":-10
         }
      ],
-     "levelCap":60,
-     "maintenanceCost":25000,
+     "levelCap":50,
+     "maintenanceCost":30000,
      "beatingConditions":[
         {
            "type":"points",
@@ -13887,6 +13765,7 @@ modsConfig.push({
      "name":"Bronze II",
      "nbBonus":2,
      "nbMalus":2,
+     "contractsLevels": [2,2,3,3,4],
      "activityProb":0.13,
      "activities":[
         {
@@ -13969,8 +13848,8 @@ modsConfig.push({
            "value":-10
         }
      ],
-     "levelCap":80,
-     "maintenanceCost":50000,
+     "levelCap":75,
+     "maintenanceCost":70000,
      "beatingConditions":[
         {
            "type":"points",
@@ -14002,13 +13881,9 @@ modsConfig.push({
      "name":"Silver I",
      "nbBonus":1,
      "nbMalus":3,
+     "contractsLevels": [2,2,3,3,4],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
         {
            "name":"boner reduction advanced",
            "effect":"boner",
@@ -14018,12 +13893,6 @@ modsConfig.push({
            "name":"boner reduction ultimate",
            "effect":"boner",
            "value":-100
-        },
-        {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
         },
         {
            "duration":15000,
@@ -14054,11 +13923,6 @@ modsConfig.push({
            "effect":"pick"
         },
         {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
            "duration":15000,
            "name":"golden prohibition advanced",
            "effect":"trending"
@@ -14085,7 +13949,7 @@ modsConfig.push({
         }
      ],
      "levelCap":100,
-     "maintenanceCost":75000,
+     "maintenanceCost":120000,
      "beatingConditions":[
         {
            "type":"points",
@@ -14117,13 +13981,9 @@ modsConfig.push({
      "name":"Silver II",
      "nbBonus":1,
      "nbMalus":3,
+     "contractsLevels": [2,3,3,3,4],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
         {
            "name":"boner reduction advanced",
            "effect":"boner",
@@ -14135,58 +13995,25 @@ modsConfig.push({
            "value":-100
         },
         {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
-        },
-        {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
-        },
-        {
            "duration":20000,
            "name":"position inhibition ultimate",
            "effect":"position",
            "value":4
         },
         {
-           "duration":10000,
-           "name":"boner failures",
-           "effect":"boner gains",
-           "value":10
-        },
-        {
            "duration":20000,
            "name":"boner failures advanced",
            "effect":"boner gains",
-           "value":40
+           "value":60
         },
         {
            "name":"random picking",
            "effect":"pick"
         },
         {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
            "duration":20000,
            "name":"golden prohibition ultimate",
            "effect":"trending"
-        },
-        {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
         },
         {
            "name":"cum spoil advanced",
@@ -14200,7 +14027,7 @@ modsConfig.push({
         }
      ],
      "levelCap":130,
-     "maintenanceCost":140000,
+     "maintenanceCost":200000,
      "beatingConditions":[
         {
            "type":"points",
@@ -14236,28 +14063,13 @@ modsConfig.push({
      "id":"7",
      "name":"Gold I",
      "nbMalus":4,
+     "contractsLevels": [2,2,3,4,5],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
-        {
-           "name":"boner reduction advanced",
-           "effect":"boner",
-           "value":-50
-        },
         {
            "name":"boner reduction ultimate",
            "effect":"boner",
            "value":-100
-        },
-        {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
         },
         {
            "duration":15000,
@@ -14272,45 +14084,19 @@ modsConfig.push({
            "value":4
         },
         {
-           "duration":10000,
-           "name":"boner failures",
-           "effect":"boner gains",
-           "value":10
-        },
-        {
            "duration":20000,
            "name":"boner failures advanced",
            "effect":"boner gains",
-           "value":40
+           "value":65
         },
         {
            "name":"random picking",
            "effect":"pick"
         },
         {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
            "duration":20000,
            "name":"golden prohibition ultimate",
            "effect":"trending"
-        },
-        {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
         },
         {
            "name":"cum ultimate",
@@ -14319,7 +14105,7 @@ modsConfig.push({
         }
      ],
      "levelCap":160,
-     "maintenanceCost":200000,
+     "maintenanceCost":380000,
      "beatingConditions":[
         {
            "type":"points",
@@ -14359,34 +14145,13 @@ modsConfig.push({
      "name":"Gold II",
      "nbMalus":4,
      "nbFetish":6,
+     "contractsLevels": [2,3,3,4,5],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
-        {
-           "name":"boner reduction advanced",
-           "effect":"boner",
-           "value":-50
-        },
         {
            "name":"boner reduction ultimate",
            "effect":"boner",
            "value":-100
-        },
-        {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
-        },
-        {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
         },
         {
            "duration":20000,
@@ -14395,30 +14160,14 @@ modsConfig.push({
            "value":4
         },
         {
-           "duration":10000,
-           "name":"boner failures",
-           "effect":"boner gains",
-           "value":10
-        },
-        {
            "duration":20000,
-           "name":"boner failures advanced",
+           "name":"boner failures ultimate",
            "effect":"boner gains",
-           "value":40
+           "value":85
         },
         {
            "name":"random picking",
            "effect":"pick"
-        },
-        {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
         },
         {
            "duration":20000,
@@ -14426,19 +14175,9 @@ modsConfig.push({
            "effect":"trending"
         },
         {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
-        },
-        {
            "name":"cum ultimate",
            "effect":"cum",
-           "value":-10
+           "value":-15
         }
      ],
      "levelCap":200,
@@ -14486,90 +14225,43 @@ modsConfig.push({
      "name":"Diamond",
      "nbMalus":5,
      "nbFetish":4,
+     "contractsLevels": [2,3,4,4,5],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
-        {
-           "name":"boner reduction advanced",
-           "effect":"boner",
-           "value":-50
-        },
         {
            "name":"boner reduction ultimate",
            "effect":"boner",
            "value":-100
         },
         {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
-        },
-        {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
-        },
-        {
-           "duration":20000,
+           "duration":25000,
            "name":"position inhibition ultimate",
            "effect":"position",
            "value":4
         },
         {
-           "duration":10000,
-           "name":"boner failures",
-           "effect":"boner gains",
-           "value":10
-        },
-        {
            "duration":20000,
-           "name":"boner failures advanced",
+           "name":"boner failures ultimate",
            "effect":"boner gains",
-           "value":40
+           "value":100
         },
         {
            "name":"random picking",
            "effect":"pick"
         },
         {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
-           "duration":20000,
+           "duration":30000,
            "name":"golden prohibition ultimate",
            "effect":"trending"
         },
         {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
-        },
-        {
            "name":"cum ultimate",
            "effect":"cum",
-           "value":-10
+           "value":-20
         }
      ],
      "levelCap":250,
-     "maintenanceCost":1000000,
+     "maintenanceCost":1500000,
      "beatingConditions":[
         {
            "type":"points",
@@ -14613,86 +14305,35 @@ modsConfig.push({
      "name":"Diamond X",
      "nbMalus":6,
      "nbFetish":3,
+     "contractsLevels": [2,3,4,5,5],
      "activityProb":0.13,
      "activities":[
-        {
-           "name":"boner reduction",
-           "effect":"boner",
-           "value":-10
-        },
-        {
-           "name":"boner reduction advanced",
-           "effect":"boner",
-           "value":-50
-        },
         {
            "name":"boner reduction ultimate",
            "effect":"boner",
            "value":-100
         },
         {
-           "duration":10000,
-           "name":"position inhibition",
-           "effect":"position",
-           "value":1
-        },
-        {
-           "duration":15000,
-           "name":"position inhibition advanced",
-           "effect":"position",
-           "value":2
-        },
-        {
-           "duration":20000,
+           "duration":40000,
            "name":"position inhibition ultimate",
            "effect":"position",
-           "value":4
+           "value":6
         },
         {
-           "duration":10000,
-           "name":"boner failures",
-           "effect":"boner gains",
-           "value":10
-        },
-        {
-           "duration":20000,
+           "duration":30000,
            "name":"boner failures advanced",
            "effect":"boner gains",
-           "value":40
+           "value":100
         },
         {
-           "name":"random picking",
-           "effect":"pick"
-        },
-        {
-           "duration":10000,
-           "name":"golden prohibition",
-           "effect":"trending"
-        },
-        {
-           "duration":15000,
-           "name":"golden prohibition advanced",
-           "effect":"trending"
-        },
-        {
-           "duration":20000,
+           "duration":50000,
            "name":"golden prohibition ultimate",
            "effect":"trending"
         },
         {
-           "name":"cum spoil",
-           "effect":"cum",
-           "value":-1
-        },
-        {
-           "name":"cum spoil advanced",
-           "effect":"cum",
-           "value":-5
-        },
-        {
            "name":"cum ultimate",
            "effect":"cum",
-           "value":-10
+           "value":-25
         }
      ],
      "levelCap":400,

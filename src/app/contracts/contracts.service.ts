@@ -6,6 +6,7 @@ import { GameService } from '../core/game.service';
 import { SettingsService } from '../core/settings.service';
 import { InventoryService } from '../inventory/inventory.service';
 import { Item } from '../inventory/item.model';
+import { MastersService } from '../leaders/masters.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ContractsService {
     private _girlService: GirlsService,
     private _gameService: GameService,
     private _settingService: SettingsService,
+    private _masterService: MastersService,
     private _inventoryService: InventoryService
   ) {
     this._initContractGeneration();
@@ -97,7 +99,7 @@ export class ContractsService {
       const activities = ['shooting', 'recording'];
       contract.activity = activities[Math.floor(Math.random() * activities.length)];
 
-      const difficulties = [1,2,3,4,5]
+      const difficulties = this._getDifficultyLevels();
       const difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
 
       const attributes = this._girlService.getAllGirlsAttributes(difficulty);
@@ -164,6 +166,15 @@ export class ContractsService {
       contracts.push(contract);
       this.contracts.next(contracts);
     });
+  }
+
+  private _getDifficultyLevels(): number[] {
+    const levels = this._masterService.getContractsLevels();
+    if (levels) {
+      return levels;
+    }
+
+    return [1,2,3,4,5];
   }
 
   private _checkExpired(): void {

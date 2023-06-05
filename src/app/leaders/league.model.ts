@@ -25,6 +25,8 @@ export class League {
 
   isCurrentLeague = false;
 
+  contractsLevels: number[] = [];
+
   unlocker: string | undefined;
 
 	constructor(values: object = {}) {

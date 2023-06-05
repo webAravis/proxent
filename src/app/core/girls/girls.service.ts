@@ -41,6 +41,8 @@ export class GirlsService {
         girl.setLevel(levelCap);
       }
     }
+
+    this.gameGirls.next(this.gameGirls.getValue());
   }
 
 	addGirl(girl: Girl): void {

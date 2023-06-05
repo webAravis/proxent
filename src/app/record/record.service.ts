@@ -2,12 +2,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Record } from './record.model';
 import { Girl } from '../core/girls/girl.model';
-import { GirlsService } from '../core/girls/girls.service';
 import { GameService } from '../core/game.service';
 import { Position, PositionType } from '../core/position.model';
 import { Leader } from '../leaders/leader.model';
 import { SettingsService } from '../core/settings.service';
 import { League } from '../leaders/league.model';
+import { MastersService } from '../leaders/masters.service';
 
 export interface PlayedPosition {
   position: Position,
@@ -24,7 +24,7 @@ export class RecordService {
   recordSimulated: Subject<Record> = new Subject<Record>();
 
   constructor(
-    private _girlsService: GirlsService,
+    private _masterService: MastersService,
     private _gameService: GameService,
     private _settingsService: SettingsService
   ) {}
@@ -277,7 +277,7 @@ export class RecordService {
   }
 
   getScoreStudio(studioQuality: number, isPlayer: boolean): number {
-    return Math.round((1000 * studioQuality) * (isPlayer ? this._settingsService.getSetting('record_points') : 1));
+    return Math.round((1000 * studioQuality) * (isPlayer ? this._settingsService.getSetting('record_points') : this._masterService.getFansMultiplier()));
   }
 
   getScoreGirl(girl: Girl, isPlayer: boolean): number {
