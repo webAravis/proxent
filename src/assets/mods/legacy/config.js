@@ -8485,7 +8485,13 @@ modsConfig.push({
              "name":"boobjob",
              "label":"Boobjob",
              "corruption":3,
-             "type":"FOREPLAY"
+             "type":"FOREPLAY",
+             "unlocker":{
+              "name":"boobjob2",
+              "label":"Boobjob 2",
+              "corruption":4,
+              "type":"FOREPLAY"
+           }
           },
           {
              "name":"blowjob",
@@ -8521,7 +8527,19 @@ modsConfig.push({
              "name":"missionary",
              "label":"Missionary",
              "corruption":6,
-             "type":"PENETRATION"
+             "type":"PENETRATION",
+             "unlocker":{
+              "name":"missionary 2",
+              "label":"Missionary 2",
+              "corruption":7,
+              "type":"PENETRATION",
+              "unlocker":{
+                "name":"missionary 3",
+                "label":"Missionary 3",
+                "corruption":7,
+                "type":"PENETRATION"
+             }
+           }
           },
           {
              "name":"doggy",
@@ -8611,6 +8629,66 @@ modsConfig.push({
                 "label":"Sitted 2",
                 "corruption":11,
                 "type":"SKILL"
+             }
+          },
+          {
+             "name":"anal",
+             "label":"Anal",
+             "corruption":10,
+             "type":"SPECIAL",
+             "unlocker":{
+                "name":"anal2",
+                "label":"Anal 2",
+                "corruption":12,
+                "type":"SPECIAL",
+                "unlocker":{
+                  "name":"anal3",
+                  "label":"Anal 3",
+                  "corruption":13,
+                  "type":"SPECIAL"
+               }
+             }
+          },
+          {
+             "name":"interracial",
+             "label":"Interracial",
+             "corruption":10,
+             "type":"SPECIAL",
+             "unlocker":{
+                "name":"interracial2",
+                "label":"Interracial 2",
+                "corruption":12,
+                "type":"SPECIAL",
+                "unlocker":{
+                  "name":"interracial3",
+                  "label":"Interracial 3",
+                  "corruption":13,
+                  "type":"SPECIAL"
+               }
+             }
+          },
+          {
+             "name":"rough",
+             "label":"Rough",
+             "corruption":10,
+             "type":"SPECIAL",
+             "unlocker":{
+                "name":"rough2",
+                "label":"Rough 2",
+                "corruption":12,
+                "type":"SPECIAL",
+                "unlocker":{
+                  "name":"rough3",
+                  "label":"Rough 3",
+                  "corruption":13,
+                  "type":"SPECIAL",
+                  "unlocker":{
+                    "name":"rough4",
+                    "label":"Rough 4",
+                    "corruption":14,
+                    "type":"SPECIAL"
+                 }
+               }
              }
           }
        ],
@@ -9180,6 +9258,201 @@ modsConfig.push({
           }
        ],
        "skills":[
+        {
+          "name":"special",
+          "description":"Special skills and scenes",
+          "skillTiers":[
+             {
+                "tier":0,
+                "skills":[
+                   {
+                      "name":"Fetishist",
+                      "description":"Unlocks Karma's special scenes",
+                      "maxlevel":1,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":15000
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":1,
+                "skills":[
+                   {
+                      "name":"Interracial",
+                      "description":"Mixing colours!",
+                      "maxlevel":3,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Fetishist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Interracial",
+                               "value":"Interracial"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Interracial 2",
+                               "value":"Interracial 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Interracial 3",
+                               "value":"Interracial 3"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Rough",
+                      "description":"Violence and domination",
+                      "maxlevel":4,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Fetishist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Rough",
+                               "value":"Rough"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Rough 2",
+                               "value":"Rough 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Rough 3",
+                               "value":"Rough 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Rough 4",
+                               "value":"Rough 4"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                    "name":"Anal",
+                    "description":"Tighter hole for bigger pleasure",
+                    "maxlevel":3,
+                    "unlockPrice":[
+                       [
+                          {
+                             "type":"gold",
+                             "quantity":30000
+                          },
+                          {
+                             "type":"basic_skill_gem",
+                             "quantity":1
+                          }
+                       ],
+                       [
+                          {
+                             "type":"gold",
+                             "quantity":45000
+                          },
+                          {
+                             "type":"advanced_skill_gem",
+                             "quantity":1
+                          }
+                       ]
+                    ],
+                    "requires":[
+                       "Fetishist"
+                    ],
+                    "effects":[
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal",
+                             "value":"Anal"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal 2",
+                             "value":"Anal 2"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Anal 3",
+                             "value":"Anal 3"
+                          }
+                       ]
+                    ]
+                 },
+                ]
+             }
+          ]
+       },
           {
              "name":"recording",
              "description":"Improve recording advantages",
