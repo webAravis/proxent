@@ -65,10 +65,9 @@ export class GameService {
 		this.isPaused = false;
     this.gameState.next(false);
 
-		clearInterval(this.dayTicker);
-
     let monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+		clearInterval(this.dayTicker);
 		this.dayTicker = setInterval(() => {
 			this.day++;
 			if (this.day > monthLengths[this.month-1]) {
@@ -83,7 +82,6 @@ export class GameService {
 				this.yearChanged.next(this.year);
 			}
 
-			this.goldChanged.next(this.golds);
 			this.dayChanged.next(this.day);
 		}, this.msDayTicker);
 	}

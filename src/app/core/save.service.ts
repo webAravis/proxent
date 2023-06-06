@@ -50,12 +50,12 @@ export class SaveService {
     private _masterService: MastersService,
     private _contractService: ContractsService
   ) {
-    this._gameService.dayChanged.subscribe((day) =>
-      day > 1 ? this.saveGame() : undefined
-    );
-    this._gameService.goldChanged.subscribe((golds) =>
-      golds > 0 ? this.saveGame() : undefined
-    );
+    this._gameService.dayChanged.subscribe((day) => {
+      day > 1 ? this.saveGame() : undefined;
+    });
+    this._gameService.goldChanged.subscribe((golds) =>{
+      golds > 0 ? this.saveGame() : undefined;
+    });
 
     let allSaves = btoa('[]');
     if (localStorage.getItem('saveGame')) {

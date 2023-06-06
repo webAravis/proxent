@@ -48,8 +48,9 @@ export class RecordComponent implements OnInit, OnDestroy {
   pickScene = false;
   trendingDisabled = false;
 
-  intervalPause: NodeJS.Timer | undefined;
-  intervalTriggers: NodeJS.Timer | undefined;
+  _intervalPause: NodeJS.Timer | undefined;
+  _intervalTriggers: NodeJS.Timer | undefined;
+  _intervalLeaderActivity: NodeJS.Timer | undefined;
 
   playerGirls: Girl[] = [];
   girlIndex: number = 0;
@@ -57,7 +58,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   PositionType = PositionType;
 	vid: HTMLVideoElement = document.createElement('video');
   volume: number = 0;
-  intervalVolume: NodeJS.Timer | undefined;
+  _intervalVolume: NodeJS.Timer | undefined;
 	timeoutscene: NodeJS.Timeout[] = [];
   timeoutCum: NodeJS.Timeout | undefined;
 
@@ -131,7 +132,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
-    this.intervalTriggers = setInterval(() => {this._applyTriggers()}, 125);
+    clearInterval(this._intervalTriggers);
+    this._intervalTriggers = setInterval(() => {this._applyTriggers()}, 125);
 
     this._gameService.fapMode.pipe(takeUntil(this._unsubscribeAll)).subscribe((fapMode: boolean) => {
       if (this._fapInterval !== undefined) {
@@ -139,6 +141,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       }
 
       if (fapMode) {
+        clearInterval(this._fapInterval);
         this._fapInterval = setInterval(() => {
           let comboBtns = <HTMLCollectionOf<Element>> document.getElementsByClassName('combo-btn');
           for (var i = 0; i < comboBtns.length; i++) {
@@ -169,12 +172,15 @@ export class RecordComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.intervalPause = setInterval(() => this._gameService.pauseGame(), 500);
+    clearInterval(this._intervalPause);
+    this._intervalPause = setInterval(() => this._gameService.pauseGame(), 500);
 	}
 
 	ngOnDestroy(): void {
-    clearInterval(this.intervalPause);
-    clearInterval(this.intervalTriggers);
+    clearInterval(this._fapInterval);
+    clearInterval(this._intervalPause);
+    clearInterval(this._intervalTriggers);
+    clearInterval(this._intervalLeaderActivity);
 
 		// Unsubscribe from all subscriptions
 		this._unsubscribeAll.next(true);
@@ -910,7 +916,8 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _initLeaderActivity(): void {
-    setInterval(() => {
+    clearInterval(this._intervalLeaderActivity);
+    this._intervalLeaderActivity = setInterval(() => {
       if (this._leaderWillAct()) {
         this._pickLeaderActivity();
       }
@@ -1018,13 +1025,13 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _fadeOut(): void {
-    clearInterval(this.intervalVolume);
+    clearInterval(this._intervalVolume);
 
     // volume control
-    this.intervalVolume = setInterval(() => {
+    this._intervalVolume = setInterval(() => {
       if (this.volume <= 0.1) {
         this.volume = 0;
-        clearInterval(this.intervalVolume);
+        clearInterval(this._intervalVolume);
       } else if (this.volume - 0.1 > 0) {
         this.volume -= 0.1;
       }
@@ -1033,13 +1040,13 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   private _fadeIn(): void {
-    clearInterval(this.intervalVolume);
+    clearInterval(this._intervalVolume);
 
     // volume control
-    this.intervalVolume = setInterval(() => {
+    this._intervalVolume = setInterval(() => {
       if (this.volume >= 0.9) {
         this.volume = 1;
-        clearInterval(this.intervalVolume);
+        clearInterval(this._intervalVolume);
       } else if (this.volume + 0.1 < 1) {
         this.volume += 0.1;
       }

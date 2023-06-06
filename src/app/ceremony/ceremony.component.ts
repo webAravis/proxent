@@ -62,6 +62,8 @@ export class CeremonyComponent implements OnInit, OnDestroy {
 		this.show = true;
 		this.indexCheck = 0;
 		this.rewards = [];
+
+    clearInterval(this.intervalCheck);
 		this.intervalCheck = setInterval(() => this.checkAward(), 200);
 	}
 

@@ -67,7 +67,7 @@ export class ShootingComponent implements OnInit, OnDestroy, AfterViewInit {
     fitWidth: true
   }
 
-  intervalPause: NodeJS.Timer | undefined;
+  _intervalPause: NodeJS.Timer | undefined;
 
   private _golds = 0;
   private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
@@ -105,11 +105,12 @@ export class ShootingComponent implements OnInit, OnDestroy, AfterViewInit {
         this._initializePhotos();
       });
 
-    this.intervalPause = setInterval(() => this._gameService.pauseGame(), 500);
+    clearInterval(this._intervalPause);
+    this._intervalPause = setInterval(() => this._gameService.pauseGame(), 500);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalPause);
+    clearInterval(this._intervalPause);
 
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next(true);

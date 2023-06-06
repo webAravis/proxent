@@ -21,7 +21,7 @@
           <img [src]="getPortrait(girl)" alt="" class="portrait">
           <div class="name">{{ girl.name | titlecase }}</div>
           <div class="multipliers">
-            <div class="multiplier" *ngFor="let multiplier of getMultipliers(girl)">
+            <div class="multiplier" *ngFor="let multiplier of girl.multipliers">
               <div>{{multiplier.percent}}%</div>
               <ng-container *ngIf="multiplier.stat !== 'pts'">
                 <img [src]="'./assets/' + multiplier.stat + '.png'" alt="" srcset="">

@@ -99,32 +99,6 @@ export class NewGameComponent {
     }
   }
 
-  getMultipliers(girl: Girl): {percent: number, stat: string}[] {
-    const multipliers: {percent: number, stat: string}[] = [];
-
-    if (girl.xpModifier !== 1) {
-      multipliers.push({percent: girl.xpModifier*100, stat: 'experience'});
-    }
-
-    if (girl.cumModifier !== 1) {
-      multipliers.push({percent: girl.cumModifier*100, stat: 'cum'});
-    }
-
-    if (girl.fansModifier !== 1) {
-      multipliers.push({percent: girl.fansModifier*100, stat: 'fans'});
-    }
-
-    if (girl.goldsModifier !== 1) {
-      multipliers.push({percent: girl.goldsModifier*100, stat: 'golds'});
-    }
-
-    if (girl.pointsModifier !== 1) {
-      multipliers.push({percent: girl.pointsModifier*100, stat: 'pts'});
-    }
-
-    return multipliers;
-  }
-
   selectGirlfriend(girl: Girl): void {
     this.girlfriend = girl;
   }

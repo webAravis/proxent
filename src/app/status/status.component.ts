@@ -30,6 +30,7 @@ export class StatusComponent implements OnInit, OnDestroy {
   league: League = new League();
 
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
+  private _intervalSave: NodeJS.Timer | undefined;
 
 	constructor(
 		private _gameService: GameService,
@@ -52,10 +53,13 @@ export class StatusComponent implements OnInit, OnDestroy {
 
     this._masterService.leagues.pipe(takeUntil(this._unsubscribeAll)).subscribe(leagues => this.league = leagues.find(league => league.isCurrentLeague) ?? new League());
 
-    setInterval(() => this.secondsSave = Math.round(Math.abs((this._saveService.saved.getValue().getTime() - new Date().getTime()) / 1000)), 1000);
+    clearInterval(this._intervalSave);
+    this._intervalSave = setInterval(() => this.secondsSave = Math.round(Math.abs((this._saveService.saved.getValue().getTime() - new Date().getTime()) / 1000)), 1000);
 	}
 
 	ngOnDestroy(): void {
+    clearInterval(this._intervalSave);
+
 		// Unsubscribe from all subscriptions
 		this._unsubscribeAll.next(true);
 		this._unsubscribeAll.complete();

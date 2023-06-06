@@ -23,6 +23,7 @@ export class Girl {
 	shootingCount = 0;
 
 	unlockPrice: { type: string; quantity: number }[] = [];
+  multipliers: {percent: number, stat: string}[] = [];
 
   fansModifier = 1;
   xpModifier = 1;
@@ -59,7 +60,35 @@ export class Girl {
       skills.push(new TreeSkills(skill));
     }
     this.skills = skills;
+
+    this.setMultipliers();
 	}
+
+  setMultipliers(): void {
+    const multipliers: {percent: number, stat: string}[] = [];
+
+    if (this.xpModifier !== 1) {
+      multipliers.push({percent: this.xpModifier*100, stat: 'experience'});
+    }
+
+    if (this.cumModifier !== 1) {
+      multipliers.push({percent: this.cumModifier*100, stat: 'cum'});
+    }
+
+    if (this.fansModifier !== 1) {
+      multipliers.push({percent: this.fansModifier*100, stat: 'fans'});
+    }
+
+    if (this.goldsModifier !== 1) {
+      multipliers.push({percent: this.goldsModifier*100, stat: 'golds'});
+    }
+
+    if (this.pointsModifier !== 1) {
+      multipliers.push({percent: this.pointsModifier*100, stat: 'pts'});
+    }
+
+    this.multipliers = multipliers;
+  }
 
   getNextLevelXp(level: number): number {
     // return 100*(1+0.1) ** level;
