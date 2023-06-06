@@ -114,17 +114,18 @@ export class MastersService {
   }
 
   loadLeague(id: string, modName: string): void {
-    const defaultLeague = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
-    if (defaultLeague !== undefined) {
-      defaultLeague.isCurrentLeague = false;
+    const leagues = this.leagues.getValue();
+    const defaultLeagues = leagues.filter((loadedLeague: League) => loadedLeague.isCurrentLeague === true);
+    for (const league of defaultLeagues) {
+      league.isCurrentLeague = false;
     }
 
-    const league = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.fullId === modName + '-' + id);
+    const league = leagues.find((loadedLeague: League) => loadedLeague.fullId === modName + '-' + id);
     if (league !== undefined) {
       league.isCurrentLeague = true;
     }
 
-    this.leagues.next(this.leagues.getValue());
+    this.leagues.next(leagues);
   }
 
   private _randomizeBonusMalusFetish(): void {

@@ -20,6 +20,7 @@ import packageJson from '../../../package.json';
 import { ContractsService } from '../contracts/contracts.service';
 import { MastersService } from '../leaders/masters.service';
 import { League } from '../leaders/league.model';
+import { Girl } from './girls/girl.model';
 declare var modsConfig: any;
 
 @Injectable({
@@ -105,8 +106,6 @@ export class SaveService {
     this.saves.push(savedGame);
     this.saveIndex = this.saves.length - 1;
 
-    this.loadGame();
-    this.saveGame();
     return true;
   }
 
@@ -463,6 +462,33 @@ export class SaveService {
         }
 
         save.leaders = savedLeaders;
+      }
+
+      if (save.league === undefined) {
+        let maxGirlLevel = 0;
+        for (const girl of save.girls) {
+          const oGirl = new Girl(girl);
+          if (oGirl.level > maxGirlLevel) {
+            maxGirlLevel = oGirl.level;
+          }
+        }
+
+        let leagueLevel = '1';
+        if (maxGirlLevel < 26) { leagueLevel = '1' } else
+        if (maxGirlLevel < 36) { leagueLevel = '2' } else
+        if (maxGirlLevel < 51) { leagueLevel = '3' } else
+        if (maxGirlLevel < 76) { leagueLevel = '4' } else
+        if (maxGirlLevel < 101) { leagueLevel = '5' } else
+        if (maxGirlLevel < 131) { leagueLevel = '6' } else
+        if (maxGirlLevel < 161) { leagueLevel = '7' } else
+        if (maxGirlLevel < 201) { leagueLevel = '8' } else
+        if (maxGirlLevel < 251) { leagueLevel = '9' } else
+        { leagueLevel = '10' }
+
+        save.league = {
+          "id": leagueLevel,
+          "mod": "legacy"
+        }
       }
 
       save.modList = 'legacy';

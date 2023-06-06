@@ -733,7 +733,7 @@ modsConfig.push({
                    "skills":[
                       {
                          "name":"Fetishist",
-                         "description":"Unlocks Yiny\"s special scenes",
+                         "description":"Unlocks Yiny's special scenes",
                          "maxlevel":1,
                          "unlockPrice":[
                             [
@@ -10540,7 +10540,19 @@ modsConfig.push({
              "name":"boobjob",
              "label":"Boobjob",
              "corruption":3,
-             "type":"FOREPLAY"
+             "type":"FOREPLAY",
+             "unlocker":{
+                "name":"boobjob2",
+                "label":"Boobjob 2",
+                "corruption":4,
+                "type":"FOREPLAY",
+                "unlocker":{
+                   "name":"boobjob3",
+                   "label":"Boobjob 3",
+                   "corruption":5,
+                   "type":"FOREPLAY"
+                }
+             }
           },
           {
              "name":"blowjob",
@@ -10576,7 +10588,19 @@ modsConfig.push({
              "name":"missionary",
              "label":"Missionary",
              "corruption":6,
-             "type":"PENETRATION"
+             "type":"PENETRATION",
+             "unlocker":{
+                "name":"missionary2",
+                "label":"Missionary 2",
+                "corruption":7,
+                "type":"PENETRATION",
+                "unlocker":{
+                   "name":"missionary3",
+                   "label":"Missionary 3",
+                   "corruption":8,
+                   "type":"PENETRATION"
+                }
+             }
           },
           {
              "name":"doggy",
@@ -10667,7 +10691,103 @@ modsConfig.push({
                 "corruption":11,
                 "type":"SKILL"
              }
+          },
+          {
+            "name":"anal",
+            "label":"Anal",
+            "corruption":15,
+            "type":"SPECIAL",
+            "unlocker":{
+               "name":"anal2",
+               "label":"Anal 2",
+               "corruption":16,
+               "type":"SPECIAL",
+               "unlocker":{
+                  "name":"anal3",
+                  "label":"Anal 3",
+                  "corruption":17,
+                  "type":"SPECIAL"
+               }
+            }
+         },
+          {
+            "name":"sidefuck",
+            "label":"Sidefuck",
+            "corruption":15,
+            "type":"SPECIAL",
+            "unlocker":{
+               "name":"sidefuck2",
+               "label":"Sidefuck 2",
+               "corruption":16,
+               "type":"SPECIAL",
+               "unlocker":{
+                  "name":"sidefuck3",
+                  "label":"Sidefuck 3",
+                  "corruption":17,
+                  "type":"SPECIAL",
+                  "unlocker":{
+                     "name":"sidefuck4",
+                     "label":"Sidefuck 4",
+                     "corruption":18,
+                     "type":"SPECIAL"
+                  }
+               }
+            }
+         },
+         {
+          "name":"pov",
+          "label":"Pov",
+          "corruption":15,
+          "type":"SPECIAL",
+          "unlocker":{
+             "name":"pov2",
+             "label":"Pov 2",
+             "corruption":16,
+             "type":"SPECIAL",
+             "unlocker":{
+                "name":"pov3",
+                "label":"Pov 3",
+                "corruption":17,
+                "type":"SPECIAL",
+                "unlocker":{
+                   "name":"pov4",
+                   "label":"Pov 4",
+                   "corruption":18,
+                   "type":"SPECIAL",
+                   "unlocker":{
+                      "name":"pov5",
+                      "label":"Pov 5",
+                      "corruption":19,
+                      "type":"SPECIAL",
+                      "unlocker":{
+                         "name":"pov6",
+                         "label":"Pov 6",
+                         "corruption":20,
+                         "type":"SPECIAL",
+                         "unlocker":{
+                            "name":"pov7",
+                            "label":"Pov 7",
+                            "corruption":21,
+                            "type":"SPECIAL",
+                            "unlocker":{
+                               "name":"pov8",
+                               "label":"Pov 8",
+                               "corruption":22,
+                               "type":"SPECIAL",
+                               "unlocker":{
+                                  "name":"pov9",
+                                  "label":"Pov 9",
+                                  "corruption":23,
+                                  "type":"SPECIAL"
+                               }
+                            }
+                         }
+                      }
+                   }
+                }
+             }
           }
+       }
        ],
        "photos":[
           {
@@ -11189,6 +11309,243 @@ modsConfig.push({
           }
        ],
        "skills":[
+        {
+           "name":"special",
+           "description":"Special skills and scenes",
+           "skillTiers":[
+              {
+                 "tier":0,
+                 "skills":[
+                    {
+                       "name":"Fetishist",
+                       "description":"Unlocks Nikki's special scenes",
+                       "maxlevel":1,
+                       "unlockPrice":[
+                          [
+                             {
+                                "type":"gold",
+                                "quantity":15000
+                             }
+                          ]
+                       ]
+                    }
+                 ]
+              },
+              {
+                 "tier":1,
+                 "skills":[
+                    {
+                       "name":"Anal",
+                       "description":"Unlocks or upgrades anal scenes",
+                       "maxlevel":3,
+                       "unlockPrice":[
+                          [
+                             {
+                                "type":"gold",
+                                "quantity":30000
+                             },
+                             {
+                                "type":"basic_skill_gem",
+                                "quantity":1
+                             }
+                          ],
+                          [
+                             {
+                                "type":"gold",
+                                "quantity":45000
+                             },
+                             {
+                                "type":"advanced_skill_gem",
+                                "quantity":1
+                             }
+                          ]
+                       ],
+                       "requires":[
+                          "Fetishist"
+                       ],
+                       "effects":[
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Anal",
+                                "value":"Anal"
+                             }
+                          ],
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Anal 2",
+                                "value":"Anal 2"
+                             }
+                          ],
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Anal 3",
+                                "value":"Anal 3"
+                             }
+                          ]
+                       ]
+                    },
+                    {
+                       "name":"Sidefuck",
+                       "description":"No more place for relaxation",
+                       "maxlevel":4,
+                       "unlockPrice":[
+                          [
+                             {
+                                "type":"gold",
+                                "quantity":30000
+                             },
+                             {
+                                "type":"basic_skill_gem",
+                                "quantity":1
+                             }
+                          ],
+                          [
+                             {
+                                "type":"gold",
+                                "quantity":45000
+                             },
+                             {
+                                "type":"advanced_skill_gem",
+                                "quantity":1
+                             }
+                          ]
+                       ],
+                       "requires":[
+                          "Fetishist"
+                       ],
+                       "effects":[
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Sidefuck",
+                                "value":"Sidefuck"
+                             }
+                          ],
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Sidefuck 2",
+                                "value":"Sidefuck 2"
+                             }
+                          ],
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Sidefuck 3",
+                                "value":"Sidefuck 3"
+                             }
+                          ],
+                          [
+                             {
+                                "stat":"scene",
+                                "label":"New scene: Sidefuck 4",
+                                "value":"Sidefuck 4"
+                             }
+                          ]
+                       ]
+                    },
+                    {
+                      "name":"Pov",
+                      "description":"Private session with Nikki",
+                      "maxlevel":9,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Fetishist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Pov",
+                               "value":"Pov"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Pov 2",
+                               "value":"Pov 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Pov 3",
+                               "value":"Pov 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Pov 4",
+                               "value":"Pov 4"
+                            }
+                         ],
+                         [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Pov 5",
+                             "value":"Pov 5"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Pov 6",
+                             "value":"Pov 6"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Pov 7",
+                             "value":"Pov 7"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Pov 8",
+                             "value":"Pov 8"
+                          }
+                       ],
+                       [
+                          {
+                             "stat":"scene",
+                             "label":"New scene: Pov 9",
+                             "value":"Pov 9"
+                          }
+                       ]
+                      ]
+                   }
+                 ]
+              }
+           ]
+        },
           {
              "name":"recording",
              "description":"Improve recording advantages",
@@ -14457,7 +14814,7 @@ modsConfig.push({
      ],
      "battleCost":[
         {
-           "type":"recordmontly_badge",
+           "type":"recordmonthly_badge",
            "quantity":1
         },
         {
@@ -14781,7 +15138,6 @@ modsConfig.push({
            "quantity":1
         }
      ],
-     "isCurrentLeague":true,
      "unlocker":"legacy-7"
   },
   {
@@ -15085,7 +15441,7 @@ modsConfig.push({
            "value":-25
         }
      ],
-     "levelCap":400,
+     "levelCap":10000,
      "maintenanceCost":10000000,
      "beatingConditions":[
         {
