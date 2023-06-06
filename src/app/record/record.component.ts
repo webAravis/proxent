@@ -818,7 +818,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   exitLeaders(): void {
 		this._gameService.resumeGame();
-		this._router.navigate(['leaders']);
+		this._router.navigate(['battle']);
   }
 
   filteredPositions(positionTypes: PositionType[]): Position[] {
