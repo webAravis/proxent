@@ -72,7 +72,7 @@
 
                   <div class="next" *ngIf="skill.effects[(skill.level)]">
                     <div class="next-rank green">Next rank</div>
-                    <div [class.green]="effect.value.includes('+')" [class.red]="effect.value.includes('-')" class="effects" *ngFor="let effect of skill.effects[(skill.level)]">
+                    <div [class.green]="effect.value === undefined || effect.value.includes('+')" [class.red]="effect.value !== undefined && effect.value.includes('-')" class="effects" *ngFor="let effect of skill.effects[(skill.level)]">
                       <div>
                         {{ effect.label }}
                       </div>
