@@ -376,6 +376,8 @@ export class SaveService {
           let photos: string[] = [];
           if (save.playerPhotos && Array.isArray(save.playerPhotos)) {
             photos = save.playerPhotos.filter((photo:any) => photo.girl.id == girl.id).map((photo:any) => photo.name);
+          } else if (girl.photos && Array.isArray(girl.photos)) {
+            photos = girl.photos;
           }
 
           let skills: { name: string; level: number; }[] = [];
@@ -391,6 +393,8 @@ export class SaveService {
               }
             }
             skills = girlSkills.map((skill: Skill) => ({name: skill.name, level: skill.level}));
+          } else if (girl.skillsobject) {
+            skills = girl.skillsobject;
           }
 
           const fixedGirl: SavedGirl = {
@@ -440,7 +444,7 @@ export class SaveService {
           if (inSave) {
             inSave.quantity++;
           } else {
-            saveItems.push({name: item.name, quantity: 1});
+            saveItems.push({name: item.name, quantity: item.quantity ?? 1});
           }
         }
 
@@ -463,7 +467,6 @@ export class SaveService {
 
       save.modList = 'legacy';
     }
-
     return saves;
   }
 }
