@@ -35,14 +35,14 @@ export class GirlsService {
 	}
 
   downgradeLevels(levelCap: number): void {
-    const girls = this.gameGirls.getValue().filter(girl => girl.locked = false);
+    const girls = this.gameGirls.getValue();
     for (const girl of girls) {
-      if (girl.level > levelCap) {
+      if (girl.locked === false && girl.level > levelCap) {
         girl.setLevel(levelCap);
       }
     }
 
-    this.gameGirls.next(this.gameGirls.getValue());
+    this.gameGirls.next(girls);
   }
 
 	addGirl(girl: Girl): void {

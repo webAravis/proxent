@@ -69,7 +69,7 @@ export class MastersService {
       const previousLeague = this.leagues.getValue().find((loadedLeague: League) => loadedLeague.unlocker === league.fullId);
       if (previousLeague) {
         league.isCurrentLeague = false;
-        previousLeague.isCurrentLeague = false;
+        previousLeague.isCurrentLeague = true;
 
         this._girlService.downgradeLevels(previousLeague.levelCap);
       }

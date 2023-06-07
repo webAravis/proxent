@@ -16882,7 +16882,7 @@ modsConfig.push({
            }
         },
         {
-           "name":"3_slutty",
+           "name":"7_slutty",
            "corruptionLevel":4,
            "attributes":{
               "type":"slutty",
@@ -16980,7 +16980,7 @@ modsConfig.push({
            }
         },
         {
-           "name":"1_slutty",
+           "name":"3_slutty",
            "corruptionLevel":4,
            "attributes":{
               "type":"slutty",
@@ -17173,7 +17173,7 @@ modsConfig.push({
            }
         },
         {
-           "name":"7_slutty",
+           "name":"1_slutty",
            "corruptionLevel":4,
            "attributes":{
               "type":"slutty",

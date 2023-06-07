@@ -225,7 +225,7 @@ export class SaveService {
       leaders: savedLeaders,
       settings: settings,
       contracts: contracts,
-      league: {id: league.id, mod: league.mod},
+      league: {id: league.id ? league.id : '1', mod: league.mod ? league.mod : 'legacy'},
       lastSaved: new Date(),
       modList: modsList,
       version: this.version
