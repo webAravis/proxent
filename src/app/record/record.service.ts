@@ -158,7 +158,7 @@ export class RecordService {
         false
       );
       record.studioscore = this.getScoreStudio(studioQuality, (studioName === 'player'));
-      record.money = this.getMoney(positionsPlayed);
+      record.money = this.getMoney(positionsPlayed) * girl.level / 15;
       record.fans = this.getFans(positionsPlayed);
       record.xp = this.getXp(positionsPlayed);
       record.orgasmCount = orgasmCount;
@@ -251,14 +251,13 @@ export class RecordService {
 
     if (toBattle !== undefined) {
       if (toBattle.name !== '') {
-        score = score * 0.05;
-
         // modifiers due to leader
         for (const bonus of toBattle.bonus) {
           if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(bonus.toLowerCase())) {
             score = score * 1.5;
           }
         }
+
         for (const malus of toBattle.malus) {
           if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(malus.toLowerCase())) {
             score = score * 0.01;

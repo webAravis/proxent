@@ -41,6 +41,8 @@ export class RecordComponent implements OnInit, OnDestroy {
   // BATTLE
   @Input() isBattle: boolean = false;
   @Input() toBattle: Leader | League | undefined;
+  @Input() metaScore: number = 0;
+  @Input() metaCum: number = 0;
   @Output() recordResults: EventEmitter<{score: number, cum: number}> = new EventEmitter();
   leaderActivities: {id: number, activity: LeaderActivity}[] = [];
   leaderDisabledPositions: string[] = [];
@@ -526,6 +528,12 @@ export class RecordComponent implements OnInit, OnDestroy {
     const stats = this._recordService.positionStats(this.girl, position, repeatedMultiplier, this.boner, this.trendingPosition, this.skillStatsModifiers);
     stats.boner = stats.boner * this.bonerMultiplier;
 
+    if (this.isFetish(position.name)) {
+      stats.orgasm *= 3;
+      stats.boner += 50;
+      stats.fans *= 2;
+    }
+
     return stats;
   }
 
@@ -585,7 +593,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
     if (!isCombo) {
       // time to change position or end of recording based on corruption!
-      if (this.nbScenes >= this.girl.corruption) {
+      if (this.nbScenes >= this.girl.corruption || (this.isBattle && this.score > this.metaScore && this.orgasmCount > this.metaCum)) {
         this.endRecord();
       } else {
         this.showPositions = true;
@@ -782,7 +790,10 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   isLeaderPositionDisabled(positionName: string): boolean {
     return this.leaderDisabledPositions.includes(positionName)
-      || (this.toBattle !== undefined && this.toBattle.fetish.length > 0 && !this.toBattle.fetish.map(fetish => fetish.toLowerCase()).includes(positionName));
+  }
+
+  isFetish(positionName: string): boolean {
+    return (this.toBattle !== undefined && this.toBattle.fetish.length > 0 && !this.toBattle.fetish.map(fetish => fetish.toLowerCase()).includes(positionName));
   }
 
 	comboHit(event: MouseEvent): void {

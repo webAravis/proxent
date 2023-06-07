@@ -18,6 +18,9 @@
 
 			<img class="portrait" [src]="portrait" />
       <div>{{ name }}</div>
+      <div class="attributes">
+        <div *ngFor="let attribute of girl.attributes">{{ attribute }}</div>
+      </div>
 		</div>
 
 		<div>
@@ -148,15 +151,38 @@
       </div>
 		</div>
 
-		<div class="score">
+		<div class="score" *ngIf="!isBattle">
 			<span>{{ score | number: '1.0-0' }}pts</span>
-      <ng-container *ngIf="!isBattle">
-        <span class="with-icon">{{ goldsWon | number : '1.0-0' }}<img width="30" src="./assets/golds.png" /></span>
-        <span class="with-icon">{{ xpWon | number : '1.0-0' }}<img width="30" src="./assets/experience.png" /></span>
-        <span class="with-icon">{{ fansWon | number : '1.0-0' }}<img width="30" src="./assets/fans.png" /></span>
-      </ng-container>
+      <span class="with-icon">{{ goldsWon | number : '1.0-0' }}<img width="30" src="./assets/golds.png" /></span>
+      <span class="with-icon">{{ xpWon | number : '1.0-0' }}<img width="30" src="./assets/experience.png" /></span>
+      <span class="with-icon">{{ fansWon | number : '1.0-0' }}<img width="30" src="./assets/fans.png" /></span>
 			<span class="with-icon">{{ orgasmCount | number : '1.0-0' }}<img width="30" src="./assets/items/cum.png"/></span>
 		</div>
+
+    <div class="battle-stats" *ngIf="isBattle">
+			<div class="stat-score">
+				<div class="label">
+					Score {{ score | number: '1.0-0' }}/{{ metaScore | number: '1.0-0' }}
+				</div>
+				<div class="bar">
+					<div
+						class="progress"
+						[style.width]="(score / metaScore * 100) + '%'"
+					></div>
+				</div>
+			</div>
+			<div class="stat-orgasm">
+				<div class="label">
+					Orgasm {{ orgasmCount | number: '1.0-0' }}/{{ metaCum | number: '1.0-0' }}
+				</div>
+				<div class="bar">
+					<div
+						class="progress"
+						[style.width]="(orgasmCount / metaCum * 100) + '%'"
+					></div>
+				</div>
+			</div>
+    </div>
 
 		<video id="video-record" controls class="video-background" volume="0">
 			<source [src]="recordUrl" type="video/mp4" />
@@ -340,7 +366,7 @@
     [disabled]="(position.type !== PositionType.FOREPLAY && boner + position.boner < 0) || isLeaderPositionDisabled(position.name)"
     (click)="startScene(position)"
     [class.trending]="position.name === trendingPosition"
-    [class.special]="position.type === PositionType.SPECIAL"
+    [class.special]="position.type === PositionType.SPECIAL || isFetish(position.name)"
     class="btn has-tooltip"
   >
     {{ position.label }}<span class="comboBtn" *ngIf="canCombo(position)">+</span>

@@ -2,7 +2,7 @@
   <img src="./assets/vs-background.jpg" alt="" class="background-battle">
 </div>
 
-<app-record [toBattle]="toBattle" [isBattle]="true" (recordResults)="recordResults($event)"></app-record>
+<app-record [toBattle]="toBattle" [isBattle]="true" [metaScore]="metaScore" [metaCum]="metaCum" (recordResults)="recordResults($event)"></app-record>
 
 <div class="modal" [class.show]="show">
 	<div class="modal-header">Battle completed, let's check this out</div>

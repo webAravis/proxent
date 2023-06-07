@@ -151,7 +151,7 @@ export class MastersService {
       }
 
       for (let index = 0; index < league.nbMalus; index++) {
-        const availableGirls = gameGirls.filter(girl => !girlsInBonus.map(bonusGirl => bonusGirl.fullId).includes(girl.fullId) && !girlsInMalus.map(bonusGirl => bonusGirl.fullId).includes(girl.fullId));
+        const availableGirls = gameGirls.filter(girl => !girlsInBonus.map(bonusGirl => bonusGirl.fullId).includes(girl.fullId) && !girlsInMalus.map(bonusGirl => bonusGirl.fullId).includes(girl.fullId)).slice(1);
         if (availableGirls.length > 0) {
           const pickedGirl = availableGirls[Math.floor(Math.random() * availableGirls.length)];
           girlsInMalus.push(pickedGirl);

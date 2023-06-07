@@ -96,7 +96,7 @@ export class Girl {
   }
 
   setLevel(level: number): void {
-    this.xp = this.getNextLevelXp(level-1);
+    this.xp = this.getNextLevelXp(level) - 1;
   }
 
 	get level(): number {

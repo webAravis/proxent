@@ -8532,12 +8532,12 @@ modsConfig.push({
              "corruption":6,
              "type":"PENETRATION",
              "unlocker":{
-              "name":"missionary 2",
+              "name":"missionary2",
               "label":"Missionary 2",
               "corruption":7,
               "type":"PENETRATION",
               "unlocker":{
-                "name":"missionary 3",
+                "name":"missionary3",
                 "label":"Missionary 3",
                 "corruption":7,
                 "type":"PENETRATION"
@@ -19348,7 +19348,7 @@ modsConfig.push({
   {
      "id":"7",
      "name":"Gold I",
-     "nbMalus":4,
+     "nbMalus":3,
      "contractsLevels":[
         2,
         2,
@@ -19435,8 +19435,8 @@ modsConfig.push({
   {
      "id":"8",
      "name":"Gold II",
-     "nbMalus":4,
-     "nbFetish":6,
+     "nbMalus":1,
+     "nbFetish":9,
      "contractsLevels":[
         2,
         3,
@@ -19521,8 +19521,8 @@ modsConfig.push({
   {
      "id":"9",
      "name":"Diamond",
-     "nbMalus":5,
-     "nbFetish":4,
+     "nbMalus":2,
+     "nbFetish":8,
      "contractsLevels":[
         2,
         3,
@@ -19579,7 +19579,7 @@ modsConfig.push({
      "battleCost":[
         {
            "type":"recordyearly_badge",
-           "quantity":5
+           "quantity":1
         },
         {
            "type":"recordmonthly_badge",
@@ -19595,7 +19595,7 @@ modsConfig.push({
         },
         {
            "type":"studiomonthly_badge",
-           "quantity":5
+           "quantity":1
         },
         {
            "type":"studioyearly_badge",
@@ -19607,8 +19607,8 @@ modsConfig.push({
   {
      "id":"10",
      "name":"Diamond X",
-     "nbMalus":6,
-     "nbFetish":3,
+     "nbMalus":4,
+     "nbFetish":7,
      "contractsLevels":[
         2,
         3,
@@ -19647,7 +19647,7 @@ modsConfig.push({
         }
      ],
      "levelCap":10000,
-     "maintenanceCost":10000000,
+     "maintenanceCost":6000000,
      "beatingConditions":[
         {
            "type":"points",
@@ -19661,27 +19661,27 @@ modsConfig.push({
      "battleCost":[
         {
            "type":"recordyearly_badge",
-           "quantity":5
+           "quantity":2
         },
         {
            "type":"recordmonthly_badge",
-           "quantity":5
+           "quantity":20
         },
         {
            "type":"money_badge",
-           "quantity":5
+           "quantity":20
         },
         {
            "type":"fans_badge",
-           "quantity":5
+           "quantity":20
         },
         {
            "type":"studiomonthly_badge",
-           "quantity":5
+           "quantity":20
         },
         {
            "type":"studioyearly_badge",
-           "quantity":5
+           "quantity":2
         }
      ]
   }

@@ -22,7 +22,8 @@
 		left: 0;
 		right: 0;
 		opacity: 0;
-		background: rgba(0, 0, 0, 1);
+		background: radial-gradient(ellipse at bottom, #351b1b 0%, #090a0f 100%);
+    transition: opacity .1s;
 	}
 }
 
@@ -171,6 +172,68 @@ img {
 
 	.pos .progress {
 		background: green;
+	}
+}
+
+.attributes {
+  display: flex;
+  gap: 6px;
+  margin: 7.5px 0;
+  font-size: 15px;
+
+  @media screen and (max-width: 1279px) {
+    font-size: 9px;
+  }
+
+  div {
+    background: rgba(0,0,0,0.8);
+    text-transform: capitalize;
+    border-radius: 3px;
+    padding: 3px 18px;
+    border-bottom: 1px solid #ec0100;
+  }
+}
+
+.battle-stats {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+
+	.label {
+		color: white;
+		background: #3c3c3c;
+		text-transform: uppercase;
+		padding: 5px 15px;
+		border-radius: 15px;
+		font-size: 14px;
+		display: inline-block;
+		margin-bottom: 2px;
+	}
+
+	.bar {
+		height: 8px;
+		background: lightgray;
+		border: 1px solid grey;
+		width: 260px;
+		border-radius: 5px;
+		overflow: hidden;
+
+		.progress {
+			height: 100%;
+			transition: 0.2s;
+			width: 0;
+		}
+	}
+
+	.stat-score .progress {
+		background: purple;
+	}
+
+	.stat-orgasm .progress {
+		background: blue;
 	}
 }
 

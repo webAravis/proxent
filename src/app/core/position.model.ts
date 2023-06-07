@@ -31,7 +31,7 @@ export class Position {
   }
 
   getXp = (trending: number = 0, level: number): number => {
-    return Math.round( ((this.corruption + 1) * (level/10) + this.getMultiplierType(this.type) * 75) * trending );
+    return Math.round( ((this.corruption + 1) * (level/5) * 15 + this.getMultiplierType(this.type) * 100) * trending );
   }
 
   getOrgasm = (currentBoner: number = 0, trending: number = 1): number => {
