@@ -95,7 +95,7 @@
     <div class="triggers-wrapper">
       <div class="skill has-tooltip" *ngFor="let trigger of activeTriggers">
         <div class="skill-icon">
-          <img [src]="'./assets/mods/'+trigger.trigger.skillName+'/skills/'+trigger.trigger.skillPicture+'.jpg'" alt="">
+          <img [src]="'./assets/skills/'+trigger.trigger.triggerEffect+'.jpg'" alt="">
         </div>
         <div class="skill-level">
           {{ getRemainingTime(trigger) }}s
@@ -343,7 +343,7 @@
     [class.special]="position.type === PositionType.SPECIAL"
     class="btn has-tooltip"
   >
-    {{ position.label }}<span class="comboBtn" *ngIf="position.unlocker !== undefined">+</span>
+    {{ position.label }}<span class="comboBtn" *ngIf="canCombo(position)">+</span>
     <span class="badge-btn">{{ positionRepeated(position.name) === 0 ? '' : 'Repeat!' }}</span>
 
     <ng-container

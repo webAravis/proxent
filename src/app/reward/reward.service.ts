@@ -99,7 +99,6 @@ export class RewardService {
     // hard caps from corruption level
     const maxXpCap = this.corruptionCaps[girl.corruption - 1];
     const maxLeagueXpCap = girl.getNextLevelXp(this._masterService.getLevelCap());
-    console.log('maxLeagueXpCap', maxLeagueXpCap);
 
     const oldLevel = girl.level;
     const oldSkillPoints = girl.skillPoints;
@@ -108,7 +107,9 @@ export class RewardService {
       girl.xp += xpWon;
     } else if (maxXpCap && girl.xp + xpWon > maxXpCap) {
       hardCapCorruption = true;
-      girl.xp = maxXpCap-1;
+      if (girl.xp + xpWon > maxLeagueXpCap) {
+        girl.xp = maxLeagueXpCap-1;
+      }
 
       if (
         this._dialogsService.dialogsStarted[1] === false &&

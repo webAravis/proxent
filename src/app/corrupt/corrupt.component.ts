@@ -183,7 +183,8 @@ export class CorruptComponent implements OnInit, OnDestroy {
     if (this.newPositions.length === 0) {
       this.endCorrupt();
     } else {
-      this.selectPosition(this.newPositions[0]);
+      const unlockable = this.newPositions.filter(position => position.corruption <= this.girl.corruption+1);
+      this.selectPosition(unlockable.length > 0 ? unlockable[0] : new Position());
     }
 	}
 

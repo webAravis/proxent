@@ -547,18 +547,18 @@ export class RecordComponent implements OnInit, OnDestroy {
         }
       }
 
-      setTimeout(() => {
-        this._fadeIn();
+      setTimeout(() => { // timeout to wait for previous end of scene fadeout
         this.recordUrl = this._cachingService.getVideo(this.girl, 'orgasm');
-
         this.vid.load();
-        this.vid.play();
+        this._fadeIn(true);
 
-        this.timeoutCum = setTimeout(() => {
-          this._fadeOut();
-        }, 3000);
+        this.vid.play().then(() => {
+          clearTimeout(this.timeoutCum);
+          this.timeoutCum = setTimeout(() => {
+            this._fadeOut();
+          }, this.vid.duration*1000);
+        });
       }, 500);
-
 		}
 
     if (this.comboDone) {
@@ -825,11 +825,15 @@ export class RecordComponent implements OnInit, OnDestroy {
     return this.positions.filter(position => positionTypes.includes(position.type));
   }
 
+  canCombo(position: Position): boolean {
+    return position.unlocker !== undefined && this.isAllowed(position.unlocker.name)
+  }
+
 	private _initCombos(position: Position): void {
     this.comboBtns.length = 0;
     this.hitted = 0;
 
-    if (position.unlocker !== undefined && this.isAllowed(position.unlocker.name)) {
+    if (this.canCombo(position)) {
 
       for (let index = 1; index <= this.nbCombos; index++) {
         this.timeoutCombos.push(setTimeout(() => {
@@ -1026,6 +1030,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 
   private _fadeOut(): void {
     clearInterval(this._intervalVolume);
+    this.volume = this.vid.volume;
 
     // volume control
     this._intervalVolume = setInterval(() => {
@@ -1039,7 +1044,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     }, 50);
   }
 
-  private _fadeIn(): void {
+  private _fadeIn(muted = false): void {
     clearInterval(this._intervalVolume);
 
     // volume control
@@ -1050,7 +1055,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       } else if (this.volume + 0.1 < 1) {
         this.volume += 0.1;
       }
-      this.vid.volume = this.volume * this._settingsService.getSetting('game_sound');
+      this.vid.volume = muted ? 0.2 * this._settingsService.getSetting('game_sound') : this.volume * this._settingsService.getSetting('game_sound');
     }, 50);
   }
 
