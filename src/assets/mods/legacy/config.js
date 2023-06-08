@@ -13269,7 +13269,7 @@ modsConfig.push({
              "name":"12_slutty",
              "corruptionLevel":4,
              "attributes":{
-                "type":"sutty",
+                "type":"slutty",
                 "place":"bedroom",
                 "outfit":"lingerie",
                 "body":[
@@ -15228,7 +15228,7 @@ modsConfig.push({
             "name":"12_slutty",
             "corruptionLevel":4,
             "attributes":{
-               "type":"sutty",
+               "type":"slutty",
                "place":"bedroom",
                "outfit":"naked",
                "body":[

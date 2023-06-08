@@ -140,7 +140,7 @@ export class ContractsService {
       if (difficulty >= 3 && contract.activity === 'shooting') {
         const attributeTypes = ['place', 'outfit', 'body'];
         const pickedType = attributeTypes[Math.floor(Math.random() * attributeTypes.length)];
-        const attributes = this._girlService.getAllPhotoAttributes(pickedType);
+        const attributes = this._girlService.getAllPhotoAttributes(contract.girlAttributes, pickedType);
         const pickedAttribute = attributes[Math.floor(Math.random() * attributes.length)];
         contract.requires = {requirement: pickedType, value: pickedAttribute};
       }

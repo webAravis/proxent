@@ -79,9 +79,23 @@ export class GirlsService {
     return toReturn;
   }
 
-  getAllPhotoAttributes(attibuteType: string): string[] {
-    const allPhotoAttributes = this.gameGirls.getValue().map(girl => girl.photos.map(photo => photo.attributes[attibuteType as keyof typeof photo.attributes].toString()));
+  getAllPhotoAttributes(girlAttributes: string[], attributeType: string): string[] {
     let toReturn: string[] = [];
+    const allGameGirls = this.gameGirls.getValue();
+    const girls: Girl[] = [];
+    for (const girl of allGameGirls) {
+      let fit = true;
+      for (const attribute of girlAttributes) {
+        if (!girl.attributes.includes(attribute)) {
+          fit = false;
+        }
+      }
+
+      if (fit) {
+        girls.push(girl);
+      }
+    }
+    const allPhotoAttributes = girls.map(girl => girl.photos.map(photo => photo.attributes[attributeType as keyof typeof photo.attributes].toString()));
 
     for (let photoAttributes of allPhotoAttributes) {
       for (const attributes of photoAttributes) {
@@ -118,7 +132,7 @@ export class GirlsService {
       gameGirl.xp = girl.xp;
       gameGirl.fans = girl.fans;
       gameGirl.corruption = girl.corruption;
-      gameGirl.unlockedPositions = girl.unlockedPositions;
+      gameGirl.unlockedPositions = girl.unlockedPositions.filter((positionName) => gameGirl.positions.map(position => position.name).includes(positionName));
       gameGirl.freedom = girl.freedom;
       gameGirl.recordCount = girl.recordCount;
       gameGirl.shootingCount = girl.shootingCount;

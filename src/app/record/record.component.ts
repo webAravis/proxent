@@ -833,7 +833,7 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
   filteredPositions(positionTypes: PositionType[]): Position[] {
-    return this.positions.filter(position => positionTypes.includes(position.type));
+    return this.positions.filter(position => positionTypes.includes(position.type) && this.isAllowed(position.name));
   }
 
   canCombo(position: Position): boolean {

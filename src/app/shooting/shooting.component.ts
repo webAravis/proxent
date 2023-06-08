@@ -369,7 +369,7 @@ export class ShootingComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private async _initializePhotos(): Promise<void> {
     const photoDef: PhotoShooting[] = this.girl.photos;
-    this.photoDef = photoDef;
+    this.photoDef = photoDef.sort((a, b) => a.corruptionLevel - b.corruptionLevel);
     for (const photo of photoDef) {
       photo.url = this._cachingService.getPhoto(this.girl, photo.name);
       photo.price = this._getPrice(photo);

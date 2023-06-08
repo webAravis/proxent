@@ -16,7 +16,7 @@ export class Girl {
 
   orgasmLevel = 0;
 
-	unlockedPositions: string[] = ['tease'];
+	unlockedPositions: string[] = [];
   attributes: string[] = [];
 	freedom = 1;
 	recordCount = 0;

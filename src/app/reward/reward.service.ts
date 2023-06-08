@@ -61,7 +61,7 @@ export class RewardService {
     if (
       this._dialogsService.dialogsStarted[6] === false &&
       girl.fans >= 40_000 &&
-      girl.name === 'Peta'
+      girl.name !== this._gameService.girlfriend
     ) {
       this._dialogsService.startDialog(6);
     }
