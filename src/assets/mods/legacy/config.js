@@ -812,6 +812,14 @@ modsConfig.push({
                                   "stat":"scene",
                                   "label":"New scene: Anal 5",
                                   "value":"Anal 5"
+                               },
+                               {
+                                "stat":"trigger",
+                                "triggerEffect":"boner",
+                                "label":"30% chance to get +8 boner/s for 15s",
+                                "value":"+8",
+                                "duration":15000,
+                                "chance":0.3
                                }
                             ]
                          ]
@@ -15512,6 +15520,14 @@ modsConfig.push({
                             "stat":"scene",
                             "label":"New scene: Double 7",
                             "value":"Double 7"
+                          },
+                          {
+                           "stat":"trigger",
+                           "triggerEffect":"orgasm",
+                           "label":"25% chance to get +16 orgasm/s for 10s",
+                           "value":"+16",
+                           "duration":10000,
+                           "chance":0.25
                           }
                         ]
                       ]
@@ -17498,6 +17514,14 @@ modsConfig.push({
                              "stat":"scene",
                              "label":"New scene: Double 3",
                              "value":"Double 3"
+                           },
+                           {
+                            "stat":"trigger",
+                            "triggerEffect":"orgasm",
+                            "label":"25% chance to get +16 orgasm/s for 10s",
+                            "value":"+16",
+                            "duration":10000,
+                            "chance":0.25
                            }
                        ]
                      ]
@@ -18556,9 +18580,9 @@ modsConfig.push({
     "description":"Logistic specialist. Beat him to increase girl capacity",
     "nbBonus": 3,
     "costItem": "gold",
-    "costCurve": (level) => { return (level / 0.07) ** 2 },
-    "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-    "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+    "costCurve": (level) => { return (level / 0.07) ** 1.5 },
+    "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+    "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
     "rewards": [
       {
          "type":"gold",
@@ -18599,9 +18623,9 @@ modsConfig.push({
       "nbBonus": 3,
       "nbMalus": 2,
       "costItem": "gold",
-      "costCurve": (level) => { return (level / 0.07) ** 2 },
-      "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-      "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+      "costCurve": (level) => { return (level / 0.07) ** 1.5 },
+      "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+      "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
         {
            "type":"recordmonthly_badge",
@@ -18642,9 +18666,9 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 2 },
-      "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-      "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+      "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
         {
            "type":"recordmonthly_badge",
@@ -18685,9 +18709,9 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 2 },
-      "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-      "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+      "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
         {
            "type":"recordmonthly_badge",
@@ -18728,9 +18752,9 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 2 },
-      "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-      "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+      "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
         {
            "type":"recordmonthly_badge",
@@ -18771,9 +18795,9 @@ modsConfig.push({
       "nbMalus": 2,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 2 },
-      "pointsCurve": (level) => { return (level / 0.02) ** 2 },
-      "cumCurve": (level) => { return ((level / 0.09) ** 1.5) / 75 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
+      "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
         {
            "type":"recordmonthly_badge",
@@ -19128,11 +19152,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":250000
+           "quantity":200000
         },
         {
            "type":"cum",
-           "quantity":15
+           "quantity":10
         }
      ],
      "battleCost":[
@@ -19234,11 +19258,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":640000
+           "quantity":320000
         },
         {
            "type":"cum",
-           "quantity":25
+           "quantity":15
         }
      ],
      "battleCost":[
@@ -19318,11 +19342,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":1000000
+           "quantity":500000
         },
         {
            "type":"cum",
-           "quantity":30
+           "quantity":20
         }
      ],
      "battleCost":[
@@ -19401,11 +19425,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":1500000
+           "quantity":900000
         },
         {
            "type":"cum",
-           "quantity":38
+           "quantity":30
         }
      ],
      "battleCost":[
@@ -19483,11 +19507,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":4000000
+           "quantity":2000000
         },
         {
            "type":"cum",
-           "quantity":68
+           "quantity":45
         }
      ],
      "battleCost":[
@@ -19569,11 +19593,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":15000000
+           "quantity":5000000
         },
         {
            "type":"cum",
-           "quantity":128
+           "quantity":60
         }
      ],
      "battleCost":[
@@ -19651,11 +19675,11 @@ modsConfig.push({
      "beatingConditions":[
         {
            "type":"points",
-           "quantity":60000000
+           "quantity":8000000
         },
         {
            "type":"cum",
-           "quantity":199
+           "quantity":75
         }
      ],
      "battleCost":[

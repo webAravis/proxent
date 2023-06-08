@@ -39,6 +39,7 @@
     "@cypress/schematic": "^2.5.0",
     "@types/jasmine": "^4.3.1",
     "@types/node": "^18.16.3",
+    "core-js": "^3.30.2",
     "cypress": "12.10.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.2.0",

@@ -539,7 +539,6 @@ export class RecordComponent implements OnInit, OnDestroy {
 
 	endScene(isCombo: boolean = false): void {
     this._fadeOut();
-    this._checkTriggers();
 
 		if (this.girl.orgasmLevel >= 100 && !isCombo) {
       const nbOrgasm = Math.trunc(this.girl.orgasmLevel / 100);
@@ -592,6 +591,8 @@ export class RecordComponent implements OnInit, OnDestroy {
 		this.showSkipButton = false;
 
     if (!isCombo) {
+      this._checkTriggers();
+
       // time to change position or end of recording based on corruption!
       if (this.nbScenes >= this.girl.corruption || (this.isBattle && this.score > this.metaScore && this.orgasmCount > this.metaCum)) {
         this.endRecord();
@@ -1073,7 +1074,8 @@ export class RecordComponent implements OnInit, OnDestroy {
   private _checkTriggers(): void {
     for (const trigger of this.triggers) {
       const chance = trigger.chance ?? 1;
-      if (Math.random() <= chance) {
+      const roll = Math.random();
+      if (roll <= chance) {
         // applying trigger!
         this._addTrigger(trigger);
       }
