@@ -17,14 +17,13 @@
     "allowSyntheticDefaultImports": true,
 		"moduleResolution": "node",
 		"importHelpers": true,
-		"target": "ES2022",
-		"module": "ES2022",
+		"target": "ES5",
 		"useDefineForClassFields": false,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
-		"lib": ["ES2022", "dom"],
+		"lib": ["ES5", "dom", "ES2021.String"],
 		"types": ["node"],
-		"typeRoots": ["node_modules/@types"]
+		"typeRoots": ["node_modules/@types"],
 	},
 	"angularCompilerOptions": {
 		"enableI18nLegacyMessageIdFormat": false,
