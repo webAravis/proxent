@@ -52,12 +52,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this._cachingService.loadedPercent,
       this._girlService.loaded,
       this._leaderService.loaded,
-      this._cachingService.online,
       this._cachingService.hasMedias,
       this._masterService.loaded
-    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, isOnline: boolean, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean, mastersLoaded: boolean]) => {
+    ]).pipe(takeUntil(this._unsubscribeAll)).subscribe((status: [cacheLoadedPercent: number, mediasExist: boolean, girlsLoaded: boolean, leadersLoaded: boolean, mastersLoaded: boolean]) => {
       this.loadProgress = status[0];
-			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2] && status[5]) {
+			if ((this.loadProgress === 100 || status[3] || status[4]) && status[1] && status[2] && status[4]) {
         this.ready = true;
 			}
     });

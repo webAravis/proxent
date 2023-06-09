@@ -1,4 +1,3 @@
-import isOnline from 'is-online';
 import { Injectable } from '@angular/core';
 import { GirlsService } from './girls/girls.service';
 import { Girl } from './girls/girl.model';
@@ -6,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { MediaGirl, DataMediaGirl } from './mediagirl.model';
 import { BehaviorSubject, Observable, finalize } from 'rxjs';
 import { PhotoShooting } from '../shooting/shooting.component';
-import { ShootingService } from '../shooting/shooting.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 interface CacheMediaRequest {
@@ -27,10 +25,8 @@ export class CachingService {
   loaded = 0;
   loadedPercent: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  isOnline: boolean = false;
   mediasExist: boolean = true;
 
-  online: BehaviorSubject<boolean> = new BehaviorSubject(false);
   hasMedias: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
@@ -38,12 +34,7 @@ export class CachingService {
     private _httpClient: HttpClient,
     private _sanitizer: DomSanitizer
   ) {
-    isOnline().then((isOnline: boolean) => {
-      this.isOnline = isOnline;
-      this.online.next(true);
-
-      this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
-    });
+    this._girlService.gameGirls.subscribe((girls) => this.cacheMedias(girls));
   }
 
   getProgress(type: string): number {
@@ -63,9 +54,8 @@ export class CachingService {
   }
 
   getPhoto(girl: Girl, name: string): SafeUrl {
-    let objectURL =
-      this.mediasExist ? './assets/mods/' + girl.girlFolder + '/photos/' + name + '.jpg' :
-        this.isOnline ? 'https://proxentgame.com/assets/mods/' + girl.girlFolder + '/photos/' + name + '.jpg' : '';
+    const rootDir = this.mediasExist ? '.' : 'https://proxentgame.com';
+    let objectURL = rootDir + '/assets/mods/' + girl.girlFolder + '/photos/' + name + '.jpg';
 
     const girlMedia = this.medias.find((media) => media.girlname === girl.name.toLowerCase());
     if (girlMedia !== undefined) {
@@ -79,9 +69,8 @@ export class CachingService {
   }
 
   getVideo(girl: Girl, name: string): SafeUrl {
-    const objectURL =
-      this.mediasExist ? './assets/mods/' + girl.girlFolder + '/videos/record/' + name + '.webm' :
-        this.isOnline ? 'https://proxentgame.com/assets/mods/' + girl.girlFolder + '/videos/record/' + name + '.webm' : '';
+    const rootDir = this.mediasExist ? '.' : 'https://proxentgame.com';
+    const objectURL = rootDir + '/assets/mods/' + girl.girlFolder + '/videos/record/' + name + '.webm';
 
     return this._sanitizer.bypassSecurityTrustUrl(objectURL);
   }
@@ -178,7 +167,7 @@ export class CachingService {
   }
 
   async cachePhotos(girl: Girl): Promise<void> {
-    if (!this.isOnline || this.mediasExist) {
+    if (this.mediasExist) {
       return;
     }
 
@@ -199,7 +188,7 @@ export class CachingService {
   }
 
   // async cacheVideos(girl: Girl): Promise<void> {
-  //   if (!this.isOnline) {
+  //   if (this.mediasExist) {
   //     return;
   //   }
 
