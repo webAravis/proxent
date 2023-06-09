@@ -20455,11 +20455,12 @@ modsConfig.push({
        "teen",
        "brunette",
        "blue eyes",
-       "natural boobs"
+       "natural boobs",
+       "american"
     ],
     "xpModifier":0.3,
     "fansModifier":2,
-    "goldsModifier":0.2,
+    "goldsModifier":0.8,
     "unlockPrice":[
        {
           "type":"gold",
@@ -20743,7 +20744,7 @@ modsConfig.push({
           }
        },
        {
-          "name":"1_slutty",
+          "name":"8_slutty",
           "corruptionLevel":4,
           "attributes":{
              "type":"slutty",
@@ -21082,7 +21083,7 @@ modsConfig.push({
           }
        },
        {
-          "name":"8_slutty",
+          "name":"1_slutty",
           "corruptionLevel":4,
           "attributes":{
              "type":"slutty",
