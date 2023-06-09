@@ -16581,8 +16581,8 @@ modsConfig.push({
             ]
          }
       ]
-   },
-   {
+    },
+    {
      "id":"9",
      "name":"Susy",
      "attributes":[
@@ -18572,8 +18572,8 @@ modsConfig.push({
            ]
         }
      ]
-  },
-  {
+    },
+    {
     "id":"10",
     "name":"Kagney",
     "attributes":[
@@ -20447,7 +20447,1880 @@ modsConfig.push({
           ]
        }
     ]
- }
+    },
+    {
+    "id":"11",
+    "name":"Dani",
+    "attributes":[
+       "teen",
+       "brunette",
+       "blue eyes",
+       "natural boobs"
+    ],
+    "xpModifier":0.3,
+    "fansModifier":2,
+    "goldsModifier":0.2,
+    "unlockPrice":[
+       {
+          "type":"gold",
+          "quantity":15000
+       },
+       {
+          "type":"recordmonthly_badge",
+          "quantity":3
+       }
+    ],
+    "positions":[
+       {
+          "name":"intro",
+          "label":"Intro",
+          "corruption":0,
+          "type":"INTRO"
+       },
+       {
+          "name":"tease",
+          "label":"Tease",
+          "corruption":0,
+          "type":"FOREPLAY"
+       },
+       {
+          "name":"reveal",
+          "label":"Reveal",
+          "corruption":0,
+          "type":"FOREPLAY",
+          "unlocker": {
+            "name":"reveal2",
+            "label":"Reveal 2",
+            "corruption":0,
+            "type":"FOREPLAY"
+          }
+       },
+       {
+          "name":"rub",
+          "label":"Rub",
+          "corruption":0,
+          "type":"FOREPLAY",
+          "unlocker": {
+            "name":"rub2",
+            "label":"Rub 2",
+            "corruption":0,
+            "type":"FOREPLAY"
+          }
+       },
+       {
+          "name":"grab",
+          "label":"Grab",
+          "corruption":1,
+          "type":"FOREPLAY"
+       },
+       {
+          "name":"masturbate",
+          "label":"Masturbate",
+          "corruption":1,
+          "type":"FOREPLAY"
+       },
+       {
+          "name":"blowjob",
+          "label":"Blowjob",
+          "corruption":3,
+          "type":"FOREPLAY",
+          "unlocker":{
+             "name":"blowjob2",
+             "label":"Blowjob 2",
+             "corruption":4,
+             "type":"FOREPLAY_SKILL",
+             "unlocker":{
+                "name":"blowjob3",
+                "label":"Blowjob 3",
+                "corruption":5,
+                "type":"FOREPLAY_SKILL",
+                "unlocker":{
+                   "name":"blowjob4",
+                   "label":"Blowjob 4",
+                   "corruption":6,
+                   "type":"FOREPLAY_SKILL",
+                   "unlocker":{
+                      "name":"blowjob5",
+                      "label":"Blowjob 5",
+                      "corruption":7,
+                      "type":"FOREPLAY_SKILL"
+                   }
+                }
+             }
+          }
+       },
+       {
+          "name":"assjob",
+          "label":"Ass Rub",
+          "corruption":4,
+          "type":"FOREPLAY"
+       },
+       {
+          "name":"missionary",
+          "label":"Missionary",
+          "corruption":5,
+          "type":"PENETRATION",
+          "unlocker": {
+            "name":"missionary2",
+            "label":"Missionary 2",
+            "corruption":6,
+            "type":"PENETRATION"
+          }
+       },
+       {
+          "name":"doggy",
+          "label":"Doggy",
+          "corruption":6,
+          "type":"PENETRATION",
+          "unlocker":{
+             "name":"doggy2",
+             "label":"Doggy 2",
+             "corruption":7,
+             "type":"PENETRATION",
+             "unlocker":{
+                "name":"doggy3",
+                "label":"Doggy 3",
+                "corruption":8,
+                "type":"PENETRATION",
+                "unlocker":{
+                   "name":"doggy4",
+                   "label":"Doggy 4",
+                   "corruption":9,
+                   "type":"PENETRATION",
+                   "unlocker":{
+                      "name":"doggy5",
+                      "label":"Doggy 5",
+                      "corruption":10,
+                      "type":"PENETRATION",
+                      "unlocker":{
+                         "name":"doggy6",
+                         "label":"Doggy 6",
+                         "corruption":11,
+                         "type":"PENETRATION"
+                      }
+                   }
+                }
+             }
+          }
+       },
+       {
+          "name":"reversecowgirl",
+          "label":"Reverse Cowgirl",
+          "corruption":8,
+          "type":"PENETRATION",
+          "unlocker":{
+             "name":"reversecowgirl2",
+             "label":"Reverse Cowgirl 2",
+             "corruption":9,
+             "type":"PENETRATION",
+             "unlocker":{
+                "name":"reversecowgirl3",
+                "label":"Reverse Cowgirl 3",
+                "corruption":10,
+                "type":"SKILL",
+                "unlocker":{
+                   "name":"reversecowgirl4",
+                   "label":"Reverse Cowgirl 4",
+                   "corruption":11,
+                   "type":"SKILL",
+                   "unlocker":{
+                      "name":"reversecowgirl5",
+                      "label":"Reverse Cowgirl 5",
+                      "corruption":12,
+                      "type":"SKILL"
+                   }
+                }
+             }
+          }
+       },
+       {
+          "name":"cowgirl",
+          "label":"Cowgirl",
+          "corruption":5,
+          "type":"PENETRATION",
+          "unlocker":{
+             "name":"cowgirl2",
+             "label":"Cowgirl 2",
+             "corruption":7,
+             "type":"PENETRATION",
+             "unlocker":{
+                "name":"cowgirl3",
+                "label":"Cowgirl 3",
+                "corruption":8,
+                "type":"SKILL",
+                "unlocker":{
+                   "name":"cowgirl4",
+                   "label":"Cowgirl 4",
+                   "corruption":9,
+                   "type":"SKILL",
+                   "unlocker":{
+                      "name":"cowgirl5",
+                      "label":"Cowgirl 5",
+                      "corruption":10,
+                      "type":"SKILL",
+                      "unlocker":{
+                         "name":"cowgirl6",
+                         "label":"Cowgirl 6",
+                         "corruption":11,
+                         "type":"SKILL",
+                         "unlocker":{
+                            "name":"cowgirl7",
+                            "label":"Cowgirl 7",
+                            "corruption":12,
+                            "type":"SKILL"
+                         }
+                      }
+                   }
+                }
+             }
+          }
+       },
+       {
+          "name":"standing",
+          "label":"Standing",
+          "corruption":10,
+          "type":"PENETRATION",
+          "unlocker": {
+            "name":"standing2",
+            "label":"Standing 2",
+            "corruption":11,
+            "type":"PENETRATION"
+          }
+       },
+       {
+          "name":"sitted",
+          "label":"Sitted",
+          "corruption":10,
+          "type":"SKILL",
+          "unlocker":{
+             "name":"sitted2",
+             "label":"Sitted 2",
+             "corruption":11,
+             "type":"SKILL"
+          }
+       },
+       {
+          "name":"outdoor",
+          "label":"Outdoor",
+          "corruption":10,
+          "type":"SKILL",
+          "unlocker":{
+             "name":"outdoor2",
+             "label":"Outdoor 2",
+             "corruption":11,
+             "type":"SKILL"
+          }
+       }
+    ],
+    "photos":[
+       {
+          "name":"1_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"work",
+             "outfit":"work",
+             "body":[
+                "face",
+                "boobs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"1_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "legs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"1_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"work",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "butt",
+                "legs",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"2_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"outdoor",
+             "outfit":"swimsuit",
+             "body":[
+                "face",
+                "boobs",
+                "butt",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"2_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "butt"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"2_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"living",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"3_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"bedroom",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs",
+                "butt",
+                "legs",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"3_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"3_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"outdoor",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "pussy",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"4_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"hospital",
+             "outfit":"work",
+             "body":[
+                "face",
+                "boobs",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"4_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"bedroom",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"4_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "legs",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"5_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"outdoor",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"5_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "butt",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"5_slutty",
+          "corruptionLevel":3,
+          "attributes":{
+             "type":"slutty",
+             "place":"bedroom",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"6_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"work",
+             "outfit":"work",
+             "body":[
+                "face",
+                "boobs",
+                "legs",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"6_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "butt",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"6_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "anus",
+                "pussy",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"7_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"bedroom",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"7_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"hospital",
+             "outfit":"work",
+             "body":[
+                "face",
+                "boobs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"7_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"living",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "butt",
+                "anus",
+                "pussy",
+                "legs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"8_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"living",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "butt"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"8_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs",
+                "butt",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"8_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"work",
+             "outfit":"work",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "legs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"9_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"restaurant",
+             "outfit":"work",
+             "body":[
+                "face",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"9_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "butt",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"9_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"bedroom",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "pussy",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"10_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"outdoor",
+             "outfit":"swimsuit",
+             "body":[
+                "face",
+                "boobs",
+                "legs"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"10_sexy",
+          "corruptionLevel":2,
+          "attributes":{
+             "type":"sexy",
+             "place":"living",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "butt"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"10_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"living",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "anus",
+                "pussy",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"11_normal",
+          "corruptionLevel":0,
+          "attributes":{
+             "type":"normal",
+             "place":"bedroom",
+             "outfit":"casual",
+             "body":[
+                "face",
+                "boobs",
+                "legs",
+                "feet"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"11_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"bathroom",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "boobs",
+                "butt",
+                "legs"
+             ],
+             "format":"4:3"
+          }
+       },
+       {
+          "name":"12_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"bathroom",
+             "outfit":"naked",
+             "body":[
+                "face",
+                "boobs",
+                "nipples"
+             ],
+             "format":"portrait"
+          }
+       },
+       {
+          "name":"13_slutty",
+          "corruptionLevel":4,
+          "attributes":{
+             "type":"slutty",
+             "place":"bedroom",
+             "outfit":"lingerie",
+             "body":[
+                "face",
+                "boobs",
+                "nipples",
+                "butt",
+                "pussy",
+                "legs",
+                "feet"
+             ],
+             "format":"portrait"
+          }
+       }
+    ],
+    "skills":[
+       {
+          "name":"recording",
+          "description":"Improve recording advantages",
+          "skillTiers":[
+             {
+                "tier":0,
+                "skills":[
+                   {
+                      "name":"Actor",
+                      "description":"Professional training, Unlocks recording habilities",
+
+
+                      "maxlevel":1,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":15000
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":1,
+                "skills":[
+                   {
+                      "name":"Cowgirl",
+                      "description":"Training her legs for better bounce",
+
+
+                      "maxlevel":5,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Actor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Cowgirl 3",
+                               "value":"Cowgirl 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Cowgirl 4",
+                               "value":"Cowgirl 4"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Cowgirl 5",
+                               "value":"Cowgirl 5"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Cowgirl 6",
+                               "value":"Cowgirl 6"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Cowgirl 7",
+                               "value":"Cowgirl 7"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Reverse Cowgirl",
+                      "description":"Training her legs for better bounce",
+
+
+                      "maxlevel":3,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Actor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Reverse Cowgirl 3",
+                               "value":"Reverse Cowgirl 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Reverse Cowgirl 4",
+                               "value":"Reverse Cowgirl 4"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Reverse Cowgirl 5",
+                               "value":"Reverse Cowgirl 5"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Mouthist",
+                      "description":"Mouth special treatment, increasing efficiency",
+
+
+                      "maxlevel":4,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Actor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Blowjob 2",
+                               "value":"Blowjob 2"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Blowjob 3",
+                               "value":"Blowjob 3"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Blowjob 4",
+                               "value":"Blowjob 4"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Blowjob 5",
+                               "value":"Blowjob 5"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":2,
+                "skills":[
+                   {
+                      "name":"Jumping jacks",
+                      "description":"By an intense training, girl gains skill efficiency",
+
+
+                      "maxlevel":5,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Cowgirl"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"golds",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +5% Gold",
+                               "value":"+5%"
+                            },
+                            {
+                               "stat":"fans",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +1% Fans",
+                               "value":"+1%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"golds",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +10% Gold",
+                               "value":"+10%"
+                            },
+                            {
+                               "stat":"fans",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +2% Fans",
+                               "value":"+2%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"golds",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +15% Gold",
+                               "value":"+15%"
+                            },
+                            {
+                               "stat":"fans",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +3% Fans",
+                               "value":"+3%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"golds",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +20% Gold",
+                               "value":"+20%"
+                            },
+                            {
+                               "stat":"fans",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +4% Fans",
+                               "value":"+4%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"golds",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +25% Gold",
+                               "value":"+25%"
+                            },
+                            {
+                               "stat":"fans",
+                               "position":"cowgirl",
+                               "label":"Cowgirl +5% Fans",
+                               "value":"+5%"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Firm legs",
+                      "description":"Increasing bouncing",
+
+
+                      "maxlevel":2,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Reverse Cowgirl"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"reversecowgirl",
+                               "label":"Reverse Cowgirl +15% Boner",
+                               "value":"+15%"
+                            },
+                            {
+                               "stat":"golds",
+                               "position":"reversecowgirl",
+                               "label":"Reverse Cowgirl -5% Gold",
+                               "value":"-5%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"reversecowgirl",
+                               "label":"Reverse Cowgirl +25% Boner",
+                               "value":"+25%"
+                            },
+                            {
+                               "stat":"golds",
+                               "position":"reversecowgirl",
+                               "label":"Reverse Cowgirl -5% Gold",
+                               "value":"-5%"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Botox",
+                      "description":"Bigger lips for bigger pleasure",
+
+
+                      "maxlevel":2,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Mouthist"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"blowjob",
+                               "label":"Blowjob +25% Boner",
+                               "value":"+25%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"blowjob",
+                               "label":"Blowjob +50% Boner",
+                               "value":"+50%"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":3,
+                "skills":[
+                   {
+                      "name":"Endurance",
+                      "description":"Self-control improvement leads to boner conservation",
+
+
+                      "maxlevel":8,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":40000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":80000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":130000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":190000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":260000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":340000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":430000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":530000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":640000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Jumping jacks",
+                         "Firm legs",
+                         "Botox"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +10% boner",
+                               "value":"+10%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +20% boner",
+                               "value":"+20%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +30% boner",
+                               "value":"+30%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +40% boner",
+                               "value":"+40%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +50% boner",
+                               "value":"+50%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +60% boner",
+                               "value":"+60%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +70% boner",
+                               "value":"+70%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +80% boner",
+                               "value":"+80%"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             }
+          ]
+       },
+       {
+          "name":"battle",
+          "description":"Improve battle advantages",
+          "skillTiers":[
+             {
+                "tier":0,
+                "skills":[
+                   {
+                      "name":"Competitor",
+                      "description":"Competitor training, Unlocks battle habilities",
+
+
+                      "maxlevel":1,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":15000
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":1,
+                "skills":[
+                   {
+                      "name":"Sitted",
+                      "description":"Relax and take it",
+
+
+                      "maxlevel":2,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Competitor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sitted",
+                               "value":"Sitted"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Sitted 2",
+                               "value":"Sitted 2"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Outdoor",
+                      "description":"Nothing better than fresh air",
+
+
+                      "maxlevel":2,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":30000
+                            },
+                            {
+                               "type":"basic_skill_gem",
+                               "quantity":1
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":45000
+                            },
+                            {
+                               "type":"advanced_skill_gem",
+                               "quantity":1
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Competitor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Outdoor",
+                               "value":"Outdoor"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"scene",
+                               "label":"New scene: Outdoor 2",
+                               "value":"Outdoor 2"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Foreplay trainer",
+                      "description":"Feedback & data analysis helps to get better feeling",
+
+
+                      "maxlevel":8,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Competitor"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +1% boner",
+                               "value":"+1%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +2% boner",
+                               "value":"+2%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +3% boner",
+                               "value":"+3%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +4% boner",
+                               "value":"+4%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +5% boner",
+                               "value":"+5%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +6% boner",
+                               "value":"+6%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +7% boner",
+                               "value":"+7%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allforeplay",
+                               "label":"All foreplay +8% boner",
+                               "value":"+8%"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":2,
+                "skills":[
+                   {
+                      "name":"Penetration trainer",
+                      "description":"Feedback & data analysis helps to get better feeling",
+
+
+                      "maxlevel":8,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Foreplay trainer"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +1% orgasm",
+                               "value":"+1%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +2% orgasm",
+                               "value":"+2%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +3% orgasm",
+                               "value":"+3%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +4% orgasm",
+                               "value":"+4%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +5% orgasm",
+                               "value":"+5%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +6% orgasm",
+                               "value":"+6%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +7% orgasm",
+                               "value":"+7%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allpenetration",
+                               "label":"All penetration +8% orgasm",
+                               "value":"+8%"
+                            }
+                         ]
+                      ]
+                   },
+                   {
+                      "name":"Special trainer",
+                      "description":"Feedback & data analysis helps to get better feeling",
+
+
+                      "maxlevel":8,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":10000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Foreplay trainer"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +1% orgasm",
+                               "value":"+1%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +2% orgasm",
+                               "value":"+2%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +3% orgasm",
+                               "value":"+3%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +4% orgasm",
+                               "value":"+4%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +5% orgasm",
+                               "value":"+5%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +6% orgasm",
+                               "value":"+6%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +7% orgasm",
+                               "value":"+7%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"orgasm",
+                               "position":"allspecial",
+                               "label":"All special +8% orgasm",
+                               "value":"+8%"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             },
+             {
+                "tier":3,
+                "skills":[
+                   {
+                      "name":"Battle Endurance",
+                      "description":"Self-control improvement leads to boner conservation",
+
+
+                      "maxlevel":8,
+                      "unlockPrice":[
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":40000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":80000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":130000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":190000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":260000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":340000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":430000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":530000
+                            }
+                         ],
+                         [
+                            {
+                               "type":"gold",
+                               "quantity":640000
+                            }
+                         ]
+                      ],
+                      "requires":[
+                         "Penetration trainer",
+                         "Special trainer"
+                      ],
+                      "effects":[
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +10% boner",
+                               "value":"+10%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +20% boner",
+                               "value":"+20%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +30% boner",
+                               "value":"+30%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +40% boner",
+                               "value":"+40%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +50% boner",
+                               "value":"+50%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +60% boner",
+                               "value":"+60%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +70% boner",
+                               "value":"+70%"
+                            }
+                         ],
+                         [
+                            {
+                               "stat":"boner",
+                               "position":"allpenetration",
+                               "label":"All penetration +80% boner",
+                               "value":"+80%"
+                            }
+                         ]
+                      ]
+                   }
+                ]
+             }
+          ]
+       }
+    ]
+    }
  ],
  leaders: [
   {

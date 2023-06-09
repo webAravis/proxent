@@ -881,6 +881,9 @@ export class RecordComponent implements OnInit, OnDestroy {
       this.positions = [...this.positions, ...positions];
     }
 
+    console.log('positions', this.positions);
+    console.log('unlocked', this.girl.unlockedPositions);
+
     this.treeSkills = girl.skills.filter((tree: TreeSkills) => (tree.name === 'special' || (this.isBattle ? tree.name === 'battle' : tree.name === 'recording')));
 
     for (const treeSkill of this.treeSkills) {

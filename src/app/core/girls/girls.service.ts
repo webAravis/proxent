@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Girl } from './girl.model';
 import { DialogsService } from 'src/app/dialogs/dialogs.service';
+import { Position } from '../position.model';
 
 export interface SavedGirl {
   id: string;
@@ -132,7 +133,7 @@ export class GirlsService {
       gameGirl.xp = girl.xp;
       gameGirl.fans = girl.fans;
       gameGirl.corruption = girl.corruption;
-      gameGirl.unlockedPositions = girl.unlockedPositions.filter((positionName) => gameGirl.positions.map(position => position.name).includes(positionName));
+      gameGirl.unlockedPositions = girl.unlockedPositions.filter((positionName) => this._getAllGirlPositionNames(gameGirl).includes(positionName));
       gameGirl.freedom = girl.freedom;
       gameGirl.recordCount = girl.recordCount;
       gameGirl.shootingCount = girl.shootingCount;
@@ -158,6 +159,30 @@ export class GirlsService {
 
       }
     }
+  }
+
+  private _getAllGirlPositionNames(girl: Girl): string[] {
+    let positions: string[] = [];
+
+    for (const position of girl.positions) {
+      positions.push(position.name);
+
+      if (position.unlocker !== undefined) {
+        positions = [...positions, ...this._getNestedPosition(position.unlocker)];
+      }
+    }
+
+    return positions;
+  }
+
+  private _getNestedPosition(position: Position): string[] {
+    let positions: string[] = [];
+    positions.push(position.name);
+
+    if (position.unlocker !== undefined) {
+      positions = [...positions, ...this._getNestedPosition(position.unlocker)];
+    }
+    return positions;
   }
 
   private _initMods(): void {
