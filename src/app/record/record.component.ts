@@ -594,7 +594,7 @@ export class RecordComponent implements OnInit, OnDestroy {
       this._checkTriggers();
 
       // time to change position or end of recording based on corruption!
-      if (this.nbScenes >= this.girl.corruption || (this.isBattle && this.score > this.metaScore && this.orgasmCount > this.metaCum)) {
+      if (this.nbScenes >= this.girl.corruption || (this.isBattle && this.score >= this.metaScore && this.orgasmCount >= this.metaCum)) {
         this.endRecord();
       } else {
         this.showPositions = true;

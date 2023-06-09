@@ -5,19 +5,21 @@
 		<div class="header">Choose a girl to record</div>
 
 		<div class="girl-picker">
-      <div class="arrow" (click)="changeGirl(-1)">
+      <div class="arrow" *ngIf="girlIndex !== 0" (click)="changeGirl(-1)">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div class="arrow arrow-reverse" (click)="changeGirl(1)">
+      <div class="arrow arrow-reverse" *ngIf="girlIndex+1 < playerGirls.length" (click)="changeGirl(1)">
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-			<img class="portrait" [src]="portrait" />
-      <div>{{ name }}</div>
+      <div class="portrait-wrapper no-select">
+        <img class="portrait" [src]="portrait" />
+      </div>
+      <div class="no-select">{{ name }}</div>
       <div class="attributes">
         <div *ngFor="let attribute of girl.attributes">{{ attribute }}</div>
       </div>

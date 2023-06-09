@@ -18837,7 +18837,6 @@ modsConfig.push({
              "body":[
                 "face",
                 "boobs",
-                "butt",
                 "legs"
              ],
              "format":"portrait"
