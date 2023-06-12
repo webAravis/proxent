@@ -7,10 +7,16 @@
 	background: white;
 	border-radius: 20px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-width: 97vw;
+  box-sizing: border-box;
 
 	padding: 15px 45px 45px;
 	transition: top 0.2s;
   width: max-content;
+
+  @media screen and (max-width: 1279px) {
+    padding: 15px;
+  }
 
 	&.show {
 		top: 50%;
@@ -57,10 +63,11 @@
 		flex-wrap: wrap;
 		gap: 30px;
 		margin: 15px 0;
+    justify-content: center;
 	}
 
 	.award {
-		width: 190px;
+		width: 145px;
 
 		.placeholder {
 			position: relative;
@@ -71,10 +78,10 @@
 
 			.badge {
 				position: absolute;
-				top: 33px;
-				left: 65px;
-				z-index: 1;
-				width: 60px;
+        top: 22px;
+        left: 45px;
+        z-index: 1;
+        width: 52px;
 				animation: bounce-in-bck 1.1s both;
 			}
 		}
