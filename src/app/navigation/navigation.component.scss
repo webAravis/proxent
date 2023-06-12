@@ -19,6 +19,25 @@
 		color: #ce0100;
 		text-decoration: none;
 	}
+
+  .hidden-mobile {
+    display: flex;
+    gap: 30px;
+  }
+
+  .show-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 1279px) {
+    .hidden-mobile {
+      display: none;
+    }
+
+    .show-mobile {
+      display: flex;
+    }
+  }
 }
 
 .disabled {

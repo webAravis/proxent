@@ -6,15 +6,38 @@
     </div>
   </div>
 
-	<a [routerLink]="'girls'">Girls</a>
+  <div class="hidden-mobile">
+    <a [routerLink]="'girls'">Girls</a>
 
-	<a *ngIf="studioUnlocked" [routerLink]="'studio'">Studio</a>
-	<a class="disabled" *ngIf="!studioUnlocked">Studio</a>
+    <a *ngIf="studioUnlocked" [routerLink]="'studio'">Studio</a>
+    <a class="disabled" *ngIf="!studioUnlocked">Studio</a>
 
-	<a [routerLink]="'inventory'">Inventory</a>
-	<a *ngIf="studioUnlocked" [routerLink]="'battle'">Battle</a>
-	<a [routerLink]="'contracts'">Contracts</a>
-	<a [routerLink]="'settings'">Settings</a>
-	<a href="#" (click)="goToMenu()">Menu</a>
+    <a [routerLink]="'inventory'">Inventory</a>
+    <a *ngIf="studioUnlocked" [routerLink]="'battle'">Battle</a>
+    <a [routerLink]="'contracts'">Contracts</a>
+    <a [routerLink]="'settings'">Settings</a>
+    <a href="#" (click)="goToMenu()">Menu</a>
+  </div>
+
 	<a href="https://patreon.com/ProXent" target="_blank"><img src="./assets/support-patreon.png" width="150" /></a>
+
+  <div class="show-mobile">
+    <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="mobile-menu">
+        <a [routerLink]="'girls'">Girls</a>
+
+        <a *ngIf="studioUnlocked" [routerLink]="'studio'">Studio</a>
+        <a class="disabled" *ngIf="!studioUnlocked">Studio</a>
+
+        <a [routerLink]="'inventory'">Inventory</a>
+        <a *ngIf="studioUnlocked" [routerLink]="'battle'">Battle</a>
+        <a [routerLink]="'contracts'">Contracts</a>
+        <a [routerLink]="'settings'">Settings</a>
+        <a href="#" (click)="goToMenu()">Menu</a>
+      </div>
+    </mat-menu>
+  </div>
 </div>

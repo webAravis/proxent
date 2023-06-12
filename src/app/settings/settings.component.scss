@@ -25,11 +25,17 @@
 	flex-wrap: wrap;
   position: fixed;
   flex-direction: column;
+  overflow-y: auto;
+
+  @media screen and (max-width: 1280px) {
+    flex-direction: row;
+  }
 }
 
 .settings-wrapper {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 
   .title {
     text-align: center;
@@ -45,6 +51,12 @@
     box-sizing: border-box;
     max-height: calc(100vh - 240px);
     overflow-y: auto;
+
+    @media screen and (max-width: 1280px) {
+      max-height: initial;
+      width: 100%;
+      overflow-y: initial;
+    }
   }
 
   .setting-multiplier {
@@ -53,6 +65,10 @@
     flex-wrap: wrap;
     color: white;
     font-size: 20px;
+
+    @media screen and (max-width: 1280px) {
+      width: 100%;
+    }
 
     .name {
       width: 100%;

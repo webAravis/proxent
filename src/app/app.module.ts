@@ -33,6 +33,9 @@ import { SettingsComponent } from './settings/settings.component';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { NewGameComponent } from './start/new-game/new-game.component';
 import { ContractsComponent } from './contracts/contracts.component';
@@ -77,7 +80,10 @@ import { ContractNotifierComponent } from './contract-notifier/contract-notifier
     NgxMasonryModule,
     MatSliderModule,
     MatInputModule,
-    FormsModule
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
