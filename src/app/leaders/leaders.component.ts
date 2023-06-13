@@ -97,25 +97,6 @@ export class LeadersComponent implements OnInit, OnDestroy, AfterViewInit {
   battle(toBattle: Leader | League): void {
     if (this.canBattle(toBattle)) {
 
-      if (toBattle instanceof Leader) {
-        if (toBattle.costItem === 'gold') {
-          this._gameService.updateGolds(
-            toBattle.costCurve(toBattle.lvl) * -1
-          );
-        } else {
-          this._inventoryService.removeItemByName(
-            toBattle.costItem,
-            toBattle.costCurve(toBattle.lvl)
-          );
-        }
-      }
-
-      if (toBattle instanceof League) {
-        for (const battleCostItem of toBattle.battleCost) {
-          this._inventoryService.removeItemByName(battleCostItem.type, battleCostItem.quantity);
-        }
-      }
-
       this._leaderService.leaderBattle.next(toBattle);
       this._router.navigate(['leader-battle']);
 

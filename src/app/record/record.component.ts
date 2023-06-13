@@ -20,6 +20,7 @@ import { SettingsService } from '../core/settings.service';
 import { ContractsService } from '../contracts/contracts.service';
 import { Contract } from '../contracts/contract.model';
 import { League } from '../leaders/league.model';
+import { InventoryService } from '../inventory/inventory.service';
 
 interface Trigger {
   triggerEffect: string;
@@ -130,6 +131,7 @@ export class RecordComponent implements OnInit, OnDestroy {
     private _settingsService: SettingsService,
     private _contractService: ContractsService,
     private _shepherdService: ShepherdService,
+    private _inventoryService: InventoryService,
 		private _router: Router
 	) {}
 
@@ -322,6 +324,29 @@ export class RecordComponent implements OnInit, OnDestroy {
   }
 
 	startRecord(): void {
+    if (this.isBattle) {
+
+      if (this.toBattle instanceof Leader) {
+        if (this.toBattle.costItem === 'gold') {
+          this._gameService.updateGolds(
+            this.toBattle.costCurve(this.toBattle.lvl) * -1
+          );
+        } else {
+          this._inventoryService.removeItemByName(
+            this.toBattle.costItem,
+            this.toBattle.costCurve(this.toBattle.lvl)
+          );
+        }
+      }
+
+      if (this.toBattle instanceof League) {
+        for (const battleCostItem of this.toBattle.battleCost) {
+          this._inventoryService.removeItemByName(battleCostItem.type, battleCostItem.quantity);
+        }
+      }
+
+    }
+
     if (!this._gameService.tutorials.recordScreenDone) {
       this.startTutorial();
       this._gameService.tutorials.recordScreenDone = true;

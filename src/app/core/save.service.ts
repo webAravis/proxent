@@ -56,6 +56,9 @@ export class SaveService {
     this._gameService.goldChanged.subscribe((golds) =>{
       golds > 0 ? this.saveGame() : undefined;
     });
+    this._inventoryService.items.subscribe(() =>{
+      this.saveGame();
+    });
 
     let allSaves = btoa('[]');
     if (localStorage.getItem('saveGame')) {

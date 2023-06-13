@@ -4885,7 +4885,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"portrait"
              }
@@ -4983,6 +4984,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "butt",
+                   "anus",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -6838,7 +6841,10 @@ modsConfig.push({
                 "outfit":"casual",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "nipples",
+                   "butt",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -6854,7 +6860,8 @@ modsConfig.push({
                    "face",
                    "boobs",
                    "butt",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -6869,8 +6876,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "butt",
                    "legs",
-                   "butt"
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -6885,7 +6893,6 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs",
                    "butt"
                 ],
                 "format":"4:3"
@@ -6901,7 +6908,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "butt",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -6931,8 +6939,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs",
                    "butt",
+                   "legs",
                    "feet"
                 ],
                 "format":"4:3"
@@ -6963,7 +6971,10 @@ modsConfig.push({
                 "outfit":"cosplay",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "butt",
+                   "legs",
+                   "feet"
                 ],
                 "format":"portrait"
              }
@@ -6978,7 +6989,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"portrait"
              }
@@ -6993,8 +7005,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs",
-                   "butt"
+                   "nipples",,
+                   "butt",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -7009,6 +7022,10 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
+                   "butt",
+                   "anus",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -7025,6 +7042,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
+                   "butt",
                    "legs"
                 ],
                 "format":"4:3"
@@ -7040,7 +7059,10 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "butt",
+                   "anus",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -7057,6 +7079,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -7073,8 +7097,12 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "butt",
-                   "legs"
+                   "anus",
+                   "pussy",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -7089,7 +7117,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "butt",
+                   "pussy",
                    "legs",
                    "feet"
                 ],
@@ -7106,6 +7136,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
+                   "pussy",
                    "legs"
                 ],
                 "format":"4:3"
@@ -7121,6 +7153,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
+                   "anus",
+                   "pussy",
                    "legs"
                 ],
                 "format":"4:3"
@@ -7136,8 +7171,10 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
+                   "nipples",
                    "butt",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10809,7 +10846,8 @@ modsConfig.push({
                 "place":"living",
                 "outfit":"casual",
                 "body":[
-                   "face"
+                   "face",
+                   "boobs"
                 ],
                 "format":"portrait"
              }
@@ -10822,7 +10860,8 @@ modsConfig.push({
                 "place":"living",
                 "outfit":"casual",
                 "body":[
-                   "face"
+                   "face",
+                   "boobs"
                 ],
                 "format":"4:3"
              }
@@ -10849,7 +10888,10 @@ modsConfig.push({
                 "outfit":"casual",
                 "body":[
                    "face",
-                   "legs"
+                   "boobs",
+                   "butt",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10863,7 +10905,10 @@ modsConfig.push({
                 "outfit":"swimsuit",
                 "body":[
                    "face",
-                   "legs"
+                   "boobs",
+                   "butt",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10877,7 +10922,9 @@ modsConfig.push({
                 "outfit":"casual",
                 "body":[
                    "face",
-                   "legs"
+                   "boobs",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10890,7 +10937,8 @@ modsConfig.push({
                 "place":"club",
                 "outfit":"casual",
                 "body":[
-                   "face"
+                   "face",
+                   "boobs"
                 ],
                 "format":"4:3"
              }
@@ -10903,7 +10951,10 @@ modsConfig.push({
                 "place":"work",
                 "outfit":"casual",
                 "body":[
-                   "face"
+                   "face",
+                   "boobs",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10916,7 +10967,9 @@ modsConfig.push({
                 "place":"work",
                 "outfit":"cosplay",
                 "body":[
-                   "face"
+                   "face",
+                   "boobs",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -10930,7 +10983,9 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
-                   "legs"
+                   "boobs",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -10944,7 +10999,8 @@ modsConfig.push({
                 "outfit":"casual",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -10973,8 +11029,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs",
-                   "butt"
+                   "butt",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -10988,8 +11044,9 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
-                   "legs",
-                   "butt"
+                   "boobs",
+                   "butt",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -11003,7 +11060,8 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "nipples"
                 ],
                 "format":"4:3"
              }
@@ -11018,8 +11076,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs",
-                   "butt"
+                   "butt",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -11033,8 +11091,10 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
+                   "boobs",
                    "butt",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -11048,7 +11108,8 @@ modsConfig.push({
                 "outfit":"lingerie",
                 "body":[
                    "face",
-                   "boobs"
+                   "boobs",
+                   "legs"
                 ],
                 "format":"4:3"
              }
@@ -11063,7 +11124,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -11093,7 +11155,8 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"portrait"
              }
@@ -11138,6 +11201,7 @@ modsConfig.push({
                    "face",
                    "boobs",
                    "nipples",
+                   "pussy",
                    "legs"
                 ],
                 "format":"portrait"
@@ -11154,7 +11218,9 @@ modsConfig.push({
                    "face",
                    "butt",
                    "anus",
-                   "pussy"
+                   "pussy",
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -11170,6 +11236,7 @@ modsConfig.push({
                    "face",
                    "boobs",
                    "nipples",
+                   "butt",
                    "legs",
                    "feet"
                 ],
@@ -11267,7 +11334,8 @@ modsConfig.push({
                    "face",
                    "boobs",
                    "butt",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -11282,7 +11350,8 @@ modsConfig.push({
                 "body":[
                    "boobs",
                    "nipples",
-                   "legs"
+                   "legs",
+                   "feet"
                 ],
                 "format":"4:3"
              }
@@ -11313,7 +11382,9 @@ modsConfig.push({
                 "body":[
                    "face",
                    "boobs",
-                   "nipples"
+                   "nipples",
+                   "butt",
+                   "legs"
                 ],
                 "format":"portrait"
              }
@@ -22414,7 +22485,7 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.35 },
       "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
       "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
@@ -22457,7 +22528,7 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.35 },
       "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
       "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
@@ -22500,7 +22571,7 @@ modsConfig.push({
       "nbBonus": 3,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.35 },
       "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
       "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
@@ -22543,7 +22614,7 @@ modsConfig.push({
       "nbMalus": 2,
       "nbFetish": 6,
       "costItem": "recordmonthly_badge",
-      "costCurve": (level) => { return (level / 0.9) ** 1.5 },
+      "costCurve": (level) => { return (level / 0.9) ** 1.35 },
       "pointsCurve": (level) => { return (level / 0.02) ** 1.5 },
       "cumCurve": (level) => { return ((level / 0.09) ** 1.3) / 75 },
       "rewards": [
