@@ -52,7 +52,7 @@
           <div id="skill-{{( skill.name )}}" (click)="upgradeSkill(skill)" [class.can-unlock]="canUnlock(skill)" [class.locked]="skill.level === 0" class="skill has-tooltip">
 
             <div class="skill-icon">
-              <img [src]="'./assets/mods/'+skill.mod+'/skills/'+skill.picture+'.jpg'" alt="">
+              <img [src]="basePath + '/assets/mods/'+skill.mod+'/skills/'+skill.picture+'.jpg'" alt="">
             </div>
             <div class="skill-level">
               <span [class.bigger]="skill.level > 0">{{ skill.level }}</span>/{{ skill.maxlevel }}

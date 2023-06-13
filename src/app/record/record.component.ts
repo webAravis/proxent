@@ -116,6 +116,8 @@ export class RecordComponent implements OnInit, OnDestroy {
   activeTriggers: { id: number, trigger: Trigger }[] = [];
   appliedSkills: Skill[] = [];
 
+  basePath = '.';
+
 	private _unsubscribeAll: Subject<boolean> = new Subject<boolean>();
   private _fapInterval: NodeJS.Timer | undefined = undefined;
 
@@ -136,6 +138,7 @@ export class RecordComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+    this.basePath = (this._cachingService.mediasExist ? '.' : 'https://proxentgame.com');
     clearInterval(this._intervalTriggers);
     this._intervalTriggers = setInterval(() => {this._applyTriggers()}, 125);
 

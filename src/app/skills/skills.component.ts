@@ -6,6 +6,7 @@ import { Skill, TreeSkills } from './treeskills.model';
 import { GirlsService } from '../core/girls/girls.service';
 import { InventoryService } from '../inventory/inventory.service';
 import { Girl } from '../core/girls/girl.model';
+import { CachingService } from '../core/caching.service';
 
 @Component({
   selector: 'app-skills',
@@ -16,6 +17,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   golds = 0;
   girl: Girl = new Girl();
+  basePath = '.';
 
   treeSkills: TreeSkills[] = [];
   resetPrice: { type: string; quantity: number }[] = [
@@ -29,10 +31,13 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private _skillService: SkillsService,
     private _girlService: GirlsService,
     private _gameService: GameService,
+    private _cachingService: CachingService,
     private _inventoryService: InventoryService
   ) { }
 
   ngOnInit(): void {
+    this.basePath = (this._cachingService.mediasExist ? '.' : 'https://proxentgame.com');
+
     this._gameService.goldChanged
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((golds) => (this.golds = golds));

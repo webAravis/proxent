@@ -73,7 +73,7 @@
     <div class="skills-wrapper">
       <div class="skill has-tooltip" *ngFor="let skill of appliedSkills">
         <div class="skill-icon">
-          <img [src]="'./assets/mods/'+skill.mod+'/skills/'+skill.picture+'.jpg'" alt="">
+          <img [src]="basePath + '/assets/mods/'+skill.mod+'/skills/'+skill.picture+'.jpg'" alt="">
         </div>
         <div class="skill-level">
           <span [class.bigger]="skill.level > 0">{{ skill.level }}</span>/{{ skill.maxlevel }}
@@ -100,7 +100,7 @@
     <div class="triggers-wrapper">
       <div class="skill has-tooltip" *ngFor="let trigger of activeTriggers">
         <div class="skill-icon">
-          <img [src]="'./assets/skills/'+trigger.trigger.triggerEffect+'.jpg'" alt="">
+          <img [src]="basePath + '/assets/skills/'+trigger.trigger.triggerEffect+'.jpg'" alt="">
         </div>
         <div class="skill-level">
           {{ getRemainingTime(trigger) }}s

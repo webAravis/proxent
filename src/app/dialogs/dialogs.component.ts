@@ -38,7 +38,7 @@ export class DialogsComponent implements OnInit, OnDestroy {
 
         // retrieving girlfriend's datas
         this.girlfriend = this._girlService.gameGirls.getValue().find(girl => girl.fullId === this._gameService.girlfriend) ?? new Girl();
-        this.girlFriendPortrait = './assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
+        this.girlFriendPortrait = (this._cachingService.mediasExist ? '.' : 'https://proxentgame.com') + '/assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
 
 				this.shown = shown;
 				this.step = 0;
@@ -57,7 +57,7 @@ export class DialogsComponent implements OnInit, OnDestroy {
 			.subscribe((dialog: { character: string; text: string }[]) =>{
         // retrieving girlfriend's datas
         this.girlfriend = this._girlService.gameGirls.getValue().find(girl => girl.fullId === this._gameService.girlfriend) ?? new Girl();
-        this.girlFriendPortrait = './assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
+        this.girlFriendPortrait = (this._cachingService.mediasExist ? 'https://proxentgame.com' : '.') + '/assets/mods/' + this.girlfriend.girlFolder + '/photos/dialogs.png';
 
         for (const entry of dialog) {
           entry.text = entry.text.replaceAll('girlfriend_name', this.girlfriend.name);
