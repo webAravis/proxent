@@ -28,7 +28,7 @@ export class GameService {
 	yearChanged: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
 	dayTicker: NodeJS.Timer | undefined;
-	msDayTicker = 2000;
+	msDayTicker = 4000;
 
 	dialogsStarted: boolean[] = [false, false, false];
 

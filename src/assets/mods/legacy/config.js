@@ -2065,7 +2065,6 @@ modsConfig.push({
           "american"
        ],
        "goldsModifier":2.5,
-       "xpModifier":0.7,
        "unlockPrice":[
           {
              "type":"gold",
@@ -8481,7 +8480,6 @@ modsConfig.push({
           "american"
        ],
        "cumModifier":5,
-       "goldsModifier":0.2,
        "unlockPrice":[
           {
              "type":"gold",
@@ -12671,7 +12669,6 @@ modsConfig.push({
        ],
        "xpModifier":1.2,
        "goldsModifier":2,
-       "cumModifier":0.5,
        "unlockPrice":[
           {
              "type":"gold",
@@ -14436,7 +14433,6 @@ modsConfig.push({
          "big butt",
          "small"
       ],
-      "xpModifier":0.5,
       "goldsModifier":1.5,
       "cumModifier":1.5,
       "unlockPrice":[
@@ -16665,7 +16661,6 @@ modsConfig.push({
      ],
      "fansModifier":3.5,
      "goldsModifier":1.5,
-     "cumModifier":0.3,
      "unlockPrice":[
         {
            "type":"gold",
@@ -18654,7 +18649,6 @@ modsConfig.push({
     ],
     "xpModifier":3,
     "goldsModifier":2,
-    "cumModifier":0.2,
     "unlockPrice":[
        {
           "type":"gold",
@@ -20528,9 +20522,7 @@ modsConfig.push({
        "natural boobs",
        "american"
     ],
-    "xpModifier":0.3,
     "fansModifier":2,
-    "goldsModifier":0.8,
     "unlockPrice":[
        {
           "type":"gold",

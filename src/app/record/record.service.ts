@@ -252,17 +252,19 @@ export class RecordService {
     if (toBattle !== undefined) {
       if (toBattle.name !== '') {
         // modifiers due to leader
+        let globalModifier = 1;
         for (const bonus of toBattle.bonus) {
           if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(bonus.toLowerCase())) {
-            score = score * 1.5;
+            globalModifier += 1.7;
           }
         }
 
         for (const malus of toBattle.malus) {
           if (girl.attributes.map(attribute => attribute.toLowerCase()).includes(malus.toLowerCase())) {
-            score = score * 0.01;
+            globalModifier -= 0.5;
           }
         }
+        score = score * Math.max(globalModifier, 0.01);
       }
     }
 

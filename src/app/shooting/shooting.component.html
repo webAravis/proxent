@@ -40,20 +40,20 @@
                 <div class="value">{{ photo.attributes.type }}</div>
               </div>
               <div class="attribute">
-                <div class="name">Place</div>
-                <div class="value">{{ photo.attributes.place }}</div>
-              </div>
-              <div class="attribute">
                 <div class="name">Outfit</div>
                 <div class="value">{{ photo.attributes.outfit }}</div>
               </div>
               <div class="attribute">
-                <div class="name">Body</div>
-                <div class="value">{{ photo.attributes.body.join(', ') }}</div>
+                <div class="name">Place</div>
+                <div class="value">{{ photo.attributes.place }}</div>
               </div>
               <div class="attribute">
                 <div class="name">Format</div>
                 <div class="value">{{ photo.attributes.format }}</div>
+              </div>
+              <div class="attribute">
+                <div class="name">Body</div>
+                <div class="value">{{ photo.attributes.body.join(', ') }}</div>
               </div>
 
               <div class="rewards">
@@ -73,12 +73,12 @@
       <div class="header">Customer request</div>
       <div class="requested" *ngIf="customerRequest">
         <div class="attribute">
-          <div class="name">Place</div>
-          <div class="value">{{ customerRequest.place }}</div>
-        </div>
-        <div class="attribute">
           <div class="name">Outfit</div>
           <div class="value">{{ customerRequest.outfit }}</div>
+        </div>
+        <div class="attribute">
+          <div class="name">Place</div>
+          <div class="value">{{ customerRequest.place }}</div>
         </div>
         <div class="attribute">
           <div class="name">Format</div>

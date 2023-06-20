@@ -9,7 +9,7 @@
 	opacity: 0.8;
 	border-bottom: 1px solid;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1370px) {
     font-size: 25px;
   }
 }
@@ -27,7 +27,7 @@
   flex-direction: column;
   overflow-y: auto;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1370px) {
     flex-direction: row;
   }
 }
@@ -52,7 +52,7 @@
     max-height: calc(100vh - 240px);
     overflow-y: auto;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1370px) {
       max-height: initial;
       width: 100%;
       overflow-y: initial;
@@ -66,7 +66,7 @@
     color: white;
     font-size: 20px;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1370px) {
       width: 100%;
     }
 
